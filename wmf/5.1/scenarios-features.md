@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 ms.topic: conceptual
 keywords: wmf,powershell,setup
 title: WMF 5.1의 새로운 시나리오 및 기능
-ms.openlocfilehash: 77b439e61c5802f8ddbc4a0f39923cc8c0c36fe9
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: b00069aad7422f86d1462a62a6c4bc8a91e46705
+ms.sourcegitcommit: 50b66cada6943784b8d3c103cebc3c1e3e286a16
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190318"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37090366"
 ---
 # <a name="new-scenarios-and-features-in-wmf-51"></a>WMF 5.1의 새로운 시나리오 및 기능
 
@@ -25,12 +25,12 @@ ms.locfileid: "34190318"
 
 - [$PSVersionTable을 사용하여 실행 중인 PowerShell 버전 확인](/powershell/module/microsoft.powershell.core/about/about_automatic_variables)
 - [PSEdition 매개 변수를 사용하여 CompatiblePSEditions를 기준으로 Get-Module 결과 필터링](/powershell/module/microsoft.powershell.core/get-module)
-- [호환되는 PowerShell 버전에서 실행하지 않는 경우 스크립트 실행 방지](/powershell/gallery/psget/script/scriptwithpseditionsupport)
-- [특정 PowerShell 버전에 대한 모듈의 호환성 선언](/powershell/gallery/psget/module/modulewithpseditionsupport)
+- [호환되는 PowerShell 버전에서 실행하지 않는 경우 스크립트 실행 방지](/powershell/gallery/concepts/script-psedition-support)
+- [특정 PowerShell 버전에 대한 모듈의 호환성 선언](/powershell/gallery/concepts/module-psedition-support)
 
 ## <a name="catalog-cmdlets"></a>카탈로그 Cmdlet
 
-두 개의 새로운 cmdlet을 [Microsoft.PowerShell.Security](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security) 모듈에 추가했습니다. 이 cmdlet은 Windows 카탈로그 파일을 생성하고 유효성을 검사합니다.
+두 개의 새로운 cmdlet을 [Microsoft.PowerShell.Security](/powershell/module/microsoft.powershell.security) 모듈에 추가했습니다. 이 cmdlet은 Windows 카탈로그 파일을 생성하고 유효성을 검사합니다.
 
 ### <a name="new-filecatalog"></a>New-FileCatalog
 --------------------------------
@@ -57,7 +57,7 @@ New-FileCatalog [-CatalogFilePath] <string> [[-Path] <string[]>] [-CatalogVersio
 
 ![](../images/CatalogFile2.jpg)
 
-카탈로그 파일(위 예에서는 Pester.cat)의 무결성을 확인하려면 [Set-authenticodesignature](https://technet.microsoft.com/library/hh849819.aspx) cmdlet을 사용하여 카탈로그 파일에 서명합니다.
+카탈로그 파일(위 예에서는 Pester.cat)의 무결성을 확인하려면 [Set-authenticodesignature](/powershell/module/Microsoft.PowerShell.Security/Set-AuthenticodeSignature) cmdlet을 사용하여 카탈로그 파일에 서명합니다.
 
 ### <a name="test-filecatalog"></a>Test-FileCatalog
 --------------------------------
@@ -73,7 +73,7 @@ Test-FileCatalog [-CatalogFilePath] <string> [[-Path] <string[]>] [-Detailed] [-
 이 cmdlet은 *카탈로그*에서 찾은 모든 파일 해시 및 해당 상대 경로를 *디스크*의 파일 해시 및 상대 경로와 비교합니다.
 파일 해시 및 경로 간의 불일치를 발견하면 *ValidationFailed*와 같은 상태를 반환합니다.
 사용자는 *-Detailed* 매개 변수를 사용하여 이 모든 정보를 검색할 수 있습니다.
-또한 이 cmdlet은 카탈로그 파일에서 [Get-AuthenticodeSignature](https://technet.microsoft.com/library/hh849805.aspx) cmdlet을 호출할 때와 동일한 *Signature* 속성에 카탈로그의 서명 상태를 표시합니다.
+또한 이 cmdlet은 카탈로그 파일에서 [Get-AuthenticodeSignature](/powershell/module/Microsoft.PowerShell.Security/Get-AuthenticodeSignature) cmdlet을 호출할 때와 동일한 *Signature* 속성에 카탈로그의 서명 상태를 표시합니다.
 사용자는 *-FilesToSkip* 매개 변수를 사용하여 유효성 검사 시 파일을 건너뛸 수도 있습니다.
 
 ## <a name="module-analysis-cache"></a>모듈 분석 캐시
@@ -115,7 +115,7 @@ WMF 5.1에서 `using module`은 PowerShell에서 다른 모듈 관련 생성과 
 
 WMF 5.1에서는 다음과 같습니다.
 
-- [ModuleSpecification Constructor (Hashtable)](https://msdn.microsoft.com/library/jj136290)(ModuleSpecification 생성자(해시 테이블))를 사용할 수 있습니다.
+- [ModuleSpecification Constructor (Hashtable)](/dotnet/api/microsoft.powershell.commands.modulespecification.-ctor?view=powershellsdk-1.1.0#Microsoft_PowerShell_Commands_ModuleSpecification__ctor_System_Collections_Hashtable_)(ModuleSpecification 생성자(해시 테이블))를 사용할 수 있습니다.
 이 해시 테이블은 `Get-Module -FullyQualifiedName`과 형식이 같습니다.
 
 **예:** `using module @{ModuleName = 'PSReadLine'; RequiredVersion = '1.1'}`
