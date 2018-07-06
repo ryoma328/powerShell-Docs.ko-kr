@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: DSC를 사용하여 연속 통합 및 연속 배포 파이프라인 빌드
-ms.openlocfilehash: ce0f2ed79f5f96a1c38e0beaf32529aba7538963
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: faeef5022cbd984cab0620b69db19de8b84cca0e
+ms.sourcegitcommit: 68093cc12a7a22c53d11ce7d33c18622921a0dd1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190556"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36940347"
 ---
 # <a name="building-a-continuous-integration-and-continuous-deployment-pipeline-with-dsc"></a>DSC를 사용하여 연속 통합 및 연속 배포 파이프라인 빌드
 
@@ -36,6 +36,7 @@ ms.locfileid: "34190556"
 예제를 설정하고 실행하는 모든 작업을 수행할 컴퓨터입니다.
 
 클라이언트 컴퓨터는 다음 항목이 설치된 Windows 컴퓨터여야 합니다.
+
 - [Git](https://git-scm.com/)
 - https://github.com/PowerShell/Demo_CI에서 복제된 로컬 Git 리포지토리
 - [Visual Studio Code](https://code.visualstudio.com/)와 같은 텍스트 편집기
@@ -73,21 +74,22 @@ Windows 빌드 에이전트를 설치하고 실행하는 방법에 대한 지침
 1. 클라이언트 컴퓨터의 웹 브라우저에서 TFS 서버로 이동합니다.
 1. TFS에서 Demo_CI라는 [새 팀 프로젝트를 만듭니다](https://www.visualstudio.com/en-us/docs/setup-admin/create-team-project).
 
-    **버전 제어**가 **Git**으로 설정되어 있는지 확인합니다.
+   **버전 제어**가 **Git**으로 설정되어 있는지 확인합니다.
 1. 클라이언트 컴퓨터에서 다음 명령을 사용하여 방금 TFS에서 만든 리포지토리에 remote를 추가합니다.
 
-    `git remote add tfs <YourTFSRepoURL>`
+   `git remote add tfs <YourTFSRepoURL>`
 
-    여기서 `<YourTFSRepoURL>`은 이전 단계에서 만든 TFS 리포지토리의 복제 URL입니다.
+   여기서 `<YourTFSRepoURL>`은 이전 단계에서 만든 TFS 리포지토리의 복제 URL입니다.
 
-    이 URL을 확인할 수 있는 위치를 모르는 경우 [기존 Git 리포지토리 복제](https://www.visualstudio.com/en-us/docs/git/tutorial/clone)를 참조하세요.
+   이 URL을 확인할 수 있는 위치를 모르는 경우 [기존 Git 리포지토리 복제](https://www.visualstudio.com/en-us/docs/git/tutorial/clone)를 참조하세요.
 1. 다음 명령을 사용하여 로컬 리포지토리의 코드를 TFS 리포지토리로 푸시합니다.
 
-    `git push tfs --all`
+   `git push tfs --all`
 1. TFS 리포지토리에 Demo_CI 코드가 채워집니다.
 
->**참고:** 이 예제에서는 Git 리포지토리의 `ci-cd-example` 분기에 있는 코드를 사용합니다.
->TFS 프로젝트에서, 그리고 작성하는 CI/CD 트리거에 대해 이 분기를 기본 분기로 지정해야 합니다.
+> [!NOTE]
+> 이 예제에서는 Git 리포지토리의 `ci-cd-example` 분기에 있는 코드를 사용합니다.
+> TFS 프로젝트에서, 그리고 작성하는 CI/CD 트리거에 대해 이 분기를 기본 분기로 지정해야 합니다.
 
 ## <a name="understanding-the-code"></a>코드 파악
 
@@ -154,6 +156,8 @@ Node $AllNodes.Where{$_.Role -eq 'DNSServer'}.NodeName
 ```
 
 이 문은 `DevEnv.ps1` 스크립트를 통해 작성되는 [구성 데이터](configData.md)에서 역할이 `DNSServer`로 정의된 노드를 찾습니다.
+
+[about_arrays](/powershell/reference/3.0/Microsoft.PowerShell.Core/About/about_Arrays.md)의 `Where` 메서드에 대해 자세히 알아볼 수 있습니다.
 
 CI 수행 시에는 구성 데이터를 사용하여 노드를 정의해야 합니다. 노드 정보는 환경 간에 변경될 가능성이 높은데, 구성 데이터를 사용하면 구성 코드를 변경하지 않고도 노드 정보를 쉽게 변경할 수 있기 때문입니다.
 
@@ -348,12 +352,12 @@ Demo_CI 리포지토리 루트(`./InfraDNS/Deploy.ps1`)의 `Deploy.ps1`에 정�
 
 1. 다음 각 줄을 **내용**에 추가합니다.
 
-    ```
-    initiate.ps1
-    **\deploy.ps1
-    **\Acceptance\**
-    **\Integration\**
-    ```
+   ```
+   initiate.ps1
+   **\deploy.ps1
+   **\Acceptance\**
+   **\Integration\**
+   ```
 
 1. **TargetFolder**를 `$(Build.ArtifactStagingDirectory)\`로 설정합니다.
 

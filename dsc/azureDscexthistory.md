@@ -1,14 +1,14 @@
 ---
 description: Azure에서 DSC(필요한 상태 구성) 확장에 대한 버전 기록에 대해 알아봅니다.
-ms.date: 05/09/2018
+ms.date: 06/21/2018
 keywords: dsc, powershell, azure, 확장
 title: Azure DSC 확장 버전 기록
-ms.openlocfilehash: 81dfcf81bd8f8685a0c8c81cd07bc5447e1abf94
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 25248288291b9bf8efe6ce1eef203a552cd17736
+ms.sourcegitcommit: 68093cc12a7a22c53d11ce7d33c18622921a0dd1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189944"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36940330"
 ---
 # <a name="azure-desired-state-configuration-extension-version-history"></a>Azure 필요한 상태 구성 확장 버전 기록
 
@@ -16,12 +16,12 @@ Azure DSC(필요한 상태 구성) VM 확장은 필요에 따라 Azure, Windows 
 
 이 문서에서는 Azure DSC VM 확장의 각 버전에 대한 정보, 지원하는 환경 및 새 기능 또는 변경 내용에 대한 설명 및 주의를 제공합니다.
 
-## <a name="latest-versions"></a>최신 버전
+## <a name="latest-version"></a>최신 버전
 
 ### <a name="version-276"></a>버전 2.76
 
 - **릴리스 날짜:**
-  - 2018년 5월 9일
+  - 2018년 5월 9일(Azure) | 2018년 6월 21일(Azure 중국, Azure Government)
 - **OS 지원:**
   - Windows Server 2016
   - Windows Server 2012 R2
@@ -36,30 +36,11 @@ Azure DSC(필요한 상태 구성) VM 확장은 필요에 따라 Azure, Windows 
   - WMF 4.0
 - **환경:**
   - Azure
+  - Azure 중국
+  - Azure Government
 - **설명:** 이 버전은 Windows Server 2016에 포함된 DSC를 사용합니다. 다른 Windows OSes의 경우 [Windows 관리 프레임워크 5.1](https://blogs.msdn.microsoft.com/powershell/2016/12/06/wmf-5-1-releasing-january-2017/)을 설치합니다(WMF 설치에 재부팅 필요). Nano Server의 경우 DSC 역할이 VM에 설치됩니다.
 - **새로운 기능:**
   - 하위 상태 및 기타 사소한 버그 수정을 위해 확장 메타데이터가 개선됨.
-
-### <a name="version-219"></a>버전 2.19
-
-- **릴리스 날짜:**
-  - 2016년 6월 3일
-- **OS 지원:**
-  - Windows Server 2016 Technical Preview
-  - Windows Server 2012 R2
-  - Windows Server 2012
-  - Windows Server 2008 R2 SP1
-- **WMF 지원:**
-  - WMF 5.0 RTM
-  - WMF 4.0 업데이트
-  - WMF 4.0
-- **환경:**
-  - Azure
-  - Azure 중국
-  - Azure Government
-- **설명:** 이 버전은 Windows Server 2016 Technical Preview에 포함된 DSC를 사용합니다. 다른 OSes의 경우 [Windows 관리 프레임워크 5.0 RTM](https://blogs.msdn.microsoft.com/powershell/2015/12/16/windows-management-framework-wmf-5-0-rtm-is-now-available/)을 설치합니다(WMF 설치에 재부팅 필요).
-- **새로운 기능:**
-  - DSC 확장은 이제 Azure 중국으로 등록됩니다. 이 버전은 주로 Azure 중국에서 확장을 실행하기 위한 수정을 포함합니다.
 
 ## <a name="supported-versions"></a>지원 버전
 

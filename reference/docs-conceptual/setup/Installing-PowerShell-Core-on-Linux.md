@@ -1,6 +1,6 @@
 # <a name="installing-powershell-core-on-linux"></a>Linux에서 PowerShell Core 설치
 
-[Ubuntu 14.04][u14], [Ubuntu 16.04][u16], [Ubuntu 17.04][u17], [Debian 8][deb8], [Debian 9][deb9], [CentOS 7][cos], [Red Hat Enterprise Linux (RHEL) 7][rhel7], [OpenSUSE 42.2][opensuse], [Fedora 27][fedora], [Fedora 28][fedora] 및 [Arch Linux][arch]를 지원합니다.
+[Ubuntu 14.04][u14], [Ubuntu 16.04][u16], [Ubuntu 17.10][u17], [Debian 8][deb8], [Debian 9][deb9], [CentOS 7][cos], [Red Hat Enterprise Linux (RHEL) 7][rhel7], [OpenSUSE 42.2][opensuse], [Fedora 27][fedora], [Fedora 28][fedora] 및 [Arch Linux][arch]를 지원합니다.
 
 공식적으로 지원되지 않는 Linux 배포의 경우 [PowerShell AppImage][lai]를 사용해 보세요.
 또한 Linux [`tar.gz` 보관][tar]을 사용하여 PowerShell 이진 파일을 직접 배포해 볼 수도 있지만 OS에 따라 별도의 단계로 필요한 종속성을 설정해야 합니다.
@@ -10,7 +10,7 @@
 
 [u14]: #ubuntu-1404
 [u16]: #ubuntu-1604
-[u17]: #ubuntu-1704
+[u17]: #ubuntu-1710
 [deb8]: #debian-8
 [deb9]: #debian-9
 [cos]: #centos-7
@@ -20,6 +20,21 @@
 [arch]: #arch-linux
 [lai]: #linux-appimage
 [tar]: #binary-archives
+
+## <a name="installing-preview-releases"></a>미리 보기 릴리스 설치
+
+패키지 리포지토리를 통해 Linux용 PowerShell Core 미리 보기 릴리스를 설치할 때 패키지 이름을 `powershell`에서 `powershell-preview`로 변경합니다.
+
+직접 다운로드를 통한 설치는 파일 이름 외에는 변경되지 않습니다.
+
+다양한 패키지 관리자를 사용하여 안정적인 미리 보기 패키지를 설치하는 명령의 테이블은 다음과 같습니다.
+
+|Distrobution(s)|안정적인 명령 | 미리 보기 명령 |
+|---------------|---------------|-----------------|
+| Ubuntu, Debian |`sudo apt-get install -y powershell`| `sudo apt-get install -y powershell-preview`|
+| CentOS, RedHat |`sudo yum install -y powershell` | `sudo yum install -y powershell-preview`|
+| OpenSUSE |`sudo zypper install powershell` | `sudo zypper install powershell-preview`|
+| Fedora   |`sudo dnf install -y powershell` | `sudo dnf install -y powershell-preview`|
 
 ## <a name="ubuntu-1404"></a>Ubuntu 14.04
 
@@ -59,7 +74,9 @@ sudo dpkg -i powershell_6.0.2-1.ubuntu.14.04_amd64.deb
 sudo apt-get install -f
 ```
 
-> `dpkg -i`는 종속성 미충족으로 인해 실패하며 다음 명령 `apt-get install -f`가 이를 해결한 후 PowerShell 패키지 구성을 완료합니다.
+> [!NOTE]
+> `dpkg -i` 명령은 충족되지 않은 종속성으로 인해 실패합니다.
+> 다음 명령인 `apt-get install -f`는 이러한 문제를 해결한 다음, PowerShell 패키지 구성을 완료합니다.
 
 ### <a name="uninstallation---ubuntu-1404"></a>제거 - Ubuntu 14.04
 
@@ -104,7 +121,9 @@ sudo dpkg -i powershell_6.0.2-1.ubuntu.16.04_amd64.deb
 sudo apt-get install -f
 ```
 
-> `dpkg -i`는 종속성 미충족으로 인해 실패하며 다음 명령 `apt-get install -f`가 이를 해결한 후 PowerShell 패키지 구성을 완료합니다.
+> [!NOTE]
+> `dpkg -i` 명령은 충족되지 않은 종속성으로 인해 실패합니다.
+> 다음 명령인 `apt-get install -f`는 이러한 문제를 해결한 다음, PowerShell 패키지 구성을 완료합니다.
 
 ### <a name="uninstallation---ubuntu-1604"></a>제거 - Ubuntu 16.04
 
@@ -112,9 +131,12 @@ sudo apt-get install -f
 sudo apt-get remove powershell
 ```
 
-## <a name="ubuntu-1704"></a>Ubuntu 17.04
+## <a name="ubuntu-1710"></a>Ubuntu 17.10
 
-### <a name="installation-via-package-repository---ubuntu-1704"></a>패키지 리포지토리를 통해 설치 - Ubuntu 17.04
+> [!NOTE]
+> Ubuntu 17.04에 대한 지원이 `6.1.0-preview.2` 이후에 추가되었습니다.
+
+### <a name="installation-via-package-repository---ubuntu-1710"></a>패키지 리포지토리를 통해 설치 - Ubuntu 17.10
 
 PowerShell Core for Linux는 간편한 설치(및 업데이트)를 위해 패키지 리포지토리로 게시됩니다.
 기본 설정 방법입니다.
@@ -124,7 +146,7 @@ PowerShell Core for Linux는 간편한 설치(및 업데이트)를 위해 패키
 curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # Register the Microsoft Ubuntu repository
-sudo curl -o /etc/apt/sources.list.d/microsoft.list https://packages.microsoft.com/config/ubuntu/17.04/prod.list
+sudo curl -o /etc/apt/sources.list.d/microsoft.list https://packages.microsoft.com/config/ubuntu/17.10/prod.list
 
 # Update the list of products
 sudo apt-get update
@@ -138,20 +160,72 @@ pwsh
 
 Microsoft 리포지토리를 superuser로 등록하고 나면 그 이후부터는 `sudo apt-get upgrade powershell`을 사용하여 업데이트해야 합니다.
 
-### <a name="installation-via-direct-download---ubuntu-1704"></a>직접 다운로드를 통해 설치 - Ubuntu 17.04
+### <a name="installation-via-direct-download---ubuntu-1710"></a>직접 다운로드를 통해 설치 - Ubuntu 17.10
 
-[릴리스][] 페이지의 Debian 패키지 `powershell_6.0.2-1.ubuntu.17.04_amd64.deb`를 Ubuntu 컴퓨터에 다운로드합니다.
+[릴리스][] 페이지의 Debian 패키지 `powershell_6.0.2-1.ubuntu.17.10_amd64.deb`를 Ubuntu 컴퓨터에 다운로드합니다.
 
 그런 다음 터미널에서 다음을 실행합니다.
 
 ```sh
-sudo dpkg -i powershell_6.0.2-1.ubuntu.17.04_amd64.deb
+sudo dpkg -i powershell_6.0.2-1.ubuntu.17.10_amd64.deb
 sudo apt-get install -f
 ```
 
-> `dpkg -i`는 종속성 미충족으로 인해 실패하며 다음 명령 `apt-get install -f`가 이를 해결한 후 PowerShell 패키지 구성을 완료합니다.
+> [!NOTE]
+> `dpkg -i` 명령은 충족되지 않은 종속성으로 인해 실패합니다.
+> 다음 명령인 `apt-get install -f`는 이러한 문제를 해결한 다음, PowerShell 패키지 구성을 완료합니다.
 
-### <a name="uninstallation---ubuntu-1704"></a>제거 - Ubuntu 17.04
+### <a name="uninstallation---ubuntu-1710"></a>제거 - Ubuntu 17.10
+
+```sh
+sudo apt-get remove powershell
+```
+
+## <a name="ubuntu-1804"></a>Ubuntu 18.04
+
+> [!NOTE]
+> Ubuntu 18.04에 대한 지원이 `6.1.0-preview.2` 이후에 추가되었습니다.
+
+### <a name="installation-via-package-repository---ubuntu-1804"></a>패키지 리포지토리를 통해 설치 - Ubuntu 18.04
+
+PowerShell Core for Linux는 간편한 설치(및 업데이트)를 위해 패키지 리포지토리로 게시됩니다.
+기본 설정 방법입니다.
+
+```sh
+# Import the public repository GPG keys
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+# Register the Microsoft Ubuntu repository
+sudo curl -o /etc/apt/sources.list.d/microsoft.list https://packages.microsoft.com/config/ubuntu/18.04/prod.list
+
+# Update the list of products
+sudo apt-get update
+
+# Install PowerShell
+sudo apt-get install -y powershell
+
+# Start PowerShell
+pwsh
+```
+
+Microsoft 리포지토리를 superuser로 등록하고 나면 그 이후부터는 `sudo apt-get upgrade powershell`을 사용하여 업데이트해야 합니다.
+
+### <a name="installation-via-direct-download---ubuntu-1804"></a>직접 다운로드를 통해 설치 - Ubuntu 18.04
+
+[릴리스][] 페이지의 Debian 패키지 `powershell_6.1.0-preview.3-1.ubuntu.18.04_amd64.deb`를 Ubuntu 컴퓨터에 다운로드합니다.
+
+그런 다음 터미널에서 다음을 실행합니다.
+
+```sh
+sudo dpkg -i powershell_6.1.0-preview.3-1.ubuntu.18.04_amd64.deb
+sudo apt-get install -f
+```
+
+> [!NOTE]
+> `dpkg -i` 명령은 충족되지 않은 종속성으로 인해 실패합니다.
+> 다음 명령인 `apt-get install -f`는 이러한 문제를 해결한 다음, PowerShell 패키지 구성을 완료합니다.
+
+### <a name="uninstallation---ubuntu-1710"></a>제거 - Ubuntu 17.10
 
 ```sh
 sudo apt-get remove powershell
@@ -199,8 +273,8 @@ sudo apt-get install -f
 ```
 
 > [!NOTE]
-> `dpkg -i`는 충족되지 않은 종속성으로 인해 실패합니다.
-> 다음 명령인 `apt-get install -f`는 이러한 종속성을 해결하고 PowerShell 패키지 구성을 완료합니다.
+> `dpkg -i` 명령은 충족되지 않은 종속성으로 인해 실패합니다.
+> 다음 명령인 `apt-get install -f`는 이러한 문제를 해결한 다음, PowerShell 패키지 구성을 완료합니다.
 
 ### <a name="uninstallation---debian-8"></a>제거 - Debian 8
 
@@ -249,10 +323,6 @@ sudo dpkg -i powershell_6.0.2-1.debian.9_amd64.deb
 sudo apt-get install -f
 ```
 
-> [!NOTE]
-> `dpkg -i`는 충족되지 않은 종속성으로 인해 실패합니다.
-> 다음 명령인 `apt-get install -f`는 이러한 종속성을 해결하고 PowerShell 패키지 구성을 완료합니다.
-
 ### <a name="uninstallation---debian-9"></a>제거 - Debian 9
 
 ```sh
@@ -261,6 +331,7 @@ sudo apt-get remove powershell
 
 ## <a name="centos-7"></a>CentOS 7
 
+> [!NOTE]
 > 이 패키지는 Oracle Linux 7에서도 작동합니다.
 
 ### <a name="installation-via-package-repository-preferred---centos-7"></a>패키지 리포지토리를 통해 설치(권장) - CentOS 7
@@ -347,22 +418,21 @@ sudo yum remove powershell
 
 ## <a name="opensuse-422"></a>OpenSUSE 42.2
 
-> [!NOTE]
-> PowerShell Core를 설치할 때 `zypper`에서 다음 오류를 보고할 수 있습니다.
->
-> ```Output
-> Problem: nothing provides libcurl needed by powershell-6.0.1-1.rhel.7.x86_64
->  Solution 1: do not install powershell-6.0.1-1.rhel.7.x86_64
->  Solution 2: break powershell-6.0.1-1.rhel.7.x86_64 by ignoring some of its dependencies
-> ```
->
-> 이 경우 다음 명령이 설치된 대로 `libcurl4` 패키지를 보여 주는지 확인하여 호환되는 `libcurl` 라이브러리가 있는지 확인합니다.
->
-> ```sh
-> zypper search --file-list --match-exact '/usr/lib64/libcurl.so.4'
-> ```
->
-> 그런 다음, PowerShell 패키지를 설치할 때 `break powershell-6.0.1-1.rhel.7.x86_64 by ignoring some of its dependencies` 솔루션을 선택합니다.
+PowerShell Core를 설치할 때 `zypper`에서 다음 오류를 보고할 수 있습니다.
+
+```Output
+Problem: nothing provides libcurl needed by powershell-6.0.1-1.rhel.7.x86_64
+ Solution 1: do not install powershell-6.0.1-1.rhel.7.x86_64
+ Solution 2: break powershell-6.0.1-1.rhel.7.x86_64 by ignoring some of its dependencies
+```
+
+이 경우 다음 명령이 설치된 대로 `libcurl4` 패키지를 보여 주는지 확인하여 호환되는 `libcurl` 라이브러리가 있는지 확인합니다.
+
+```sh
+zypper search --file-list --match-exact '/usr/lib64/libcurl.so.4'
+```
+
+그런 다음, PowerShell 패키지를 설치할 때 `break powershell-6.0.1-1.rhel.7.x86_64 by ignoring some of its dependencies` 솔루션을 선택합니다.
 
 ### <a name="installation-via-package-repository-preferred---opensuse-422"></a>패키지 리포지토리를 통해 설치(권장) - OpenSUSE 42.2
 
@@ -408,6 +478,9 @@ sudo zypper remove powershell
 ```
 
 ## <a name="fedora"></a>Fedora
+
+> [!NOTE]
+> Fedora 28은 PowerShell Core 6.1 이상에서만 지원됩니다.
 
 ### <a name="installation-via-package-repository-preferred---fedora-27-fedora-28"></a>패키지 리포지토리를 통해 설치(권장) - Fedora 27, Fedora 28
 
@@ -459,6 +532,9 @@ sudo dnf remove powershell
 
 ## <a name="arch-linux"></a>Arch Linux
 
+> [!NOTE]
+> Arch 지원은 실험적입니다.
+
 PowerShell은 [Arch Linux][] 사용자 리포지토리(AUR)에 제공됩니다.
 
 * [최신 태깅 릴리스][arch-release]를 사용하여 컴파일할 수 있습니다.
@@ -476,6 +552,9 @@ AUR에서 패키지를 설치하는 방법에 대한 자세한 내용은 [Arch L
 
 ## <a name="linux-appimage"></a>Linux AppImage
 
+> [!NOTE]
+> AppImage 지원은 실험적입니다.
+
 최신 Linux 배포를 사용하여 [릴리스][] 페이지의 AppImage `powershell-6.0.1-x86_64.AppImage`를 Linux 컴퓨터로 다운로드합니다.
 
 그런 다음 터미널에서 다음을 실행합니다.
@@ -492,6 +571,9 @@ PowerShell 및 종속성(.NET Core의 시스템 종속성 포함)을 하나의 �
 [appimage]: http://appimage.org/
 
 ## <a name="kali"></a>Kali
+
+> [!NOTE]
+> Kali 지원은 실험적입니다.
 
 ### <a name="installation"></a>설치
 
@@ -528,6 +610,9 @@ sudo dpkg -r powershell_6.0.2-1.ubuntu.16.04_amd64.deb
 ```
 
 ## <a name="raspbian"></a>Raspbian
+
+> [!NOTE]
+> Raspbian 지원은 실험적입니다.
 
 현재 PowerShell은 Raspbian Stretch에서만 지원됩니다.
 
@@ -587,7 +672,8 @@ PowerShell은 모든 Linux 배포를 위한 이식 가능한 이진 파일을 �
 | ------------------ | ------------ |
 | Ubuntu 14.04       | libc6, libgcc1, libgssapi-krb5-2, liblttng-ust0, libstdc++6, <br> libcurl3, libunwind8, libuuid1, zlib1g, libssl1.0.0, libicu52 |
 | Ubuntu 16.04       | libc6, libgcc1, libgssapi-krb5-2, liblttng-ust0, libstdc++6, <br> libcurl3, libunwind8, libuuid1, zlib1g, libssl1.0.0, libicu55 |
-| Ubuntu 17.04       | libc6, libgcc1, libgssapi-krb5-2, liblttng-ust0, libstdc++6, <br> libcurl3, libunwind8, libuuid1, zlib1g, libssl1.0.0, libicu57 |
+| Ubuntu 17.10       | libc6, libgcc1, libgssapi-krb5-2, liblttng-ust0, libstdc++6, <br> libcurl3, libunwind8, libuuid1, zlib1g, libssl1.0.0, libicu57 |
+| Ubuntu 18.04       | libc6, libgcc1, libgssapi-krb5-2, liblttng-ust0, libstdc++6, <br> libcurl3, libunwind8, libuuid1, zlib1g, libssl1.0.0, libicu60 |
 | Debian 8(Jessie)  | libc6, libgcc1, libgssapi-krb5-2, liblttng-ust0, libstdc++6, <br> libcurl3, libunwind8, libuuid1, zlib1g, libssl1.0.0, libicu52 |
 | Debian 9(Stretch) | libc6, libgcc1, libgssapi-krb5-2, liblttng-ust0, libstdc++6, <br> libcurl3, libunwind8, libuuid1, zlib1g, libssl1.0.2, libicu57 |
 | CentOS 7 <br> Oracle Linux 7 <br> RHEL 7 <br> OpenSUSE 42.2 | libunwind, libcurl, openssl-libs, libicu |
