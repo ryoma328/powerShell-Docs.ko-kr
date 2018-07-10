@@ -2,14 +2,15 @@
 ms.date: 08/09/2017
 keywords: powershell,cmdlet,다운로드,설치,설정,windows 10, windows 8.1, windows 8.0,windows 7
 title: Windows PowerShell 설치
-ms.openlocfilehash: 89f0f689ebfcd34dd4c8ec3824ec8ab4bddc34d9
-ms.sourcegitcommit: 01d6985ed190a222e9da1da41596f524f607a5bc
+ms.openlocfilehash: e703d3444b1d661c482b314781cf9a1cb16ef7ed
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34483001"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893524"
 ---
 # <a name="installing-windows-powershell"></a>Windows PowerShell 설치
+
 Windows PowerShell은 Windows 7 SP1 및 Windows Server 2008 R2 SP1부터 모든 Windows에 기본적으로 설치되어 제공됩니다.
 
 PowerShell 6 이상에 관심이 있는 경우 Windows PowerShell 대신 PowerShell Core를 설치해야 합니다. 이 경우 [Windows에서 PowerShell Core 설치](Installing-PowerShell-Core-on-Windows.md)를 참조하세요.
@@ -74,19 +75,20 @@ Windows 8.1<br/>Windows Server 2012 R2 | - | 설치됨 | [WMF 5.0](https://www.m
 Windows 8<br/>Windows Server 2012 | 설치됨 | [WMF 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=40855) | [WMF 5.0](https://www.microsoft.com/en-us/download/details.aspx?id=50395) | [WMF 5.1](https://www.microsoft.com/en-us/download/details.aspx?id=54616)
 Windows 7 SP1<br/>Windows Server 2008 R2 SP1 | [WMF 3.0](https://www.microsoft.com/en-us/download/details.aspx?id=34595) | [WMF 4.0](https://www.microsoft.com/en-us/download/details.aspx?id=40855) | [WMF 5.0](https://www.microsoft.com/en-us/download/details.aspx?id=50395) | [WMF 5.1](https://www.microsoft.com/en-us/download/details.aspx?id=54616)
 
-> **참고 1**:
-  >>
-  >> 자동 업데이트가 사용하도록 설정된 Windows 10의 초기 릴리스에서는 PowerShell이 버전 5.0에서 5.1로 업데이트됩니다.
-  >>
-  >> Windows 업데이트를 통해 Windows 10의 원래 버전이 업데이트되지 않으면 PowerShell 버전은 5.0입니다.
+> [!NOTE]
+>
+> 자동 업데이트가 사용하도록 설정된 Windows 10의 초기 릴리스에서는 PowerShell이 버전 5.0에서 5.1로 업데이트됩니다.
+>
+> Windows 업데이트를 통해 Windows 10의 원래 버전이 업데이트되지 않으면 PowerShell 버전은 5.0입니다.
 
 ## <a name="need-azure-powershell"></a>Azure PowerShell 필요
 
-**Azure PowerShell**을 찾는 경우 [Overview of Azure PowerShell](https://docs.microsoft.com/powershell/azure)(Azure PowerShell 개요)에서 시작할 수 있습니다.
+**Azure PowerShell**을 찾는 경우 [Overview of Azure PowerShell](/powershell/azure/overview)(Azure PowerShell 개요)에서 시작할 수 있습니다.
 
-그러지 않으면 [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)(Azure PowerShell 설치 및 구성)이 필요할 수 있습니다.
+그러지 않으면 [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps)(Azure PowerShell 설치 및 구성)이 필요할 수 있습니다.
 
 ## <a name="see-also"></a>참고 항목
 
-- [Windows PowerShell 시스템 요구 사항](Windows-PowerShell-System-Requirements.md)
-- [Windows PowerShell 시작](Starting-Windows-PowerShell.md)
+[Windows PowerShell 시스템 요구 사항](Windows-PowerShell-System-Requirements.md)
+
+[Windows PowerShell 시작](Starting-Windows-PowerShell.md)

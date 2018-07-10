@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: MSFT_DSCLocalConfigurationManager 클래스
-ms.openlocfilehash: 615f2998b11a0a927d3868d852e0d408f500c86d
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 7f6aaf209601e99b0120407eb301d32fcfda9eb8
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34188838"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37892276"
 ---
 # <a name="msftdsclocalconfigurationmanager-class"></a>MSFT_DSCLocalConfigurationManager 클래스
 
@@ -16,9 +16,8 @@ ms.locfileid: "34188838"
 다음 구문은 MOF(Managed Object Format) 코드를 단순화한 것으로 상속된 속성이 모두 포함되어 있습니다.
 
 ## <a name="syntax"></a>구문
-------
 
-``` syntax
+```
 [ClassVersion("1.0.0"), dynamic, provider("dsccore"), AMENDMENT]
 class MSFT_DSCLocalConfigurationManager
 {
@@ -26,11 +25,10 @@ class MSFT_DSCLocalConfigurationManager
 ```
 
 ## <a name="members"></a>구성원
--------
 
 **MSFT_DSCLocalConfigurationManager** 클래스에 다음 멤버가 있습니다.
 
--   [메서드][]
+- [메서드][]
 
 ### <a name="methods"></a>메서드
 
@@ -58,12 +56,8 @@ class MSFT_DSCLocalConfigurationManager
 | [StopConfiguration](msft-dsclocalconfigurationmanager-stopconfiguration.md)| 진행 중인 구성을 중지합니다.|
 | [TestConfiguration](msft-dsclocalconfigurationmanager-testconfiguration.md)| 구성 문서를 관리 노드로 보내고, 문서에 대해 현재 구성을 확인합니다.|
 
-
-
-
-
 ## <a name="requirements"></a>요구 사항
-------------
->**MOF:** DscCore.mof
 
->**네임스페이스**: Root\Microsoft\Windows\DesiredStateConfiguration
+**MOF:** DscCore.mof
+
+**네임스페이스**: Root\Microsoft\Windows\DesiredStateConfiguration

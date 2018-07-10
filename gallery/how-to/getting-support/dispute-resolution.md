@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 title: 분쟁 해결
-ms.openlocfilehash: 2a291773ae9391e417e14c4ec0b75379e0bf4640
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: a3a3b160366dc17f2fe0d1721d275387700e71e4
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34221836"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37892347"
 ---
 # <a name="dispute-resolution"></a>분쟁 해결
 
@@ -17,11 +17,11 @@ ms.locfileid: "34221836"
 ## <a name="process"></a>프로세스
 
 1. 항목 세부 정보 페이지에 있는 **소유자에게 문의** 링크를 사용하여 분쟁이 발생한 항목의 소유자에게 문의합니다.
-친절하고 직접적인 방식으로 문제를 설명합니다.
+   친절하고 직접적인 방식으로 문제를 설명합니다.
 2. 메시지의 복사본을 [cgadmin@microsoft.com](mailto:cgadmin@microsoft.com)으로 보내 PowerShell 갤러리 관리자에게 분쟁을 알립니다.
 3. 최대 30일간 기다린 후에도 해결되지 않을 경우 [cgadmin@microsoft.com](mailto:cgadmin@microsoft.com)에 다시 알립니다.
-PowerShellGallery.com 지원 팀이 개입하여 문제 해결을 시도합니다.
 
+PowerShellGallery.com 지원 팀이 개입하여 문제 해결을 시도합니다.
 
 ## <a name="prohibited-use"></a>허용되지 않는 사용
 
@@ -32,9 +32,8 @@ PowerShellGallery.com 지원 팀이 개입하여 문제 해결을 시도합니�
 - 저작권 침해 또는 라이선스 위반
 - 불법 콘텐츠
 - 사용할 계획이지만 실제로 사용하지 않는 항목 이름의 "무단 점유". 생산적인 콘텐츠가 없는 항목의 게시도 포함됩니다.
-코드를 게시하고 시작하거나 실제로 배송할 제품을 가진 사람에게 이름 양도 및
+  코드를 게시하고 시작하거나 실제로 배송할 제품을 가진 사람에게 이름 양도 및
 - 갤러리에서 명시적으로 의도되지 않은 작업을 수행하게 하려는 시도
-
 
 이러한 항목을 위반하는 항목을 발견할 경우 항목 세부 정보 페이지에서 '신고하기' 링크를 클릭하여 보고서를 제출하세요.
 

@@ -2,19 +2,18 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: MSFT_DSCLocalConfigurationManager 클래스의 SendConfigurationApplyAsync 메서드
-ms.openlocfilehash: acd8f380f1c49eb008563398c2c3de3fce5477f9
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: b028079cf826719967858f50e357b441ba8f9d79
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34186680"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893897"
 ---
 # <a name="sendconfigurationapplyasync-method-of-the-msftdsclocalconfigurationmanager-class"></a>MSFT_DSCLocalConfigurationManager 클래스의 SendConfigurationApplyAsync 메서드
 
 구성 문서를 비동기적으로 관리 노드로 보내고, 구성 에이전트를 사용해 구성을 적용합니다.
 
-<a name="syntax"></a>구문
-------
+## <a name="syntax"></a>구문
 
 ```mof
 uint32 SendConfigurationApplyAsync(
@@ -24,8 +23,7 @@ uint32 SendConfigurationApplyAsync(
 );
 ```
 
-<a name="parameters"></a>매개 변수
-----------
+## <a name="parameters"></a>매개 변수
 
 *ConfigurationData* \[in\] 구성에 대한 환경 데이터입니다.
 
@@ -34,7 +32,6 @@ uint32 SendConfigurationApplyAsync(
 *jobId* \[in\] 구성을 보낼 작업의 ID입니다.
 
 ## <a name="return-value"></a>반환 값
-------------
 
 성공하면 0을 반환하고 그렇지 않으면 오류 코드를 반환합니다.
 
@@ -43,13 +40,11 @@ uint32 SendConfigurationApplyAsync(
 정적 메서드입니다.
 
 ## <a name="requirements"></a>요구 사항
-------------
->**MOF:** DscCore.mof
 
->**네임스페이스**: Root\Microsoft\Windows\DesiredStateConfiguration
+**MOF:** DscCore.mof
 
+**네임스페이스**: Root\Microsoft\Windows\DesiredStateConfiguration
 
 ## <a name="see-also"></a>참고 항목
-
 
 [**MSFT_DSCLocalConfigurationManager**](msft-dsclocalconfigurationmanager.md)

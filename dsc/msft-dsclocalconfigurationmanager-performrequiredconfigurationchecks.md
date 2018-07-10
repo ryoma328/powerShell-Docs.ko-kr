@@ -2,19 +2,18 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: MSFT_DSCLocalConfigurationManager 클래스의 PerformRequiredConfigurationChecks 메서드
-ms.openlocfilehash: c3fdaa23875815b1cf5cbf0b6e21c633e00664aa
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: b92eefb7fbea6d96afa31f6b802ba10fe20d4103
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34186697"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893232"
 ---
 # <a name="performrequiredconfigurationchecks-method-of-the-msftdsclocalconfigurationmanager-class"></a>MSFT_DSCLocalConfigurationManager 클래스의 PerformRequiredConfigurationChecks 메서드
 
 작업 스케줄러를 사용해 일관성 확인을 시작합니다.
 
-<a name="syntax"></a>구문
-------
+## <a name="syntax"></a>구문
 
 ```mof
 uint32 PerformRequiredConfigurationChecks(
@@ -22,8 +21,7 @@ uint32 PerformRequiredConfigurationChecks(
 );
 ```
 
-<a name="parameters"></a>매개 변수
-----------
+## <a name="parameters"></a>매개 변수
 
 *Flags* \[in\] 실행할 일관성 확인 유형을 지정하는 비트 마스크입니다. 다음 값은 올바르며, 비트 **OR** 작업을 사용해 조합할 수 있습니다.
 
@@ -35,7 +33,6 @@ uint32 PerformRequiredConfigurationChecks(
 |**8** | 보고서 서버에 상태를 보냅니다. |
 
 ## <a name="return-value"></a>반환 값
-------------
 
 성공하면 0을 반환하고 그렇지 않으면 오류 코드를 반환합니다.
 
@@ -44,13 +41,11 @@ uint32 PerformRequiredConfigurationChecks(
 정적 메서드입니다.
 
 ## <a name="requirements"></a>요구 사항
-------------
->**MOF:** DscCore.mof
 
->**네임스페이스**: Root\Microsoft\Windows\DesiredStateConfiguration
+**MOF:** DscCore.mof
 
+**네임스페이스**: Root\Microsoft\Windows\DesiredStateConfiguration
 
 ## <a name="see-also"></a>참고 항목
-
 
 [**MSFT_DSCLocalConfigurationManager**](msft-dsclocalconfigurationmanager.md)
