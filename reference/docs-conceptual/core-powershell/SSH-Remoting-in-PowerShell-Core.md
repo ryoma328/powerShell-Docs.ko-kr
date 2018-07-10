@@ -55,6 +55,22 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
     ```
     Subsystem    powershell c:/program files/powershell/6.0.0/pwsh.exe -sshs -NoLogo -NoProfile
     ```
+    
+    > [!NOTE]
+    하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다.
+    [자세한 내용은 GitHub에서 이 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.
+    
+    한 가지 해결 방법은 공백을 포함하지 않는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.
+    
+    ```powershell
+    mklink /D c:\pwsh "C:\Program Files\PowerShell\6.0.0"
+    ```
+
+    그런 다음, 하위 시스템에 입력합니다.
+ 
+    ```
+    Subsystem    powershell c:\pwsh\pwsh.exe -sshs -NoLogo -NoProfile
+    ```
 
     - 필요에 따라 키 인증을 활성화합니다.
 
