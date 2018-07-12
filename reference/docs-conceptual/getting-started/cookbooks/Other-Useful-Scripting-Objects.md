@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: 기타 유용한 스크립팅 개체
 ms.assetid: 4d781196-720b-4ccc-90d2-c570e5e719f5
-ms.openlocfilehash: 0e87e9919199e011ab5abec5b07dccc8494ad64a
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
+ms.openlocfilehash: 2ae9bc1864daedbcb0070c5f3862a6c98f8db2d4
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30949828"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893283"
 ---
 # <a name="other-useful-scripting-objects"></a>기타 유용한 스크립팅 개체
 
@@ -33,14 +33,14 @@ $psUnsupportedConsoleApplications
 
 ### <a name="pslocalhelp"></a>$psLocalHelp
 
-로컬의 컴파일된 HTML 도움말 파일에 있는 도움말 항목과 연결된 링크 간에 상황에 맞는 매핑을 유지 관리하는 사전 개체입니다. 특정 항목에 대한 로컬 도움말을 찾는 데 사용됩니다. 이 목록에서 항목을 추가하거나 삭제할 수 있습니다. 다음 코드 예제에서는 **$psLocalHelp**에 들어 있는 몇 가지 키-값 쌍 예를 보여 줍니다.
+로컬의 컴파일된 HTML 도움말 파일에 있는 도움말 항목과 연결된 링크 간에 상황에 맞는 매핑을 유지 관리하는 사전 개체입니다. 특정 항목에 대한 로컬 도움말을 찾는 데 사용됩니다. 이 목록에서 항목을 추가하거나 삭제할 수 있습니다. 다음 코드 예제에서는 `$psLocalHelp`에 들어 있는 몇 가지 키-값 쌍 예를 보여 줍니다.
 
 ```powershell
 # See the local help map
 $psLocalHelp | Format-List
 ```
 
-### <a name="sample-output"></a>샘플 출력
+### <a name="pslocalhelp-sample-output"></a>$psLocalHelp 샘플 출력
 
 |||
 |-|-|
@@ -61,14 +61,14 @@ $psLocalHelp.Add("get-myNoun", "c:\MyFolder\MyHelpChm.chm::/html/0198854a-1298-5
 $psOnlineHelp | Format-List
 ```
 
-### <a name="sample-output"></a>샘플 출력
+## <a name="psonilnehelp-sample-output"></a>$psOnilneHelp 샘플 출력
 
 |||
 |-|-|
 |키 : Add-Computer|값 : http://go.microsoft.com/fwlink/p/?LinkID=135194|
 |키 : Add-Content|값 : http://go.microsoft.com/fwlink/p/?LinkID=113278|
 
- 다음 스크립트는 목록에 항목을 추가합니다.
+다음 스크립트는 목록에 항목을 추가합니다.
 
 ```powershell
 $psOnlineHelp.Add("get-myNoun", "http://www.mydomain.com/MyNoun.html")
@@ -76,4 +76,4 @@ $psOnlineHelp.Add("get-myNoun", "http://www.mydomain.com/MyNoun.html")
 
 ## <a name="see-also"></a>참고 항목
 
-- [Windows PowerShell ISE 스크립팅 개체 모델의 용도](../../core-powershell/ise/Purpose-of-the-Windows-PowerShell-ISE-Scripting-Object-Model.md)
+[Windows PowerShell ISE 스크립팅 개체 모델의 용도](../../core-powershell/ise/Purpose-of-the-Windows-PowerShell-ISE-Scripting-Object-Model.md)

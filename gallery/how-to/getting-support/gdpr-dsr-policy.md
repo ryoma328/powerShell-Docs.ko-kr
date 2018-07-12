@@ -3,12 +3,12 @@ ms.date: 03/27/2018
 contributor: JKeithB
 keywords: gallery,powershell,psgallery,GDPR
 title: PowerShell 갤러리 GDPR 준수
-ms.openlocfilehash: dca1a82952c284980a84caafa13b2807e47e25a0
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 14b82fa07df52f02f0d7577cb0eef70faa4285a2
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189757"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893249"
 ---
 # <a name="powershell-gallery-gdpr-compliance"></a>PowerShell 갤러리 GDPR 준수
 
@@ -25,9 +25,9 @@ GDPR은 귀하가 어디에 있든 관계없이 적용됩니다.
 
 PowerShell 갤러리에는 개인 정보가 포함되어 있고 사용자가 제공할 수 있는 다음 정보가 저장됩니다.
 
-* PowerShell 갤러리 계정
-* PowerShell 갤러리에 게시된 항목
-* PowerShell 갤러리 팀과 이메일 서신
+- PowerShell 갤러리 계정
+- PowerShell 갤러리에 게시된 항목
+- PowerShell 갤러리 팀과 이메일 서신
 
 대부분의 사용자는 PowerShell 갤러리 계정을 만들지 않습니다
 PowerShell 갤러리에서 항목을 게시하거나 "담당자에게 문의"기능을 사용하지 않으면 계정이 필요하지 않습니다.
@@ -45,15 +45,15 @@ PowerShell 갤러리 계정을 만든 사용자는 PowerShell 갤러리에 항�
 
 이메일 서신에는 다음 중 하나가 포함될 수 있습니다.
 
-* 코드 분석 검색에서 PowerShell 갤러리에 게시한 항목과 관련된 문제가 감지된 경우 PowerShell 갤러리 항목 소유자에게 보낸 이메일
-* "문의처" 페이지(cgadmin@microsoft.com)에서 이메일 주소를 사용하여 누군가가 PowerShell 갤러리 팀에 보낸 이메일
-* PowerShell 갤러리에서 "소유자에게 문의" 기능을 사용하여 PowerShell 갤러리의 항목 소유자에게 이메일을 보내는 등록된 사용자
+- 코드 분석 검색에서 PowerShell 갤러리에 게시한 항목과 관련된 문제가 감지된 경우 PowerShell 갤러리 항목 소유자에게 보낸 이메일
+- "문의처" 페이지([cgadmin@microsoft.com](mailto:cgadmin@microsoft.com))에서 이메일 주소를 사용하여 누군가가 PowerShell 갤러리 팀에 보낸 이메일
+- PowerShell 갤러리에서 "소유자에게 문의" 기능을 사용하여 PowerShell 갤러리의 항목 소유자에게 이메일을 보내는 등록된 사용자
 
 PowerShell 갤러리에서 보내거나 PowerShell 갤러리로 보낸 이메일에는 PowerShell 갤러리에서 악성 코드 발견 시 보안 조사를 수행하기 위해 90일 보존 정책이 있습니다.
 이메일은 90일 후에 정책에 의해 삭제됩니다.
 
 지난 90일 이내에 자신의 이메일 주소와 PowerShell 갤러리에서 보내거나 받은 모든 이메일의 사본을 요청할 수 있습니다.
-이 서신을 요청하려면 cgadmin@microsoft.com으로 "이 계정과 관련된 이메일에 대한 DSR 요청"이라는 제목으로 이메일을 보내세요.
+이 서신을 요청하려면 [cgadmin@microsoft.com](mailto:cgadmin@microsoft.com)으로 "이 계정과 관련된 이메일에 대한 DSR 요청"이라는 제목으로 이메일을 보내세요.
 메시지 본문에 요청하려는 정보를 기재하세요(예: 이 이메일 주소와 주고 받은 모든 이메일을 보내주십시오). 요청 후 90일 이내에 이메일 주소와 관련된 모든 이메일은 영업일 기준 7일 이내에 발송됩니다.
 
 ### <a name="powershell-gallery-account-information"></a>PowerShell 갤러리 계정 정보
@@ -78,13 +78,13 @@ PowerShell 갤러리에 게시된 항목을 쉽게 내보낼 수 있도록 "GetP
 다음 PowerShell 명령을 사용하여 스크립트를 다운로드할 수 있습니다.
 
 ```powershell
-Save-Script GetPSGalleryItemsForAuthor -path <local folder location> -repository psgallery
+Save-Script Get-repository psgallery
 ```
 
 다음 PowerShell 명령을 실행하여 스크립트를 직접 실행할 수 있습니다.
 
 ```powershell
-cd <local folder location >
+# cd <local folder location>
 .\GetPSGalleryItemsForAuthor.ps1
 ```
 
@@ -95,9 +95,9 @@ cd <local folder location >
 PowerShell 갤러리 계정이나 PowerShell 갤러리에서 소유하고 있는 항목을 삭제하려면 cgadmin@microsoft.com으로 "이 계정과 관련된 항목에 대한 GDPR 요청"이라는 제목으로 이메일을 보내세요.
 메시지 본문에는 삭제할 정보가 표시됩니다. 예:
 
-* 내 항목 "항목 이름"의 버전 x.y.z를 삭제하세요.
-* 내 항목 "항목 이름"의 모든 버전을 삭제하세요.
-* PowerShell 갤러리 계정을 삭제하세요.
+- 내 항목 "항목 이름"의 버전 x.y.z를 삭제하세요.
+- 내 항목 "항목 이름"의 모든 버전을 삭제하세요.
+- PowerShell 갤러리 계정을 삭제하세요.
 
 PowerShell 갤러리 관리자는 영업일 기준 7일 이내에 회신합니다.
 지정된 항목은 요청이 전송된 후 30일 이내에 삭제됩니다.

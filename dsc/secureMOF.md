@@ -2,38 +2,39 @@
 ms.date: 10/31/2017
 keywords: dsc,powershell,configuration,setup
 title: MOF 파일 보안
-ms.openlocfilehash: d6f213e497838192ca6ce8d537cc291ee3811e79
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: f17c95c951151c0c11057ac0bce172c4ec73c91d
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190199"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893266"
 ---
 # <a name="securing-the-mof-file"></a>MOF 파일 보안
 
->적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0
+> 적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0
 
 DSC는 LCM(로컬 구성 관리자)가 원하는 최종 상태를 구현하는 MOF 파일에 저장된 정보를 적용하여 서버 노드의 구성을 관리합니다.
 이 파일은 구성의 세부 정보를 포함하므로 안전하게 보관해야 합니다.
 이 항목은 대상 노드가 파일을 암호화했는지 확인하는 방법에 대해 설명합니다.
 
-PowerShell 버전 5.0부터 전체 MOF 파일은 **Start-DSCConfiguration** cmdlet을 사용하여 노드에 적용될 때 기본적으로 암호화됩니다.
+PowerShell 버전 5.0부터 전체 MOF 파일은 `Start-DSCConfiguration` cmdlet을 사용하여 노드에 적용될 때 기본적으로 암호화됩니다.
 이 문서에 설명된 프로세스는 대상 노드가 다운로드한 구성을 시스템에 적용하기 전에 해독하고 읽을 수 있도록 하기 위해 인증서가 관리되지 않는 경우 풀 서비스 프로토콜을 사용하여 솔루션을 구현할 때만 필요합니다(예: Windows Server에서 사용할 수 있는 풀 서비스).
 [Azure 자동화 DSC](https://docs.microsoft.com/azure/automation/automation-dsc-overview)에 등록된 노드에는 관리 오버 헤드가 필요 없는 서비스를 사용하여 자동으로 인증서가 설치되고 관리됩니다.
 
->**참고:** 이 항목에서는 암호화에 사용되는 인증서에 대해 설명합니다.
->암호화의 경우 개인 키의 보안이 항상 유지되고 암호화는 문서에 대한 신뢰를 암시하지 않으므로 자체 서명된 인증서로도 충분합니다.
->자체 서명된 인증서는 인증 목적으로 사용하면 *안 됩니다*.
->인증 목적에는 신뢰할 수 있는 CA(인증 기관)의 인증서를 사용해야 합니다.
+> [!NOTE]
+> 이 항목에서는 암호화에 사용되는 인증서에 대해 설명합니다.
+> 암호화의 경우 개인 키의 보안이 항상 유지되고 암호화는 문서에 대한 신뢰를 암시하지 않으므로 자체 서명된 인증서로도 충분합니다.
+> 자체 서명된 인증서는 인증 목적으로 사용하면 *안 됩니다*.
+> 인증 목적에는 신뢰할 수 있는 CA(인증 기관)의 인증서를 사용해야 합니다.
 
 ## <a name="prerequisites"></a>필수 구성 요소
 
 DSC 구성을 보호하는 데 사용되는 자격 증명을 적절히 암호화하려면 다음의 항목이 있어야 합니다.
 
-* **인증서를 발급하고 배포할 여러 가지 방법**. 이 항목 및 해당 예제에서는 Active Directory 인증 기관을 사용 중이라고 가정합니다. Active Directory 인증서 서비스에 대한 자세한 배경 정보를 알려면 [Active Directory 인증서 서비스 개요](https://technet.microsoft.com/library/hh831740.aspx) 및 [Windows Server 2008의 Active Directory 인증서 서비스](https://technet.microsoft.com/windowsserver/dd448615.aspx)를 참조하세요.
-* **대상 노드에 대한 관리 권한**.
-* **각 대상 노드에 해당 개인 저장소에 저장된 암호화 가능 인증서가 있습니다**. Windows PowerShell에서 저장소 경로는 Cert:\LocalMachine\My입니다. 이 항목의 예제에서는 [기본 인증서 템플릿](https://technet.microsoft.com/library/cc740061(v=WS.10).aspx)에 있는(다른 인증서 템플릿과 함께) "워크스테이션 인증" 템플릿을 사용합니다.
-* 이 구성을 대상 노드 외의 컴퓨터에서 실행하려는 경우 **인증서의 공개 키를 내보내고**, 구성을 실행할 컴퓨터로 가져옵니다. **공개** 키만 내보내도록 합니다. 개인 키는 안전하게 보관하세요.
+- **인증서를 발급하고 배포할 여러 가지 방법**. 이 항목 및 해당 예제에서는 Active Directory 인증 기관을 사용 중이라고 가정합니다. Active Directory 인증서 서비스에 대한 자세한 배경 정보를 알려면 [Active Directory 인증서 서비스 개요](https://technet.microsoft.com/library/hh831740.aspx) 및 [Windows Server 2008의 Active Directory 인증서 서비스](https://technet.microsoft.com/windowsserver/dd448615.aspx)를 참조하세요.
+- **대상 노드에 대한 관리 권한**.
+- **각 대상 노드에 해당 개인 저장소에 저장된 암호화 가능 인증서가 있습니다**. Windows PowerShell에서 저장소 경로는 Cert:\LocalMachine\My입니다. 이 항목의 예제에서는 [기본 인증서 템플릿](https://technet.microsoft.com/library/cc740061(v=WS.10).aspx)에 있는(다른 인증서 템플릿과 함께) "워크스테이션 인증" 템플릿을 사용합니다.
+- 이 구성을 대상 노드 외의 컴퓨터에서 실행하려는 경우 **인증서의 공개 키를 내보내고**, 구성을 실행할 컴퓨터로 가져옵니다. **공개** 키만 내보내도록 합니다. 개인 키는 안전하게 보관하세요.
 
 ## <a name="overall-process"></a>전체 프로세스
 
@@ -48,16 +49,18 @@ DSC 구성을 보호하는 데 사용되는 자격 증명을 적절히 암호화
 
 자격 증명 암호화를 적용하려면 DSC 구성을 작성하는 데 사용되는 컴퓨터에서 **신뢰할 수 있는** _대상 노드_에서 공개 키 인증서를 사용할 수 있어야 합니다.
 이 공개 키 인증서를 DSC 자격 증명 암호화에 사용하려면 다음과 같은 특정 요구 사항을 충족해야 합니다.
- 1. **키 사용**:
+
+1. **키 사용**:
    - 'KeyEncipherment' 및 'DataEncipherment'를 포함해야 합니다.
    - '디지털 서명'을 포함하지 _않아야_ 합니다.
- 2. **확장된 키 사용**:
+2. **확장된 키 사용**:
    - 문서 암호화(1.3.6.1.4.1.311.80.1)를 포함해야 합니다.
    - 클라이언트 인증(1.3.6.1.5.5.7.3.2) 및 서버 인증(1.3.6.1.5.5.7.3.1)을 포함하지 _않아야_ 합니다.
- 3. 인증서에 대한 개인 키를 *대상 노드_에서 사용할 수 있어야 합니다.
- 4. 인증서의 **공급자**는 "Microsoft RSA SChannel Cryptographic Provider"여야 합니다.
+3. 인증서에 대한 개인 키를 *대상 노드_에서 사용할 수 있어야 합니다.
+4. 인증서의 **공급자**는 "Microsoft RSA SChannel Cryptographic Provider"여야 합니다.
 
->**권장 모범 사례:** 키 사용 '디지털 서명' 또는 인증 EKU 중 하나를 포함하는 인증서를 사용할 수 있지만 이 경우 암호화 키가 오용되기 쉽고 공격에 취약해질 수 있습니다. 따라서 이러한 키 사용 및 EKU를 포함하지 않고 DSC 자격 증명을 보호하기 위해 특별히 만든 인증서를 사용하는 것이 좋습니다.
+> [!IMPORTANT]
+> 키 사용 '디지털 서명' 또는 인증 EKU 중 하나를 포함하는 인증서를 사용할 수 있지만 이 경우 암호화 키가 오용되기 쉽고 공격에 취약해질 수 있습니다. 따라서 이러한 키 사용 및 EKU를 포함하지 않고 DSC 자격 증명을 보호하기 위해 특별히 만든 인증서를 사용하는 것이 좋습니다.
 
 이러한 기준을 충족하는 _대상 노드_의 모든 기존 인증서는 DSC 자격 증명을 보호하는 데 사용할 수 있습니다.
 
@@ -70,17 +73,18 @@ DSC 구성을 보호하는 데 사용되는 자격 증명을 적절히 암호화
 
 MOF의 자격 증명 암호 해독에 사용되는 개인 키는 항상 대상 노드에 머무르므로 1번 방법을 사용하는 것이 좋습니다.
 
-
 ### <a name="creating-the-certificate-on-the-target-node"></a>대상 노드에서 인증서 만들기
 
 **대상 노드**에서 개인 키는 MOF의 암호를 해독하는 데 사용되기 때문에 보안을 유지해야 합니다. 이를 위한 가장 손쉬운 방법은 **대상 노드**에서 개인 키 인증서를 만들고, DSC 구성을 MOF 파일로 제작하는 데 사용하는 컴퓨터로 **공개 키 인증서**를 복사하는 것입니다.
 다음 예제를 참조하세요.
- 1. **대상 노드**에서 인증서를 만듭니다.
- 2. **대상 노드**에서 공개 키 인증서를 내보냅니다.
- 3. 공개 키 인증서를 **제작 노드**에 있는 **내** 인증서 저장소로 가져옵니다.
+
+1. **대상 노드**에서 인증서를 만듭니다.
+2. **대상 노드**에서 공개 키 인증서를 내보냅니다.
+3. 공개 키 인증서를 **제작 노드**에 있는 **내** 인증서 저장소로 가져옵니다.
 
 #### <a name="on-the-target-node-create-and-export-the-certificate"></a>대상 노드: 인증서를 만들고 내보냅니다.
->대상 노드: Windows Server 2016 및 Windows 10
+
+> 대상 노드: Windows Server 2016 및 Windows 10
 
 ```powershell
 # note: These steps need to be performed in an Administrator PowerShell session
@@ -88,14 +92,17 @@ $cert = New-SelfSignedCertificate -Type DocumentEncryptionCertLegacyCsp -DnsName
 # export the public key certificate
 $cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
-내보내고 나면 ```DscPublicKey.cer```을 **제작 노드**로 복사해야 합니다.
 
->대상 노드: Windows Server 2012 R2/Windows 8.1 이하 버전
+내보내고 나면 `DscPublicKey.cer`을 **제작 노드**로 복사해야 합니다.
 
-Windows 10 및 Windows Server 2016 이전의 Windows 운영 체제에서는 New-SelfSignedCertificate cmdlet이 **Type** 매개 변수를 지원하지 않으므로, 이 운영 체제에서는 이 인증서를 만들기 위한 대체 방법이 필요합니다.
-이 경우 ```makecert.exe``` 또는 ```certutil.exe```를 사용해 인증서를 만들 수 있습니다.
+> 대상 노드: Windows Server 2012 R2/Windows 8.1 이하 버전
+> [!WARNING]
+> Windows 10 및 Windows Server 2016 이전의 Windows 운영 체제에서는 `New-SelfSignedCertificate` cmdlet이 **Type** 매개 변수를 지원하지 않으므로, 이 운영 체제에서는 이 인증서를 만들기 위한 대체 방법이 필요합니다.
+>
+> 이 경우 `makecert.exe` 또는 `certutil.exe`를 사용해 인증서를 만들 수 있습니다.
+>
+>대체 방법은 [Microsoft 스크립트 센터에서 New-SelfSignedCertificateEx.ps1 스크립트를 다운로드](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6)한 후 이를 대신 사용해 인증서를 만드는 것입니다.
 
-대체 방법은 [Microsoft 스크립트 센터에서 New-SelfSignedCertificateEx.ps1 스크립트를 다운로드](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6)한 후 이를 대신 사용해 인증서를 만드는 것입니다.
 ```powershell
 # note: These steps need to be performed in an Administrator PowerShell session
 # and in the folder that contains New-SelfSignedCertificateEx.ps1
@@ -113,35 +120,38 @@ New-SelfsignedCertificateEx `
     -AlgorithmName 'RSA' `
     -SignatureAlgorithm 'SHA256'
 # Locate the newly created certificate
-$Cert = Get-ChildItem -Path cert:\LocalMachine\My `
-    | Where-Object {
-        ($_.FriendlyName -eq 'DSC Credential Encryption certificate') `
-        -and ($_.Subject -eq "CN=${ENV:ComputerName}")
+$Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {
+        ($_.FriendlyName -eq 'DSC Credential Encryption certificate') -and ($_.Subject -eq "CN=${ENV:ComputerName}")
     } | Select-Object -First 1
 # export the public key certificate
 $cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
+
 내보내고 나면 ```DscPublicKey.cer```을 **제작 노드**로 복사해야 합니다.
 
 #### <a name="on-the-authoring-node-import-the-certs-public-key"></a>제작 노드: 인증서의 공개 키를 가져옵니다.
+
 ```powershell
 # Import to the my store
 Import-Certificate -FilePath "$env:temp\DscPublicKey.cer" -CertStoreLocation Cert:\LocalMachine\My
 ```
 
 ### <a name="creating-the-certificate-on-the-authoring-node"></a>제작 노드에서 인증서 만들기
+
 또는, 암호화 인증서를 **제작 노드**에서 만들고, **개인 키**를 사용해 PFX 파일로 내보낸 다음 **대상 노드**에서 가져올 수도 있습니다.
 이것이 _Nano Server_에서 DSC 자격 증명 암호화를 구현하는 최신 방법입니다.
 PFX는 암호로 보호되어 있지만 전송 중에도 보호 상태가 유지되어야 합니다.
 다음 예제를 참조하세요.
- 1. **제작 노드**에서 인증서를 만듭니다.
- 2. **제작 노드**에서 개인 키를 포함하여 인증서를 내보냅니다.
- 3. **제작 노드**에서 개인 키를 제거하고, 공개 키 인증서는 **내** 저장소에 보관합니다.
- 4. 개인 키 인증서를 **대상 노드**에 있는 My(개인) 인증서 저장소로 가져옵니다.
+
+1. **제작 노드**에서 인증서를 만듭니다.
+2. **제작 노드**에서 개인 키를 포함하여 인증서를 내보냅니다.
+3. **제작 노드**에서 개인 키를 제거하고, 공개 키 인증서는 **내** 저장소에 보관합니다.
+4. 개인 키 인증서를 **대상 노드**에 있는 My(개인) 인증서 저장소로 가져옵니다.
    - **대상 노드**에서 신뢰할 수 있도록 루트 저장소에 추가해야 합니다.
 
 #### <a name="on-the-authoring-node-create-and-export-the-certificate"></a>제작 노드: 인증서를 만들고 내보냅니다.
->대상 노드: Windows Server 2016 및 Windows 10
+
+> 대상 노드: Windows Server 2016 및 Windows 10
 
 ```powershell
 # note: These steps need to be performed in an Administrator PowerShell session
@@ -154,14 +164,17 @@ $cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 $cert | Remove-Item -Force
 Import-Certificate -FilePath "$env:temp\DscPublicKey.cer" -CertStoreLocation Cert:\LocalMachine\My
 ```
-내보내고 나면 ```DscPrivateKey.pfx```을 **대상 노드**로 복사해야 합니다.
 
->대상 노드: Windows Server 2012 R2/Windows 8.1 이하 버전
+내보내고 나면 `DscPrivateKey.pfx`을 **대상 노드**로 복사해야 합니다.
 
-Windows 10 및 Windows Server 2016 이전의 Windows 운영 체제에서는 New-SelfSignedCertificate cmdlet이 **Type** 매개 변수를 지원하지 않으므로, 이 운영 체제에서는 이 인증서를 만들기 위한 대체 방법이 필요합니다.
-이 경우 ```makecert.exe``` 또는 ```certutil.exe```를 사용해 인증서를 만들 수 있습니다.
+> 대상 노드: Windows Server 2012 R2/Windows 8.1 이하 버전
+> [!WARNING]
+> Windows 10 및 Windows Server 2016 이전의 Windows 운영 체제에서는 `New-SelfSignedCertificate` cmdlet이 **Type** 매개 변수를 지원하지 않으므로, 이 운영 체제에서는 이 인증서를 만들기 위한 대체 방법이 필요합니다.
+>
+> 이 경우 `makecert.exe` 또는 `certutil.exe`를 사용해 인증서를 만들 수 있습니다.
+>
+> 대체 방법은 [Microsoft 스크립트 센터에서 New-SelfSignedCertificateEx.ps1 스크립트를 다운로드](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6)한 후 이를 대신 사용해 인증서를 만드는 것입니다.
 
-대체 방법은 [Microsoft 스크립트 센터에서 New-SelfSignedCertificateEx.ps1 스크립트를 다운로드](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6)한 후 이를 대신 사용해 인증서를 만드는 것입니다.
 ```powershell
 # note: These steps need to be performed in an Administrator PowerShell session
 # and in the folder that contains New-SelfSignedCertificateEx.ps1
@@ -179,10 +192,8 @@ New-SelfsignedCertificateEx `
     -AlgorithmName 'RSA' `
     -SignatureAlgorithm 'SHA256'
 # Locate the newly created certificate
-$Cert = Get-ChildItem -Path cert:\LocalMachine\My `
-    | Where-Object {
-        ($_.FriendlyName -eq 'DSC Credential Encryption certificate') `
-        -and ($_.Subject -eq "CN=${ENV:ComputerName}")
+$Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {
+        ($_.FriendlyName -eq 'DSC Credential Encryption certificate') -and ($_.Subject -eq "CN=${ENV:ComputerName}")
     } | Select-Object -First 1
 # export the public key certificate
 $mypwd = ConvertTo-SecureString -String "YOUR_PFX_PASSWD" -Force -AsPlainText
@@ -194,6 +205,7 @@ Import-Certificate -FilePath "$env:temp\DscPublicKey.cer" -CertStoreLocation Cer
 ```
 
 #### <a name="on-the-target-node-import-the-certs-private-key-as-a-trusted-root"></a>대상 노드: 인증서의 개인 키를 신뢰할 수 있는 루트로 가져옵니다.
+
 ```powershell
 # Import to the root store so that it is trusted
 $mypwd = ConvertTo-SecureString -String "YOUR_PFX_PASSWD" -Force -AsPlainText
@@ -205,10 +217,11 @@ Import-PfxCertificate -FilePath "$env:temp\DscPrivateKey.pfx" -CertStoreLocation
 구성 데이터 블록은 자격 증명을 암호화할지 여부, 암호화 방법 및 기타 정보에 대해 작업을 수행할 대상 노드를 정의합니다. 구성 데이터 블록에 대한 자세한 내용은 [분리 및 환경 데이터 구성](configData.md)를 참조합니다.
 
 자격 증명 암호화와 관련된 각 노드에 대해 구성할 수 있는 요소는 다음과 같습니다.
-* **NodeName** - 자격 증명 암호화가 구성되는 대상 노드의 이름입니다.
-* **PsDscAllowPlainTextPassword** - 암호화되지 않은 자격 증명을 이 노드로 전달할 수 있는지 여부입니다. 이 요소는 사용하지 **않는 것이 좋습니다**.
-* **Thumbprint** - _대상 노드_의 DSC 구성에서 자격 증명의 암호를 해독하는 데 사용되는 인증서의 지문입니다. **이 인증서는 대상 노드의 로컬 컴퓨터 인증서 저장소에 있어야 합니다.**
-* **CertificateFile** - _대상 노드_의 인증서를 암호화하는 데 사용할 인증서 파일(공개 키만 포함)입니다. DER로 인코딩된 바이너리 X.509 또는 Base-64로 인코딩된 X.509 형식 인증서 파일 중 하나여야 합니다.
+
+- **NodeName** - 자격 증명 암호화가 구성되는 대상 노드의 이름입니다.
+- **PsDscAllowPlainTextPassword** - 암호화되지 않은 자격 증명을 이 노드로 전달할 수 있는지 여부입니다. 이 요소는 사용하지 **않는 것이 좋습니다**.
+- **Thumbprint** - _대상 노드_의 DSC 구성에서 자격 증명의 암호를 해독하는 데 사용되는 인증서의 지문입니다. **이 인증서는 대상 노드의 로컬 컴퓨터 인증서 저장소에 있어야 합니다.**
+- **CertificateFile** - _대상 노드_의 인증서를 암호화하는 데 사용할 인증서 파일(공개 키만 포함)입니다. DER로 인코딩된 바이너리 X.509 또는 Base-64로 인코딩된 X.509 형식 인증서 파일 중 하나여야 합니다.
 
 이 예제에서는 명명된 targetNode, 공개 키 인증서 파일 경로(명명된 targetNode.cer) 및 공개 키의 지문에 대해 작업을 수행할 대상 노드를 지정하는 구성 데이터 블록을 보여 줍니다.
 
@@ -233,12 +246,11 @@ $ConfigData= @{
     }
 ```
 
-
 ## <a name="configuration-script"></a>구성 스크립트
 
 구성 스크립트 자체에서 `PsCredential` 매개 변수를 사용하여 자격 증명이 가능한 가장 짧은 시간 동안 저장되도록 하세요. 제공된 예제를 실행하면 DSC에서 자격 증명을 묻는 메시지를 표시한 다음, 구성 데이터 블록의 대상 노드와 연결된 CertificateFile을 사용하여 MOF 파일을 암호화합니다. 이 코드 예제에서는 보호되는 공유의 파일을 사용자에게 복사합니다.
 
-```
+```powershell
 configuration CredentialEncryptionExample
 {
     param(
@@ -311,8 +323,8 @@ configuration CredentialEncryptionExample
 
 이 시점에서 두 개의 파일을 출력하는 구성을 실행할 수 있습니다.
 
- * 로컬 컴퓨터 저장소에 저장되어 있고 지문으로 식별되는 인증서를 사용하여 자격 증명을 해독하도록 로컬 구성 관리자를 구성하는 *.meta.mof 파일. [`Set-DscLocalConfigurationManager`](https://technet.microsoft.com/library/dn521621.aspx)가 *.meta.mof 파일을 적용합니다.
- * 실제로 구성을 적용하는 MOF 파일. Start-DscConfiguration이 구성을 적용합니다.
+- 로컬 컴퓨터 저장소에 저장되어 있고 지문으로 식별되는 인증서를 사용하여 자격 증명을 해독하도록 로컬 구성 관리자를 구성하는 *.meta.mof 파일. [`Set-DscLocalConfigurationManager`](https://technet.microsoft.com/library/dn521621.aspx)가 *.meta.mof 파일을 적용합니다.
+- 실제로 구성을 적용하는 MOF 파일. Start-DscConfiguration이 구성을 적용합니다.
 
 다음 명령들은 해당 단계를 수행합니다.
 

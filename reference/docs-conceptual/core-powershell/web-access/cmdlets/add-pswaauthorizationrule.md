@@ -4,12 +4,12 @@ keywords: powershell,cmdlet
 ms.date: 12/12/2016
 title: Add-PswaAuthorizationRule
 schema: 2.0.0
-ms.openlocfilehash: b8020f8b034ab24d79a96da3908e9b63bf017cd9
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: a5e55611ac59ff5bfecee59ba2b7d7669d08f840
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190386"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893742"
 ---
 # <a name="add-pswaauthorizationrule"></a>Add-PswaAuthorizationRule
 
@@ -20,21 +20,25 @@ ms.locfileid: "34190386"
 ## <a name="syntax"></a>구문
 
 ### <a name="usergroupnamecomputergroupname"></a>UserGroupNameComputerGroupName
+
 ```
 Add-PswaAuthorizationRule -ComputerGroupName <String> -ConfigurationName <String> -UserGroupName <String[]> [-Credential <PSCredential> ] [-Force] [-RuleName <String> ] [ <CommonParameters>]
 ```
 
 ### <a name="usergroupnamecomputername"></a>UserGroupNameComputerName
+
 ```
 Add-PswaAuthorizationRule -ComputerName <String> -ConfigurationName <String> -UserGroupName <String[]> [-Credential <PSCredential> ] [-Force] [-RuleName <String> ] [ <CommonParameters>]
 ```
 
 ### <a name="usernamecomputergroupname"></a>UserNameComputerGroupName
+
 ```
 Add-PswaAuthorizationRule [-UserName] <String[]> -ComputerGroupName <String> -ConfigurationName <String> [-Credential <PSCredential> ] [-Force] [-RuleName <String> ] [ <CommonParameters>]
 ```
 
 ### <a name="usernamecomputername"></a>UserNameComputerName
+
 ```
 Add-PswaAuthorizationRule [-UserName] <String[]> [-ComputerName] <String> [-ConfigurationName] <String> [-Credential <PSCredential> ] [-Force] [-RuleName <String> ] [ <CommonParameters>]
 ```
@@ -56,7 +60,7 @@ Active Directory 도메인에 가입되지 않은 컴퓨터의 경우 이 cmdlet
 
 ## <a name="parameters"></a>매개 변수
 
-### <a name="-computergroupnameltstringgt"></a>-ComputerGroupName&lt;String&gt;
+### <a name="-computergroupname-string"></a>-ComputerGroupName \<String\>
 
 이 규칙이 액세스 권한을 부여하는 AD DS(Active Directory 도메인 서비스)의 컴퓨터 그룹 또는 로컬 그룹의 이름을 지정합니다.
 
@@ -69,7 +73,7 @@ Active Directory 도메인에 가입되지 않은 컴퓨터의 경우 이 cmdlet
 | 파이프라인 입력 적용 여부               | True (ByPropertyName)                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-computernameltstringgt"></a>-ComputerName&lt;String&gt;
+### <a name="-computername-string"></a>-ComputerName \<String\>
 
 이 규칙이 액세스 권한을 부여하는 컴퓨터 이름을 지정합니다.
 
@@ -82,7 +86,7 @@ Active Directory 도메인에 가입되지 않은 컴퓨터의 경우 이 cmdlet
 | 파이프라인 입력 적용 여부               | True (ByPropertyName)                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-configurationnameltstringgt"></a>-ConfigurationName&lt;String&gt;
+### <a name="-configurationname-string"></a>-ConfigurationName \<String\>
 
 이 규칙이 액세스 권한을 부여하는 Windows PowerShell 세션 구성(runspace라고도 함)의 이름을 지정합니다.
 
@@ -95,7 +99,7 @@ Active Directory 도메인에 가입되지 않은 컴퓨터의 경우 이 cmdlet
 | 파이프라인 입력 적용 여부               | True (ByPropertyName)                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-credentialltpscredentialgt"></a>-Credential&lt;PSCredential&gt;
+### <a name="-credential--pscredential"></a>-Credential  \<PSCredential\>
 
 Windows PowerShell 웹 액세스 권한 부여 규칙을 변경하는 데 사용할 사용자 계정에 대한 **PSCredential** 개체를 지정합니다. 이 매개 변수를 추가하지 않으면 현재 로그온한 사용자 계정이 사용됩니다. 권한 부여 규칙을 추가하는 데 필요한 **PSCredential**을 가져오려면 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) cmdlet을 실행합니다.
 
@@ -122,7 +126,7 @@ Windows PowerShell 웹 액세스 권한 부여 규칙을 변경하는 데 사용
 | 파이프라인 입력 적용 여부               | false                                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-rulenameltstringgt"></a>-RuleName&lt;String&gt;
+### <a name="-rulename-string"></a>-RuleName \<String\>
 
 이 규칙의 이름을 지정합니다.
 
@@ -135,7 +139,7 @@ Windows PowerShell 웹 액세스 권한 부여 규칙을 변경하는 데 사용
 | 파이프라인 입력 적용 여부               | True (ByPropertyName)                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-usergroupnameltstringgt"></a>-UserGroupName&lt;String\[\]&gt;
+### <a name="-usergroupname-string"></a>-UserGroupName \<String\[\]\>
 
 이 규칙이 액세스 권한을 부여하는 AD DS의 사용자 그룹 하나 이상 또는 로컬 그룹의 이름을 지정합니다.
 
@@ -148,7 +152,7 @@ Windows PowerShell 웹 액세스 권한 부여 규칙을 변경하는 데 사용
 | 파이프라인 입력 적용 여부               | True (ByPropertyName)                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-usernameltstringgt"></a>-UserName&lt;String\[\]&gt;
+### <a name="-username-string"></a>-UserName \<String\[\]\>
 
 이 규칙이 액세스 권한을 부여하는 하나 이상의 사용자를 지정합니다. 사용자 이름은 게이트웨이 컴퓨터의 로컬 사용자 계정 또는 AD DS의 사용자일 수 있습니다.
 형식은 `domain\user` 또는 `computer\user`입니다.
@@ -162,7 +166,7 @@ Windows PowerShell 웹 액세스 권한 부여 규칙을 변경하는 데 사용
 | 파이프라인 입력 적용 여부               | True (ByValue, ByPropertyName)       |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="ltcommonparametersgt"></a>&lt;CommonParameters&gt;
+###  <a name="commonparameters"></a>\<CommonParameters\>
 
 이 cmdlet은 -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, -OutVariable 등의 일반 매개 변수를 지원합니다.
 자세한 내용은 [about_CommonParameters](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_commonparameters)를 참조하세요.
@@ -196,7 +200,7 @@ Add-PswaAuthorizationRule -ComputerName srv2.contoso.com -UserGroupName contoso\
 
 ### <a name="example-2"></a>예제 2
 
-이 예제에서는 *srv2*에서 contoso\\user1, contoso\\user2 및 contoso\\user3이라는 사용자에게 기본 Windows PowerShell 세션 구성 `Microsoft.PowerShell`에 대한 액세스 권한을 부여합니다. 이 cmdlet은 세 개의 규칙(사용자당 1개)을 만듭니다.
+이 예제에서는 *srv2*에서 `contoso\user1`, `contoso\user2` 및 `contoso\user3`이라는 사용자에게 기본 Windows PowerShell 세션 구성 `Microsoft.PowerShell`에 대한 액세스 권한을 부여합니다. 이 cmdlet은 세 개의 규칙(사용자당 1개)을 만듭니다.
 
 ```PowerShell
 Add-PswaAuthorizationRule –UserName contoso\user1, contoso\user2, contoso\user3 –ComputerName srv2.contoso.com -ConfigurationName Microsoft.PowerShell
@@ -206,7 +210,7 @@ Add-PswaAuthorizationRule –UserName contoso\user1, contoso\user2, contoso\user
 
 이 예제에서는 파이프라인을 통해 사용자 이름 값을 입력하는 방법을 보여 줍니다.
 
-```
+```powershell
 "contoso\user1","contoso\user2" | Add-pswaAuthorizationRule –ComputerName srv2.contoso.com –ConfigurationName Microsoft.PowerShell
 ```
 
@@ -225,11 +229,11 @@ $o | Add-PswaAuthorizationRule -UserName contoso\user1 -ConfigurationName Micros
 
 ### <a name="example-5"></a>예제 5
 
-이 예제에서는 *PswaServer\\ChrisLocal*이라는 로컬 사용자가 *srv1.contoso.com*이라는 서버에 액세스할 수 있도록 규칙을 추가합니다.
+이 예제에서는 `PswaServer\ChrisLocal`이라는 로컬 사용자가 **srv1.contoso.com**이라는 서버에 액세스할 수 있도록 규칙을 추가합니다.
 
 이 예제에서는 게이트웨이가 작업 그룹에 있고 대상 컴퓨터가 도메인에 있는 시나리오를 보여 줍니다. 권한 부여 규칙은 게이트웨이의 로컬 사용자에게 적용됩니다. Windows PowerShell 웹 액세스 로그인 페이지에서 인증하려면 사용자는 **옵션 연결 설정** 영역의 두 번째 자격 증명 집합을 입력해야 합니다. 게이트웨이 서버는 추가 자격 증명 집합을 사용하여 대상 컴퓨터인 *srv1.contoso.com*이라는 서버에서 사용자를 인증합니다.
 
-````
+````powershell
 Add-PswaAuthorizationRule –UserName PswaServer\ChrisLocal –ComputerName srv1.contoso.com –ConfigurationName Microsoft.PowerShell
 ````
 
@@ -245,10 +249,16 @@ Add-PswaAuthorizationRule –UserName * -ComputerName * -ConfigurationName *
 
 ## <a name="see-also"></a>참고 항목
 
-- [Get-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592891(v=wps.630).aspx)
-- [Remove-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592893(v=wps.630).aspx)
-- [Test-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592892(v=wps.630).aspx)
-- [Install-PswaWebApplication](https://technet.microsoft.com/en-us/library/jj592894(v=wps.630).aspx)
-- [Add-Member](http://go.microsoft.com/fwlink/p/?LinkId=113280)
-- [New-Object](http://go.microsoft.com/fwlink/p/?LinkId=113355)
-- [Get-Credential](http://go.microsoft.com/fwlink/?LinkID=293936)
+[Get-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592891(v=wps.630).aspx)
+
+[Remove-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592893(v=wps.630).aspx)
+
+[Test-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592892(v=wps.630).aspx)
+
+[Install-PswaWebApplication](https://technet.microsoft.com/en-us/library/jj592894(v=wps.630).aspx)
+
+[Add-Member](http://go.microsoft.com/fwlink/p/?LinkId=113280)
+
+[New-Object](http://go.microsoft.com/fwlink/p/?LinkId=113355)
+
+[Get-Credential](http://go.microsoft.com/fwlink/?LinkID=293936)

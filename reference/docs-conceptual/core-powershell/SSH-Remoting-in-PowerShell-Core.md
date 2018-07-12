@@ -1,3 +1,4 @@
+
 # <a name="powershell-remoting-over-ssh"></a>SSH를 통한 PowerShell 원격
 
 ## <a name="overview"></a>개요
@@ -11,9 +12,9 @@ PowerShell SSH 원격 기능을 사용하면 Windows 및 Linux 컴퓨터 간에 
 이러한 작업은 SSH 하위 시스템인 대상 컴퓨터에 PowerShell 호스팅 프로세스를 만드는 방식으로 수행됩니다.
 결국 이는 엔드포인트 구성 및 JEA를 지원하기 위해 WinRM이 작동하는 방식과 유사한, 보다 일반적인 호스팅 모델로 변경됩니다.
 
-New-PSSession, Enter-PSSession 및 Invoke-Command cmdlet에는 이제 이 새로운 원격 연결을 용이하게 하는 새로운 매개 변수가 설정됩니다.
+`New-PSSession`, `Enter-PSSession` 및 `Invoke-Command` cmdlet에는 이제 이 새로운 원격 연결을 용이하게 하는 새로운 매개 변수가 설정됩니다.
 
-```powershell
+```
 [-HostName <string>]  [-UserName <string>]  [-KeyFilePath <string>]
 ```
 
@@ -25,7 +26,7 @@ PowerShell 명령줄에서 대화형으로 cmdlet을 실행할 때는 암호를 
 ## <a name="general-setup-information"></a>일반적인 설치 정보
 
 SSH는 모든 컴퓨터에 설치해야 합니다.
-컴퓨터에서 들어오고 나가는 원격 작업을 실험할 수 있도록 클라이언트(ssh.exe) 및 서버(sshd.exe)를 설치해야 합니다.
+컴퓨터에서 들어오고 나가는 원격 작업을 실험할 수 있도록 클라이언트(`ssh.exe`) 및 서버(`sshd.exe`)를 설치해야 합니다.
 Windows의 경우 [GitHub의 Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)를 설치해야 합니다.
 Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치해야 합니다.
 또한 GitHub에서 SSH 원격 기능이 있는 최신 PowerShell 빌드 또는 패키지를 설치해야 합니다.
@@ -34,134 +35,139 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
 
 ## <a name="setup-on-windows-machine"></a>Windows 컴퓨터에 설치
 
-1. 최신 버전의 [Windows용 PowerShell Core] 설치
-    - New-PSSession의 매개 변수 집합을 확인하면 SSH 원격 기능이 지원되는지 알 수 있습니다.
+1. 최신 버전의 [PowerShell Core for Windows] 설치
+   - `New-PSSession`의 매개 변수 집합을 확인하면 SSH 원격 기능이 지원되는지 알 수 있습니다.
 
-    ```powershell
-    PS> Get-Command New-PSSession -syntax
-    New-PSSession [-HostName] <string[]> [-Name <string[]>] [-UserName <string>] [-KeyFilePath <string>] [-SSHTransport] [<CommonParameters>]
-    ```
+   ```powershell
+   Get-Command New-PSSession -syntax
+   ```
 
-1. [설치] 지침에 따라 GitHub에서 최신 [Win32 OpenSSH] 빌드를 설치합니다.
-1. Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.
-    - 암호 인증이 활성화되었는지 확인합니다.
+   ```output
+   New-PSSession [-HostName] <string[]> [-Name <string[]>] [-UserName <string>] [-KeyFilePath <string>] [-SSHTransport] [<CommonParameters>]
+   ```
 
-    ```
-    PasswordAuthentication yes
-    ```
+2. [설치] 지침에 따라 GitHub에서 최신 [Win32 OpenSSH] 빌드를 설치합니다.
+3. Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.
+   - 암호 인증이 활성화되었는지 확인합니다.
 
-    - PowerShell 하위 시스템 항목을 추가하고 `c:/program files/powershell/6.0.0/pwsh.exe`를 사용하려는 버전에 대한 올바른 경로로 바꿉니다.
+   ```
+   PasswordAuthentication yes
+   ```
 
     ```
     Subsystem    powershell c:/program files/powershell/6.0.0/pwsh.exe -sshs -NoLogo -NoProfile
     ```
-    
+
     > [!NOTE]
     하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다.
     [자세한 내용은 GitHub에서 이 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.
-    
+
     한 가지 해결 방법은 공백을 포함하지 않는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.
-    
+
     ```powershell
     mklink /D c:\pwsh "C:\Program Files\PowerShell\6.0.0"
     ```
 
     그런 다음, 하위 시스템에 입력합니다.
- 
+
     ```
     Subsystem    powershell c:\pwsh\pwsh.exe -sshs -NoLogo -NoProfile
     ```
 
-    - 필요에 따라 키 인증을 활성화합니다.
+   ```
+   Subsystem    powershell c:/program files/powershell/6.0.0/pwsh.exe -sshs -NoLogo -NoProfile
+   ```
 
-    ```
-    PubkeyAuthentication yes
-    ```
+   - 필요에 따라 키 인증을 활성화합니다.
 
-1. sshd 서비스를 다시 시작합니다.
+   ```
+   PubkeyAuthentication yes
+   ```
 
-    ```powershell
-    Restart-Service sshd
-    ```
+4. sshd 서비스를 다시 시작합니다.
 
-1. Path Env 변수에 OpenSSH가 설치된 경로를 추가합니다.
-    - 이는 `C:\Program Files\OpenSSH\` 줄에 있어야 합니다.
-    - 그래야 시스템에서 ssh.exe를 찾을 수 있습니다.
+   ```powershell
+   Restart-Service sshd
+   ```
+
+5. Path Env 변수에 OpenSSH가 설치된 경로를 추가합니다.
+   - 이는 `C:\Program Files\OpenSSH\` 줄에 있어야 합니다.
+   - 그래야 시스템에서 ssh.exe를 찾을 수 있습니다.
 
 ## <a name="setup-on-linux-ubuntu-1404-machine"></a>Linux(Ubuntu 14.04) 컴퓨터에 설치
 
 1. GitHub에서 최신 [Linux용 PowerShell Core] 빌드를 설치합니다.
-1. 필요에 따라 [Ubuntu SSH]를 설치합니다.
+2. 필요에 따라 [Ubuntu SSH]를 설치합니다.
 
-    ```bash
-    sudo apt install openssh-client
-    sudo apt install openssh-server
-    ```
+   ```bash
+   sudo apt install openssh-client
+   sudo apt install openssh-server
+   ```
 
-1. /etc/ssh 위치에서 sshd_config 파일을 편집합니다.
-    - 암호 인증이 활성화되었는지 확인합니다.
+3. /etc/ssh 위치에서 sshd_config 파일을 편집합니다.
+   - 암호 인증이 활성화되었는지 확인합니다.
 
-    ```
-    PasswordAuthentication yes
-    ```
+   ```
+   PasswordAuthentication yes
+   ```
 
-    - PowerShell 하위 시스템 항목을 추가합니다.
+   - PowerShell 하위 시스템 항목을 추가합니다.
 
-    ```
-    Subsystem powershell /usr/bin/pwsh -sshs -NoLogo -NoProfile
-    ```
+   ```
+   Subsystem powershell /usr/bin/pwsh -sshs -NoLogo -NoProfile
+   ```
 
-    - 필요에 따라 키 인증을 활성화합니다.
+   - 필요에 따라 키 인증을 활성화합니다.
 
-    ```
-    PubkeyAuthentication yes
-    ```
+   ```
+   PubkeyAuthentication yes
+   ```
 
-1. sshd 서비스를 다시 시작합니다.
+4. sshd 서비스를 다시 시작합니다.
 
-    ```bash
-    sudo service sshd restart
-    ```
+   ```bash
+   sudo service sshd restart
+   ```
 
 ## <a name="setup-on-macos-machine"></a>MacOS 컴퓨터에 설치
 
 1. 최신 [MacOS용 PowerShell Core] 빌드를 설치합니다.
-    - 다음 단계를 수행하여 SSH 원격 기능이 활성화되어 있는지 확인합니다.
-      - `System Preferences`를 엽니다.
-      - `Sharing`을 클릭합니다.
-      - `Remote Login`을 확인합니다(`Remote Login: On`이어야 함).
-      - 적절한 사용자에게 액세스를 허용합니다.
-1. `/private/etc/ssh/sshd_config` 위치에서 `sshd_config` 파일을 편집합니다.
-    - 선호하는 편집기를 사용합니다. 또는
+   - 다음 단계를 수행하여 SSH 원격 기능이 활성화되어 있는지 확인합니다.
+     - `System Preferences`를 엽니다.
+     - `Sharing`을 클릭합니다.
+     - `Remote Login`을 확인합니다(`Remote Login: On`이어야 함).
+     - 적절한 사용자에게 액세스를 허용합니다.
+2. `/private/etc/ssh/sshd_config` 위치에서 `sshd_config` 파일을 편집합니다.
+   - 선호하는 편집기를 사용합니다. 또는
 
-    ```bash
-    sudo nano /private/etc/ssh/sshd_config
-    ```
+     ```bash
+     sudo nano /private/etc/ssh/sshd_config
+     ```
 
-    - 암호 인증이 활성화되었는지 확인합니다.
+   - 암호 인증이 활성화되었는지 확인합니다.
 
-    ```
-    PasswordAuthentication yes
-    ```
+     ```
+     PasswordAuthentication yes
+     ```
 
-    - PowerShell 하위 시스템 항목을 추가합니다.
+   - PowerShell 하위 시스템 항목을 추가합니다.
 
-    ```
-    Subsystem powershell /usr/local/bin/pwsh -sshs -NoLogo -NoProfile
-    ```
+     ```
+     Subsystem powershell /usr/local/bin/pwsh -sshs -NoLogo -NoProfile
+     ```
 
-    - 필요에 따라 키 인증을 활성화합니다.
+   - 필요에 따라 키 인증을 활성화합니다.
 
-    ```
-    PubkeyAuthentication yes
-    ```
+     ```
+     PubkeyAuthentication yes
+     ```
 
-1. sshd 서비스를 다시 시작합니다.
+3. sshd 서비스를 다시 시작합니다.
 
-    ```bash
-    sudo launchctl stop com.openssh.sshd
-    sudo launchctl start com.openssh.sshd
-    ```
+   ```bash
+   sudo launchctl stop com.openssh.sshd
+   sudo launchctl start com.openssh.sshd
+   ```
 
 ## <a name="powershell-remoting-example"></a>PowerShell 원격 기능 예제
 
@@ -174,67 +180,107 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
 #
 # Linux to Linux
 #
-PS /home/TestUser> $session = New-PSSession -HostName UbuntuVM1 -UserName TestUser
+$session = New-PSSession -HostName UbuntuVM1 -UserName TestUser
+```
+
+```output
 The authenticity of host 'UbuntuVM1 (9.129.17.107)' cannot be established.
 ECDSA key fingerprint is SHA256:2kCbnhT2dUE6WCGgVJ8Hyfu1z2wE4lifaJXLO7QJy0Y.
 Are you sure you want to continue connecting (yes/no)?
 TestUser@UbuntuVM1s password:
+```
 
-PS /home/TestUser> $session
+```powershell
+$session
+```
 
+```output
  Id Name            ComputerName    ComputerType    State         ConfigurationName     Availability
  -- ----            ------------    ------------    -----         -----------------     ------------
   1 SSH1            UbuntuVM1       RemoteMachine   Opened        DefaultShell             Available
+```
 
-PS /home/TestUser> Enter-PSSession $session
+```powershell
+Enter-PSSession $session
+```
 
+```output
 [UbuntuVM1]: PS /home/TestUser> uname -a
 Linux TestUser-UbuntuVM1 4.2.0-42-generic 49~14.04.1-Ubuntu SMP Wed Jun 29 20:22:11 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 
 [UbuntuVM1]: PS /home/TestUser> Exit-PSSession
+```
 
-PS /home/TestUser> Invoke-Command $session -ScriptBlock { Get-Process powershell }
+```powershell
+Invoke-Command $session -ScriptBlock { Get-Process powershell }
+```
 
+```output
 Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName                    PSComputerName
 -------  ------    -----      -----     ------     --  -- -----------                    --------------
       0       0        0         19       3.23  10635 635 powershell                     UbuntuVM1
       0       0        0         21       4.92  11033 017 powershell                     UbuntuVM1
       0       0        0         20       3.07  11076 076 powershell                     UbuntuVM1
+```
 
-
+```powershell
 #
 # Linux to Windows
 #
-PS /home/TestUser> Enter-PSSession -HostName WinVM1 -UserName PTestName
+Enter-PSSession -HostName WinVM1 -UserName PTestName
+```
+
+```output
 PTestName@WinVM1s password:
+```
 
+```powershell
 [WinVM1]: PS C:\Users\PTestName\Documents> cmd /c ver
+```
 
+```output
 Microsoft Windows [Version 10.0.10586]
+```
 
-[WinVM1]: PS C:\Users\PTestName\Documents>
-
+```powershell
 #
 # Windows to Windows
 #
 C:\Users\PSUser\Documents>pwsh.exe
+```
+
+```output
 PowerShell
 Copyright (c) Microsoft Corporation. All rights reserved.
+```
 
-PS C:\Users\PSUser\Documents> $session = New-PSSession -HostName WinVM2 -UserName PSRemoteUser
+```powershell
+$session = New-PSSession -HostName WinVM2 -UserName PSRemoteUser
+```
+
+```output
 The authenticity of host 'WinVM2 (10.13.37.3)' can't be established.
 ECDSA key fingerprint is SHA256:kSU6slAROyQVMEynVIXAdxSiZpwDBigpAF/TXjjWjmw.
 Are you sure you want to continue connecting (yes/no)?
 Warning: Permanently added 'WinVM2,10.13.37.3' (ECDSA) to the list of known hosts.
 PSRemoteUser@WinVM2's password:
-PS C:\Users\PSUser\Documents> $session
+```
 
+```powershell
+$session
+```
+
+```output
  Id Name            ComputerName    ComputerType    State         ConfigurationName     Availability
  -- ----            ------------    ------------    -----         -----------------     ------------
   1 SSH1            WinVM2          RemoteMachine   Opened        DefaultShell             Available
+```
 
+```powershell
+Enter-PSSession -Session $session
+```
 
-PS C:\Users\PSUser\Documents> Enter-PSSession -Session $session
+```output
 [WinVM2]: PS C:\Users\PSRemoteUser\Documents> $PSVersionTable
 
 Name                           Value
@@ -255,11 +301,18 @@ GitCommitId                    v6.0.0-alpha.17
 
 ### <a name="known-issues"></a>알려진 문제
 
-1. sudo 명령은 Linux 컴퓨터에 대한 원격 세션에서 작동하지 않습니다.
+- sudo 명령은 Linux 컴퓨터에 대한 원격 세션에서 작동하지 않습니다.
 
-[Windows용 PowerShell Core]: ../setup/installing-powershell-core-on-windows.md#msi
-[Linux용 PowerShell Core]: ../setup/installing-powershell-core-on-linux.md#ubuntu-1404
-[MacOS용 PowerShell Core]: ../setup/installing-powershell-core-on-macos.md
-[Win32 OpenSSH]: https://github.com/PowerShell/Win32-OpenSSH/releases
-[설치]: https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH
-[Ubuntu SSH]: https://help.ubuntu.com/lts/serverguide/openssh-server.html
+## <a name="see-also"></a>참고 항목
+
+[Windows용 PowerShell Core](../setup/installing-powershell-core-on-windows.md#msi)
+
+[Linux용 PowerShell Core](../setup/installing-powershell-core-on-linux.md#ubuntu-1404)
+
+[MacOS용 PowerShell Core](../setup/installing-powershell-core-on-macos.md)
+
+[Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)
+
+[설치](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+
+[Ubuntu SSH](https://help.ubuntu.com/lts/serverguide/openssh-server.html)

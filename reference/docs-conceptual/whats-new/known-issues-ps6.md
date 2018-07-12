@@ -2,12 +2,12 @@
 ms.date: 05/17/2018
 keywords: powershell,core
 title: PowerShell 6.0의 알려진 문제
-ms.openlocfilehash: 6ad1bcaf1de06f204b57eb8ce23b3053ba4a5b38
-ms.sourcegitcommit: 2d9cf1ccb9a653db7726a408ebcb65530dcb1522
+ms.openlocfilehash: 7fa6b9935ae75b62df72609b8a9ec16246b1c610
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/19/2018
-ms.locfileid: "34309614"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893691"
 ---
 # <a name="known-issues-for-powershell-60"></a>PowerShell 6.0의 알려진 문제
 
@@ -64,14 +64,17 @@ Linux/macOS의 PowerShell은 Microsoft Windows의 전체 .NET Framework 하위 �
 
 `Get-Content`를 사용하여 파일 내용을 파이프라인에 씁니다.
 
-기본 UTF-8 인코딩을 사용하는 경우 리디렉션된 출력에는 유니코드 BOM(바이트 순서 표시)이 포함됩니다. BOM을 예상하지 않는 유틸리티를 사용하거나 파일에 추가하는 경우 BOM으로 인해 문제가 발생합니다. `-Encoding Ascii`를 사용하여 ASCII 텍스트(유니코드가 아니므로 BOM이 포함되지 않음)를 씁니다. 참고: 모든 플랫폼에 걸쳐 PowerShell Core의 인코딩 환경 개선에 대한 피드백을 제공하려면 [RFC0020](https://github.com/PowerShell/PowerShell-RFC/issues/71)을 참조하세요. BOM 없이 UTF-8을 지원하기 위해 노력하고 있으며 여러 플랫폼에서 다양한 cmdlet의 인코딩 기본값이 변경될 수 있습니다.
+기본 UTF-8 인코딩을 사용하는 경우 리디렉션된 출력에는 유니코드 BOM(바이트 순서 표시)이 포함됩니다. BOM을 예상하지 않는 유틸리티를 사용하거나 파일에 추가하는 경우 BOM으로 인해 문제가 발생합니다. `-Encoding Ascii`를 사용하여 ASCII 텍스트(유니코드가 아니므로 BOM이 포함되지 않음)를 씁니다.
+
+> [!Note]
+> 모든 플랫폼에 걸쳐 PowerShell Core의 인코딩 환경 개선에 대한 피드백을 제공하려면 [RFC0020](https://github.com/PowerShell/PowerShell-RFC/issues/71)을 참조하세요. BOM 없이 UTF-8을 지원하기 위해 노력하고 있으며 여러 플랫폼에서 다양한 cmdlet의 인코딩 기본값이 변경될 수 있습니다.
 
 ### <a name="job-control"></a>작업 제어
 
 Linux/macOS의 PowerShell에는 작업 제어 지원이 없습니다.
 `fg` 및 `bg` 명령을 사용할 수 없습니다.
 
-작업 제어가 지원될 때까지, 모든 플랫폼에서 작동하는 [PowerShell 작업](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_jobs)을 사용할 수 있습니다.
+작업 제어가 지원될 때까지, 모든 플랫폼에서 작동하는 [PowerShell 작업](/powershell/module/microsoft.powershell.core/about/about_jobs)을 사용할 수 있습니다.
 
 ### <a name="remoting-support"></a>원격 지원
 
@@ -87,7 +90,7 @@ PowerShell Core는 모든 플랫폼(Windows, macOS 및 Linux)에서 SSH를 통�
 
 ### <a name="sudo-exec-and-powershell"></a>`sudo`, `exec` 및 PowerShell
 
-PowerShell은 대부분의 명령(예: Python 또는 Ruby)을 메모리에서 실행하므로 PowerShell 기본 제공 기능에서 바로 sudo를 사용할 수 없습니다. 물론, sudo에서 `powershell`을 실행할 수는 있습니다. sudo를 사용하여 PowerShell 내에서 PowerShell cmdlet을 실행해야 하는 경우(예: `sudo Set-Date 8/18/2016`), `sudo powershell Set-Date 8/18/2016`을 수행합니다. 마찬가지로, PowerShell 기본 제공 기능을 바로 실행할 수도 없습니다. 대신, `exec powershell item_to_exec`를 수행해야 합니다.
+PowerShell은 대부분의 명령(예: Python 또는 Ruby)을 메모리에서 실행하므로 PowerShell 기본 제공 기능에서 바로 sudo를 사용할 수 없습니다. 물론, sudo에서 `powershell`을 실행할 수는 있습니다. sudo를 사용하여 PowerShell 내에서 PowerShell cmdlet을 실행해야 하는 경우(예: `sudo `Set-Date` 8/18/2016`), `sudo powershell `Set-Date` 8/18/2016`를 수행합니다. 마찬가지로, PowerShell 기본 제공 기능을 바로 실행할 수도 없습니다. 대신, `exec powershell item_to_exec`를 수행해야 합니다.
 
 이 문제는 현재 #3232의 일부로 추적되고 있습니다.
 
@@ -99,45 +102,13 @@ PowerShell에서 일반적으로 사용할 수 있는 많은 명령(cmdlet)이 L
 
 다음 표에는 Linux/macOS의 PowerShell에서 작동하지 않는 것으로 알려진 명령이 나와 있습니다.
 
-<table>
-<th>명령</th><th>작동 상태</th><th>참고</th>
-<tr>
-<td>Get-Service, New-Service, Restart-Service, Resume-Service, Set-Service, Start-Service, Stop-Service, Suspend-Service
-<td>사용할 수 없음.
-<td>이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.
-</tr>
-<tr>
-<td>Get-Acl, Set-Acl
-<td>사용할 수 없음.
-<td>이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.
-</tr>
-<tr>
-<td>Get-AuthenticodeSignature, Set-AuthenticodeSignature
-<td>사용할 수 없음.
-<td>이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.
-</tr>
-<tr>
-<td>Wait-Process
-<td>사용 가능하지만 제대로 작동하지 않습니다. <td>예를 들어, `Start-Process gvim -PassThru | Wait-Process`는 작동하지 않고, 프로세스를 기다리지 못합니다.
-</tr>
-<tr>
-<td>Register-PSSessionConfiguration, Unregister-PSSessionConfiguration, Get-PSSessionConfiguration
-<td>사용 가능하지만 작동하지 않습니다.
-<td>명령이 작동하지 않음을 나타내는 오류 메시지를 씁니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.
-</tr>
-<tr>
-<td>Get-Event, New-Event, Register-EngineEvent, Register-WmiEvent, Remove-Event, Unregister-Event
-<td>사용 가능하지만, 사용할 수 있는 이벤트 원본이 없습니다.
-<td>PowerShell 이벤트 명령이 있지만, 명령과 함께 사용되는 대부분의 이벤트 원본(예: System.Timers.Timer)은 Linux에서 사용할 수 없으므로 알파 릴리스에서는 명령이 아무 소용도 없습니다.
-</tr>
-<tr>
-<td>Set-ExecutionPolicy
-<td>사용 가능하지만 작동하지 않습니다.
-<td>이 플랫폼에서 지원되지 않는다는 메시지를 반환합니다. 실행 정책은 사용자가 값비싼 실수를 하지 않도록 방지하는 사용자 중심 “안전 벨트”입니다. 보안 경계가 아닙니다.
-</tr>
-<tr>
-<td>New-PSSessionOption, New-PSTransportOption
-<td>사용 가능하지만 New-PSSession이 작동하지 않습니다.
-<td>New-PSSessionOption 및 New-PSTransportOption은 현재 New-PSSession이 작동하는 상태에서 작동하는지 확인되지 않았습니다.
-</tr>
-</table>
+|명령 |작동 상태 | 참고|
+|---------|------------------|------|
+|`Get-Service`, `New-Service`, `Restart-Service`, `Resume-Service`, `Set-Service`, `Start-Service`, `Stop-Service`, `Suspend-Service`|사용할 수 없음.|이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.|
+|`Get-Acl`, `Set-Acl`|사용할 수 없음.|이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.|
+|`Get-AuthenticodeSignature`, `Set-AuthenticodeSignature`|사용할 수 없음.|이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.|
+|`Wait-Process`|사용 가능하지만 제대로 작동하지 않습니다. |예를 들어 `Start-Process gvim -PassThru | Wait-Process`는 작동하지 않고, 프로세스를 기다리지 못합니다.|
+|`Register-PSSessionConfiguration`, `Unregister-PSSessionConfiguration`, `Get-PSSessionConfiguration`|사용 가능하지만 작동하지 않습니다.|명령이 작동하지 않음을 나타내는 오류 메시지를 씁니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.|
+|`Get-Event`, `New-Event`, `Register-EngineEvent`, `Register-WmiEvent`, `Remove-Event`, `Unregister-Event`|사용 가능하지만, 사용할 수 있는 이벤트 원본이 없습니다.|PowerShell 이벤트 명령이 있지만, 명령과 함께 사용되는 대부분의 이벤트 원본(예: System.Timers.Timer)은 Linux에서 사용할 수 없으므로 알파 릴리스에서는 명령이 아무 소용도 없습니다.|
+|`Set-ExecutionPolicy`|사용 가능하지만 작동하지 않습니다.|이 플랫폼에서 지원되지 않는다는 메시지를 반환합니다. 실행 정책은 사용자가 값비싼 실수를 하지 않도록 방지하는 사용자 중심 “안전 벨트”입니다. 보안 경계가 아닙니다.|
+|`New-PSSessionOption`, `New-PSTransportOption`|사용 가능하지만 `New-PSSession`은 작동하지 않습니다.|`New-PSSessionOption` 및 `New-PSTransportOption`은 현재 `New-PSSession`이 작동하는 상태에서 작동하는지 확인되지 않았습니다.|

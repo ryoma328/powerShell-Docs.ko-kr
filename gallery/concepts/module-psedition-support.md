@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 contributor: manikb
 keywords: gallery,powershell,cmdlet,psget
 title: 호환되는 PowerShell 버전이 있는 모듈
-ms.openlocfilehash: fbbfda2f913d54c3e69c0724fea4d977923279c1
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 653cfa82be9d0150da8d8765c96e35be99497262
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189519"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37892324"
 ---
 # <a name="modules-with-compatible-powershell-editions"></a>호환되는 PowerShell 버전이 있는 모듈
 
@@ -21,7 +21,9 @@ ms.locfileid: "34189519"
 
 ```powershell
 $PSVersionTable
+```
 
+```output
 Name                           Value
 ----                           -----
 PSVersion                      5.1.14300.1000
@@ -36,41 +38,54 @@ SerializationVersion           1.1.0.1
 
 ## <a name="module-authors-can-declare-their-modules-to-be-compatible-with-one-or-more-powershell-editions-using-the-compatiblepseditions-module-manifest-key-this-key-is-only-supported-on-powershell-51-or-later"></a>모듈 작성자는 CompatiblePSEditions 모듈 매니페스트 키를 사용하여 하나 이상의 PowerShell 에디션과 호환된다고 해당 모듈을 선언할 수 있습니다. 이 키는 PowerShell 5.1 이상에서만 지원됩니다.
 
-*참고* 모듈 매니페스트를 CompatiblePSEditions 키로 지정하면 낮은 버전의 PowerShell에서 가져올 수 없습니다.
+> [!NOTE]
+> 모듈 매니페스트를 CompatiblePSEditions 키로 지정하면 낮은 버전의 PowerShell에서 가져올 수 없습니다.
 
 ```powershell
 New-ModuleManifest -Path .\TestModuleWithEdition.psd1 -CompatiblePSEditions Desktop,Core -PowerShellVersion 5.1
 $ModuleInfo = Test-ModuleManifest -Path .\TestModuleWithEdition.psd1
 $ModuleInfo.CompatiblePSEditions
+```
+
+```output
 Desktop
 Core
+```
 
+```powershell
 $ModuleInfo | Get-Member CompatiblePSEditions
+```
 
+```output
    TypeName: System.Management.Automation.PSModuleInfo
 
 Name                 MemberType Definition
 ----                 ---------- ----------
 CompatiblePSEditions Property   System.Collections.Generic.IEnumerable[string] CompatiblePSEditions {get;}
-
 ```
 
 사용 가능한 모듈 목록을 가져올 경우 PowerShell 에디션별로 목록을 필터링할 수 있습니다.
 
 ```powershell
 Get-Module -ListAvailable -PSEdition Desktop
+```
 
+```output
     Directory: C:\Program Files\WindowsPowerShell\Modules
 
 
 ModuleType Version    Name                                ExportedCommands
 ---------- -------    ----                                ----------------
 Manifest   1.0        ModuleWithPSEditions
+```
 
+```powershell
 Get-Module -ListAvailable -PSEdition Core | % CompatiblePSEditions
+```
+
+```output
 Desktop
 Core
-
 ```
 
 ## <a name="module-authors-can-publish-a-single-module-targeting-to-either-or-both-powershell-editions-desktop-and-core"></a>모듈 작성자는 PowerShell 에디션(Desktop 및 Core) 중 하나 또는 둘 다를 대상으로 하는 단일 모듈을 게시할 수 있습니다.
@@ -162,8 +177,8 @@ $PSModule.OnRemove = {
 PS 5.1 이상에서 $PSEdition 전역 변수는 모듈 매니페스트 파일에서 허용됩니다.
 모듈 작성자는 이 변수를 사용하여 모듈 매니페스트 파일에 조건부 값을 지정할 수 있습니다. $PSEdition 변수는 제한된 언어 모드 또는 데이터 섹션에서 참조될 수 있습니다.
 
-*참고* 모듈 매니페스트를 CompatiblePSEditions 키로 지정하거나 $PSEdition 변수를 사용하면 낮은 버전의 PowerShell에서 가져올 수 없습니다.
-
+> [!NOTE]
+> 모듈 매니페스트를 CompatiblePSEditions 키로 지정하거나 $PSEdition 변수를 사용하면 낮은 버전의 PowerShell에서 가져올 수 없습니다.
 
 #### <a name="sample-module-manifest-file-with-compatiblepseditions-key"></a>CompatiblePSEditions 키가 있는 샘플 모듈 매니페스트 파일
 
@@ -203,9 +218,10 @@ else # Desktop
 #### <a name="module-contents"></a>모듈 콘텐츠
 
 ```powershell
+dir -Recurse
+```
 
-PS C:\Users\manikb\Documents\WindowsPowerShell\Modules\ModuleWithEditions> dir -Recurse
-
+```output
     Directory: C:\Users\manikb\Documents\WindowsPowerShell\Modules\ModuleWithEditions
 
 Mode                LastWriteTime         Length Name
@@ -245,9 +261,10 @@ Find-Module -Tag PSEdition_Core
 
 ```
 
-
 ## <a name="more-details"></a>자세한 내용
 
-- [PSEditions가 있는 스크립트](script-psedition-support.md)
-- [PowerShellGallery의 PSEditions 지원](../how-to/finding-items/searching-by-psedition.md)
-- [모듈 매니페스트 업데이트] (/powershell/module/powershellget/update-modulemanifest)
+[PSEditions가 있는 스크립트](script-psedition-support.md)
+
+[PowerShellGallery의 PSEditions 지원](../how-to/finding-items/searching-by-psedition.md)
+
+[모듈 매니페스트 업데이트](/powershell/module/powershellget/update-modulemanifest)

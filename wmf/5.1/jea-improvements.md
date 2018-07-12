@@ -4,12 +4,12 @@ ms.topic: conceptual
 keywords: wmf,powershell,setup
 contributor: ryanpu
 title: JEA(Just Enough Administration)에 대한 개선 사항
-ms.openlocfilehash: 47a58a6fae9f3a41ec527ec1f77ac1c196336669
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 79271e77a539764e7a18842efd919413cdc8ab9f
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34222420"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37892722"
 ---
 # <a name="improvements-to-just-enough-administration-jea"></a>JEA(Just Enough Administration)에 대한 개선 사항
 
@@ -18,7 +18,7 @@ ms.locfileid: "34222420"
 이제 원격으로 JEA 끝점으로나 JEA 끝점에서 파일을 복사할 수 있으며 연결하는 사용자는 시스템에서 *어떤* 파일도 복사할 수 없습니다.
 이것이 가능하려면 연결하는 사용자에 대해 사용자 드라이브를 탑재하도록 PSSC 파일을 구성합니다.
 사용자 드라이브는 연결하는 각 사용자에게 고유하고 세션 간에 유지되는 새 PSDrive입니다.
-Copy-Item을 사용하여 JEA 세션으로나 JEA 세센에서 파일을 복사하는 경우에는 사용자 드라이브에만 액세스할 수 있습니다.
+`Copy-Item`을 사용하여 JEA 세션으로나 JEA 세센에서 파일을 복사하는 경우에는 사용자 드라이브에만 액세스할 수 있습니다.
 다른 PSDrive로 파일을 복사하려고 하면 실패합니다.
 
 JEA 세션 구성 파일에서 사용자 드라이브를 설정하려면 다음과 같은 새 필드를 사용합니다.
@@ -30,7 +30,7 @@ UserDriveMaximumSize = 10485760    # 10 MB
 
 The folder backing the user drive will be created at(사용자 드라이브를 지원하는 폴더가 생성되는 위치)`$env:LOCALAPPDATA\Microsoft\Windows\PowerShell\DriveRoots\DOMAIN_USER`
 
-사용자 드라이브를 활용하고 사용자 드라이브를 노출하도록 구성된 JEA 끝점으로 또는 JEA 끝점에서 파일을 복사하려면 Copy-Item에서 `-ToSession` 및 `-FromSession` 매개 변수를 사용합니다.
+사용자 드라이브를 활용하고 사용자 드라이브를 노출하도록 구성된 JEA 끝점으로 또는 JEA 끝점에서 파일을 복사하려면 `Copy-Item`에서 `-ToSession` 및 `-FromSession` 매개 변수를 사용합니다.
 
 ```powershell
 # Connect to the JEA endpoint
@@ -64,7 +64,8 @@ GroupManagedServiceAccount = 'myGMSAforJEA'
 RunAsVirtualAccount = $false
 ```
 
-> **참고:** 그룹 관리 서비스 계정은 격리나 제한된 범위의 가상 계정을 제공하지 않습니다.
+> [!NOTE]
+> 그룹 관리 서비스 계정은 격리나 제한된 범위의 가상 계정을 제공하지 않습니다.
 > 연결하는 모든 사용자는 동일한 gMSA ID를 공유하므로 기업 전체에서 권한이 있을 수 있습니다.
 > gMSA를 사용할 때는 주의해야 하며 항상 가능한 경우 로컬 컴퓨터로 제한된 가상 계정을 선택하는 것이 좋습니다.
 
@@ -91,5 +92,6 @@ RequiredGroups = @{ And = 'elevated-jea', @{ Or = '2FA-logon', 'smartcard-logon'
 ```
 
 ## <a name="fixed-virtual-accounts-are-now-supported-on-windows-server-2008-r2"></a>수정됨: 이제 Windows Server 2008 R2에서 가상 계정이 지원됨
+
 WMF 5.1에서는 이제 Windows Server 2008 R2에서 가상 계정을 사용할 수 있으므로 Windows Server 2008 R2부터 2016까지, 구성 및 기능 패리티를 일관되게 설정할 수 있습니다.
 Windows 7에서 JEA를 사용할 경우에는 가상 계정이 계속 지원되지 않습니다.

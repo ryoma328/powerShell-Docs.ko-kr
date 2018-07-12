@@ -22,19 +22,19 @@ Windows, macOS 및 Linux의 현대식 워크로드의 경우 다음을 참조하
 
 - **macOS**: [macOS에서 VS Code 실행](https://code.visualstudio.com/docs/setup/mac) 페이지의 설치 지침을 따릅니다.
 
-> [!IMPORTANT]
-> macOS에서 PowerShell 확장이 제대로 작동하려면 OpenSSL을 설치해야 합니다.
-> 이를 위한 가장 쉬운 방법은 [Homebrew](http://brew.sh/)를 설치한 후 `brew install openssl`을 실행하는 것입니다.
-> 이제 VS Code는 PowerShell 확장을 로드할 수 있습니다.
+  > [!IMPORTANT]
+  > macOS에서 PowerShell 확장이 제대로 작동하려면 OpenSSL을 설치해야 합니다.
+  > 이를 위한 가장 쉬운 방법은 [Homebrew](http://brew.sh/)를 설치한 후 `brew install openssl`을 실행하는 것입니다.
+  > 이제 VS Code는 PowerShell 확장을 로드할 수 있습니다.
 
 - **Windows**: [Windows에서 VS Code 실행](https://code.visualstudio.com/docs/setup/windows) 페이지의 설치 지침을 따릅니다.
 
 ### <a name="2-installing-powershell-extension"></a>2. PowerShell 확장 설치
 
 - 다음과 같은 방법으로 Visual Studio Code 앱을 시작합니다.
-    - **Windows**: PowerShell 세션에서 `code` 입력
-    - **Linux**: 터미널에서 `code` 입력
-    - **macOS**: 터미널에서 `code` 입력
+  - **Windows**: PowerShell 세션에서 `code` 입력
+  - **Linux**: 터미널에서 `code` 입력
+  - **macOS**: 터미널에서 `code` 입력
 
 - **Ctrl+P**(Mac에서는 **Cmd+P**)를 눌러 **Quick Open**을 시작합니다.
 - Quick Open에서 `ext install powershell`을 입력하고 **Enter** 키를 누릅니다.
@@ -58,10 +58,10 @@ Visual Studio Code를 종료하려면 **파일->종료**를 누릅니다.
 Visual Studio Code에 설치된 특정 버전의 PowerShell을 사용하려면 사용자 설정 파일에 새로운 변수를 추가해야 합니다.
 
 1. **파일 -> 기본 설정 -> 설정**을 클릭합니다.
-1. 두 개의 편집기 창이 표시됩니다.
+2. 두 개의 편집기 창이 표시됩니다.
    맨 오른쪽 창(`settings.json`)에서 두 개의 중괄호(`{` 및 `}`) 사이에 아래에서 사용 중인 OS에 해당하는 설정을 삽입하고 *<version>* 을 설치된 PowerShell 버전으로 바꿉니다.
 
-  ```json
+   ```json
     // On Windows:
     "powershell.powerShellExePath": "c:/Program Files/PowerShell/<version>/pwsh.exe"
 
@@ -70,9 +70,10 @@ Visual Studio Code에 설치된 특정 버전의 PowerShell을 사용하려면 �
 
     // On macOS:
     "powershell.powerShellExePath": "/usr/local/microsoft/powershell/<version>/pwsh"
-  ```
-1. 설정을 원하는 PowerShell 실행 파일에 대한 경로로 바꿉니다.
-1. 설정 파일을 저장하고 Visual Studio Code를 다시 시작합니다.
+   ```
+
+3. 설정을 원하는 PowerShell 실행 파일에 대한 경로로 바꿉니다.
+4. 설정 파일을 저장하고 Visual Studio Code를 다시 시작합니다.
 
 #### <a name="configuration-settings-for-visual-studio-code"></a>Visual Studio Code에 대한 구성 파일
 
@@ -112,19 +113,19 @@ Visual Studio Code 버전 1.9부터 PowerShell 스크립트가 포함된 폴더�
 - 디버거에서 대화형 세션 시작
 - PowerShell 호스트 프로세스에 디버거 연결
 
-디버그 구성 파일을 만들려면 다음 단계를 수행합니다.
+  디버그 구성 파일을 만들려면 다음 단계를 수행합니다.
 
-1. **Ctrl+Shift+D**(Mac에서는 **Cmd+Shift+D**)를 눌러 **디버그** 보기를 엽니다.
-1. 도구 모음에서 **구성** 기어 아이콘을 누릅니다.
-1. Visual Studio Code에서 **환경 선택**에 대한 메시지가 표시됩니다.
-   **PowerShell**을 선택합니다.
+  1. **Ctrl+Shift+D**(Mac에서는 **Cmd+Shift+D**)를 눌러 **디버그** 보기를 엽니다.
+  2. 도구 모음에서 **구성** 기어 아이콘을 누릅니다.
+  3. Visual Studio Code에서 **환경 선택**에 대한 메시지가 표시됩니다.
+  **PowerShell**을 선택합니다.
 
-   그러면 Visual Studio Code에서 작업 영역 폴더의 루트에 ".vscode\launch.json"이라는 파일과 디렉터리를 만듭니다.
-   여기에 디버그 구성이 저장됩니다. 파일이 Git 리포지토리에 있을 경우 일반적으로 launch.json 파일을 커밋하는 것이 좋습니다.
-   launch.json 파일의 내용은 다음과 같습니다.
+  그러면 Visual Studio Code에서 작업 영역 폴더의 루트에 ".vscode\launch.json"이라는 파일과 디렉터리를 만듭니다.
+  여기에 디버그 구성이 저장됩니다. 파일이 Git 리포지토리에 있을 경우 일반적으로 launch.json 파일을 커밋하는 것이 좋습니다.
+  launch.json 파일의 내용은 다음과 같습니다.
 
-```json
-{
+  ```json
+  {
     "version": "0.2.0",
     "configurations": [
         {
@@ -149,19 +150,21 @@ Visual Studio Code 버전 1.9부터 PowerShell 스크립트가 포함된 폴더�
             "cwd": "${workspaceRoot}"
         }
     ]
-}
-```
+  }
+  ```
 
-이는 일반적인 디버그 시나리오를 나타냅니다.
-그러나 편집기에서 이 파일을 열면 **구성 추가...** 단추가 표시됩니다.
-이 단추를 눌러 더 많은 PowerShell 디버그 구성을 추가할 수 있습니다. 한 가지 간편한 구성은 **PowerShell: 스크립트 시작**입니다.
-이 구성을 사용하면 편집기에서 현재 어떤 파일이 활성화되어 있는지 관계없이 F5 키를 누를 때마다 시작되어야 하는 선택적 인수를 갖는 특정 파일을 지정할 수 있습니다.
+  이는 일반적인 디버그 시나리오를 나타냅니다.
+  그러나 편집기에서 이 파일을 열면 **구성 추가...** 단추가 표시됩니다.
+  이 단추를 눌러 더 많은 PowerShell 디버그 구성을 추가할 수 있습니다. 한 가지 간편한 구성은 **PowerShell: 스크립트 시작**입니다.
+  이 구성을 사용하면 편집기에서 현재 어떤 파일이 활성화되어 있는지 관계없이 F5 키를 누를 때마다 시작되어야 하는 선택적 인수를 갖는 특정 파일을 지정할 수 있습니다.
 
-디버그 구성이 설정되면 **디버그** 보기의 도구 모음에 있는 디버그 구성 드롭다운에서 항목을 선택하여 디버그 세션 중에 사용할 구성을 선택할 수 있습니다.
+  디버그 구성이 설정되면 **디버그** 보기의 도구 모음에 있는 디버그 구성 드롭다운에서 항목을 선택하여 디버그 세션 중에 사용할 구성을 선택할 수 있습니다.
 
-Visual Studio Code에 대한 PowerShell 확장 사용을 시작하는 데 도움이 되는 몇 가지 블로그가 있습니다.
+  Visual Studio Code에 대한 PowerShell 확장 사용을 시작하는 데 도움이 되는 몇 가지 블로그가 있습니다.
 
-- Visual Studio Code: [PowerShell 확장][ps-extension]
+Visual Studio Code:
+
+- [PowerShell 확장][ps-extension]
 - [Visual Studio Code에서 PowerShell 스크립트 작성 및 디버깅][debug]
 - [Visual Studio Code 디버깅 지침][vscode-guide]
 - [Visual Studio Code에서 PowerShell 디버깅][ps-vscode]
@@ -176,15 +179,15 @@ Visual Studio Code에 대한 PowerShell 확장 사용을 시작하는 데 도움
 [install-pscore-macos]:  ../../setup/Installing-PowerShell-Core-on-macOS.md
 [install-pscore-windows]: ../../setup/Installing-PowerShell-Core-on-Windows.md
 [install-winps]: ../../setup/Installing-Windows-PowerShell.md
-[ps-extension]:https://blogs.msdn.microsoft.com/cdndevs/2015/12/11/visual-studio-code-powershell-extension/
-[debug]:https://blogs.msdn.microsoft.com/powershell/2015/11/16/announcing-powershell-language-support-for-visual-studio-code-and-more/
-[vscode-guide]:https://johnpapa.net/debugging-with-visual-studio-code/
-[ps-vscode]:https://github.com/PowerShell/vscode-powershell/tree/master/examples
-[getting-started]:https://blogs.technet.microsoft.com/heyscriptingguy/2016/12/05/get-started-with-powershell-development-in-visual-studio-code/
-[editing-part1]:https://blogs.technet.microsoft.com/heyscriptingguy/2017/01/11/visual-studio-code-editing-features-for-powershell-development-part-1/
-[editing-part2]:https://blogs.technet.microsoft.com/heyscriptingguy/2017/01/12/visual-studio-code-editing-features-for-powershell-development-part-2/
-[debugging-part1]:https://blogs.technet.microsoft.com/heyscriptingguy/2017/02/06/debugging-powershell-script-in-visual-studio-code-part-1/
-[debugging-part2]:https://blogs.technet.microsoft.com/heyscriptingguy/2017/02/13/debugging-powershell-script-in-visual-studio-code-part-2/
+[ps-extension]: https://blogs.msdn.microsoft.com/cdndevs/2015/12/11/visual-studio-code-powershell-extension/
+[debug]: https://blogs.msdn.microsoft.com/powershell/2015/11/16/announcing-powershell-language-support-for-visual-studio-code-and-more/
+[vscode-guide]: https://johnpapa.net/debugging-with-visual-studio-code/
+[ps-vscode]: https://github.com/PowerShell/vscode-powershell/tree/master/examples
+[getting-started]: https://blogs.technet.microsoft.com/heyscriptingguy/2016/12/05/get-started-with-powershell-development-in-visual-studio-code/
+[editing-part1]: https://blogs.technet.microsoft.com/heyscriptingguy/2017/01/11/visual-studio-code-editing-features-for-powershell-development-part-1/
+[editing-part2]: https://blogs.technet.microsoft.com/heyscriptingguy/2017/01/12/visual-studio-code-editing-features-for-powershell-development-part-2/
+[debugging-part1]: https://blogs.technet.microsoft.com/heyscriptingguy/2017/02/06/debugging-powershell-script-in-visual-studio-code-part-1/
+[debugging-part2]: https://blogs.technet.microsoft.com/heyscriptingguy/2017/02/13/debugging-powershell-script-in-visual-studio-code-part-2/
 
 ## <a name="powershell-extension-for-visual-studio-code"></a>Visual Studio Code용 PowerShell 확장
 

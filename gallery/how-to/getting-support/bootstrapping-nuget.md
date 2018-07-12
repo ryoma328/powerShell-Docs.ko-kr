@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 contributor: manikb
 keywords: gallery,powershell,cmdlet,psget
 title: NuGet 부트스트랩
-ms.openlocfilehash: f707e23737361ee7f82a16150402c9e719ee0ae1
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: a935b6862f3912a4b419ca00b4d4dd5aab9c20fc
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34221802"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37892704"
 ---
 # <a name="bootstrap-the-nuget-provider-and-nugetexe"></a>NuGet 공급자 및 NuGet.exe 부트스트래프
 
@@ -19,13 +19,16 @@ PowerShellGet에는 NuGet 공급자와 NuGet.exe 부트스트랩을 함께 처�
 두 가지 경우 모두 프롬프트 메시지가 하나만 표시되어야 합니다.
 컴퓨터가 인터넷에 연결되어 있지 않으면 사용자나 관리자는 연결이 끊긴 컴퓨터에 NuGet 공급자 및/또는 NuGet.exe 파일의 신뢰할 수 있는 인스턴스를 복사해야 합니다.
 
->**참고**: 버전 6부터는 NuGet 공급자가 PowerShell 설치에 포함됩니다. [http://github.com/powershell/powershell](http://github.com/powershell/powershell)
+> [!NOTE]
+> 버전 6부터는 NuGet 공급자가 PowerShell 설치에 포함됩니다. [http://github.com/powershell/powershell](http://github.com/powershell/powershell)
 
 ## <a name="resolving-error-when-the-nuget-provider-has-not-been-installed-on-a-machine-that-is-internet-connected"></a>인터넷에 연결된 컴퓨터에 NuGet 공급자가 설치되지 않은 경우의 오류 해결
 
 ```powershell
-PS> Find-Module -Repository PSGallery -Verbose -Name Contoso
+Find-Module -Repository PSGallery -Verbose -Name Contoso
+```
 
+```output
 NuGet provider is required to continue
 PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
 'C:\Users\manikb\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import the NuGet provider
@@ -37,9 +40,13 @@ At line:1 char:1
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : InvalidOperation: (:) [Find-Module], InvalidOperationException
    + FullyQualifiedErrorId : CouldNotInstallNuGetProvider,Find-Module
+```
 
-PS> Find-Module -Repository PSGallery -Verbose -Name Contoso
+```powershell
+Find-Module -Repository PSGallery -Verbose -Name Contoso
+```
 
+```output
 NuGet provider is required to continue
 PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
 'C:\Users\manikb\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import the NuGet provider
@@ -55,8 +62,10 @@ Version    Name                                Type       Repository           D
 ## <a name="resolving-error-when-the-nuget-provider-is-available-and-nugetexe-is-not-available-during-the-publish-operation-on-a-machine-that-is-internet-connected"></a>인터넷에 연결된 컴퓨터에서 게시 작업을 수행하는 중에 NuGet 공급자는 사용할 수 있는데 NuGet.exe는 사용할 수 없는 경우의 오류 해결
 
 ```powershell
-PS> Publish-Module -Name Contoso -Repository PSGallery -Verbose
+Publish-Module -Name Contoso -Repository PSGallery -Verbose
+```
 
+```output
 NuGet.exe is required to continue
 PowerShellGet requires NuGet.exe to publish an item to the NuGet-based repositories. NuGet.exe must be available under one of the paths specified in PATH environment variable value. Do you want PowerShellGet to install NuGet.exe now?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): N
@@ -67,8 +76,13 @@ At line:1 char:1
     + CategoryInfo          : InvalidOperation: (:) [Publish-Module], InvalidOperationException
     + FullyQualifiedErrorId : CouldNotInstallNuGetExe,Publish-Module
 
-PS> Publish-Module -Name Contoso -Repository PSGallery -Verbose
+```
 
+```powershell
+Publish-Module -Name Contoso -Repository PSGallery -Verbose
+```
+
+```output
 NuGet.exe is required to continue
 PowerShellGet requires NuGet.exe to publish an item to the NuGet-based repositories. NuGet.exe must be available under one of the paths specified in PATH environment variable value. Do you want PowerShellGet to install NuGet.exe now?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -79,8 +93,10 @@ VERBOSE: Successfully published module 'Contoso' to the module publish location 
 ## <a name="resolving-error-when-both-nuget-provider-and-nugetexe-are-not-available-during-the-publish-operation-on-a-machine-that-is-internet-connected"></a>인터넷에 연결된 컴퓨터에서 게시 작업을 수행하는 중에 NuGet 공급자와 NuGet.exe를 모두 사용할 수 없는 경우의 오류 해결
 
 ```powershell
-PS> Publish-Module -Name Contoso -Repository PSGallery -Verbose
+Publish-Module -Name Contoso -Repository PSGallery -Verbose
+```
 
+```output
 NuGet.exe and NuGet provider are required to continue
 PowerShellGet requires NuGet.exe and NuGet provider version '2.8.5.201' or newer to interact with the NuGet-based repositories. Do you want PowerShellGet to install both NuGet.exe and NuGet provider now?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): N
@@ -92,8 +108,13 @@ At line:1 char:1
     + CategoryInfo          : InvalidOperation: (:) [Publish-Module], InvalidOperationException
     + FullyQualifiedErrorId : CouldNotInstallNuGetBinaries,Publish-Module
 
-PS> Publish-Module -Name Contoso -Repository PSGallery -Verbose
+```
 
+```powershell
+Publish-Module -Name Contoso -Repository PSGallery -Verbose
+```
+
+```output
 NuGet.exe and NuGet provider are required to continue
 PowerShellGet requires NuGet.exe and NuGet provider version '2.8.5.201' or newer to interact with the NuGet-based repositories. Do you want PowerShellGet to install both NuGet.exe and NuGet provider now?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -116,48 +137,50 @@ C:\Program Files\PackageManagement\ProviderAssemblies\
 
 NuGet 공급자의 폴더/파일 구조는 다음과 같습니다(버전 번는 다를 수 있음).
 
-NuGet<br>
---2.8.5.208<br>
+```
+NuGet
+--2.8.5.208
 ----Microsoft.PackageManagement.NuGetProvider.dll
+```
 
 신뢰할 수 있는 프로세스를 사용하여 오프라인 컴퓨터에 이러한 폴더와 파일을 복사합니다.
 
 ## <a name="manually-bootstrapping-nugetexe-to-support-publish-operations-on-a-machine-that-is-not-connected-to-the-internet"></a>인터넷에 연결되지 않은 컴퓨터에서 게시 작업을 지원하도록 수동으로 NuGet.exe 부트스트래핑
 
-컴퓨터를 사용하여 *Publish-Module* 또는 *Publish-Script* cmdlet을 통해 개인 갤러리에 모듈이나 스크립트를 게시하려는 경우에는 NuGet 공급자를 수동으로 부트스트래핑하는 프로세스 외에 NuGet.exe 이진 실행 파일도 필요합니다.
+컴퓨터를 사용하여 `Publish-Module` 또는 `Publish-Script` cmdlet을 통해 개인 갤러리에 모듈이나 스크립트를 게시하려는 경우에는 NuGet 공급자를 수동으로 부트스트래핑하는 프로세스 외에 NuGet.exe 이진 실행 파일도 필요합니다.
+
 격리된 환경을 지원하는 비공개 갤러리를 사용할 수 있는 경우에 이 시나리오를 가장 흔히 사용합니다.
 두 가지 옵션을 통해 NuGet.exe 파일을 가져올 수 있습니다.
 
 첫 번째 옵션은 인터넷에 연결된 컴퓨터를 부트스트래핑하고 신뢰할 수 있는 프로세스를 사용하여 오프라인 컴퓨터에 파일을 복사하는 것입니다.
 인터넷에 연결된 컴퓨터를 부트스트래핑하고 나면 NuGet.exe 이진 파일이 두 폴더 중 하나에 저장됩니다.
 
-*Publish-Module* 또는 *Publish-Script* cmdlet을 관리자 권한으로 실행한 경우
+`Publish-Module` 또는 `Publish-Script` cmdlet을 관리자 권한으로 실행한 경우
 
-```
+```powershell
 $env:ProgramData\Microsoft\Windows\PowerShell\PowerShellGet
 ```
 
 cmdlet을 관리자 권한이 없는 사용자로 실행한 경우
 
-```
+```powershell
 $env:userprofile\AppData\Local\Microsoft\Windows\PowerShell\PowerShellGet\
 ```
 
-두 번째 옵션은 NuGet.Org 웹 사이트 [https://dist.nuget.org/index.html](https://dist.nuget.org/index.html)에서 NuGet.exe를 다운로드하는 것입니다.<br>
-프로덕션 컴퓨터용 NuGet 버전을 선택할 때는 "권장" 레이블이 있는 2.8.5.208 이상 버전을 선택해야 합니다.
+두 번째 옵션은 NuGet.Org 웹 사이트([https://dist.nuget.org/index.html](https://www.nuget.org/downloads))에서 NuGet.exe를 다운로드하는 것입니다. 프로덕션 컴퓨터용 NuGet 버전을 선택할 때는 "권장" 레이블이 있는 2.8.5.208 이상 버전을 선택해야 합니다.
 브라우저를 사용하여 다운로드한 파일의 경우 차단을 해제해야 합니다.
-*Unblock-File* cmdlet을 사용하여 차단을 해제할 수 있습니다.
+`Unblock-File` cmdlet을 사용하여 차단을 해제할 수 있습니다.
 
-두 가지 방법 중 어떤 쪽을 사용하든 *$env:path*의 모든 위치에 NuGet.exe 파일을 복사할 수 있지만, 표준 위치는 다음과 같습니다.
+두 가지 방법 중 어떤 쪽을 사용하든 `$env:path`의 모든 위치에 NuGet.exe 파일을 복사할 수 있지만, 표준 위치는 다음과 같습니다.
 
-모든 사용자가 *Publish-Module* 및 *Publish-Script* cmdlet을 사용할 수 있도록 실행 파일을 제공하려는 경우
+모든 사용자가 `Publish-Module` 및 `Publish-Script` cmdlet을 사용할 수 있도록 실행 파일을 제공하려는 경우
 
-```
+```powershell
 $env:ProgramData\Microsoft\Windows\PowerShell\PowerShellGet
 ```
 
 특정 사용자에게만 실행 파일을 제공하려는 경우(해당 사용자의 프로필 내 위치에만 복사)
 
-```
+```powershell
 $env:userprofile\AppData\Local\Microsoft\Windows\PowerShell\PowerShellGet\
 ```

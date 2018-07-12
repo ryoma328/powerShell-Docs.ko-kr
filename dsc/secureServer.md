@@ -2,16 +2,16 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: 끌어오기 서버 모범 사례
-ms.openlocfilehash: 1efc016df6882fa962f59dfd3e53eaa6d6b0c121
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 04ad6940f443bc23d5e2347952b2d173aceac408
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190301"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893453"
 ---
 # <a name="pull-server-best-practices"></a>끌어오기 서버 모범 사례
 
->적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0
+적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0
 
 > [!IMPORTANT]
 > 끌어오기 서버(Windows 기능 *DSC-Service*)는 Windows Server의 지원되는 구성 요소이지만 새로운 기능을 제공할 계획은 없습니다. 관리되는 클라우드를 [Azure Automation DSC](/azure/automation/automation-dsc-getting-started)(Windows Server에 끌어오기 서버 이외의 기능 포함) 또는 [여기](pullserver.md#community-solutions-for-pull-service)에 나열된 커뮤니티 솔루션 중 하나로 전환하기 시작하는 것이 좋습니다.
@@ -27,27 +27,32 @@ ms.locfileid: "34190301"
 ## <a name="abstract"></a>요약
 
 이 문서는 Windows PowerShell 필요한 상태 구성 끌어오기 서버 구현을 준비 중인 사용자에게 공식 지침을 제공하기 위해 작성되었습니다. 끌어오기 서버는 몇 분만에 배포할 수 있는 간단한 서비스입니다. 이 문서는 배포 시 사용할 수 있는 기술적인 방법 지침도 제공하지만, 모범 사례와 배포 전 고려할 사항을 참조할 수 있다는 점에서 유용합니다.
-이 문서를 읽으려면 DSC에 대한 기본 사항과 DSC 배포에 포함되는 구성 요소를 설명하는 용어를 잘 알고 있어야 합니다. 자세한 내용은 [Windows PowerShell 필요한 상태 구성 개요](https://technet.microsoft.com/library/dn249912.aspx) 항목을 참조하세요.
+이 문서를 읽으려면 DSC에 대한 기본 사항과 DSC 배포에 포함되는 구성 요소를 설명하는 용어를 잘 알고 있어야 합니다. 자세한 내용은 [Windows PowerShell 필요한 상태 구성 개요](/powershell/dsc/overview) 항목을 참조하세요.
 DSC는 클라우드 주기에 따라 개선될 것이므로 끌어오기 서버를 비롯한 기본 기술도 발전하고 새로운 기능을 도입할 것으로 예상됩니다. 이 문서의 부록에 포함된 버전 테이블에서는 이전 릴리스에 대한 참조와 진취적인 디자인을 권장하기 위한 미래에 대비한 솔루션에 대한 참조를 제공합니다.
 
 이 문서의 두 가지 주요 섹션은 다음과 같습니다.
 
- - 구성 계획
- - 설치 가이드
+- 구성 계획
+- 설치 가이드
 
 ### <a name="versions-of-the-windows-management-framework"></a>Windows Management Framework의 버전
+
 이 문서의 정보는 Windows Management Framework 5.0에 적용됩니다. 끌어오기 서버를 배포 및 운영하는 데 WMF 5.0이 필요하지는 않지만 이 문서에서는 버전 5.0을 주로 설명합니다.
 
 ### <a name="windows-powershell-desired-state-configuration"></a>Windows PowerShell 필요한 상태 구성
-DSC(필요한 상태 구성)는 CIM(Common Information Model)을 설명하는 MOF(Managed Object Format)라는 산업 구문을 사용하여 구성 데이터를 배포 및 관리할 수 있는 관리 플랫폼입니다. 오픈 소스 프로젝트인 OMI(Open Management Infrastructure)는 Linux 및 네트워크 하드웨어 운영 체제를 비롯한 다양한 플랫폼에서 이러한 표준을 성공적으로 개발하기 위해 마련되었습니다. 자세한 내용은 [DMTF page linking to MOF specifications](http://dmtf.org/standards/cim)(MOF 사양에 연결되는 DMTF 페이지) 및 [OMI Documents and Source](https://collaboration.opengroup.org/omi/documents.php)(OMI 문서 및 원본)을 참조하세요.
+
+DSC(필요한 상태 구성)는 CIM(Common Information Model)을 설명하는 MOF(Managed Object Format)라는 산업 구문을 사용하여 구성 데이터를 배포 및 관리할 수 있는 관리 플랫폼입니다. 오픈 소스 프로젝트인 OMI(Open Management Infrastructure)는 Linux 및 네트워크 하드웨어 운영 체제를 비롯한 다양한 플랫폼에서 이러한 표준을 성공적으로 개발하기 위해 마련되었습니다. 자세한 내용은 [DMTF page linking to MOF specifications](https://www.dmtf.org/standards/cim)(MOF 사양에 연결되는 DMTF 페이지) 및 [OMI Documents and Source](https://collaboration.opengroup.org/omi/documents.php)(OMI 문서 및 원본)을 참조하세요.
 
 Windows PowerShell에서는 선언적 구성을 만들고 관리하는 데 사용할 수 있는 필요한 상태 구성의 언어 확장 집합을 제공합니다.
 
 ### <a name="pull-server-role"></a>끌어오기 서버 역할
+
 끌어오기 서버는 구성을 저장하여 대상 노드에서 액세스할 수 있게 하는 중앙 집중식 서비스를 제공합니다.
 
 끌어오기 서버 역할은 웹 서버 인스턴스나 SMB 파일 공유로 배포할 수 있습니다. 웹 서버 기능에는 OData 인터페이스가 포함되며 필요에 따라 구성이 적용될 때 대상 노드가 성공 또는 실패에 대한 확인을 다시 보고하는 기능도 포함될 수 있습니다. 이 기능은 많은 수의 대상 노드가 있는 환경에서 유용합니다.
-대상 노드(클라이언트라고도 함)가 끌어오기 서버를 가리키도록 구성한 후 최신 구성 데이터 및 모든 필수 스크립트가 다운로드되어 적용됩니다. 이 작업은 일회성 배포 또는 되풀이 작업으로 수행될 수 있으므로 끌어오기 서버가 대규모 변경을 관리하기 위한 중요한 자산도 됩니다. 자세한 내용은 [Windows PowerShell 필요한 상태 구성 끌어오기 서버](https://technet.microsoft.com/library/dn249913.aspx) 및 [밀어넣기 및 끌어오기 구성 모드](https://technet.microsoft.com/library/dn249913.aspx)를 참조하세요.
+대상 노드(클라이언트라고도 함)가 끌어오기 서버를 가리키도록 구성한 후 최신 구성 데이터 및 모든 필수 스크립트가 다운로드되어 적용됩니다. 이 작업은 일회성 배포 또는 되풀이 작업으로 수행될 수 있으므로 끌어오기 서버가 대규모 변경을 관리하기 위한 중요한 자산도 됩니다. 자세한 내용은 [Windows PowerShell 필요한 상태 구성 끌어오기 서버](/powershell/dsc/pullServer) 및
+
+[밀어넣기 및 끌어오기 구성 모드](/powershell/dsc/pullServer)를 참조하세요.
 
 ## <a name="configuration-planning"></a>구성 계획
 
@@ -64,20 +69,20 @@ DSC 끌어오기 서버를 배포하려면 Windows 업데이트에서 최신 콘
 ### <a name="wmf"></a>WMF
 
 Windows Server 2012 R2에는 DSC 서비스라는 기능이 포함되어 있습니다. DSC 서비스 기능은 OData 끝점을 지원하는 이진 파일을 비롯한 끌어오기 서버 기능을 제공합니다.
-WMF는 Windows Server에 포함되어 있으며 Windows Server 릴리스 사이에 빠른 주기로 업데이트됩니다. [WMF 5.0의 새 버전](http://aka.ms/wmf5latest)에는 DSC 서비스 기능에 대한 업데이트가 포함될 수 있습니다. 따라서 WMF의 최신 릴리스를 다운로드하고 릴리스 정보를 검토하여 해당 릴리스에 DSC 서비스 기능에 대한 업데이트가 포함되어 있는지 확인하는 것이 좋습니다. 업데이트 또는 시나리오의 디자인 상태가 안정적 또는 실험적으로 나열되는지를 나타내는 릴리스 정보 섹션도 검토해야 합니다.
+WMF는 Windows Server에 포함되어 있으며 Windows Server 릴리스 사이에 빠른 주기로 업데이트됩니다. [WMF 5.0의 새 버전](https://www.microsoft.com/en-us/download/details.aspx?id=54616)에는 DSC 서비스 기능에 대한 업데이트가 포함될 수 있습니다. 따라서 WMF의 최신 릴리스를 다운로드하고 릴리스 정보를 검토하여 해당 릴리스에 DSC 서비스 기능에 대한 업데이트가 포함되어 있는지 확인하는 것이 좋습니다. 업데이트 또는 시나리오의 디자인 상태가 안정적 또는 실험적으로 나열되는지를 나타내는 릴리스 정보 섹션도 검토해야 합니다.
 빠른 릴리스 주기를 달성하기 위해 WMF가 미리 보기로 릴리스된 동안에도 기능을 프로덕션 환경에서 사용할 수 있도록 개별 기능을 안정적이라고 선언할 수 있습니다.
 지금까지 WMF 릴리스에서 업데이트된 다른 기능은 다음과 같습니다(자세한 내용은 WMF 릴리스 정보 참조).
 
- - Windows PowerShell, Windows PowerShell ISE(통합 스크립팅
- - 환경), Windows PowerShell 웹 서비스(관리 OData
- - IIS 확장), Windows PowerShell DSC(필요한 상태 구성)
- - WinRM(Windows 원격 관리), WMI(Windows Management Instrumentation)
+- Windows PowerShell, Windows PowerShell ISE(통합 스크립팅
+- 환경), Windows PowerShell 웹 서비스(관리 OData
+- IIS 확장), Windows PowerShell DSC(필요한 상태 구성)
+- WinRM(Windows 원격 관리), WMI(Windows Management Instrumentation)
 
 ### <a name="dsc-resource"></a>DSC 리소스
 
 DSC 구성 스크립트를 사용하여 서비스를 프로비전하면 끌어오기 서버 배포를 간소화할 수 있습니다. 이 문서에는 프로덕션 준비가 된 서버 노드를 배포하는 데 사용할 수 있는 구성 스크립트가 포함되어 있습니다. 구성 스크립트를 사용하려면 Windows Server에 포함되지 않은 DSC 모듈이 필요합니다. 필요한 모듈 이름은 DSC 리소스 **xDscWebService**를 포함하는 **xPSDesiredStateConfiguration**입니다. XPSDesiredStateConfiguration 모듈은 [여기](https://gallery.technet.microsoft.com/xPSDesiredStateConfiguratio-417dc71d)에서 다운로드할 수 있습니다.
 
-**PowerShellGet** 모듈에서 **Install-Module** cmdlet을 사용합니다.
+**PowerShellGet** 모듈에서 `Install-Module` cmdlet을 사용합니다.
 
 ```powershell
 Install-Module xPSDesiredStateConfiguration
@@ -132,7 +137,7 @@ DNS 레코드의 이름을 선택할 때는 항상 솔루션 아키텍처를 고
 테스트 환경 |가능하면 계획된 프로덕션 환경을 재현합니다. 간단한 구성에는 서버 호스트 이름이 적합합니다. DNS를 사용할 수 없는 경우 호스트 이름 대신 IP 주소를 사용할 수 있습니다.|
 단일 노드 배포 |서버 호스트 이름을 가리키는 DNS CNAME 레코드를 만듭니다.|
 
-자세한 내용은 [Windows Server에서 DNS 라운드 로빈 구성](https://technet.microsoft.com/en-us/library/cc787484(v=ws.10).aspx)을 참조하세요.
+자세한 내용은 [Windows Server에서 DNS 라운드 로빈 구성](/previous-versions/windows/it-pro/windows-server-2003/cc787484(v=ws.10))을 참조하세요.
 
 계획 작업|
 ---|
@@ -165,6 +170,7 @@ SMB는 정책에서 웹 서버를 사용하면 안 되도록 지정하는 환경
 두 경우 모두 트래픽 서명 및 암호화에 필요한 요구 사항을 평가해야 합니다. HTTPS, SMB 서명 및 IPSEC 정책 모두 고려할 만한 옵션입니다.
 
 #### <a name="load-balancing"></a>부하 분산
+
 웹 서비스와 상호 작용하는 클라이언트는 단일 응답으로 반환되는 정보를 요청합니다. 순차 요청이 필요하지 않으므로 부하 분산 플랫폼이 임의의 시점에 세션이 단일 서버에서 유지 관리되는지 확인할 필요가 없습니다.
 
 계획 작업|
@@ -184,6 +190,7 @@ SMB는 정책에서 웹 서버를 사용하면 안 되도록 지정하는 환경
 향후 이 섹션이 확장되어 DSC 끌어오기 서버 운영 가이드에 포함됩니다.  이 가이드에서는 자동화를 사용하여 시간에 따라 모듈 및 구성을 관리하는 일일 프로세스를 설명합니다.
 
 #### <a name="dsc-modules"></a>DSC 모듈
+
 구성을 요청하는 클라이언트는 필수 DSC 모듈이 필요합니다. 끌어오기 서버는 클라이언트로의 DSC 모듈 주문형 배포를 자동화합니다. 끌어오기 서버를 처음으로 랩 또는 개념 증명으로 배포하는 경우에는 PowerShell 갤러리와 같은 공용 리포지토리 또는 DSC 모듈용 PowerShell.org GitHub 리포지토리에서 제공되는 DSC 모듈을 사용할 가능성이 높습니다.
 
 PowerShell 갤러리와 같은 신뢰할 수 있는 온라인 원본인 경우에도 공용 리포지토리에서 다운로드하는 모든 모듈은 프로덕션에서 사용하기 전에 모듈을 사용할 환경에 대한 PowerShell 경험 및 지식이 있는 사용자가 검토해야 합니다. 이 작업을 수행하는 동안 모듈에서 제거할 수 있는 설명서 및 예제 스크립트와 같은 추가 페이로드가 있는지 확인하는 것이 좋습니다. 이렇게 하면 모듈을 네트워크를 통해 서버에서 클라이언트로 다운로드하는 첫 번째 요청에서 클라이언트당 네트워크 대역폭이 줄어듭니다.
@@ -191,7 +198,7 @@ PowerShell 갤러리와 같은 신뢰할 수 있는 온라인 원본인 경우�
 각 모듈은 모듈 페이로드를 포함하는 ModuleName_Version.zip이라는 특정 형식의 ZIP 파일로 패키지해야 합니다. 파일을 서버에 복사한 후 체크섬 파일을 만들어야 합니다. 클라이언트가 서버에 연결할 때 이 체크섬을 사용하여 DSC 모듈의 콘텐츠가 게시된 후 변경되지 않았는지 확인합니다.
 
 ```powershell
-New-DscCheckSum -ConfigurationPath .\ -OutPath .\
+New-DscChecksum -ConfigurationPath .\ -OutPath .\
 ```
 
 계획 작업|
@@ -214,10 +221,10 @@ New-DscCheckSum -ConfigurationPath .\ -OutPath .\
 
 끌어오기 서버 배포를 고려할 때 구성 GUID 계획에 더욱 주의를 기울여야 합니다. GUID 처리 방법에 대한 특별한 요구 사항은 없으며 환경마다 프로세스가 고유할 수 있습니다. 중앙에 저장된 CSV 파일, 단순한 SQL 테이블, CMDB, 다른 도구 또는 소프트웨어 솔루션과 통합해야 하는 복잡한 솔루션 등 프로세스가 단순하거나 복잡할 수 있습니다. 두 가지 일반적인 접근 방식은 다음과 같습니다.
 
- - **서버당 GUID 할당** - 모든 서버 구성을 개별적으로 확실히 제어할 수 있습니다. 서버 수가 적은 환경에서 효과적인 이 접근 방식을 채택하면 정확하게 업데이트할 수 있습니다.
- - **서버 역할당 GUID 할당** - 웹 서버와 같이 동일한 기능을 수행하는 모든 서버가 동일한 GUID를 사용하여 필요한 구성 데이터를 참조합니다.  여러 서버가 동일한 GUID를 공유하는 경우 구성이 변경되면 이들 서버가 모두 동시에 업데이트됩니다.
+- **서버당 GUID 할당** - 모든 서버 구성을 개별적으로 확실히 제어할 수 있습니다. 서버 수가 적은 환경에서 효과적인 이 접근 방식을 채택하면 정확하게 업데이트할 수 있습니다.
+- **서버 역할당 GUID 할당** - 웹 서버와 같이 동일한 기능을 수행하는 모든 서버가 동일한 GUID를 사용하여 필요한 구성 데이터를 참조합니다.  여러 서버가 동일한 GUID를 공유하는 경우 구성이 변경되면 이들 서버가 모두 동시에 업데이트됩니다.
 
-GUID는 악의적인 의도를 가진 사람에 의해 환경의 서버 배포 및 구성 방법에 대한 정보를 얻는 데 활용될 수 있으므로 중요한 데이터로 고려해야 합니다. 자세한 내용은 [Securely allocating GUIDs in PowerShell Desired State Configuration Pull Mode](http://blogs.msdn.com/b/powershell/archive/2014/12/31/securely-allocating-guids-in-powershell-desired-state-configuration-pull-mode.aspx)(PowerShell 필요한 상태 구성 끌어오기 모드에서 GUID 안전하게 할당)를 참조하세요.
+  GUID는 악의적인 의도를 가진 사람에 의해 환경의 서버 배포 및 구성 방법에 대한 정보를 얻는 데 활용될 수 있으므로 중요한 데이터로 고려해야 합니다. 자세한 내용은 [Securely allocating GUIDs in PowerShell Desired State Configuration Pull Mode](https://blogs.msdn.microsoft.com/powershell/2014/12/31/securely-allocating-guids-in-powershell-desired-state-configuration-pull-mode/)(PowerShell 필요한 상태 구성 끌어오기 모드에서 GUID 안전하게 할당)를 참조하세요.
 
 계획 작업|
 ---|
@@ -243,7 +250,6 @@ $PSVersionTable.PSVersion
 가능하면 최신 버전의 Windows Management Framework로 업그레이드합니다.
 그리고 다음 명령을 사용하여 `xPsDesiredStateConfiguration` 모듈을 다운로드합니다.
 
-
 ```powershell
 Install-Module xPSDesiredStateConfiguration
 ```
@@ -251,14 +257,13 @@ Install-Module xPSDesiredStateConfiguration
 이 명령은 모듈을 다운로드하기 전에 사용자의 승인을 요청합니다.
 
 ### <a name="installation-and-configuration-scripts"></a>설치 및 구성 스크립트
--
 
 DSC 끌어오기 서버를 배포하는 최상의 방법은 DSC 구성 스크립트를 사용하는 것입니다. 이 문서에서는 DSC 웹 서비스만 구성하는 기본 설정과 DSC 웹 서비스를 포함하는 종단 간 Windows Server를 구성하는 고급 설정이 모두 포함된 스크립트를 제공합니다.
 
 참고: 현재 `xPSDesiredStateConfiguation` DSC 모듈을 사용하려면 EN-US 로캘의 서버가 필요합니다.
 
 ### <a name="basic-configuration-for-windows-server-2012"></a>Windows Server 2012에 대한 기본 구성
--------------------------------------------
+
 ```powershell
 # This is a very basic Configuration to deploy a pull server instance in a lab environment on Windows Server 2012.
 
@@ -355,6 +360,7 @@ Configuration PullServer {
             ValueData = 1
             ValueType = 'Dword'
         }
+
         Registry TLS1_2ServerDisabledByDefault
         {
             Ensure = 'Present'
@@ -363,6 +369,7 @@ Configuration PullServer {
             ValueData = 0
             ValueType = 'Dword'
         }
+
         Registry TLS1_2ClientEnabled
         {
             Ensure = 'Present'
@@ -371,6 +378,7 @@ Configuration PullServer {
             ValueData = 1
             ValueType = 'Dword'
         }
+
         Registry TLS1_2ClientDisabledByDefault
         {
             Ensure = 'Present'
@@ -379,6 +387,7 @@ Configuration PullServer {
             ValueData = 0
             ValueType = 'Dword'
         }
+
         Registry SSL2ServerDisabled
         {
             Ensure = 'Present'
@@ -449,6 +458,7 @@ Configuration PullServer {
         }
     }
 }
+
 $configData = @{
     AllNodes = @(
         @{
@@ -467,6 +477,7 @@ $configData = @{
             }
         )
     }
+
 PullServer -ConfigurationData $configData -OutputPath 'C:\PullServerConfig\'
 Set-DscLocalConfigurationManager -ComputerName localhost -Path 'C:\PullServerConfig\'
 Start-DscConfiguration -Wait -Force -Verbose -Path 'C:\PullServerConfig\'
@@ -474,16 +485,18 @@ Start-DscConfiguration -Wait -Force -Verbose -Path 'C:\PullServerConfig\'
 # .\Script.ps1 -ServerName web1 -domainname 'test.pha' -carootname 'test-dc01-ca' -caserverfqdn 'dc01.test.pha' -certsubject 'CN=service.test.pha' -smbshare '\\sofs1.test.pha\share'
 ```
 
-
 ### <a name="verify-pull-server-functionality"></a>끌어오기 서버 기능 확인
 
 ```powershell
 # This function is meant to simplify a check against a DSC pull server. If you do not use the default service URL, you will need to adjust accordingly.
 function Verify-DSCPullServer ($fqdn) {
-    ([xml](invoke-webrequest "https://$($fqdn):8080/psdscpullserver.svc" | % Content)).service.workspace.collection.href
+    ([xml](Invoke-WebRequest "https://$($fqdn):8080/psdscpullserver.svc" | % Content)).service.workspace.collection.href
 }
-Verify-DSCPullServer 'INSERT SERVER FQDN'
 
+Verify-DSCPullServer 'INSERT SERVER FQDN'
+```
+
+```output
 Expected Result:
 Action
 Module
@@ -511,28 +524,28 @@ Configuration PullClient {
                     DownloadManagerCustomData = @{ServerUrl = "http://"+$Server+":8080/PSDSCPullServer.svc"; AllowUnsecureConnection = $true}
                 }
 }
+
 PullClient -ID 'INSERTGUID' -Server 'INSERTSERVER' -Output 'C:\DSCConfig\'
 Set-DscLocalConfigurationManager -ComputerName 'Localhost' -Path 'C:\DSCConfig\' -Verbose
 ```
-
 
 ## <a name="additional-references-snippets-and-examples"></a>추가 참조, 코드 조각 및 예제
 
 이 예제에서는 테스트를 위해 클라이언트 연결을 수동으로 시작하는 방법(WMF5 필요)을 보여 줍니다.
 
 ```powershell
-Update-DSCConfiguration –Wait -Verbose
+Update-DscConfiguration –Wait -Verbose
 ```
 
 [Add-DnsServerResourceRecordName](http://bit.ly/1G1H31L) cmdlet은 CNAME 형식 레코드를 DNS 영역에 추가하는 데 사용됩니다.
 
-[체크섬을 만들고 DSC MOF를 SMB 끌어오기 서버에 게시](http://bit.ly/1E46BhI)하는 PowerShell 함수는 필요한 체크섬을 자동으로 생성한 다음 MOF 구성과 체크섬 파일을 SMB 끌어오기 서버에 복사합니다.
+[체크섬을 만들고 DSC MOF를 SMB 끌어오기 서버에 게시](https://gallery.technet.microsoft.com/scriptcenter/PowerShell-Function-to-3bc4b7f0)하는 PowerShell 함수는 필요한 체크섬을 자동으로 생성한 다음 MOF 구성과 체크섬 파일을 SMB 끌어오기 서버에 복사합니다.
 
 ## <a name="appendix---understanding-odata-service-data-file-types"></a>부록 - ODATA 서비스 데이터 파일 형식 이해
 
 OData 웹 서비스를 포함하는 끌어오기 서버 배포 중 정보를 만들기 위해 데이터 파일이 저장됩니다. 파일 형식은 아래 설명된 대로 운영 체제에 따라 다릅니다.
 
- - **Windows Server 2012** 파일 형식은 항상 .mdb입니다.
- - **Windows Server 2012 R2** 구성에 .mdb를 지정하지 않은 경우 파일 형식은 기본적으로 .edb입니다.
+- **Windows Server 2012** 파일 형식은 항상 .mdb입니다.
+- **Windows Server 2012 R2** 구성에 .mdb를 지정하지 않은 경우 파일 형식은 기본적으로 .edb입니다.
 
 끌어오기 서버를 설치하기 위한 [고급 예제 스크립트](https://github.com/mgreenegit/Whitepapers/blob/Dev/PullServerCPIG.md#installation-and-configuration-scripts)에서는 web.config 파일 설정을 자동으로 제어하여 파일 형식으로 인한 오류 발생을 방지하는 방법에 대한 예제도 찾을 수 있습니다.

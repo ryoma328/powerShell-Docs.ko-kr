@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: jea,powershell,security
 title: JEA 필수 조건
-ms.openlocfilehash: a5cf5519b30b24d44c12bdeedcf4cd763e2edbde
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: acc16c0c7eec357b621c0706a66b8752ae5578cd
+ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189774"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37893038"
 ---
 # <a name="prerequisites"></a>필수 구성 요소
 
@@ -49,8 +49,10 @@ Windows 7                 | WMF 5.1에서 축소된 기능<sup>1</sup>
 시스템에 설치된 PowerShell 버전을 확인하려면 Windows PowerShell 프롬프트에서 `$PSVersionTable` 변수를 확인합니다.
 
 ```powershell
-PS C:\> $PSVersionTable.PSVersion
+$PSVersionTable.PSVersion
+```
 
+```output
 Major  Minor  Build  Revision
 -----  -----  -----  --------
 5      1      14393  1000
@@ -62,7 +64,7 @@ Major  Minor  Build  Revision
 ### <a name="install-windows-management-framework"></a>Windows Management Framework 설치
 
 이전 버전의 PowerShell을 실행 중인 경우 최신 WMF(Windows Management Framework) 업데이트로 시스템을 업데이트해야 합니다.
-업데이트 패키지 및 최신 WMF 릴리스 정보 링크는 [다운로드 센터](https://aka.ms/WMF5)에서 제공됩니다.
+업데이트 패키지 및 최신 WMF 릴리스 정보 링크는 [다운로드 센터](https://blogs.msdn.microsoft.com/powershell/2016/02/24/windows-management-framework-wmf-5-0-rtm-packages-has-been-republished/)에서 제공됩니다.
 
 모든 서버를 업그레이드하기 전에 WMF와의 워크로드 호환성을 테스트하는 것이 좋습니다.
 
@@ -71,7 +73,7 @@ Windows 10 사용자는 최신 기능 업데이트를 설치하여 현재 버전
 ## <a name="enable-powershell-remoting"></a>PowerShell 원격 사용
 
 PowerShell 원격은 JEA가 작성된 기반을 제공합니다.
-따라서 JEA를 사용하기 전에 먼저 시스템에서 PowerShell 원격을 사용하도록 설정하고 [올바르게 보안을 설정](https://msdn.microsoft.com/powershell/scripting/setup/winrmsecurity)해야 합니다.
+따라서 JEA를 사용하기 전에 먼저 시스템에서 PowerShell 원격을 사용하도록 설정하고 [올바르게 보안을 설정](/powershell/scripting/setup/winrmsecurity)해야 합니다.
 
 Windows Server 2012, 2012 R2 및 2016에서는 PowerShell 원격이 기본적으로 사용하도록 설정됩니다.
 관리자 권한 PowerShell 창에서 다음 명령을 실행하여 PowerShell 원격을 사용하도록 설정할 수 있습니다.
@@ -92,21 +94,23 @@ PowerShell 모듈 로깅이 JEA에 필요하지는 않지만, 사용자가 실�
 3. **모듈 로깅 켜기**를 두 번 클릭합니다.
 4. **사용**을 클릭합니다.
 5. [옵션] 섹션에서 [모듈 이름] 옆의 **표시**를 클릭합니다.
-6. 팝업 창에 "**\***"를 입력합니다. 이렇게 하면 PowerShell에서 모든 모듈의 명령을 기록합니다.
+6. 팝업 창에 `\*`를 입력합니다. 이렇게 하면 PowerShell에서 모든 모듈의 명령을 기록합니다.
 7. **확인**을 클릭하여 정책을 설정합니다.
 8. **PowerShell 스크립트 블록 로깅 켜기**를 두 번 클릭합니다.
 9. **사용**을 클릭합니다.
 10. **확인**을 클릭하여 정책을 설정합니다.
-11. (도메인에 가입된 컴퓨터만 해당) **gpupdate**를 실행하거나 그룹 정책에서 업데이트된 정책을 처리하고 설정을 적용할 때까지 기다립니다.
+11. (도메인에 가입된 컴퓨터만 해당) `gpupdate`를 실행하거나 그룹 정책에서 업데이트된 정책을 처리하고 설정을 적용할 때까지 기다립니다.
 
 그룹 정책을 통해 시스템 차원의 PowerShell 기록을 사용하도록 설정할 수도 있습니다.
 
 ## <a name="next-steps"></a>다음 단계
 
-- [역할 기능 파일 만들기](role-capabilities.md)
-- [세션 구성 파일 만들기](session-configurations.md)
+[역할 기능 파일 만들기](role-capabilities.md)
+
+[세션 구성 파일 만들기](session-configurations.md)
 
 ## <a name="see-also"></a>참고 항목
 
-- [PowerShell 원격 및 WinRM 보안에 대한 추가 정보](https://msdn.microsoft.com/powershell/scripting/setup/winrmsecurity)
-- [보안에 관한 *PowerShell ♥ the Blue Team*(PowerShell ♥ Blue Team) 블로그 게시물](https://blogs.msdn.microsoft.com/powershell/2015/06/09/powershell-the-blue-team/)
+[PowerShell 원격 및 WinRM 보안에 대한 추가 정보](/powershell/scripting/setup/winrmsecurity)
+
+[보안에 관한 *PowerShell ♥ the Blue Team*(PowerShell ♥ Blue Team) 블로그 게시물](https://blogs.msdn.microsoft.com/powershell/2015/06/09/powershell-the-blue-team/)
