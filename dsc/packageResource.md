@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: DSC 패키지 리소스
-ms.openlocfilehash: 16f7f1b8fa7b84bcfdeb09fdc46db9c93113e70c
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 3046ba7d57776a996a0b917348a0e863db6cd0c8
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34188533"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093806"
 ---
 # <a name="dsc-package-resource"></a>DSC 패키지 리소스
 
@@ -33,6 +33,7 @@ Package [string] #ResourceName
 ```
 
 ## <a name="properties"></a>속성
+
 |  속성  |  설명   |
 |---|---|
 | 이름| 특정 상태가 되게 할 패키지의 이름을 나타냅니다.|

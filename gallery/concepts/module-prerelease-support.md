@@ -3,12 +3,12 @@ ms.date: 09/26/2017
 contributor: keithb
 keywords: gallery,powershell,cmdlet,psget
 title: 시험판 모듈 버전
-ms.openlocfilehash: 2a4fcd40353450e5ba03910984c5a05772a93d0d
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 371aae7eed4afe341755133c5ee2d356cd5876e0
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189842"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093782"
 ---
 # <a name="prerelease-module-versions"></a>시험판 모듈 버전
 
@@ -108,7 +108,6 @@ C:\windows\system32> Get-InstalledModule TestPackage
 Version         Name                                Repository           Description
 -------         ----                                ----------           -----------
 1.9.0-alpha     TestPackage                         PSGallery            Package used to validate changes to the PowerShe...
-
 ```
 
 지정된 시험판으로 인해서만 다른 모듈 버전을 나란히 설치하는 것은 지원되지 않습니다. PowerShellGet을 사용하여 모듈을 설치할 때 ModuleVersion을 사용하여 폴더 이름을 만들어 동일한 모듈의 다른 버전을 나란히 설치합니다. 시험판 문자열이 없는 ModuleVersion이 폴더 이름으로 사용됩니다. 사용자가 MyModule 버전 2.5.0-alpha를 설치하면 MyModule\2.5.0 폴더에 설치됩니다. 그런 다음 사용자가 2.5.0-beta를 설치하면 2.5.0-beta 버전은 MyModule\2.5.0 폴더의 내용을 __덮어씁니다__. 이 방법의 장점 중 하나는 프로덕션 준비 버전을 설치한 후에 시험판 버전을 제거할 필요가 없다는 것입니다. 아래 예제에서는 예상되는 항목을 보여 줍니다.

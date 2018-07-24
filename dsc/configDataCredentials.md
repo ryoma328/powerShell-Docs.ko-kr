@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: 구성 데이터의 자격 증명 옵션
-ms.openlocfilehash: 2c6685f3b6992537d1652f172cf926b85dd634c6
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 12bb8d8ce5fc4685e583e74d411b098320ac4fd4
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190046"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093680"
 ---
 # <a name="credentials-options-in-configuration-data"></a>구성 데이터의 자격 증명 옵션
 >적용 대상: Windows PowerShell 5.0
@@ -273,8 +273,6 @@ DomainCredentialExample -DomainCredential $cred -ConfigurationData $cd
 > `NodeName` 은 별표와 같을 수 없으며 특정 노드 이름은 필수입니다.
 
 **Microsoft에서는 일반 텍스트 암호가 상당한 보안 위험이 있으므로 사용하지 말 것을 권고합니다.**
-
-데이터가 항상 암호화되어 저장되기 때문에(전송 중, 서비스에서 대기 중 및 노드에서 대기 중) 유일한 예외는 Azure Automation DSC 서비스를 사용할 때입니다.
 
 ## <a name="domain-credentials"></a>도메인 자격 증명
 

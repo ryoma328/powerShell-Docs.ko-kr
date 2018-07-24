@@ -1,12 +1,12 @@
 ---
 ms.date: 06/12/2017
 keywords: wmf,powershell,setup
-ms.openlocfilehash: 66db78cfb136f22cad9078d7113dad085ee667a5
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: e4910e95a417da61661aaddd98b2dc7da9f98a3d
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34188431"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093721"
 ---
 # <a name="creating-and-connecting-to-a-jea-endpoint"></a>JEA 끝점 만들기 및 연결
 JEA 끝점을 만들려면 특별히 구성된 PowerShell 세션 구성 파일을 만들어야 합니다. 이 파일은 **New-PSSessionConfigurationFile** cmdlet을 사용하여 생성할 수 있습니다.
@@ -128,8 +128,8 @@ Copyright = '(c) 2015 Administrator. All rights reserved.'
 # AssembliesToLoad = 'System.Web', 'System.OtherAssembly, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a'
 
 }
-
 ```
+
 JEA 세션 구성에서 사용하려면 역할 기능을 유효한 PowerShell 모듈로 "RoleCapabilities"라는 디렉터리에 저장해야 합니다. 원하는 경우 모듈에 역할 기능 파일이 여러 개 있을 수 있습니다.
 
 JEA 세션에 연결할 때 사용자가 액세스할 수 있는 cmdlet, 함수, 별칭 및 스크립트를 구성하려면 고유한 규칙을 주석 처리된 템플릿 다음에 역할 기능 파일에 추가합니다. 역할 기능을 구성하는 방법을 자세히 살펴보려면 전체 [experience guide(환경 가이드)](http://aka.ms/JEA)를 확인하세요.
@@ -141,9 +141,11 @@ Register-PSSessionConfiguration -Name Maintenance -Path "C:\ProgramData\JEAConfi
 ```
 
 ## <a name="connect-to-a-jea-endpoint"></a>JEA 끝점에 연결
+
 JEA 끝점에 연결은 다른 모든 PowerShell 끝점에 연결하는 것과 동일한 방식으로 작동합니다.  **New-PSSession**, **Invoke-Command** 또는 **Enter-PSSession**에 대한 “ConfigurationName” 매개 변수처럼 JEA 끝점에 이름만 지정하면 됩니다.
 
 ```powershell
 Enter-PSSession -ConfigurationName Maintenance -ComputerName localhost
 ```
+
 JEA 세션에 연결한 후에는 액세스하는 역할 기능의 허용 목록에 있는 명령 실행으로 제한됩니다. 역할에 허용되지 않은 명령을 실행하려고 하면 오류가 발생합니다.

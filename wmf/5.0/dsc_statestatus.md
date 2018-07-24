@@ -1,12 +1,12 @@
 ---
 ms.date: 06/12/2017
 keywords: wmf,powershell,setup
-ms.openlocfilehash: 0e8d0cb1e4afa7bc791d45bfb0b981654cb09ed5
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: b279d388754c5ee42215f21317f7b3d8089b7608
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37892572"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093884"
 ---
 # <a name="unified-and-consistent-state-and-status-representation"></a>통합되고 일관된 상태 및 상태 표현
 
@@ -15,11 +15,11 @@ ms.locfileid: "37892572"
 다음 규칙에 따라 LCM 상태 및 DSC 작업 상태의 표현을 다시 찾아 통합합니다.
 
 1. 처리되지 않은 리소스는 LCM 상태 및 DSC 상태에 영향을 주지 않습니다.
-2. LCM은 다시 부팅을 요청하는 리소스가 발견되면 추가 리소스 처리를 중지합니다.
-3. 다시 부팅을 요청하는 리소스는 실제로 다시 부팅된 다음에야 원하는 상태가 됩니다.
-4. 실패한 리소스가 발견되면 LCM은 추가 리소스가 실패 리소스에 종속되지 않는 한 계속 처리합니다.
-5. `Get-DscConfigurationStatus` cmdlet에서 반환하는 전체 상태는 모든 리소스 상태의 상위 집합입니다.
-6. PendingReboot 상태는 PendingConfiguration 상태의 상위 집합입니다.
+1. LCM은 다시 부팅을 요청하는 리소스가 발견되면 추가 리소스 처리를 중지합니다.
+1. 다시 부팅을 요청하는 리소스는 실제로 다시 부팅된 다음에야 원하는 상태가 됩니다.
+1. 실패한 리소스가 발견되면 LCM은 추가 리소스가 실패 리소스에 종속되지 않는 한 계속 처리합니다.
+1. `Get-DscConfigurationStatus` cmdlet에서 반환하는 전체 상태는 모든 리소스 상태의 상위 집합입니다.
+1. PendingReboot 상태는 PendingConfiguration 상태의 상위 집합입니다.
 
    다음 표에서는 몇 가지 일반적인 시나리오의 결과 상태 및 상태 관련 속성을 보여 줍니다.
 

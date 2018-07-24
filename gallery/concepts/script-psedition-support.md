@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 contributor: manikb
 keywords: gallery,powershell,cmdlet,psget
 title: 호환되는 PowerShell 버전이 있는 스크립트
-ms.openlocfilehash: 27b50be4e99b6c6b8fa089d1d4a436a27eeb17c9
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 386e65295641fb6932c13047246742531aeaec64
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34219252"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093663"
 ---
 # <a name="script-with-compatible-powershell-editions"></a>호환되는 PowerShell 버전이 있는 스크립트
 
@@ -56,13 +56,11 @@ PowerShell 갤러리 사용자는 특정 PowerShell 버전에서 지원되는 �
 PSEdition_Desktop 및 PSEditon_Core가 없는 스크립트는 PowerShell Desktop 버전에서 제대로 작동하는 것으로 간주됩니다.
 
 ```powershell
-
 # Find scripts supported on PowerShell Desktop edition
 Find-Script -Tag PSEditon_Desktop
 
 # Find scripts supported on PowerShell Core editions
 Find-Script -Tag PSEditon_Core
-
 ```
 
 ## <a name="more-details"></a>자세한 내용

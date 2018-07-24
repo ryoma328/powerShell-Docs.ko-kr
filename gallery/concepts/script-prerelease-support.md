@@ -3,12 +3,12 @@ ms.date: 10/17/2017
 contributor: keithb
 keywords: gallery,powershell,cmdlet,psget
 title: 시험판 스크립트 버전
-ms.openlocfilehash: 5b93da418b836d537491d3f1e4e29fa2e61f2f77
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 7d4cec9d2b4ee5ad0b19ad5d9c68bb68747abd57
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34188567"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093851"
 ---
 # <a name="prerelease-versions-of-scripts"></a>시험판 스크립트 버전
 
@@ -38,7 +38,6 @@ ms.locfileid: "34188567"
 ...
 
 #>
-
 ```
 
 시험판 접미사를 사용하려면 버전 문자열이 다음 요구 사항을 충족해야 합니다.

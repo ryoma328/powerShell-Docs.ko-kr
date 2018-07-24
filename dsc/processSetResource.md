@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: DSC ProcessSet 리소스
-ms.openlocfilehash: 412cf1076996126f0d9b7a9a8ebbc9bdb7ecf377
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: d18d2c96239abd83cea735e0fbce198d0456cea6
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189927"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093993"
 ---
 # <a name="dsc-windowsprocess-resource"></a>DSC WindowsProcess 리소스
 
@@ -33,6 +33,7 @@ WindowsProcess [string] #ResourceName
 ```
 
 ## <a name="properties"></a>속성
+
 |  속성  |  설명   |
 |---|---|
 | 인수| 프로세스에 그대로 전달할 인수를 포함하는 문자열입니다. 몇 개의 인수를 전달해야 하는 경우 모두 이 문자열에 넣습니다.|
