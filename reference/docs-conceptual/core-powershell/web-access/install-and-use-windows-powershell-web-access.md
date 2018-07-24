@@ -2,12 +2,12 @@
 ms.date: 08/23/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 웹 액세스 설치 및 사용
-ms.openlocfilehash: d60670954d6ab6998e905382383d60ead1129d31
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: c14da421e372f6c4c4f203b16bbd37f28a9ba255
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893759"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094265"
 ---
 # <a name="install-and-use-windows-powershell-web-access"></a>Install and Use Windows PowerShell Web Access(Windows PowerShell 웹 액세스 설치 및 사용)
 
@@ -332,29 +332,29 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
 
    - Windows **시작** 화면에서 **IIS(인터넷 정보 서비스) 관리자** 이름의 일부를 입력합니다. **응용 프로그램** 결과에 바로 가기가 표시되면 이를 클릭합니다.
 
-2. IIS 관리자 트리 창에서 **사이트** 폴더가 표시될 때까지 Windows PowerShell 웹 액세스가 설치된 서버의 노드를 확장합니다. **사이트** 폴더를 선택합니다.
+1. IIS 관리자 트리 창에서 **사이트** 폴더가 표시될 때까지 Windows PowerShell 웹 액세스가 설치된 서버의 노드를 확장합니다. **사이트** 폴더를 선택합니다.
 
-3. **작업** 창에서 **웹 사이트 추가**를 클릭합니다.
+1. **작업** 창에서 **웹 사이트 추가**를 클릭합니다.
 
-4. **Windows PowerShell 웹 액세스**와 같은 웹 사이트의 이름을 입력합니다.
+1. **Windows PowerShell 웹 액세스**와 같은 웹 사이트의 이름을 입력합니다.
 
-5. 새 웹 사이트의 응용 프로그램 풀이 자동으로 만들어집니다. 다른 응용 프로그램 풀을 사용하려면 **선택**을 클릭하여 새 웹 사이트와 연결될 응용 프로그램 풀을 선택합니다. **응용 프로그램 풀 선택** 대화 상자에서 다른 응용 프로그램 풀을 선택한 다음 **확인**을 클릭합니다.
+1. 새 웹 사이트의 응용 프로그램 풀이 자동으로 만들어집니다. 다른 응용 프로그램 풀을 사용하려면 **선택**을 클릭하여 새 웹 사이트와 연결될 응용 프로그램 풀을 선택합니다. **응용 프로그램 풀 선택** 대화 상자에서 다른 응용 프로그램 풀을 선택한 다음 **확인**을 클릭합니다.
 
-6. **실제 경로** 텍스트 상자에서 %*windir*%/Web/PowerShellWebAccess/wwwroot로 이동합니다.
+1. **실제 경로** 텍스트 상자에서 %*windir*%/Web/PowerShellWebAccess/wwwroot로 이동합니다.
 
-7. **바인딩** 영역의 **유형** 필드에서 **https**를 선택합니다.
+1. **바인딩** 영역의 **유형** 필드에서 **https**를 선택합니다.
 
-8. 다른 사이트나 응용 프로그램에서 사용하고 있지 않은 웹 사이트에 포트 번호를 할당합니다. 열린 포트를 찾으려면 명령 프롬프트 창에서 **netstat** 명령을 실행합니다. 기본 포트 번호는 443입니다.
+1. 다른 사이트나 응용 프로그램에서 사용하고 있지 않은 웹 사이트에 포트 번호를 할당합니다. 열린 포트를 찾으려면 명령 프롬프트 창에서 **netstat** 명령을 실행합니다. 기본 포트 번호는 443입니다.
 
    다른 웹 사이트에서 443을 이미 사용하고 있거나 이 포트 번호를 변경해야 할 다른 보안상의 이유가 있는 경우, 기본 포트 번호를 변경합니다. 선택한 포트를 게이트웨이 서버에서 실행 중인 다른 웹 사이트에서 사용하고 있을 경우 **웹 사이트 추가** 대화 상자에서 **확인**을 클릭하면 경고가 표시됩니다. Windows PowerShell 웹 액세스를 실행하려면 미사용 포트를 사용해야 합니다.
 
-9. 조직에 필요한 경우에는 선택적으로 **www.contoso.com** 같이 조직과 사용자가 쉽게 알아볼 수 있는 호스트 이름을 지정합니다. **확인**을 클릭합니다.
+1. 조직에 필요한 경우에는 선택적으로 **www.contoso.com** 같이 조직과 사용자가 쉽게 알아볼 수 있는 호스트 이름을 지정합니다. **확인**을 클릭합니다.
 
-10. 보다 안전한 프로덕션 환경을 위해 반드시 CA에서 서명된 유효한 인증서를 제공하는 것이 좋습니다. 사용자는 HTTPS 웹 사이트를 통해서만 Windows PowerShell 웹 액세스에 연결할 수 있으므로, SSL 인증서를 제공해야 합니다. 인증서를 얻는 방법에 대한 자세한 내용은 이 항목의 [IIS 관리자로 SSL 인증서를 구성하려면](#to-configure-an-ssl-certificate-in-iis-Manager)을 참조하세요.
+1. 보다 안전한 프로덕션 환경을 위해 반드시 CA에서 서명된 유효한 인증서를 제공하는 것이 좋습니다. 사용자는 HTTPS 웹 사이트를 통해서만 Windows PowerShell 웹 액세스에 연결할 수 있으므로, SSL 인증서를 제공해야 합니다. 인증서를 얻는 방법에 대한 자세한 내용은 이 항목의 [IIS 관리자로 SSL 인증서를 구성하려면](#to-configure-an-ssl-certificate-in-iis-Manager)을 참조하세요.
 
-11. **확인**을 클릭하여 **웹 사이트 추가** 대화 상자를 닫습니다.
+1. **확인**을 클릭하여 **웹 사이트 추가** 대화 상자를 닫습니다.
 
-12. 관리자 권한(관리자 권한으로 실행)을 사용하여 열린 Windows PowerShell 세션에서 다음 스크립트(여기서 *application_pool_name*은 4단계에서 만든 응용 프로그램 풀의 이름을 나타냄)를 실행하여 권한 부여 파일에 대한 액세스 권한을 응용 프로그램 풀에 제공합니다.
+1. 관리자 권한(관리자 권한으로 실행)을 사용하여 열린 Windows PowerShell 세션에서 다음 스크립트(여기서 _application_pool_name_은 4단계에서 만든 응용 프로그램 풀의 이름을 나타냄)를 실행하여 권한 부여 파일에 대한 액세스 권한을 응용 프로그램 풀에 제공합니다.
 
     ```    
     $applicationPoolName = "<application_pool_name>"
@@ -368,11 +368,11 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
     c:\windows\system32\icacls.exe $authorizationFile
     ```
 
-13. IIS 관리자 트리 창에서 새 웹 사이트가 선택된 상태에서 **작업** 창의 **시작** 을 클릭하여 웹 사이트를 시작합니다.
+1. IIS 관리자 트리 창에서 새 웹 사이트가 선택된 상태에서 **작업** 창의 **시작** 을 클릭하여 웹 사이트를 시작합니다.
 
-14. 클라이언트 장치에서 브라우저 세션을 엽니다. 지원되는 브라우저와 장치에 대한 자세한 내용은 이 문서의 [브라우저 및 클라이언트 장치 지원](#browser-and-client-device-support)을 참조하세요.
+1. 클라이언트 장치에서 브라우저 세션을 엽니다. 지원되는 브라우저와 장치에 대한 자세한 내용은 이 문서의 [브라우저 및 클라이언트 장치 지원](#browser-and-client-device-support)을 참조하세요.
 
-15. 새로운 Windows PowerShell 웹 액세스 웹 사이트를 엽니다.
+1. 새로운 Windows PowerShell 웹 액세스 웹 사이트를 엽니다.
 
     루트 웹 사이트가 Windows PowerShell 웹 액세스 폴더를 가리키므로, **https://\<*gateway_server_name*\>** 을 열면 Windows PowerShell 웹 액세스 로그인 페이지가 브라우저에 표시됩니다. URL에는 **/pswa**를 추가하지 않아도 됩니다.
 
@@ -395,11 +395,11 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
 
    - Windows **시작** 화면에서 **Windows PowerShell**을 마우스 오른쪽 단추로 클릭한 다음 **관리자 권한으로 실행**을 클릭합니다.
 
-2. ![보안 정보](images/SecurityNote.jpeg) 세션 구성을 사용하여 사용자 액세스를 제한하는 단계(옵션):
+1. ![보안 정보](images/SecurityNote.jpeg) 세션 구성을 사용하여 사용자 액세스를 제한하는 단계(옵션):
 
    규칙에 사용할 세션 구성이 이미 있는지 확인합니다. 해당 구성을 아직 만들지 않은 경우 [about_Session_Configuration_Files](/powershell/module/microsoft.powershell.core/about/about_session_configurations)에서 세션 구성을 만드는 방법에 대한 지침을 따르세요.
 
-3. 다음을 입력하고 **Enter** 키를 누릅니다.
+1. 다음을 입력하고 **Enter** 키를 누릅니다.
 
    Add-PswaAuthorizationRule -UserName <domain\user | computer\user> -ComputerName <computer_name> -ConfigurationName <session_configuration_name>
 
@@ -409,7 +409,7 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
 
    Add-PswaAuthorizationRule -UserName 'Contoso\JSmith' -ComputerName Contoso_214 -ConfigurationName NewAdminsOnly
 
-4. `Get-PswaAuthorizationRule` cmdlet 또는 `Test-PswaAuthorizationRule -UserName '<domain\user>' -ComputerName <computer-name>`을 실행하여 규칙이 생성되어 있는지 확인합니다.
+1. `Get-PswaAuthorizationRule` cmdlet 또는 `Test-PswaAuthorizationRule -UserName '<domain\user>' -ComputerName <computer-name>`을 실행하여 규칙이 생성되어 있는지 확인합니다.
 
    정의합니다(예: `Test-PswaAuthorizationRule -UserName 'Contoso\JSmith' -ComputerName Contoso_214`).
 
@@ -423,9 +423,9 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
 
 1. IIS 관리자 트리 창에서 Windows PowerShell 웹 액세스가 설치되어 있는 서버를 선택합니다.
 
-2. 내용 창에서 **서버 인증서**를 두 번 클릭합니다.
+1. 내용 창에서 **서버 인증서**를 두 번 클릭합니다.
 
-3. **작업** 창에서 다음 중 하나를 수행합니다. IIS에서 서버 인증서를 구성하는 방법에 대한 자세한 내용은 [IIS 7에서 서버 인증서 구성](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732230(v=ws.10))을 참조하세요.
+1. **작업** 창에서 다음 중 하나를 수행합니다. IIS에서 서버 인증서를 구성하는 방법에 대한 자세한 내용은 [IIS 7에서 서버 인증서 구성](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732230(v=ws.10))을 참조하세요.
 
    - 네트워크 위치에서 기존의 유효한 인증서를 가져오려면 **가져오기**를 클릭합니다.
 
@@ -435,11 +435,11 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
 
    - 곧바로 사용할 수 있는 인증서를 만든 다음 나중에 필요할 때 CA에서 서명을 받아 사용하려면 **자체 서명된 인증서 만들기**를 클릭합니다. **Windows PowerShell 웹 액세스**와 같이 자체 서명된 인증서에 알기 쉬운 이름을 지정합니다. 이 방법은 안전하지 않으므로 개인 테스트 환경용으로만 사용하는 것이 좋습니다.
 
-4. 인증서를 만들거나 구한 다음, IIS 관리자 트리 창에서 인증서가 적용될 웹 사이트(예: **기본 웹 사이트**)를 IIS 관리자 트리 창에서 선택한 다음 **작업** 창에서 **바인딩**을 클릭합니다.
+1. 인증서를 만들거나 구한 다음, IIS 관리자 트리 창에서 인증서가 적용될 웹 사이트(예: **기본 웹 사이트**)를 IIS 관리자 트리 창에서 선택한 다음 **작업** 창에서 **바인딩**을 클릭합니다.
 
-5. 해당 사이트의 바인딩이 표시되지 않은 경우, **사이트 바인딩 추가** 대화 상자에서 사이트의 **https** 바인딩을 추가합니다. 자체 서명된 인증서를 사용하지 않을 경우에는 이 절차의 3단계에서 설명된 호스트 이름을 지정합니다. 자체 서명된 인증서를 사용할 경우에는 이 단계가 필요하지 않습니다.
+1. 해당 사이트의 바인딩이 표시되지 않은 경우, **사이트 바인딩 추가** 대화 상자에서 사이트의 **https** 바인딩을 추가합니다. 자체 서명된 인증서를 사용하지 않을 경우에는 이 절차의 3단계에서 설명된 호스트 이름을 지정합니다. 자체 서명된 인증서를 사용할 경우에는 이 단계가 필요하지 않습니다.
 
-6. 이 절차의 3단계에서 얻거나 만든 인증서를 선택한 다음 **확인**을 클릭합니다.
+1. 이 절차의 3단계에서 얻거나 만든 인증서를 선택한 다음 **확인**을 클릭합니다.
 
 ## <a name="using-the-web-based-windows-powershell-console"></a>웹 기반 Windows PowerShell 콘솔 사용
 

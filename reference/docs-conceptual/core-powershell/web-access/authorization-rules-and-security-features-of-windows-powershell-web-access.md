@@ -2,12 +2,12 @@
 ms.date: 06/27/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능
-ms.openlocfilehash: a3a743d83ae3e387ee51056042c98753104e925e
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: 14bb18cfc5d9826523a239aede42307a7688eaf5
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893725"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094248"
 ---
 # <a name="authorization-rules-and-security-features-of-windows-powershell-web-access"></a>Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능
 
@@ -163,9 +163,8 @@ Get-PswaAuthorizationRule `
 
 - 관리자는 개인 테스트 환경을 구축했으며, 권한을 부여받은 모든 네트워크 사용자가 일반적으로 액세스하던 네트워크상의 모든 컴퓨터와, 일반적으로 액세스하던 모든 세션 구성에 액세스할 수 있도록 허용하려고 합니다. 이 권한 부여 규칙은 개인 테스트 환경에서 사용되므로 관리자는 보안성이 없는 권한 부여 규칙을 만듭니다. - 관리자는 `Add-PswaAuthorizationRule * * *` cmdlet을 실행합니다(여기서 와일드카드 문자 **\*** 는 각각 모든 사용자, 모든 컴퓨터 및 모든 구성을 나타냄). - 이 규칙은 `Add-PswaAuthorizationRule -UserName * -ComputerName * -ConfigurationName *` cmdlet과 동일합니다.
 
-  >[!NOTE]
-  >
-  >이 규칙은 보안 환경에서는 사용하지 않는 것이 좋으며, Windows PowerShell 웹 액세스 권한 부여 규칙에서 제공되는 보안 계층을 무시합니다.
+  > [!NOTE]
+  > 이 규칙은 보안 환경에서는 사용하지 않는 것이 좋으며, Windows PowerShell 웹 액세스 권한 부여 규칙에서 제공되는 보안 계층을 무시합니다.
 
 - 관리자는 사용자가 작업 그룹과 도메인을 모두 포함하는 환경에서 대상 컴퓨터에 연결할 수 있도록 해야 합니다. 여기서 작업 그룹 컴퓨터는 도메인의 대상 컴퓨터에 연결하는 데 사용되기도 하며, 도메인 컴퓨터는 작업 그룹의 대상 컴퓨터에 연결하는 데 사용되기도 합니다. 관리자에게는 작업 그룹의 게이트웨이 서버인 *PswaServer*가 있고, 대상 컴퓨터 *srv1.contoso.com* 은 도메인에 있습니다. 사용자 *Chris*는 작업 그룹 게이트웨이 서버와 대상 컴퓨터에서 모두 인증된 로컬 사용자입니다. 작업 그룹 서버에서 Chris의 사용자 이름은 *chrisLocal*;이며, 대상 컴퓨터에서는 *contoso\\chris*입니다. 관리자는 다음 규칙을 추가하여 Chris에게 srv1.contoso.com에 대한 액세스 권한을 부여합니다.
 
@@ -180,10 +179,9 @@ Add-PswaAuthorizationRule -userName PswaServer\chrisLocal `
 
 1. *server_name*\\*user_name* 형식의 사용자 이름을 권한 부여 규칙에 추가하여 작업 그룹 게이트웨이 서버에서 인증
 
-2. **옵션 연결 설정** 영역의 로그인 페이지에서 제공된 대체 자격 증명을 사용하여 대상 컴퓨터에서 인증
+1. **옵션 연결 설정** 영역의 로그인 페이지에서 제공된 대체 자격 증명을 사용하여 대상 컴퓨터에서 인증
 
    > [!NOTE]
-   >
    > 게이트웨이 및 대상 컴퓨터가 다른 작업 그룹이나 도메인에 있을 경우, 두 개의 작업 그룹 컴퓨터나 두 개의 도메인 또는 작업 그룹과 도메인 간에 트러스트 관계가 설정되어 있어야 합니다. 이 관계는 Windows PowerShell 웹 액세스 권한 부여 규칙 cmdlet을 사용하여 구성할 수 없습니다. 권한 규칙이 컴퓨터 간의 트러스트 관계를 정의하지는 않습니다. 즉 권한 규칙은 특정 대상 컴퓨터와 세션 구성에 연결하는 사용자만 인증할 수 있습니다. 서로 다른 도메인 간에 트러스트 관계를 구성하는 방법에 대한 자세한 내용은 [도메인 및 포리스트 트러스트 만들기](https://technet.microsoft.com/library/cc794775.aspx")를 참조하세요.
    > 신뢰할 수 있는 호스트 목록에 작업 그룹 컴퓨터를 추가하는 방법에 대한 자세한 내용은 [서버 관리자를 통한 원격 관리](https://technet.microsoft.com/library/dd759202.aspx)를 참조하세요.
 

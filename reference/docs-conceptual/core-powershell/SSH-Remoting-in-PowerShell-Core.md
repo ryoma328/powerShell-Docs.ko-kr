@@ -46,8 +46,8 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
    New-PSSession [-HostName] <string[]> [-Name <string[]>] [-UserName <string>] [-KeyFilePath <string>] [-SSHTransport] [<CommonParameters>]
    ```
 
-2. [설치] 지침에 따라 GitHub에서 최신 [Win32 OpenSSH] 빌드를 설치합니다.
-3. Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.
+1. [설치] 지침에 따라 GitHub에서 최신 [Win32 OpenSSH] 빌드를 설치합니다.
+1. Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.
    - 암호 인증이 활성화되었는지 확인합니다.
 
    ```
@@ -59,8 +59,8 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
     ```
 
     > [!NOTE]
-    하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다.
-    [자세한 내용은 GitHub에서 이 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.
+    > 하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다.
+    > [자세한 내용은 GitHub에서 이 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.
 
     한 가지 해결 방법은 공백을 포함하지 않는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.
 
@@ -84,27 +84,27 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
    PubkeyAuthentication yes
    ```
 
-4. sshd 서비스를 다시 시작합니다.
+1. sshd 서비스를 다시 시작합니다.
 
    ```powershell
    Restart-Service sshd
    ```
 
-5. Path Env 변수에 OpenSSH가 설치된 경로를 추가합니다.
+1. Path Env 변수에 OpenSSH가 설치된 경로를 추가합니다.
    - 이는 `C:\Program Files\OpenSSH\` 줄에 있어야 합니다.
    - 그래야 시스템에서 ssh.exe를 찾을 수 있습니다.
 
 ## <a name="setup-on-linux-ubuntu-1404-machine"></a>Linux(Ubuntu 14.04) 컴퓨터에 설치
 
 1. GitHub에서 최신 [Linux용 PowerShell Core] 빌드를 설치합니다.
-2. 필요에 따라 [Ubuntu SSH]를 설치합니다.
+1. 필요에 따라 [Ubuntu SSH]를 설치합니다.
 
    ```bash
    sudo apt install openssh-client
    sudo apt install openssh-server
    ```
 
-3. /etc/ssh 위치에서 sshd_config 파일을 편집합니다.
+1. /etc/ssh 위치에서 sshd_config 파일을 편집합니다.
    - 암호 인증이 활성화되었는지 확인합니다.
 
    ```
@@ -123,7 +123,7 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
    PubkeyAuthentication yes
    ```
 
-4. sshd 서비스를 다시 시작합니다.
+1. sshd 서비스를 다시 시작합니다.
 
    ```bash
    sudo service sshd restart
@@ -137,7 +137,7 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
      - `Sharing`을 클릭합니다.
      - `Remote Login`을 확인합니다(`Remote Login: On`이어야 함).
      - 적절한 사용자에게 액세스를 허용합니다.
-2. `/private/etc/ssh/sshd_config` 위치에서 `sshd_config` 파일을 편집합니다.
+1. `/private/etc/ssh/sshd_config` 위치에서 `sshd_config` 파일을 편집합니다.
    - 선호하는 편집기를 사용합니다. 또는
 
      ```bash
@@ -162,7 +162,7 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
      PubkeyAuthentication yes
      ```
 
-3. sshd 서비스를 다시 시작합니다.
+1. sshd 서비스를 다시 시작합니다.
 
    ```bash
    sudo launchctl stop com.openssh.sshd
