@@ -4,12 +4,12 @@ keywords: powershell,cmdlet
 ms.date: 12/12/2016
 title: Add-PswaAuthorizationRule
 schema: 2.0.0
-ms.openlocfilehash: a5e55611ac59ff5bfecee59ba2b7d7669d08f840
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: a8904ac36f7fd9fe3c649ad4ca709a98c31b63c3
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893742"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094231"
 ---
 # <a name="add-pswaauthorizationrule"></a>Add-PswaAuthorizationRule
 
@@ -191,8 +191,10 @@ Windows PowerShell 웹 액세스 권한 부여 규칙을 변경하는 데 사용
 
 ### <a name="example-1"></a>예제 1
 
-이 예제에서는 *srv2*에서 *SMAdmins* 그룹의 사용자에게 세션 구성 *PSWAEndpoint*(제한된 runspace)에 대한 액세스 권한을 부여합니다.\
-**참고**: 컴퓨터 이름은 FQDN(정규화된 도메인 이름)이어야 합니다. 관리자는 최종 사용자가 실행할 수 있는 제한된 범위의 cmdlet 및 작업인 제한 세션 구성 또는 runspace를 정의합니다. 제한된 runspace를 정의하면 사용자가 허용된 Windows PowerShell® runspace에 없는 다른 컴퓨터에 액세스하지 못하므로 더 안전한 연결을 제공합니다. 세션 구성에 대한 자세한 내용은 [about_Session_Configurations](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_session_configurations) 또는 [Windows PowerShell 웹 액세스 설치 및 사용](../install-and-use-windows-powershell-web-access.md)을 참조하세요.
+이 예제에서는 _srv2_에서 _SMAdmins_ 그룹의 사용자에게 세션 구성 _PSWAEndpoint_(제한된 runspace)에 대한 액세스 권한을 부여합니다.
+
+> [!NOTE]
+> 컴퓨터 이름은 FQDN(정규화된 도메인 이름)이어야 합니다. 관리자는 최종 사용자가 실행할 수 있는 제한된 범위의 cmdlet 및 작업인 제한 세션 구성 또는 runspace를 정의합니다. 제한된 runspace를 정의하면 사용자가 허용된 Windows PowerShell® runspace에 없는 다른 컴퓨터에 액세스하지 못하므로 더 안전한 연결을 제공합니다. 세션 구성에 대한 자세한 내용은 [about_Session_Configurations](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_session_configurations) 또는 [Windows PowerShell 웹 액세스 설치 및 사용](../install-and-use-windows-powershell-web-access.md)을 참조하세요.
 
 ```PowerShell
 Add-PswaAuthorizationRule -ComputerName srv2.contoso.com -UserGroupName contoso\SMAdmins -ConfigurationName PSWAEndpoint
@@ -240,8 +242,10 @@ Add-PswaAuthorizationRule –UserName PswaServer\ChrisLocal –ComputerName srv1
 ### <a name="example-6"></a>예제 6
 
 이 예제에서는 모든 사용자가 모든 컴퓨터의 모든 끝점에 액세스할 수 있도록 합니다.
-여기서는 기본적으로 권한 부여 규칙을 끕니다.\
-**참고**: `*` 와일드카드 문자는 보안이 중요한 배포에서는 사용하지 않는 것이 좋으며 테스트 환경에서나 보안을 완화할 수 있는 배포에서만 사용해야 합니다.
+여기서는 기본적으로 권한 부여 규칙을 끕니다.
+
+> [!NOTE]
+> `*` 와일드카드 문자는 보안이 중요한 배포에서는 사용하지 않는 것이 좋으며 테스트 환경에서나 보안을 완화할 수 있는 배포에서만 사용해야 합니다.
 
 ````PowerShell
 Add-PswaAuthorizationRule –UserName * -ComputerName * -ConfigurationName *

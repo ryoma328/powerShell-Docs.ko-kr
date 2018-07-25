@@ -31,24 +31,47 @@ PowerShell Core는 [Microsoft 최신 수명 주기 정책][modern]을 채택합�
 
 ## <a name="supported-platforms"></a>지원되는 플랫폼
 
-PowerShell Core는 공식적으로 다음 플랫폼에서 사용할 수 있습니다.
+사용하는 PowerShell Core 버전에 대해 공식적으로 지원되는 플랫폼에 대해서는 다음 표를 참조하세요.
 
-* Windows 7, 8.1 및 10
-* Windows Server 2008 R2, 2012 R2, 2016
-* [Windows 서버 반기 채널][semi-annual]
-* Ubuntu 14.04, 16.04, 17.04
-* Debian 8.7+, 9
-* CentOS 7
-* Red Hat Enterprise Linux 7
-* OpenSUSE 42.2
-* Fedora 27, 28
-* macOS 10.12+
+또한 커뮤니티에서 일부 플랫폼과 관련한 패키지를 제공하였으나 공식적으로 지원되지는 않습니다.
+이러한 패키지는 표에서 `Community`로 표시됩니다.
 
-또한 커뮤니티에서 다음 플랫폼과 관련한 패키지를 제공하였으나 공식적으로 지원되지는 않습니다.
+`Experimental`로 나열되는 플랫폼은 공식적으로 지원되지는 않지만, 실험 및 피드백용으로 사용 가능합니다.
 
-* Arch Linux
-* Kali Linux
-* AppImage(여러 Linux 플랫폼에서 사용)
+|                                                   | 6.0         | 6.1         |
+|---------------------------------------------------|:-----------:|:-----------:|
+| Windows 7, 8.1 및 10                            | 지원 여부   | 지원 여부   |
+| Windows Server 2008 R2, 2012 R2, 2016             | 지원 여부   | 지원 여부   |
+| [Windows 서버 반기 채널][semi-annual] | 지원 여부   | 지원 여부   |
+| Ubuntu 14.04, 16.04                           | 지원 여부   | 지원 여부   |
+| Ubuntu 17.10, 18.04                           |             | 지원 여부   |
+| Debian 8.7+, 9                                | 지원 여부   | 지원 여부   |
+| CentOS 7                                          | 지원 여부   | 지원 여부   |
+| Red Hat Enterprise Linux 7                        | 지원 여부   | 지원 여부   |
+| OpenSUSE 42.2                                     | 지원 여부   | 지원 여부   |
+| Fedora 27                                         | 지원 여부   | 지원 여부   |
+| Fedora 28                                         |             | 지원 여부   |
+| macOS 10.12+                                      | 지원 여부   | 지원 여부   |
+| Arch                                              | 커뮤니티   | 커뮤니티   |
+| Raspbian                                          | 실험적| 커뮤니티   |
+| Kali                                              | 커뮤니티   | 커뮤니티   |
+| AppImage(여러 Linux 플랫폼에서 사용)     | 커뮤니티   | 커뮤니티   |
+
+## <a name="platform-which-are-out-of-support"></a>지원되지 않는 플랫폼
+
+플랫폼 버전이 플랫폼 소유자가 정의한 수명 종료에 도달하면 PowerShell Core도 해당 플랫폼 버전에 대한 지원 제공을 중단합니다. 이전에 릴리스된 패키지는 액세스가 필요한 고객이 계속 사용할 수는 있지만, 공식 지원 및 업데이트는 더 이상 제공되지 않습니다.
+
+그러므로 다음 버전에 대한 지원은 배포 소유자가 종료했으며, 지원되지 않습니다.
+
+| OS       | 버전 | 수명 종료                                                                                 |
+|----------|---------|---------------------------------------------------------------------------------------------|
+| Fedora   | 26      | [2018년 5월](https://fedoramagazine.org/fedora-26-end-life/)                                  |
+| Fedora   | 25      | [2017년 12월](https://fedoramagazine.org/fedora-25-end-life/)                             |
+| Fedora   | 24      | [2017년 8월](https://fedoramagazine.org/fedora-24-eol/)                                    |
+| openSUSE | 42.2    | [2018년 1월](https://lists.opensuse.org/opensuse-security-announce/2017-11/msg00066.html) |
+| openSUSE | 42.1    | [2017년 5월](https://lists.opensuse.org/opensuse-security-announce/2017-05/msg00053.html)     |
+| Ubuntu   | 17.04   | [2018년 1월](https://lists.ubuntu.com/archives/ubuntu-announce/2018-January.txt)          |
+| Ubuntu   | 16.10   | [2017년 7월](https://lists.ubuntu.com/archives/ubuntu-announce/2017-July/000223.html)        |
 
 ## <a name="notes-on-licensing"></a>라이선싱에 대한 메모
 

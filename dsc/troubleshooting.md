@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: DSC 문제 해결
-ms.openlocfilehash: c08f91b514aae438578fa278228fe5ec879a4012
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 1e8bfdf3540e65e3be94bf6a9b04e7d3b14ff044
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190012"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39094071"
 ---
 # <a name="troubleshooting-dsc"></a>DSC 문제 해결
 
@@ -24,10 +24,10 @@ Windows PowerShell DSC(원하는 상태 구성)는 WinRM에 종속됩니다. Win
 [Get-DscConfigurationStatus](https://technet.microsoft.com/library/mt517868.aspx) cmdlet은 대상 노드에서 구성 상태에 대한 정보를 가져옵니다.
 구성 실행의 성공 여부에 대한 상위 수준 정보를 포함하는 다양한 개체가 반환됩니다. 개체를 자세히 검토하면 다음과 같은 구성 실행에 대한 정보를 검색할 수 있습니다.
 
-* 실패한 모든 리소스
-* 다시 부팅을 요청한 모든 리소스
-* 구성 실행 시 메타 구성 설정
-* 기타
+- 실패한 모든 리소스
+- 다시 부팅을 요청한 모든 리소스
+- 구성 실행 시 메타 구성 설정
+- 기타
 
 다음 매개 변수 집합은 마지막 구성 실행에 대한 상태 정보를 반환합니다.
 
@@ -118,8 +118,8 @@ Consistency engine was run successfully.
 
 DSC 이벤트는 사용자가 하나의 DSC 작업에서 이벤트를 집계할 수 있도록 해주는 특정 구조로 로그됩니다. 구조는 다음과 같습니다.
 
-**작업 ID: <Guid>**
-**<Event Message>**
+**작업 ID: \<Guid\>**
+**\<이벤트 메시지\>**
 
 ## <a name="gathering-events-from-a-single-dsc-operation"></a>단일 DSC 작업에서 이벤트 수집
 
@@ -281,7 +281,6 @@ ComputerName   SequenceId TimeCreated           Result   JobID                  
 SRV1   1          6/23/2016 9:37:52 AM  Failure  9701aadf-395e-11e6-9165-00155d390509  {@{Message=; TimeC...
 SRV1   2          6/23/2016 9:36:54 AM  Failure  7e8e2d6e-395c-11e6-9165-00155d390509  {@{Message=; TimeC...
 SRV1   3          6/23/2016 9:36:54 AM  Success  af72c6aa-3960-11e6-9165-00155d390509  {@{Message=Operati...
-
 ```
 
 또한 `Newest` 매개 변수를 사용하여 최신 작업에 대한 결과만 필요하다고 지정할 수 있습니다.
@@ -618,10 +617,13 @@ onlyProperty                            PSComputerName
 ## <a name="see-also"></a>참고 항목
 
 ### <a name="reference"></a>참조
-* [DSC 로그 리소스](logResource.md)
+
+- [DSC 로그 리소스](logResource.md)
 
 ### <a name="concepts"></a>개념
-* [사용자 지정 Windows PowerShell 필요한 상태 구성 리소스 빌드](authoringResource.md)
+
+- [사용자 지정 Windows PowerShell 필요한 상태 구성 리소스 빌드](authoringResource.md)
 
 ### <a name="other-resources"></a>관련 자료
-* [Windows PowerShell Desired State Configuration Cmdlets(Windows PowerShell DSC(필요한 상태 구성) Cmdlet)](https://technet.microsoft.com/library/dn521624(v=wps.630).aspx)
+
+- [Windows PowerShell Desired State Configuration Cmdlets(Windows PowerShell DSC(필요한 상태 구성) Cmdlet)](https://technet.microsoft.com/library/dn521624(v=wps.630).aspx)

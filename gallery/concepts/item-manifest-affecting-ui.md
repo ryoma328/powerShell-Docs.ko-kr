@@ -3,12 +3,12 @@ ms.date: 06/09/2017
 schema: 2.0.0
 keywords: PowerShell
 title: PowerShell 갤러리 UI에 영향을 주는 항목 매니페스트 값
-ms.openlocfilehash: fd5e48f8cc36795742ae597fc7715f7377605b6f
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: 00350d3558e2bfa487fb116304956ffa7291ee05
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893480"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093976"
 ---
 # <a name="item-manifest-values-that-impact-the-powershell-gallery-ui"></a>PowerShell 갤러리 UI에 영향을 주는 항목 매니페스트 값
 
@@ -84,65 +84,67 @@ PowerShell 갤러리 및 PowerShellGet cmdlet이 고유하게 처리하는 태�
 경우에 따라 태그 옆에 비슷하지만 덜 적합한 옵션이 표시됩니다.
 기본 태그를 사용하는 것이 가장 좋습니다. 노이즈가 적고 소비자에게 더 나은 검색 결과를 제공하기 때문입니다.
 
-| **기본 태그** | **대체 및 메모** |
+| 기본 태그 | 대체 및 메모 |
 | --- | --- |
-| **Azure** |  |
-| **DSC** | DesiredStateConfiguration은 그다지 적합하지 않습니다. 너무 깁니다. |
-| **ResourceManager** | ARM은 프로세서 그룹을 설명하는 데 사용되며, Azure Resource Manager에 대해 사용해서는 안 됩니다. | **DSCResourceKit** |  |
-| **SQL** |  |
-| **AWS** |  |
-| **DSCResource** |  |
-| **Automation** |  |
-| **REST** |  |
-| **ActiveDirectory** | AD는 현재 단독으로 사용되지 않습니다.  |
-| **SQLServer** |  |
-| **DBA** |  |
-| **보안** | Defense는 덜 정확합니다. |
-| **Database** | Databases(복수)는 그다지 적합하지 않습니다. |
-| **DevOps** |  |
-| **Windows** |  |
-| **Build** |  |
-| **Deployment** | Deploy는 자주 사용되지 않습니다. |
-| **Cloud** |  |
-| **GIT** |  |
-| **Test** | Testing은 그다지 적합하지 않습니다. |
-| **VersionControl** | Version은 더 자주 사용되지만 덜 정확합니다.  |
-| **Logging** | 동작인 경우 Logging을 사용하는 것이 좋습니다. |
-| **Log** | 사물인 경우 Log를 사용하는 것이 좋습니다. |
-| **Backup** |  |
-| **IaaS** |  |
-| **Linux** |  |
-| **IIS** |  |
-| **AzureAutomation** |  |
-| **Storage** |  |
-| **GitHub** |  |
-| **Json** |  |
-| **Exchange** |  |
-| **Network** | Networking은 비슷하지만 자주 사용되지 않습니다. |
-| **SharePoint** |  |
-| **Reporting** | Reporting은 동작이고 Report는 사물입니다. |
-| **Report** | Report는 사물입니다. |
-| **WinRM** |  |
-| **Monitoring** |  |
-| **VSTS** |  |
-| **Excel** |  |
-| **Google** |  |
-| **Color** |  |
-| **DNS** |  |
-| **Office365** | Office의 철자를 모두 쓰는 것이 좋습니다. O365는 짧지만 일반적으로 사용되지 않습니다. | **Gitlab** |  |
-| **Pester** |  |
-| **AzureAD** |  |
-| **HTML** |  |
-| **Hyper-V** | HyperV는 일반적으로 태그로 사용되지 않습니다. |
-| **Configuration** |  |
-| **ChatOps** |  |
-| **PackageManagement** |  |
-| **WMI** |  |
-| **Firewall** |  |
-| **Docker** |  |
-| **Appveyor** |  |
-| **AzureRm** | 주로 AzureRM 모듈에 대해 사용됩니다. |
-| **Zip** |  |
-| **MSI** |  |
-| **Mac** |  |
-| **PoshBot** |  |
+| Azure |  |
+| DSC | DesiredStateConfiguration은 그다지 적합하지 않습니다. 너무 깁니다. |
+| ResourceManager | ARM은 프로세서 그룹을 설명하는 데 사용되며, Azure Resource Manager에 대해 사용해서는 안 됩니다. |
+| DSCResourceKit |  |
+| SQL |  |
+| AWS |  |
+| DSCResource |  |
+| 자동화 |  |
+| REST |  |
+| ActiveDirectory | AD는 현재 단독으로 사용되지 않습니다.  |
+| SQLServer |  |
+| DBA |  |
+| 보안 | Defense는 덜 정확합니다. |
+| 데이터베이스 | Databases(복수)는 그다지 적합하지 않습니다. |
+| DevOps |  |
+| Windows |  |
+| Build |  |
+| 배포 | Deploy는 자주 사용되지 않습니다. |
+| 클라우드 |  |
+| GIT |  |
+| 테스트 | Testing은 그다지 적합하지 않습니다. |
+| VersionControl | Version은 더 자주 사용되지만 덜 정확합니다.  |
+| 로깅 | 동작인 경우 Logging을 사용하는 것이 좋습니다. |
+| 로그 | 사물인 경우 Log를 사용하는 것이 좋습니다. |
+| 예비 |  |
+| IaaS |  |
+| Linux |  |
+| IIS |  |
+| AzureAutomation |  |
+| 저장소 |  |
+| GitHub |  |
+| Json |  |
+| Exchange |  |
+| Network (네트워크) | Networking은 비슷하지만 자주 사용되지 않습니다. |
+| SharePoint |  |
+| 보고 | Reporting은 동작이고 Report는 사물입니다. |
+| 보고서 | Report는 사물입니다. |
+| WinRM |  |
+| 모니터링 |  |
+| VSTS |  |
+| Excel |  |
+| Google |  |
+| Color |  |
+| DNS |  |
+| Office365 | Office의 철자를 모두 쓰는 것이 좋습니다. O365는 짧지만 일반적으로 사용되지 않습니다. |
+| Gitlab |  |
+| Pester |  |
+| AzureAD |  |
+| HTML |  |
+| Hyper-V | HyperV는 일반적으로 태그로 사용되지 않습니다. |
+| 구성 |  |
+| ChatOps |  |
+| PackageManagement |  |
+| WMI |  |
+| 방화벽 |  |
+| Docker |  |
+| Appveyor |  |
+| AzureRm | 주로 AzureRM 모듈에 대해 사용됩니다. |
+| Zip |  |
+| MSI |  |
+| Mac |  |
+| PoshBot |  |

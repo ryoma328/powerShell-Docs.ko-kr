@@ -2,36 +2,34 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: DSC 구성
-ms.openlocfilehash: d98bf0e85c12103d9b1eeded155bab1af364bd4c
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 171068acb51f44e31c81e63f6640222ef71bee38
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34188448"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093697"
 ---
 # <a name="dsc-configurations"></a>DSC 구성
 
->적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0
+> 적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0
 
 DSC 구성은 특별한 형식의 함수를 정의하는 PowerShell 스크립트입니다.
 구성을 정의하려면 PowerShell 키워드 **Configuration**을 사용합니다.
 
 ```powershell
 Configuration MyDscConfiguration {
-
     Node "TEST-PC1" {
         WindowsFeature MyFeatureInstance {
-            Ensure = "Present"
-            Name =  "RSAT"
+            Ensure = 'Present'
+            Name = 'RSAT'
         }
         WindowsFeature My2ndFeatureInstance {
-            Ensure = "Present"
-            Name = "Bitlocker"
+            Ensure = 'Present'
+            Name = 'Bitlocker'
         }
     }
 }
 MyDscConfiguration
-
 ```
 
 스크립트를 .ps1 파일로 저장하세요.
@@ -48,23 +46,21 @@ MyDscConfiguration
 
 ```powershell
 Configuration MyDscConfiguration {
-
     param(
-        [string[]]$ComputerName="localhost"
+        [string[]]$ComputerName='localhost'
     )
     Node $ComputerName {
         WindowsFeature MyFeatureInstance {
-            Ensure = "Present"
-            Name =  "RSAT"
+            Ensure = 'Present'
+            Name = 'RSAT'
         }
         WindowsFeature My2ndFeatureInstance {
-            Ensure = "Present"
-            Name = "Bitlocker"
+            Ensure = 'Present'
+            Name = 'Bitlocker'
         }
     }
 }
 MyDscConfiguration -ComputerName $ComputerName
-
 ```
 
 이 예제에서는 구성을 컴파일할 때 **ComputerName** 매개 변수로 전달하여 노드의 이름을 지정합니다. 이름의 기본값은 "localhost"입니다.
@@ -75,19 +71,21 @@ MyDscConfiguration -ComputerName $ComputerName
 PowerShell 함수를 호출하는 것처럼 구성을 호출하면 됩니다.
 구성의 이름만을 포함하는 예제의 마지막 줄은 구성을 호출합니다.
 
->**참고:** 구성을 호출하려면 (다른 PowerShell 함수에서 처럼) 함수가 전역 범위에 있어야 합니다.
->스크립트를 "도트 소싱"하거나, F5 키를 사용하거나 ISE에서 **스크립트 실행** 단추를 클릭하여 구성 스크립트를 실행하면 이렇게 할 수 있습니다.
->스크립트를 도트 소싱하려면 명령을 `. .\myConfig.ps1`을 실행합니다. 여기서 `myConfig.ps1`은 구성을 포함하는 스크립트 파일의 이름입니다.
+> [!NOTE]
+> 구성을 호출하려면 (다른 PowerShell 함수에서처럼) 함수가 전역 범위에 있어야 합니다.
+> 스크립트를 "도트 소싱"하거나, F5 키를 사용하거나 ISE에서 **스크립트 실행** 단추를 클릭하여 구성 스크립트를 실행하면 이렇게 할 수 있습니다.
+> 스크립트를 도트 소싱하려면 명령을 `. .\myConfig.ps1`을 실행합니다. 여기서 `myConfig.ps1`은 구성을 포함하는 스크립트 파일의 이름입니다.
 
 구성을 호출하면 다음을 수행합니다.
 
 - 모든 변수를 확인합니다.
 - 현재 디렉터리에 구성과 같은 이름으로 폴더를 생성합니다.
 - 새 디렉터리에 _NodeName_.mof라는 파일을 생성합니다. _NodeName_은 구성의 대상 노드 이름입니다.
-    노드가 두 개 이상 있을 경우에는 각 노드에 대해 MOF 파일이 생성됩니다.
+  노드가 두 개 이상 있을 경우에는 각 노드에 대해 MOF 파일이 생성됩니다.
 
->**참고**: MOF 파일은 대상 노드에 대한 모든 구성 정보를 포함합니다. 이 때문에 안전하게 유지해야 합니다.
->자세한 내용은 [MOF 파일 보안](secureMOF.md)을 참조하세요.
+> [!NOTE]
+> MOF 파일은 대상 노드에 대한 모든 구성 정보를 포함합니다. 이 때문에 안전하게 유지해야 합니다.
+> 자세한 내용은 [MOF 파일 보안](secureMOF.md)을 참조하세요.
 
 위의 첫 번째 구성을 컴파일하면 다음 폴더 구조가 생성됩니다.
 
@@ -127,19 +125,18 @@ Mode                LastWriteTime         Length Name
 Configuration DependsOnExample {
     Node Test-PC1 {
         Group GroupExample {
-            Ensure = "Present"
-            GroupName = "TestGroup"
+            Ensure = 'Present'
+            GroupName = 'TestGroup'
         }
 
         User UserExample {
-            Ensure = "Present"
-            UserName = "TestUser"
-            FullName = "TestUser"
-            DependsOn = "[Group]GroupExample"
+            Ensure = 'Present'
+            UserName = 'TestUser'
+            FullName = 'TestUser'
+            DependsOn = '[Group]GroupExample'
         }
     }
 }
-
 ```
 
 ## <a name="using-new-resources-in-your-configuration"></a>구성에서 새 리소스 사용
@@ -151,10 +148,12 @@ Configuration DependsOnExample {
 이러한 모듈은 `$env:PSModulePath`에 배치되어 [Get-DscResource](https://technet.microsoft.com/library/dn521625.aspx)에 의해 제대로 인식된 후에도 여전히 구성 내에서 로드되어야 합니다.
 **Import-DscResource**는 **구성** 블록 내에서만 인식될 수 있는 동적 키워드입니다(즉, cmdlet이 아님).
 **Import-DscResource**에서는 두 개의 매개 변수를 지원합니다.
+
 - **ModuleName**은 **Import-DscResource**를 사용하는 권장 방법입니다. 가져올 리소스를 포함하는 모듈의 이름을 받습니다(모듈 이름으로 이루어진 문자열 배열도 받음).
 - **Name**은 가져올 리소스의 이름입니다. 이 이름은 [Get-DscResource](https://technet.microsoft.com/library/dn521625.aspx)에 의해 "Name"으로 반환한 친숙한 이름이 아니라, 리소스 스키마를 정의할 때 사용된 클래스 이름입니다([Get-DscResource](https://technet.microsoft.com/library/dn521625.aspx)에 의해 **ResourceType**으로 반환됨).
 
 ## <a name="see-also"></a>참고 항목
-* [Windows PowerShell 필요한 상태 구성 개요](overview.md)
-* [DSC 리소스](resources.md)
-* [로컬 구성 관리자 구성](metaConfig.md)
+
+- [Windows PowerShell 필요한 상태 구성 개요](overview.md)
+- [DSC 리소스](resources.md)
+- [로컬 구성 관리자 구성](metaConfig.md)

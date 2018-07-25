@@ -58,8 +58,8 @@ Visual Studio Code를 종료하려면 **파일->종료**를 누릅니다.
 Visual Studio Code에 설치된 특정 버전의 PowerShell을 사용하려면 사용자 설정 파일에 새로운 변수를 추가해야 합니다.
 
 1. **파일 -> 기본 설정 -> 설정**을 클릭합니다.
-2. 두 개의 편집기 창이 표시됩니다.
-   맨 오른쪽 창(`settings.json`)에서 두 개의 중괄호(`{` 및 `}`) 사이에 아래에서 사용 중인 OS에 해당하는 설정을 삽입하고 *<version>* 을 설치된 PowerShell 버전으로 바꿉니다.
+1. 두 개의 편집기 창이 표시됩니다.
+   맨 오른쪽 창(`settings.json`)에서 두 개의 중괄호(`{` 및 `}`) 사이에 아래에서 사용 중인 OS에 해당하는 설정을 삽입하고 **\<버전\>** 을 설치된 PowerShell 버전으로 바꿉니다.
 
    ```json
     // On Windows:
@@ -72,8 +72,8 @@ Visual Studio Code에 설치된 특정 버전의 PowerShell을 사용하려면 �
     "powershell.powerShellExePath": "/usr/local/microsoft/powershell/<version>/pwsh"
    ```
 
-3. 설정을 원하는 PowerShell 실행 파일에 대한 경로로 바꿉니다.
-4. 설정 파일을 저장하고 Visual Studio Code를 다시 시작합니다.
+1. 설정을 원하는 PowerShell 실행 파일에 대한 경로로 바꿉니다.
+1. 설정 파일을 저장하고 Visual Studio Code를 다시 시작합니다.
 
 #### <a name="configuration-settings-for-visual-studio-code"></a>Visual Studio Code에 대한 구성 파일
 

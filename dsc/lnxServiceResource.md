@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: Linux용 DSC nxService 리소스
-ms.openlocfilehash: 9cab889368469f2c854a387b919aea58a49f2210
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: ab6544762862c9b2477e92f0d782b13afb96f2c9
+ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34187721"
+ms.lasthandoff: 07/17/2018
+ms.locfileid: "39093571"
 ---
 # <a name="dsc-for-linux-nxservice-resource"></a>Linux용 DSC nxService 리소스
 
@@ -19,11 +19,10 @@ PowerShell DSC(필요한 상태 구성)의 **nxService** 리소스에서는 Linu
 nxService <string> #ResourceName
 {
     Name = <string>
-    [ Controller = <string> { init | upstart | systemd }  ]
+    [ Controller = <string> { init | upstart | systemd } ]
     [ Enabled = <bool> ]
     [ State = <string> { Running | Stopped } ]
     [ DependsOn = <string[]> ]
-
 }
 ```
 
@@ -36,26 +35,24 @@ nxService <string> #ResourceName
 | State| 서비스가 실행되고 있는지를 나타냅니다. 서비스가 실행 중이 아니도록 하려면 이 속성을 "Stopped"로 설정합니다. 서비스가 실행 중이도록 하려면 이 속성을 "Running"으로 설정합니다.|
 | DependsOn | 이 리소스를 구성하려면 먼저 다른 리소스의 구성을 실행해야 함을 나타냅니다. 예를 들어, 먼저 실행하려는 리소스 구성 스크립트 블록의 **ID**가 **ResourceName**이고 해당 형식이 **ResourceType**일 경우, 이 속성을 사용하기 위한 구문은 `DependsOn = "[ResourceType]ResourceName"`입니다.|
 
-
 ## <a name="additional-information"></a>추가 정보
 
 **nxService** 리소스는 서비스 정의나 서비스에 대한 스크립트가 존재하지 않는 경우 만들지 않습니다. PowerShell 필요한 상태 구성 **nxFile** 리소스를 사용하여 서비스 정의 파일 또는 스크립트의 존재 또는 내용을 관리할 수 있습니다.
 
 ## <a name="example"></a>예제
 
-다음 예에서는 **SystemD** 서비스 컨트롤러로 등록된 "httpd" 서비스(Apache HTTP Server용)의 구성을 보여 줍니다.
+다음 예에서는 **SystemD** 서비스 컨트롤러로 등록된 ‘httpd’ 서비스(Apache HTTP Server용)의 구성을 보여 줍니다.
 
-```
+```powershell
 Import-DSCResource -Module nx
 
 Node $node {
-#Apache Service
-nxService ApacheService
-{
-Name = "httpd"
-State = "running"
-Enabled = $true
-Controller = "systemd"
-}
+    #Apache Service
+    nxService ApacheService {
+        Name = 'httpd'
+        State = 'running'
+        Enabled = $true
+        Controller = 'systemd'
+    }
 }
 ```
