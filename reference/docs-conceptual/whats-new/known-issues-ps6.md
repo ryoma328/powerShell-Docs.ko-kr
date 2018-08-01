@@ -2,12 +2,12 @@
 ms.date: 05/17/2018
 keywords: powershell,core
 title: PowerShell 6.0의 알려진 문제
-ms.openlocfilehash: 7fa6b9935ae75b62df72609b8a9ec16246b1c610
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: e3e718be903ff2223064d5790d3d0fe554ef04cd
+ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893691"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39268005"
 ---
 # <a name="known-issues-for-powershell-60"></a>PowerShell 6.0의 알려진 문제
 
@@ -102,8 +102,8 @@ PowerShell에서 일반적으로 사용할 수 있는 많은 명령(cmdlet)이 L
 
 다음 표에는 Linux/macOS의 PowerShell에서 작동하지 않는 것으로 알려진 명령이 나와 있습니다.
 
-|명령 |작동 상태 | 참고|
-|---------|------------------|------|
+|명령|작동 상태|참고|
+|--------|-----------------|-----|
 |`Get-Service`, `New-Service`, `Restart-Service`, `Resume-Service`, `Set-Service`, `Start-Service`, `Stop-Service`, `Suspend-Service`|사용할 수 없음.|이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.|
 |`Get-Acl`, `Set-Acl`|사용할 수 없음.|이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.|
 |`Get-AuthenticodeSignature`, `Set-AuthenticodeSignature`|사용할 수 없음.|이러한 명령은 인식되지 않습니다. 이 문제는 향후 릴리스에서 해결되어야 합니다.|
