@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: Linux용 DSC nxService 리소스
-ms.openlocfilehash: ab6544762862c9b2477e92f0d782b13afb96f2c9
-ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
+ms.openlocfilehash: fe8043995205649378725f2ab0a78e19313739c9
+ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093571"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39267782"
 ---
 # <a name="dsc-for-linux-nxservice-resource"></a>Linux용 DSC nxService 리소스
 
@@ -27,7 +27,8 @@ nxService <string> #ResourceName
 ```
 
 ## <a name="properties"></a>속성
-|  속성 |  설명 |
+
+| 속성 | 설명 |
 |---|---|
 | 이름| 구성할 서비스/데몬의 이름입니다.|
 | 컨트롤러| 서비스를 구성할 때 사용할 서비스 컨트롤러의 형식입니다.|

@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 title: 갤러리 관리자에게 문의
-ms.openlocfilehash: c919848e93a1f061ac0bf7dec8ef568e41212ef7
-ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
+ms.openlocfilehash: 71c8aa15ac0c6ec57e7e1bfe3cb20cac7e2c6b29
+ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093825"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39268656"
 ---
 # <a name="contact-gallery-administrators"></a>갤러리 관리자에게 문의
 
@@ -24,6 +24,6 @@ ms.locfileid: "39093825"
 
 ## <a name="how-to-contact-gallery-administrators"></a>갤러리 관리자에게 문의하는 방법
 
-1. <cgadmin@microsoft.com>으로 전자 메일을 보내 주시기 바랍니다.
+1. cgadmin@microsoft.com으로 전자 메일을 보내 주시기 바랍니다.
 2. 항목 남용을 신고하는 경우 왼쪽 패널의 항목 정보 아래에서 신고하기 링크를 찾을 수 있습니다.
 3. 갤러리와 관련된 다른 일반적인 질문은 [UserVoice](http://windowsserver.uservoice.com/forums/301869-powershell)에 제출하세요.

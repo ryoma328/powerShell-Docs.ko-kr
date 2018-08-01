@@ -3,18 +3,18 @@ ms.topic: reference
 keywords: powershell,cmdlet
 ms.date: 12/12/2016
 title: Install-PswaWebApplication
-ms.openlocfilehash: 68455d9490f7d5c33c1a928ac262a76a78ad7128
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 29e074b75eeb387640831229c63142e6dd5e991a
+ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189604"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39268302"
 ---
 # <a name="install-pswawebapplication"></a>Install-PswaWebApplication
 
 ## <a name="synopsis"></a>요약
 
-IIS에서 Windows PowerShell® 웹 액세스 웹 응용 프로그램을 구성합니다.
+IIS에서 Windows PowerShell 웹 액세스 웹 응용 프로그램을 구성합니다.
 
 ## <a name="syntax"></a>구문
 
@@ -25,7 +25,8 @@ Install-PswaWebApplication [[-WebApplicationName] <String> ] [-UseTestCertificat
 
 ## <a name="description"></a>설명
 
-**Install-PswaWebApplication** cmdlet은 Windows PowerShell 웹 액세스 웹 응용 프로그램을 구성합니다. 이 cmdlet은 웹 응용 프로그램을 설치하고, 웹 사이트와 연결하고, 선택적으로 **useTestCertificate** 매개 변수를 사용하여 테스트 SSL 인증서를 만듭니다. 보안을 위해 웹 관리자는 테스트 인증서는 프로덕션 환경에서만 사용해야 합니다.
+**Install-PswaWebApplication** cmdlet은 Windows PowerShell 웹 액세스 웹 응용 프로그램을 구성합니다.
+이 cmdlet은 웹 응용 프로그램을 설치하고, 웹 사이트와 연결하고, 선택적으로 **useTestCertificate** 매개 변수를 사용하여 테스트 SSL 인증서를 만듭니다. 보안을 위해 웹 관리자는 테스트 인증서는 프로덕션 환경에서만 사용해야 합니다.
 
 ## <a name="parameters"></a>매개 변수
 
@@ -42,7 +43,7 @@ Install-PswaWebApplication [[-WebApplicationName] <String> ] [-UseTestCertificat
 | 파이프라인 입력 적용 여부               | false                                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-webapplicationnameltstringgt"></a>-WebApplicationName&lt;String&gt;
+### <a name="-webapplicationname"></a>-WebApplicationName
 
 웹 응용 프로그램 이름을 지정합니다. Windows PowerShell 웹 액세스 URL의 마지막 부분으로 표시됩니다.
 
@@ -55,7 +56,7 @@ Install-PswaWebApplication [[-WebApplicationName] <String> ] [-UseTestCertificat
 | 파이프라인 입력 적용 여부               | false                                |
 | 와일드카드 문자 허용 여부          | false                                |
 
-### <a name="-websitenameltstringgt"></a>-WebSiteName&lt;String&gt;
+### <a name="-websitename"></a>-WebSiteName
 
 이 Windows PowerShell 웹 액세스 웹 응용 프로그램 설치할 웹 서버(IIS) 웹 사이트의 이름을 지정합니다.
 
@@ -95,8 +96,7 @@ cmdlet이 실행되지 않습니다.
 
 ### <a name="ltcommonparametersgt"></a>&lt;CommonParameters&gt;
 
-이 cmdlet은 -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, -OutVariable 등의 일반 매개 변수를 지원합니다.
-자세한 내용은 [about_CommonParameters](http://go.microsoft.com/fwlink/p/?LinkID=113216)를 참조하세요.
+이 cmdlet은 -Verbose, -Debug, -ErrorAction, -ErrorVariable, -OutBuffer, -OutVariable 등의 일반 매개 변수를 지원합니다. 자세한 내용은 [about_CommonParameters](http://go.microsoft.com/fwlink/p/?LinkID=113216)를 참조하세요.
 
 ## <a name="inputs"></a>입력
 
