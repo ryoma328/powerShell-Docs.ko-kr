@@ -2,16 +2,16 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: DSC 레지스트리 리소스
-ms.openlocfilehash: b77710d7a6fc599949e78c17af309ad88a1a0872
-ms.sourcegitcommit: 77f62a55cac8c13d69d51eef5fade18f71d66955
+ms.openlocfilehash: 8d74473d167b70182c3a16c1d39d2a9e797afb1b
+ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093588"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39267724"
 ---
 # <a name="dsc-registry-resource"></a>DSC 레지스트리 리소스
 
-> 적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0
+‘적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0’
 
 PowerShell DSC(필요한 상태 구성)의 **레지스트리** 리소스에서는 대상 노드에 있는 레지스트리 키와 값을 관리하는 메커니즘을 제공합니다.
 
@@ -33,8 +33,8 @@ Registry [string] #ResourceName
 
 ## <a name="properties"></a>속성
 
-|  속성  |  설명   |
-|---|---|
+| 속성 | 설명 |
+| --- | --- |
 | 키| 특정 상태를 확인하려는 레지스트리 키의 경로를 나타냅니다. 이 경로는 하이브를 포함해야 합니다.|
 | ValueName| 레지스트리 값의 이름을 나타냅니다. 레지스트리 키를 추가하거나 제거하려면 ValueType 또는 ValueData를 지정하지 않고 이 속성을 빈 문자열로 지정합니다. 레지스트리 키의 기본값을 수정하거나 제거하려면 ValueType 또는 ValueData도 지정하고 이 속성을 빈 문자열로 지정합니다.|
 | Ensure| 키와 값의 존재 여부를 나타냅니다. 존재하도록 하려면 이 속성을 "Present"으로 설정합니다. 존재하지 않도록 하려면 이 속성을 "Absent"으로 설정합니다. 기본값은 "Present"입니다.|
@@ -62,4 +62,4 @@ Configuration RegistryTest
 ```
 
 > [!NOTE]
-> **HKEY\_CURRENT\_USER** 하이브에서 레지스트리 설정을 변경하려면 구성이 시스템이 아닌 사용자 자격 증명을 사용하여 실행되어야 합니다. **PsDscRunAsCredential** 속성을 사용하여 구성에 대한 사용자 자격 증명을 지정할 수 있습니다. 예제는 [사용자 자격 증명을 사용하여 DSC 실행](runAsUser.md)을 참조하세요.
+> `HKEY\CURRENT\USER` 하이브에서 레지스트리 설정을 변경하려면 구성이 시스템이 아닌 사용자 자격 증명을 사용하여 실행되어야 합니다. **PsDscRunAsCredential** 속성을 사용하여 구성에 대한 사용자 자격 증명을 지정할 수 있습니다. 예제는 [사용자 자격 증명을 사용하여 DSC 실행](runAsUser.md)을 참조하세요.

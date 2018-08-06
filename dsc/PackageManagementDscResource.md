@@ -2,12 +2,12 @@
 ms.date: 06/20/2018
 keywords: dsc,powershell,configuration,setup
 title: DSC PackageManagement 리소스
-ms.openlocfilehash: 281aee13eb005f00b23c97870eaefaa332d9c232
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: 18cbbfe0715c82dcfdf4a5fb6ee36ee814e43d3b
+ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37892504"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39268095"
 ---
 # <a name="dsc-packagemanagement-resource"></a>DSC PackageManagement 리소스
 
@@ -39,8 +39,8 @@ PackageManagement [string] #ResourceName
 
 ## <a name="properties"></a>속성
 
-|  속성  |  설명   |
-|---|---|
+| 속성 | 설명 |
+| --- | --- |
 | 이름| 설치하거나 제거할 패키지의 이름을 지정합니다.|
 | AdditionalParameters| `Get-Package -AdditionalArguments`에 전달되는 매개 변수의 공급자별 해시 테이블입니다. 예를 들어 NuGet 공급자의 경우 DestinationPath와 같은 추가 매개 변수를 전달할 수 있습니다.|
 | Ensure| 패키지를 설치할지 또는 제거할지를 결정합니다.|
@@ -54,10 +54,11 @@ PackageManagement [string] #ResourceName
 ## <a name="additional-parameters"></a>추가 매개 변수
 
 다음 표에는 AdditionalParameters 속성에 대한 옵션이 나와 있습니다.
-|  매개 변수  | 설명   |
-|---|---|
+
+| 매개 변수 | 설명 |
+| --- | --- |
 | DestinationPath| 기본 제공 Nuget 공급자와 같은 공급자에서 사용됩니다. 패키지를 설치할 파일 위치를 지정합니다.|
-| InstallationPolicy| 기본 제공 Nuget 공급자와 같은 공급자에서 사용됩니다. 패키지 원본을 신뢰할 수 있는지를 결정합니다. "Untrusted"와 "Trusted" 중 하나입니다.|
+| InstallationPolicy| 기본 제공 Nuget 공급자와 같은 공급자에서 사용됩니다. 패키지 원본을 신뢰할 수 있는지를 결정합니다. 다음 중 하나: `Untrusted`, `Trusted`.|
 
 ## <a name="example"></a>예제
 
