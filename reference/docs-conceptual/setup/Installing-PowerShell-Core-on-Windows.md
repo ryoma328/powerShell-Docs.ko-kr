@@ -126,8 +126,8 @@ Nano 서버는 “헤드리스” OS입니다. 두 가지 방법으로 Core 이�
 PowerShell Core는 WSMan 및 SSH보다 PowerShell Remoting Protocol(PSRP)을 지원합니다.
 자세한 내용은 다음을 참조하세요.
 
-- [PowerShell Core에서의 SSH 원격 작업][ssh-원격 작업]
-- [PowerShell Core에서의 WSMan 원격 작업][wsman-원격 작업]
+- [PowerShell Core에서의 SSH 원격 작업][ssh-remoting]
+- [PowerShell Core에서의 WSMan 원격 작업][wsman-remoting]
 
 ## <a name="artifact-installation-instructions"></a>아티팩트 설치 지침
 
@@ -140,4 +140,9 @@ CoreCLR 아티팩트에서 PowerShell Core를 설치하려면
 3. zip 파일을 `bin` 디렉터리로 추출
 4. `./bin/pwsh.exe`
 
-<!-- [download-center]: TODO --> [릴리스]: https://github.com/PowerShell/PowerShell/releases [ssh-원격 작업]: ../core-powershell/SSH-Remoting-in-PowerShell-Core.md [wsman-원격 작업]: ../core-powershell/WSMan-Remoting-in-PowerShell-Core.md [AppVeyor]: https://ci.appveyor.com/project/PowerShell/powershell
+<!-- [download-center]: TODO -->
+
+[릴리스]: https://github.com/PowerShell/PowerShell/releases
+[ssh-remoting]: ../core-powershell/SSH-Remoting-in-PowerShell-Core.md
+[wsman-remoting]: ../core-powershell/WSMan-Remoting-in-PowerShell-Core.md
+[AppVeyor]: https://ci.appveyor.com/project/PowerShell/powershell
