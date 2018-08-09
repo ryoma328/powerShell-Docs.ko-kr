@@ -1,3 +1,14 @@
+---
+title: macOS에서 PowerShell Core 설치
+description: macOS에서 PowerShell Core를 설치하는 방법에 대한 정보
+ms.date: 08/06/2018
+ms.openlocfilehash: ff1814d95b3ca3fa8497069dff249fd2ad5576ef
+ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39587468"
+---
 # <a name="installing-powershell-core-on-macos"></a>macOS에서 PowerShell Core 설치
 
 PowerShell Core는 macOS 10.12 이상을 지원합니다.
@@ -37,7 +48,7 @@ brew cask install powershell
 pwsh
 ```
 
-PowerShell을 종료하고 bash로 돌아가려면 ‘exit’ 명령을 사용합니다. 
+PowerShell을 종료하고 bash로 돌아가려면 ‘exit’ 명령을 사용합니다.
 ```sh
 exit
 ```

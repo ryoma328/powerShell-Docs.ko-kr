@@ -1,3 +1,14 @@
+---
+title: PowerShell Core에서 WSMan(WS-Management) 원격
+description: WSMan을 사용하여 PowerShell Core에서 원격 작업
+ms.date: 08/06/2018
+ms.openlocfilehash: ce58ed88f59f32b0f83951e55de36e829f7fa3f4
+ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39587349"
+---
 # <a name="ws-management-wsman-remoting-in-powershell-core"></a>PowerShell Core에서 WSMan(WS-Management) 원격
 
 ## <a name="instructions-to-create-a-remoting-endpoint"></a>원격 끝점 만들기 지침

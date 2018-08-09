@@ -1,3 +1,14 @@
+---
+title: PowerShell Core 지원 수명 주기
+description: PowerShell Core에 대한 정책 관리 지원
+ms.date: 08/06/2018
+ms.openlocfilehash: 2e0ca1b9c133e6f316a40aff13365d0489059165
+ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39587162"
+---
 # <a name="powershell-core-support-lifecycle"></a>PowerShell Core 지원 수명 주기
 
 PowerShell Core는 Windows PowerShell과 별개로 제공, 설치 및 구성되는 도구 및 구성 요소의 고유 집합입니다.
@@ -44,7 +55,8 @@ PowerShell Core는 [Microsoft 최신 수명 주기 정책][modern]을 채택합�
 | Windows Server 2008 R2, 2012 R2, 2016             | 지원 여부   | 지원 여부   |
 | [Windows 서버 반기 채널][semi-annual] | 지원 여부   | 지원 여부   |
 | Ubuntu 14.04, 16.04                           | 지원 여부   | 지원 여부   |
-| Ubuntu 17.10, 18.04                           |             | 지원 여부   |
+| Ubuntu 18.04                                      |             | 지원 여부   |
+| Ubuntu 18.10(맞춤 패키지를 통해)                   |             | 커뮤니티   |
 | Debian 8.7+, 9                                | 지원 여부   | 지원 여부   |
 | CentOS 7                                          | 지원 여부   | 지원 여부   |
 | Red Hat Enterprise Linux 7                        | 지원 여부   | 지원 여부   |
@@ -56,6 +68,10 @@ PowerShell Core는 [Microsoft 최신 수명 주기 정책][modern]을 채택합�
 | Raspbian                                          | 실험적| 커뮤니티   |
 | Kali                                              | 커뮤니티   | 커뮤니티   |
 | AppImage(여러 Linux 플랫폼에서 사용)     | 커뮤니티   | 커뮤니티   |
+| [맞춤 패키지](https://snapcraft.io/powershell)   | 참고 참조    | 참고 참조    |
+
+> [!NOTE]
+> 맞춤 패키지는 일정 기간 동안 실험적입니다.  이후에 맞춤에서는 새로운 지원 문제를 일으키지 않을 것입니다. 지원은 패키지를 실행하는 배포를 따릅니다.
 
 ## <a name="platform-which-are-out-of-support"></a>지원되지 않는 플랫폼
 
@@ -65,13 +81,14 @@ PowerShell Core는 [Microsoft 최신 수명 주기 정책][modern]을 채택합�
 
 | OS       | 버전 | 수명 종료                                                                                 |
 |----------|---------|---------------------------------------------------------------------------------------------|
-| Fedora   | 26      | [2018년 5월](https://fedoramagazine.org/fedora-26-end-life/)                                  |
-| Fedora   | 25      | [2017년 12월](https://fedoramagazine.org/fedora-25-end-life/)                             |
 | Fedora   | 24      | [2017년 8월](https://fedoramagazine.org/fedora-24-eol/)                                    |
-| openSUSE | 42.2    | [2018년 1월](https://lists.opensuse.org/opensuse-security-announce/2017-11/msg00066.html) |
+| Fedora   | 25      | [2017년 12월](https://fedoramagazine.org/fedora-25-end-life/)                             |
+| Fedora   | 26      | [2018년 5월](https://fedoramagazine.org/fedora-26-end-life/)                                  |
 | openSUSE | 42.1    | [2017년 5월](https://lists.opensuse.org/opensuse-security-announce/2017-05/msg00053.html)     |
-| Ubuntu   | 17.04   | [2018년 1월](https://lists.ubuntu.com/archives/ubuntu-announce/2018-January.txt)          |
+| openSUSE | 42.2    | [2018년 1월](https://lists.opensuse.org/opensuse-security-announce/2017-11/msg00066.html) |
 | Ubuntu   | 16.10   | [2017년 7월](https://lists.ubuntu.com/archives/ubuntu-announce/2017-July/000223.html)        |
+| Ubuntu   | 17.04   | [2018년 1월](https://lists.ubuntu.com/archives/ubuntu-announce/2018-January.txt)          |
+| Ubuntu   | 17.10   | [2018년 7월](https://lists.ubuntu.com/archives/ubuntu-announce/2018-July/000232.html)        |
 
 ## <a name="notes-on-licensing"></a>라이선싱에 대한 메모
 

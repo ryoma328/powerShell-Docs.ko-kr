@@ -1,3 +1,14 @@
+---
+title: PowerShell Core 6.0의 새로운 기능
+description: PowerShell Core 6.0에서 릴리스된 새로운 기능 및 변경 내용
+ms.date: 08/06/2018
+ms.openlocfilehash: f0cddad223528cd0f2b4f392faeb6e08e1050c51
+ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39587247"
+---
 # <a name="whats-new-in-powershell-core-60"></a>PowerShell Core 6.0의 새로운 기능
 
 [PowerShell Core 6.0][github]은 PowerShell의 새로운 버전으로, 크로스 플랫폼(Windows, macOS 및 Linux)이자 오픈 소스이며 다른 유형의 환경 및 하이브리드 클라우드용으로 빌드되었습니다.
