@@ -3,16 +3,16 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: 여러 개체에 대해 작업 반복(ForEach Object)
 ms.assetid: 6697a12d-2470-4ed6-b5bb-c35e5d525eb6
-ms.openlocfilehash: 8b8002af3ade0905421760ce29cdc84b084236e9
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
+ms.openlocfilehash: 64d85edad4a6931b2376b95b6d1f5b4d5194399f
+ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30954282"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39587264"
 ---
 # <a name="repeating-a-task-for-multiple-objects-foreach-object"></a>여러 개체에 대해 작업 반복(ForEach-Object)
 
-**ForEach-Object** cmdlet을 사용하면 현재 파이프라인 개체의 스크립트 블록과 $_ 설명자를 통해 파이프라인에 있는 각 개체에 대해 명령을 실행할 수 있습니다. 이 cmdlet을 사용하여 몇 가지 복잡한 작업을 수행할 수 있습니다.
+**ForEach-Object** cmdlet을 사용하면 현재 파이프라인 개체의 스크립트 블록과 `$_` 설명자를 통해 파이프라인에 있는 각 개체에 대해 명령을 실행할 수 있습니다. 이 cmdlet을 사용하여 몇 가지 복잡한 작업을 수행할 수 있습니다.
 
 이 cmdlet은 데이터를 조작하여 보다 사용하기 쉽게 만드는 데 유용할 수 있습니다. 예를 들어 WMI의 Win32_LogicalDisk 클래스를 사용하여 각 로컬 디스크의 사용 가능한 공간 정보를 반환할 수 있습니다. 그러나 이 정보는 다음과 같이 쉽게 읽을 수 없는 바이트 단위로 반환됩니다.
 

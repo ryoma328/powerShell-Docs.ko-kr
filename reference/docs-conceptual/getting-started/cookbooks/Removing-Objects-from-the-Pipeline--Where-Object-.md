@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: 파이프라인에서 개체 제거(Where Object)
 ms.assetid: 01df8b22-2d22-4e2c-a18d-c004cd3cc284
-ms.openlocfilehash: 46f210e1418098f4809174cd975ab8d783580285
-ms.sourcegitcommit: 01d6985ed190a222e9da1da41596f524f607a5bc
+ms.openlocfilehash: c060b93a3823be26ad6c7757acc633bb4fc2fcfa
+ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34753841"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39587145"
 ---
 # <a name="removing-objects-from-the-pipeline-where-object"></a>파이프라인에서 개체 제거(Where-Object)
 
@@ -38,7 +38,7 @@ Windows PowerShell에는 파이프라인에 있는 각 개체를 테스트하고
 |-contains|포함|1,2,3 -contains 1|
 |-notcontains|포함 안 함|1,2,3 -notcontains 4|
 
-Where-Object 스크립트 블록은 특수 변수 '$_'를 사용하여 파이프라인에 있는 현재 개체를 참조합니다. 다음은 이러한 동작을 보여 주는 예제입니다. 일련의 숫자 중에서 3보다 작은 숫자만 반환하려면 다음과 같이 Where-Object를 사용하여 숫자를 필터링하면 됩니다.
+Where-Object 스크립트 블록은 특수 변수 `$_`를 사용하여 파이프라인에 있는 현재 개체를 참조합니다. 다음은 이러한 동작을 보여 주는 예제입니다. 일련의 숫자 중에서 3보다 작은 숫자만 반환하려면 다음과 같이 Where-Object를 사용하여 숫자를 필터링하면 됩니다.
 
 ```
 PS> 1,2,3,4 | Where-Object -FilterScript {$_ -lt 3}
@@ -48,7 +48,7 @@ PS> 1,2,3,4 | Where-Object -FilterScript {$_ -lt 3}
 
 ### <a name="filtering-based-on-object-properties"></a>개체 속성을 기반으로 필터링
 
-$_가 현재 파이프라인 개체를 참조하므로 테스트를 위해 이 개체의 속성에 액세스할 수 있습니다.
+`$_`가 현재 파이프라인 개체를 참조하므로 테스트를 위해 이 개체의 속성에 액세스할 수 있습니다.
 
 예를 들어 WMI에서 Win32_SystemDriver 클래스를 살펴보면 특정 시스템에 수백 개의 시스템 드라이버가 있을 수 있지만 현재 실행 중인 드라이버와 같은 특정 시스템 드라이버 집합만 사용할 수 있습니다. Get-Member를 사용하여 Win32_SystemDriver 멤버(**Get-WmiObject -Class Win32_SystemDriver | Get-Member -MemberType Property**)를 보면 관련 속성이 State이고 드라이버가 실행 중일 때 해당 값이 "Running"인 것을 확인할 수 있습니다. 다음과 같이 입력하면 시스템 드라이버를 필터링하여 실행 중인 드라이버만 선택할 수 있습니다.
 
