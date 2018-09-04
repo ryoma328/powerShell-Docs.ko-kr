@@ -2,12 +2,12 @@
 ms.date: 06/27/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능
-ms.openlocfilehash: 07b85a3c7bced58b9ee8db401f0339ba6011bc96
-ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
+ms.openlocfilehash: e9bed3900263a51b1b8236a3c3430154a5d11886
+ms.sourcegitcommit: 31a221d982305c7f999b1afeb15e3629e9620de8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39268350"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "43133162"
 ---
 # <a name="authorization-rules-and-security-features-of-windows-powershell-web-access"></a>Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능
 
@@ -26,7 +26,7 @@ Windows PowerShell Web Access가 설치되고 게이트웨이가 구성되고 �
 
 Windows Server 2012 R2의 [Add-PswaAuthorizationRule](cmdlets/add-pswaauthorizationrule.md) 및 [Test-PswaAuthorizationRule](cmdlets/test-pswaauthorizationrule.md)에는 원격 컴퓨터 또는 활성 Windows PowerShell 웹 액세스 세션에서 Windows PowerShell 웹 액세스 권한 부여 규칙을 추가 및 테스트할 수 있게 해주는 Credential 매개 변수가 포함되어 있습니다. Credential 매개 변수가 있는 다른 Windows PowerShell cmdlet과 마찬가지로는 PSCredential 개체를 매개 변수 값으로 지정할 수 있습니다. 원격 컴퓨터에 전달하려는 자격 증명이 포함된 PSCredential 개체를 만들려면 [Get-Credential](/powershell/module/microsoft.powershell.security/Get-Credential) cmdlet을 실행합니다.
 
-Windows PowerShell 웹 액세스 인증 규칙은 허용 목록 규칙입니다. 각 규칙은 사용자, 대상 컴퓨터 및 지정된 대상 컴퓨터의 특정 Windows PowerShell [세션 구성](/powershell/reference/5.1/microsoft.powershell.core/about/about_session_configurations)(끝점 또는 _runspace_라고도 함) 사이에 허용된 연결을 정의한 것입니다.
+Windows PowerShell 웹 액세스 인증 규칙은 허용 목록 규칙입니다. 각 규칙은 사용자, 대상 컴퓨터 및 지정된 대상 컴퓨터의 특정 Windows PowerShell [세션 구성](/powershell/reference/5.1/microsoft.powershell.core/about/about_session_configurations)(엔드포인트 또는 _runspace_라고도 함) 사이에 허용된 연결을 정의한 것입니다.
 **runspace**에 대한 설명은 [Beginning Use of PowerShell Runspaces](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/26/beginning-use-of-powershell-runspaces-part-1/)(PowerShell Runspace 사용 시작)를 참조하세요.
 
 > [!IMPORTANT]
@@ -85,7 +85,7 @@ Windows PowerShell 웹 액세스의 보안을 위한 마지막 계층은 대상 
 
 기본적으로 Windows PowerShell 웹 액세스에서는 게이트웨이와 대상 컴퓨터를 모두 인증하는 데 기본 사용자 이름과 암호를 사용합니다. 하지만 **옵션 연결 설정**섹션의 웹 기반 로그인 페이지에는 대상 컴퓨터에 다른 자격 증명을 제공하는 옵션이 있으므로, 필요에 따라 적절히 사용할 수 있습니다. 사용자가 대체 자격 증명을 제공하지 않으면 게이트웨이 연결에 사용되는 기본 사용자 이름과 암호가 대상 컴퓨터와 연결하는 데에도 사용됩니다.
 
-권한 부여 규칙을 사용하면 사용자가 특정 세션 구성에 액세스할 수 있도록 허용할 수 있습니다. Windows PowerShell 웹 액세스에 대한 _제한된 runspace_나 세션 구성을 만들어 특정 사용자가 Windows PowerShell 웹 액세스에 로그인할 때 특정 세션 구성에만 연결할 수 있도록 구성할 수 있습니다. ACL(액세스 제어 목록)을 사용하면 특정 끝점에 액세스할 수 있는 사용자를 지정할 수 있으며, 이 섹션에 설명된 권한 부여 규칙을 통해 특정 사용자 집합의 끝점에 대한 액세스를 추가로 제한할 수 있습니다. 제한된 runspace에 대한 자세한 내용은 MSDN의 [Creating a constrained runspace](https://msdn.microsoft.com/library/dn614668)(제한된 runspace 만들기)를 참조하세요.
+권한 부여 규칙을 사용하면 사용자가 특정 세션 구성에 액세스할 수 있도록 허용할 수 있습니다. Windows PowerShell 웹 액세스에 대한 _제한된 runspace_나 세션 구성을 만들어 특정 사용자가 Windows PowerShell 웹 액세스에 로그인할 때 특정 세션 구성에만 연결할 수 있도록 구성할 수 있습니다. ACL(액세스 제어 목록)을 사용하면 특정 엔드포인트에 액세스할 수 있는 사용자를 지정할 수 있으며, 이 섹션에 설명된 권한 부여 규칙을 통해 특정 사용자 집합의 엔드포인트에 대한 액세스를 추가로 제한할 수 있습니다. 제한된 runspace에 대한 자세한 내용은 MSDN의 [Creating a constrained runspace](https://msdn.microsoft.com/library/dn614668)(제한된 runspace 만들기)를 참조하세요.
 
 ### <a name="configuring-authorization-rules"></a>권한 부여 규칙 구성
 
@@ -144,7 +144,7 @@ Windows PowerShell 웹 액세스 cmdlet에서는 와일드카드 문자(\*)를 �
    ```
    Get-PswaAuthorizationRule `
       -RuleName <rule-name> | Remove-PswaAuthorizationRule
-  ```
+   ```
 
 > [!NOTE]
 > 지정된 권한 부여 규칙을 삭제할지 확인하는 메시지는 표시되지 않으므로, **Enter** 키를 누르면 규칙이 삭제됩니다. 따라서 `Remove-PswaAuthorizationRule` cmdlet을 실행하기 전에 권한 부여 규칙을 제거할 것인지 확실히 해야 합니다.
@@ -153,12 +153,12 @@ Windows PowerShell 웹 액세스 cmdlet에서는 와일드카드 문자(\*)를 �
 
 모든 Windows PowerShell 세션에서는 세션 구성을 사용하는데, 세션에 세션 구성이 지정되어 있지 않은 경우 Microsoft.PowerShell이라고 하는 기본 제공 Windows PowerShell 세션 구성이 Windows PowerShell에서 기본적으로 사용됩니다. 이 기본 세션 구성에는 컴퓨터에서 사용할 수 있는 모든 cmdlet이 포함되어 있습니다. 관리자는 제한된 runspace(최종 사용자가 제한된 범위의 cmdlet과 작업을 수행할 수 있음)가 사용된 세션 구성을 정의하여 모든 컴퓨터에 대한 액세스를 제한할 수 있습니다. 한 컴퓨터에 대해 모든 언어에 액세스할 수 있거나 Windows PowerShell 원격 관리 cmdlet에만 액세스할 수 있도록 허용된 사용자는 첫 번째 컴퓨터에 연결된 다른 컴퓨터에도 연결할 수 있습니다. 제한된 runspace를 정의하면 사용자가 허용된 자신의 Windows PowerShell runspace에서 다른 컴퓨터를 액세스할 수 없게 되어 Windows PowerShell 웹 액세스 환경의 보안을 강화할 수 있습니다. 그룹 정책을 사용하여 관리자가 Windows PowerShell 웹 액세스를 통해 액세스할 수 있도록 구성하려는 모든 컴퓨터에 세션 구성을 배포할 수 있습니다. 세션 구성에 대한 자세한 내용은 [about_Session_Configurations](https://technet.microsoft.com/library/dd819508.aspx)를 참조하세요. 아래 이 시나리오에 대한 몇 가지 예가 나와 있습니다.
 
-- 관리자는 제한된 runspace가 사용되는 **PswaEndpoint**라는 끝점을 만듭니다. 그런 다음, `*,*,PswaEndpoint`라는 규칙을 만들고 엔드포인트를 다른 컴퓨터에 배포합니다. 이 규칙을 통해 모든 사용자는 **PswaEndpoint**라는 끝점이 있는 모든 컴퓨터에 액세스할 수 있습니다.
-  이 규칙이 규칙 집합에 유일하게 정의되어 있는 규칙이라면 이 끝점이 없는 컴퓨터에는 액세스할 수 없습니다.
+- 관리자는 제한된 runspace가 사용되는 **PswaEndpoint**라는 엔드포인트를 만듭니다. 그런 다음, `*,*,PswaEndpoint`라는 규칙을 만들고 엔드포인트를 다른 컴퓨터에 배포합니다. 이 규칙을 통해 모든 사용자는 **PswaEndpoint**라는 엔드포인트가 있는 모든 컴퓨터에 액세스할 수 있습니다.
+  이 규칙이 규칙 집합에 유일하게 정의되어 있는 규칙이라면 이 엔드포인트가 없는 컴퓨터에는 액세스할 수 없습니다.
 
-- 관리자는 제한된 runspace가 사용되는 **PswaEndpoint**라는 끝점을 만들었으며, 특정 사용자만 액세스할 수 있도록 제한하려고 합니다. 관리자는 **Level1Support**라는 사용자 그룹을 만들고 **Level1Support,\*,PswaEndpoint** 규칙을 정의합니다. 이 규칙에서는 **Level1Support** 그룹의 모든 사용자가 **PswaEndpoint** 구성이 사용된 모든 컴퓨터에 액세스할 수 있도록 허용합니다. 이와 마찬가지로, 특정 컴퓨터 집합에만 액세스하도록 제한할 수도 있습니다.
+- 관리자는 제한된 runspace가 사용되는 **PswaEndpoint**라는 엔드포인트를 만들었으며, 특정 사용자만 액세스할 수 있도록 제한하려고 합니다. 관리자는 **Level1Support**라는 사용자 그룹을 만들고 **Level1Support,\*,PswaEndpoint** 규칙을 정의합니다. 이 규칙에서는 **Level1Support** 그룹의 모든 사용자가 **PswaEndpoint** 구성이 사용된 모든 컴퓨터에 액세스할 수 있도록 허용합니다. 이와 마찬가지로, 특정 컴퓨터 집합에만 액세스하도록 제한할 수도 있습니다.
 
-- 일부 관리자는 특정 사용자에게 다른 사용자보다 많은 액세스 권한을 제공합니다. 예를 들어 관리자는 **Admins**과 **BasicSupport**라는 두 개의 사용자 그룹을 만듭니다. 또한 관리자는 제한된 runspace가 사용되는 **PswaEndpoint**라는 끝점을 만들고, **Admins,\*,\*** 및 **BasicSupport,\*,PswaEndpoint**라는 두 개의 규칙을 정의합니다. 첫 번째 규칙에서는 **Admin** 그룹의 모든 사용자에게 모든 컴퓨터에 대한 액세스 권한을 제공하지만, 두 번째 규칙에서는 **BasicSupport** 그룹의 모든 사용자에게 **PswaEndpoint**가 포함된 컴퓨터에만 액세스할 수 있는 권한을 제공합니다.
+- 일부 관리자는 특정 사용자에게 다른 사용자보다 많은 액세스 권한을 제공합니다. 예를 들어 관리자는 **Admins**과 **BasicSupport**라는 두 개의 사용자 그룹을 만듭니다. 또한 관리자는 제한된 runspace가 사용되는 **PswaEndpoint**라는 엔드포인트를 만들고, **Admins,\*,\*** 및 **BasicSupport,\*,PswaEndpoint**라는 두 개의 규칙을 정의합니다. 첫 번째 규칙에서는 **Admin** 그룹의 모든 사용자에게 모든 컴퓨터에 대한 액세스 권한을 제공하지만, 두 번째 규칙에서는 **BasicSupport** 그룹의 모든 사용자에게 **PswaEndpoint**가 포함된 컴퓨터에만 액세스할 수 있는 권한을 제공합니다.
 
 - 관리자는 개인 테스트 환경을 구축했으며, 권한을 부여받은 모든 네트워크 사용자가 일반적으로 액세스하던 네트워크상의 모든 컴퓨터와, 일반적으로 액세스하던 모든 세션 구성에 액세스할 수 있도록 허용하려고 합니다. 이 권한 부여 규칙은 개인 테스트 환경에서 사용되므로 관리자는 보안성이 없는 권한 부여 규칙을 만듭니다. - 관리자는 `Add-PswaAuthorizationRule * * *` cmdlet을 실행합니다(여기서 와일드카드 문자 **\*** 는 각각 모든 사용자, 모든 컴퓨터 및 모든 구성을 나타냄). - 이 규칙은 `Add-PswaAuthorizationRule -UserName * -ComputerName * -ConfigurationName *` cmdlet과 동일합니다.
 
