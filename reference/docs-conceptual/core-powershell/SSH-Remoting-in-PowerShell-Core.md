@@ -1,41 +1,43 @@
 ---
 title: SSH를 통한 PowerShell 원격
 description: SSH를 사용하여 PowerShell Core에서 원격 작업
-ms.date: 08/06/2018
-ms.openlocfilehash: 27a8fc5623796a270a2ea67aa550c9a0998e766b
-ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.date: 08/14/2018
+ms.openlocfilehash: 1de034d667aa9a377e5460e7eb474402c690cb42
+ms.sourcegitcommit: 56b9be8503a5a1342c0b85b36f5ba6f57c281b63
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39587502"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "43133140"
 ---
-# <a name="powershell-remoting-over-ssh"></a><span data-ttu-id="a4572-103">SSH를 통한 PowerShell 원격</span><span class="sxs-lookup"><span data-stu-id="a4572-103">PowerShell Remoting Over SSH</span></span>
+# <a name="powershell-remoting-over-ssh"></a><span data-ttu-id="6ae69-103">SSH를 통한 PowerShell 원격</span><span class="sxs-lookup"><span data-stu-id="6ae69-103">PowerShell Remoting Over SSH</span></span>
 
-## <a name="overview"></a><span data-ttu-id="a4572-104">개요</span><span class="sxs-lookup"><span data-stu-id="a4572-104">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="6ae69-104">개요</span><span class="sxs-lookup"><span data-stu-id="6ae69-104">Overview</span></span>
 
-<span data-ttu-id="a4572-105">PowerShell 원격 기능은 일반적으로 연결 협상 및 데이터 전송에 WinRM을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-105">PowerShell remoting normally uses WinRM for connection negotiation and data transport.</span></span> <span data-ttu-id="a4572-106">SSH는 이제 Linux 및 Windows 플랫폼에 모두 사용할 수 있고 진정한 다중 플랫폼 PowerShell 원격 기능을 허용하므로 이 원격 기능 구현에 선택되었습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-106">SSH was chosen for this remoting implementation since it is now available for both Linux and Windows platforms and allows true multiplatform PowerShell remoting.</span></span> <span data-ttu-id="a4572-107">그러나 WinRM은 이 구현이 아직 지원하지 않는 PowerShell 원격 세션에 대한 강력한 호스팅 모델도 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-107">However, WinRM also provides a robust hosting model for PowerShell remote sessions which this implementation does not yet do.</span></span> <span data-ttu-id="a4572-108">그리고 이는 PowerShell 원격 엔드포인트 구성 및 JEA(Just Enough Administration)가 이 구현에서 아직 지원되지 않음을 의미합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-108">And this means that PowerShell remote endpoint configuration and JEA (Just Enough Administration) is not yet supported in this implementation.</span></span>
+<span data-ttu-id="6ae69-105">PowerShell 원격 기능은 일반적으로 연결 협상 및 데이터 전송에 WinRM을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-105">PowerShell remoting normally uses WinRM for connection negotiation and data transport.</span></span> <span data-ttu-id="6ae69-106">이제 SSH를 Linux 및 Windows 플랫폼에서 사용할 수 있으며 진정한 다중 플랫폼 PowerShell 원격 기능이 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-106">SSH is now available for Linux and Windows platforms and allows true multiplatform PowerShell remoting.</span></span>
 
-<span data-ttu-id="a4572-109">PowerShell SSH 원격 기능을 사용하면 Windows 및 Linux 컴퓨터 간에 기본적인 PowerShell 세션 원격 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-109">PowerShell SSH remoting lets you do basic PowerShell session remoting between Windows and Linux machines.</span></span> <span data-ttu-id="a4572-110">이러한 작업은 SSH 하위 시스템인 대상 컴퓨터에 PowerShell 호스팅 프로세스를 만드는 방식으로 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-110">This is done by creating a PowerShell hosting process on the target machine as an SSH subsystem.</span></span> <span data-ttu-id="a4572-111">결국 이는 엔드포인트 구성 및 JEA를 지원하기 위해 WinRM이 작동하는 방식과 유사한, 보다 일반적인 호스팅 모델로 변경됩니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-111">Eventually this will be changed to a more general hosting model similar to how WinRM works in order to support endpoint configuration and JEA.</span></span>
+<span data-ttu-id="6ae69-107">WinRM은 PowerShell 원격 세션을 위한 강력한 호스팅 모델을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-107">WinRM provides a robust hosting model for PowerShell remote sessions.</span></span> <span data-ttu-id="6ae69-108">현재, 이 구현에서 SSH 기반 원격 기능은 원격 엔드포인트 구성 및 JEA(Just Enough Administration)를 지원하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-108">which this implementation SSH-based remoting doesn't currently support remote endpoint configuration and JEA (Just Enough Administration).</span></span>
 
-<span data-ttu-id="a4572-112">`New-PSSession`, `Enter-PSSession` 및 `Invoke-Command` cmdlet에는 이제 이 새로운 원격 연결을 용이하게 하는 새로운 매개 변수가 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-112">The `New-PSSession`, `Enter-PSSession` and `Invoke-Command` cmdlets now have a new parameter set to facilitate this new remoting connection</span></span>
+<span data-ttu-id="6ae69-109">SSH 원격 기능을 사용하면 Windows 및 Linux 컴퓨터 간에 기본적인 PowerShell 세션 원격 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-109">SSH remoting lets you do basic PowerShell session remoting between Windows and Linux machines.</span></span> <span data-ttu-id="6ae69-110">SSH 원격 기능은 대상 컴퓨터에 SSH 하위 시스템으로 PowerShell 호스트 프로세스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-110">SSH Remoting creates a PowerShell host process on the target machine as an SSH subsystem.</span></span>
+<span data-ttu-id="6ae69-111">앞으로는 엔드포인트 구성 및 JEA를 지원하기 위해 WinRM과 유사한 일반 호스팅 모델을 구현할 예정입니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-111">Eventually we'll implement a general hosting model, similar to WinRM, to support endpoint configuration and JEA.</span></span>
+
+<span data-ttu-id="6ae69-112">`New-PSSession`, `Enter-PSSession` 및 `Invoke-Command` cmdlet에는 이제 이 새로운 원격 연결을 지원하기 위한 새로운 매개 변수가 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-112">The `New-PSSession`, `Enter-PSSession`, and `Invoke-Command` cmdlets now have a new parameter set to support this new remoting connection.</span></span>
 
 ```
 [-HostName <string>]  [-UserName <string>]  [-KeyFilePath <string>]
 ```
 
-<span data-ttu-id="a4572-113">이 새로운 매개 변수 집합은 변경될 가능성이 높지만 현재는 명령줄에서 상호 작용하거나 명령 및 스크립트를 호출할 수 있는 SSH PSSession을 만드는 데 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-113">This new parameter set will likely change but for now allows you to create SSH PSSessions that you can interact with from the command line or invoke commands and scripts on.</span></span> <span data-ttu-id="a4572-114">HostName 매개 변수를 사용하여 대상 컴퓨터를 지정하고 UserName을 사용하여 사용자 이름을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-114">You specify the target machine with the HostName parameter and provide the user name with UserName.</span></span> <span data-ttu-id="a4572-115">PowerShell 명령줄에서 대화형으로 cmdlet을 실행할 때는 암호를 묻는 메시지가 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-115">When running the cmdlets interactively at the PowerShell command line you will be prompted for a password.</span></span> <span data-ttu-id="a4572-116">하지만 SSH 키 인증을 사용하고 KeyFilePath 매개 변수를 사용하여 개인 키 파일 경로를 지정하는 옵션도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-116">But you also have the option to use SSH key authentication and provide a private key file path with the KeyFilePath parameter.</span></span>
+<span data-ttu-id="6ae69-113">원격 세션을 만들려면 `HostName` 매개 변수를 사용하여 대상 컴퓨터를 지정하고 `UserName`을 사용하여 사용자 이름을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-113">To create a remote session, you specify the target machine with the `HostName` parameter and provide the user name with `UserName`.</span></span> <span data-ttu-id="6ae69-114">cmdlet을 대화형으로 실행하면 암호를 묻는 메시지가 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-114">When running the cmdlets interactively, you're prompted for a password.</span></span> <span data-ttu-id="6ae69-115">`KeyFilePath` 매개 변수와 함께 개인 키 파일을 사용하여 SSH 키 인증을 사용할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-115">You can also, use SSH key authentication using a private key file with the `KeyFilePath` parameter.</span></span>
 
-## <a name="general-setup-information"></a><span data-ttu-id="a4572-117">일반적인 설치 정보</span><span class="sxs-lookup"><span data-stu-id="a4572-117">General setup information</span></span>
+## <a name="general-setup-information"></a><span data-ttu-id="6ae69-116">일반적인 설치 정보</span><span class="sxs-lookup"><span data-stu-id="6ae69-116">General setup information</span></span>
 
-<span data-ttu-id="a4572-118">SSH는 모든 컴퓨터에 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-118">SSH is required to be installed on all machines.</span></span> <span data-ttu-id="a4572-119">컴퓨터에서 들어오고 나가는 원격 작업을 실험할 수 있도록 클라이언트(`ssh.exe`) 및 서버(`sshd.exe`)를 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-119">You should install both client (`ssh.exe`) and server (`sshd.exe`) so that you can experiment with remoting to and from the machines.</span></span> <span data-ttu-id="a4572-120">Windows의 경우 [GitHub의 Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)를 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-120">For Windows you will need to install [Win32 OpenSSH from GitHub](https://github.com/PowerShell/Win32-OpenSSH/releases).</span></span>
-<span data-ttu-id="a4572-121">Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-121">For Linux you will need to install SSH (including sshd server) appropriate to your platform.</span></span> <span data-ttu-id="a4572-122">또한 GitHub에서 SSH 원격 기능이 있는 최신 PowerShell 빌드 또는 패키지를 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-122">You will also need a recent PowerShell build or package from GitHub having the SSH remoting feature.</span></span>
-<span data-ttu-id="a4572-123">SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하는 데 사용되며, SSH 서버에 이를 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-123">SSH subsystems is used to establish a PowerShell process on the remote machine and the SSH server will need to be configured for that.</span></span> <span data-ttu-id="a4572-124">또한 암호 인증을 활성화하고, 필요에 따라 키 기반 인증도 활성화해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-124">In addition you will need to enable password authentication and optionally key based authentication.</span></span>
+<span data-ttu-id="6ae69-117">SSH는 모든 컴퓨터에 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-117">SSH must be installed on all machines.</span></span> <span data-ttu-id="6ae69-118">컴퓨터에서 들어오고 나가는 원격 작업을 수행할 수 있도록 SSH 클라이언트(`ssh.exe`) 및 서버(`sshd.exe`)를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-118">Install both the SSH client (`ssh.exe`) and server (`sshd.exe`) so that you can remote to and from the machines.</span></span> <span data-ttu-id="6ae69-119">Windows의 경우 [GitHub의 Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-119">For Windows, install [Win32 OpenSSH from GitHub](https://github.com/PowerShell/Win32-OpenSSH/releases).</span></span>
+<span data-ttu-id="6ae69-120">Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-120">For Linux, install SSH (including sshd server) appropriate to your platform.</span></span> <span data-ttu-id="6ae69-121">또한 SSH 원격 기능을 가져오려면 GitHub에서 PowerShell Core를 설치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-121">You also need to install PowerShell Core from GitHub to get the SSH remoting feature.</span></span> <span data-ttu-id="6ae69-122">SSH 서버는 원격 컴퓨터에 PowerShell 프로세스를 호스트하기 위해 SSH 하위 시스템을 만들도록 구성되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-122">The SSH server must be configured to create an SSH subsystem to host a PowerShell process on the remote machine.</span></span> <span data-ttu-id="6ae69-123">또한 암호 또는 키 기반 인증도 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-123">You also must configure enable password or key-based authentication.</span></span>
 
-## <a name="setup-on-windows-machine"></a><span data-ttu-id="a4572-125">Windows 컴퓨터에 설치</span><span class="sxs-lookup"><span data-stu-id="a4572-125">Setup on Windows Machine</span></span>
+## <a name="set-up-on-windows-machine"></a><span data-ttu-id="6ae69-124">Windows 컴퓨터에 설치</span><span class="sxs-lookup"><span data-stu-id="6ae69-124">Set up on Windows Machine</span></span>
 
-1. <span data-ttu-id="a4572-126">최신 버전의 [PowerShell Core for Windows] 설치</span><span class="sxs-lookup"><span data-stu-id="a4572-126">Install the latest version of [PowerShell Core for Windows]</span></span>
+1. <span data-ttu-id="6ae69-125">최신 버전의 [PowerShell Core for Windows] 설치</span><span class="sxs-lookup"><span data-stu-id="6ae69-125">Install the latest version of [PowerShell Core for Windows]</span></span>
 
-   - <span data-ttu-id="a4572-127">`New-PSSession`의 매개 변수 집합을 확인하면 SSH 원격 기능이 지원되는지 알 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-127">You can tell if it has the SSH remoting support by looking at the parameter sets for `New-PSSession`</span></span>
+   - <span data-ttu-id="6ae69-126">`New-PSSession`의 매개 변수 집합을 확인하면 SSH 원격 기능이 지원되는지 알 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-126">You can tell if it has the SSH remoting support by looking at the parameter sets for `New-PSSession`</span></span>
 
    ```powershell
    Get-Command New-PSSession -syntax
@@ -45,138 +47,130 @@ ms.locfileid: "39587502"
    New-PSSession [-HostName] <string[]> [-Name <string[]>] [-UserName <string>] [-KeyFilePath <string>] [-SSHTransport] [<CommonParameters>]
    ```
 
-2. <span data-ttu-id="a4572-128">[설치] 지침에 따라 GitHub에서 최신 [Win32 OpenSSH] 빌드를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-128">Install the latest [Win32 OpenSSH] build from GitHub using the [installation] instructions</span></span>
-3. <span data-ttu-id="a4572-129">Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-129">Edit the sshd_config file at the location where you installed Win32 OpenSSH</span></span>
+2. <span data-ttu-id="6ae69-127">[설치] 지침에 따라 GitHub에서 최신 [Win32 OpenSSH] 빌드를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-127">Install the latest [Win32 OpenSSH] build from GitHub using the [installation] instructions</span></span>
+3. <span data-ttu-id="6ae69-128">Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-128">Edit the sshd_config file at the location where you installed Win32 OpenSSH</span></span>
 
-   - <span data-ttu-id="a4572-130">암호 인증이 활성화되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-130">Make sure password authentication is enabled</span></span>
+   - <span data-ttu-id="6ae69-129">암호 인증이 활성화되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-129">Make sure password authentication is enabled</span></span>
 
      ```
      PasswordAuthentication yes
      ```
 
      ```
-     Subsystem    powershell c:/program files/powershell/6.0.0/pwsh.exe -sshs -NoLogo -NoProfile
+     Subsystem    powershell c:/program files/powershell/6.0.4/pwsh.exe -sshs -NoLogo -NoProfile
      ```
 
      > [!NOTE]
-     > <span data-ttu-id="a4572-131">하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-131">There is a bug in OpenSSH for Windows that prevents spaces from working in subsystem executable paths.</span></span>
-     > <span data-ttu-id="a4572-132">[자세한 내용은 GitHub에서 이 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="a4572-132">See [this issue on GitHub for more information](https://github.com/PowerShell/Win32-OpenSSH/issues/784).</span></span>
+     > <span data-ttu-id="6ae69-130">하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-130">There is a bug in OpenSSH for Windows that prevents spaces from working in subsystem executable paths.</span></span> <span data-ttu-id="6ae69-131">자세한 내용은 [이 GitHub 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="6ae69-131">For more information, see [this GitHub issue](https://github.com/PowerShell/Win32-OpenSSH/issues/784).</span></span>
 
-     <span data-ttu-id="a4572-133">한 가지 해결 방법은 공백을 포함하지 않는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-133">One solution is to create a symlink to the Powershell installation directory that does not contain spaces:</span></span>
+     <span data-ttu-id="6ae69-132">한 가지 해결 방법은 공백이 없는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-132">One solution is to create a symlink to the Powershell installation directory that doesn't have spaces:</span></span>
 
      ```powershell
-     mklink /D c:\pwsh "C:\Program Files\PowerShell\6.0.0"
+     mklink /D c:\pwsh "C:\Program Files\PowerShell\6.0.4"
      ```
 
-     <span data-ttu-id="a4572-134">그런 다음, 하위 시스템에 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-134">and then enter it in the subsystem:</span></span>
+     <span data-ttu-id="6ae69-133">그런 다음, 하위 시스템에 입력합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-133">and then enter it in the subsystem:</span></span>
 
      ```
      Subsystem    powershell c:\pwsh\pwsh.exe -sshs -NoLogo -NoProfile
      ```
 
-     ```
-     Subsystem    powershell c:/program files/powershell/6.0.0/pwsh.exe -sshs -NoLogo -NoProfile
-     ```
-
-   - <span data-ttu-id="a4572-135">필요에 따라 키 인증을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-135">Optionally enable key authentication</span></span>
+   - <span data-ttu-id="6ae69-134">필요에 따라 키 인증을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-134">Optionally enable key authentication</span></span>
 
      ```
      PubkeyAuthentication yes
      ```
 
-4. <span data-ttu-id="a4572-136">sshd 서비스를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-136">Restart the sshd service</span></span>
+4. <span data-ttu-id="6ae69-135">sshd 서비스를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-135">Restart the sshd service</span></span>
 
    ```powershell
    Restart-Service sshd
    ```
 
-5. <span data-ttu-id="a4572-137">Path Env 변수에 OpenSSH가 설치된 경로를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-137">Add the path where OpenSSH is installed to your Path Env Variable</span></span>
+5. <span data-ttu-id="6ae69-136">Path 환경 변수에 OpenSSH가 설치된 경로를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-136">Add the path where OpenSSH is installed to your Path environment variable.</span></span> <span data-ttu-id="6ae69-137">정의합니다(예: `C:\Program Files\OpenSSH\`).</span><span class="sxs-lookup"><span data-stu-id="6ae69-137">For example, `C:\Program Files\OpenSSH\`.</span></span> <span data-ttu-id="6ae69-138">이 항목을 입력하면 ssh.exe를 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-138">This entry allows for the ssh.exe to be found.</span></span>
 
-   - <span data-ttu-id="a4572-138">이는 `C:\Program Files\OpenSSH\` 줄에 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-138">This should be along the lines of `C:\Program Files\OpenSSH\`</span></span>
-   - <span data-ttu-id="a4572-139">그래야 시스템에서 ssh.exe를 찾을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-139">This allows for the ssh.exe to be found</span></span>
+## <a name="set-up-on-linux-ubuntu-1404-machine"></a><span data-ttu-id="6ae69-139">Linux(Ubuntu 14.04) 컴퓨터에 설치</span><span class="sxs-lookup"><span data-stu-id="6ae69-139">Set up on Linux (Ubuntu 14.04) Machine</span></span>
 
-## <a name="setup-on-linux-ubuntu-1404-machine"></a><span data-ttu-id="a4572-140">Linux(Ubuntu 14.04) 컴퓨터에 설치</span><span class="sxs-lookup"><span data-stu-id="a4572-140">Setup on Linux (Ubuntu 14.04) Machine</span></span>
-
-1. <span data-ttu-id="a4572-141">GitHub에서 최신 [Linux용 PowerShell Core] 빌드를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-141">Install the latest [PowerShell Core for Linux] build from GitHub</span></span>
-2. <span data-ttu-id="a4572-142">필요에 따라 [Ubuntu SSH]를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-142">Install [Ubuntu SSH] as needed</span></span>
+1. <span data-ttu-id="6ae69-140">GitHub에서 최신 [Linux용 PowerShell Core] 빌드를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-140">Install the latest [PowerShell Core for Linux] build from GitHub</span></span>
+2. <span data-ttu-id="6ae69-141">필요에 따라 [Ubuntu SSH]를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-141">Install [Ubuntu SSH] as needed</span></span>
 
    ```bash
    sudo apt install openssh-client
    sudo apt install openssh-server
    ```
 
-3. <span data-ttu-id="a4572-143">/etc/ssh 위치에서 sshd_config 파일을 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-143">Edit the sshd_config file at location /etc/ssh</span></span>
+3. <span data-ttu-id="6ae69-142">/etc/ssh 위치에서 sshd_config 파일을 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-142">Edit the sshd_config file at location /etc/ssh</span></span>
 
-   - <span data-ttu-id="a4572-144">암호 인증이 활성화되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-144">Make sure password authentication is enabled</span></span>
+   - <span data-ttu-id="6ae69-143">암호 인증이 활성화되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-143">Make sure password authentication is enabled</span></span>
 
    ```
    PasswordAuthentication yes
    ```
 
-   - <span data-ttu-id="a4572-145">PowerShell 하위 시스템 항목을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-145">Add a PowerShell subsystem entry</span></span>
+   - <span data-ttu-id="6ae69-144">PowerShell 하위 시스템 항목을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-144">Add a PowerShell subsystem entry</span></span>
 
    ```
    Subsystem powershell /usr/bin/pwsh -sshs -NoLogo -NoProfile
    ```
 
-   - <span data-ttu-id="a4572-146">필요에 따라 키 인증을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-146">Optionally enable key authentication</span></span>
+   - <span data-ttu-id="6ae69-145">필요에 따라 키 인증을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-145">Optionally enable key authentication</span></span>
 
    ```
    PubkeyAuthentication yes
    ```
 
-4. <span data-ttu-id="a4572-147">sshd 서비스를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-147">Restart the sshd service</span></span>
+4. <span data-ttu-id="6ae69-146">sshd 서비스를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-146">Restart the sshd service</span></span>
 
    ```bash
    sudo service sshd restart
    ```
 
-## <a name="setup-on-macos-machine"></a><span data-ttu-id="a4572-148">MacOS 컴퓨터에 설치</span><span class="sxs-lookup"><span data-stu-id="a4572-148">Setup on MacOS Machine</span></span>
+## <a name="set-up-on-macos-machine"></a><span data-ttu-id="6ae69-147">MacOS 컴퓨터에 설치</span><span class="sxs-lookup"><span data-stu-id="6ae69-147">Set up on MacOS Machine</span></span>
 
-1. <span data-ttu-id="a4572-149">최신 [MacOS용 PowerShell Core] 빌드를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-149">Install the latest [PowerShell Core for MacOS] build</span></span>
+1. <span data-ttu-id="6ae69-148">최신 [MacOS용 PowerShell Core] 빌드를 설치합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-148">Install the latest [PowerShell Core for MacOS] build</span></span>
 
-   - <span data-ttu-id="a4572-150">다음 단계를 수행하여 SSH 원격 기능이 활성화되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-150">Make sure SSH Remoting is enabled by following these steps:</span></span>
-     - <span data-ttu-id="a4572-151">`System Preferences`를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-151">Open `System Preferences`</span></span>
-     - <span data-ttu-id="a4572-152">`Sharing`을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-152">Click on `Sharing`</span></span>
-     - <span data-ttu-id="a4572-153">`Remote Login`을 확인합니다(`Remote Login: On`이어야 함).</span><span class="sxs-lookup"><span data-stu-id="a4572-153">Check `Remote Login` - Should say `Remote Login: On`</span></span>
-     - <span data-ttu-id="a4572-154">적절한 사용자에게 액세스를 허용합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-154">Allow access to appropriate users</span></span>
+   - <span data-ttu-id="6ae69-149">다음 단계를 수행하여 SSH 원격 기능이 활성화되어 있는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-149">Make sure SSH Remoting is enabled by following these steps:</span></span>
+     - <span data-ttu-id="6ae69-150">`System Preferences`를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-150">Open `System Preferences`</span></span>
+     - <span data-ttu-id="6ae69-151">`Sharing`을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-151">Click on `Sharing`</span></span>
+     - <span data-ttu-id="6ae69-152">`Remote Login`을 확인합니다(`Remote Login: On`이어야 함).</span><span class="sxs-lookup"><span data-stu-id="6ae69-152">Check `Remote Login` - Should say `Remote Login: On`</span></span>
+     - <span data-ttu-id="6ae69-153">적절한 사용자에게 액세스를 허용합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-153">Allow access to appropriate users</span></span>
 
-2. <span data-ttu-id="a4572-155">`/private/etc/ssh/sshd_config` 위치에서 `sshd_config` 파일을 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-155">Edit the `sshd_config` file at location `/private/etc/ssh/sshd_config`</span></span>
+2. <span data-ttu-id="6ae69-154">`/private/etc/ssh/sshd_config` 위치에서 `sshd_config` 파일을 편집합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-154">Edit the `sshd_config` file at location `/private/etc/ssh/sshd_config`</span></span>
 
-   - <span data-ttu-id="a4572-156">선호하는 편집기를 사용합니다. 또는</span><span class="sxs-lookup"><span data-stu-id="a4572-156">Use your favorite editor or</span></span>
+   - <span data-ttu-id="6ae69-155">선호하는 편집기를 사용합니다. 또는</span><span class="sxs-lookup"><span data-stu-id="6ae69-155">Use your favorite editor or</span></span>
 
      ```bash
      sudo nano /private/etc/ssh/sshd_config
      ```
 
-   - <span data-ttu-id="a4572-157">암호 인증이 활성화되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-157">Make sure password authentication is enabled</span></span>
+   - <span data-ttu-id="6ae69-156">암호 인증이 활성화되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-156">Make sure password authentication is enabled</span></span>
 
      ```
      PasswordAuthentication yes
      ```
 
-   - <span data-ttu-id="a4572-158">PowerShell 하위 시스템 항목을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-158">Add a PowerShell subsystem entry</span></span>
+   - <span data-ttu-id="6ae69-157">PowerShell 하위 시스템 항목을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-157">Add a PowerShell subsystem entry</span></span>
 
      ```
      Subsystem powershell /usr/local/bin/pwsh -sshs -NoLogo -NoProfile
      ```
 
-   - <span data-ttu-id="a4572-159">필요에 따라 키 인증을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-159">Optionally enable key authentication</span></span>
+   - <span data-ttu-id="6ae69-158">필요에 따라 키 인증을 활성화합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-158">Optionally enable key authentication</span></span>
 
      ```
      PubkeyAuthentication yes
      ```
 
-3. <span data-ttu-id="a4572-160">sshd 서비스를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-160">Restart the sshd service</span></span>
+3. <span data-ttu-id="6ae69-159">sshd 서비스를 다시 시작합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-159">Restart the sshd service</span></span>
 
    ```bash
    sudo launchctl stop com.openssh.sshd
    sudo launchctl start com.openssh.sshd
    ```
 
-## <a name="powershell-remoting-example"></a><span data-ttu-id="a4572-161">PowerShell 원격 기능 예제</span><span class="sxs-lookup"><span data-stu-id="a4572-161">PowerShell Remoting Example</span></span>
+## <a name="powershell-remoting-example"></a><span data-ttu-id="6ae69-160">PowerShell 원격 기능 예제</span><span class="sxs-lookup"><span data-stu-id="6ae69-160">PowerShell Remoting Example</span></span>
 
-<span data-ttu-id="a4572-162">원격 기능을 테스트하는 가장 쉬운 방법은 단일 컴퓨터에서 사용해 보는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-162">The easiest way to test remoting is to just try it on a single machine.</span></span> <span data-ttu-id="a4572-163">여기에서는 Linux 상자의 동일한 컴퓨터에 다시 원격 세션을 만들겠습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-163">Here I will create a remote session back to the same machine on a Linux box.</span></span> <span data-ttu-id="a4572-164">암호 프롬프트뿐만 아니라 명령 프롬프트에서도 PowerShell cmdlet을 사용하므로 SSH에서 호스트 컴퓨터를 확인할지 묻는 메시지를 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-164">Notice that I am using PowerShell cmdlets from a command prompt so we see prompts from SSH asking to verify the host computer as well as password prompts.</span></span> <span data-ttu-id="a4572-165">또한 Windows 컴퓨터에서도 동일한 작업을 수행하여 원격 기능이 작동하는지 확인한 후 호스트 이름을 변경하여 컴퓨터 간에 원격 기능이 작동하는지 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-165">You can do the same thing on a Windows machine to ensure remoting is working there and then remote between machines by simply changing the host name.</span></span>
+<span data-ttu-id="6ae69-161">원격 기능을 테스트하는 가장 쉬운 방법은 단일 컴퓨터에서 사용해 보는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-161">The easiest way to test remoting is to try it on a single machine.</span></span> <span data-ttu-id="6ae69-162">이 예제에서는 동일한 Linux 컴퓨터에 원격 세션을 다시 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-162">In this example, we create a remote session back to the same Linux machine.</span></span> <span data-ttu-id="6ae69-163">SSH에서 호스트 컴퓨터를 확인하도록 요구하고 암호를 묻는 메시지를 표시하도록 대화형으로 PowerShell cmdlet을 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-163">We are using PowerShell cmdlets interactively so we see prompts from SSH asking to verify the host computer and prompting for a password.</span></span> <span data-ttu-id="6ae69-164">Windows 컴퓨터에서도 동일한 작업을 수행하여 원격 기능이 작동하는지 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-164">You can do the same thing on a Windows machine to ensure remoting is working.</span></span> <span data-ttu-id="6ae69-165">그런 다음, 호스트 이름을 변경하여 시스템 간을 원격으로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-165">Then remote between machines by changing the host name.</span></span>
 
 ```powershell
 #
@@ -197,9 +191,9 @@ $session
 ```
 
 ```output
- Id Name            ComputerName    ComputerType    State         ConfigurationName     Availability
- -- ----            ------------    ------------    -----         -----------------     ------------
-  1 SSH1            UbuntuVM1       RemoteMachine   Opened        DefaultShell             Available
+ Id Name   ComputerName    ComputerType    State    ConfigurationName     Availability
+ -- ----   ------------    ------------    -----    -----------------     ------------
+  1 SSH1   UbuntuVM1       RemoteMachine   Opened   DefaultShell             Available
 ```
 
 ```powershell
@@ -301,20 +295,20 @@ GitCommitId                    v6.0.0-alpha.17
 [WinVM2]: PS C:\Users\PSRemoteUser\Documents>
 ```
 
-### <a name="known-issues"></a><span data-ttu-id="a4572-166">알려진 문제</span><span class="sxs-lookup"><span data-stu-id="a4572-166">Known Issues</span></span>
+### <a name="known-issues"></a><span data-ttu-id="6ae69-166">알려진 문제</span><span class="sxs-lookup"><span data-stu-id="6ae69-166">Known Issues</span></span>
 
-<span data-ttu-id="a4572-167">sudo 명령은 Linux 컴퓨터에 대한 원격 세션에서 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="a4572-167">The sudo command does not work in remote session to Linux machine.</span></span>
+<span data-ttu-id="6ae69-167">sudo 명령은 Linux 컴퓨터에 대한 원격 세션에서 작동하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="6ae69-167">The sudo command doesn't work in remote session to Linux machine.</span></span>
 
-## <a name="see-also"></a><span data-ttu-id="a4572-168">참고 항목</span><span class="sxs-lookup"><span data-stu-id="a4572-168">See Also</span></span>
+## <a name="see-also"></a><span data-ttu-id="6ae69-168">참고 항목</span><span class="sxs-lookup"><span data-stu-id="6ae69-168">See Also</span></span>
 
-[<span data-ttu-id="a4572-169">Windows용 PowerShell Core</span><span class="sxs-lookup"><span data-stu-id="a4572-169">PowerShell Core for Windows</span></span>](../setup/installing-powershell-core-on-windows.md#msi)
+[<span data-ttu-id="6ae69-169">Windows용 PowerShell Core</span><span class="sxs-lookup"><span data-stu-id="6ae69-169">PowerShell Core for Windows</span></span>](../setup/installing-powershell-core-on-windows.md#msi)
 
-[<span data-ttu-id="a4572-170">Linux용 PowerShell Core</span><span class="sxs-lookup"><span data-stu-id="a4572-170">PowerShell Core for Linux</span></span>](../setup/installing-powershell-core-on-linux.md#ubuntu-1404)
+[<span data-ttu-id="6ae69-170">Linux용 PowerShell Core</span><span class="sxs-lookup"><span data-stu-id="6ae69-170">PowerShell Core for Linux</span></span>](../setup/installing-powershell-core-on-linux.md#ubuntu-1404)
 
-[<span data-ttu-id="a4572-171">MacOS용 PowerShell Core</span><span class="sxs-lookup"><span data-stu-id="a4572-171">PowerShell Core for MacOS</span></span>](../setup/installing-powershell-core-on-macos.md)
+[<span data-ttu-id="6ae69-171">MacOS용 PowerShell Core</span><span class="sxs-lookup"><span data-stu-id="6ae69-171">PowerShell Core for MacOS</span></span>](../setup/installing-powershell-core-on-macos.md)
 
-[<span data-ttu-id="a4572-172">Win32 OpenSSH</span><span class="sxs-lookup"><span data-stu-id="a4572-172">Win32 OpenSSH</span></span>](https://github.com/PowerShell/Win32-OpenSSH/releases)
+[<span data-ttu-id="6ae69-172">Win32 OpenSSH</span><span class="sxs-lookup"><span data-stu-id="6ae69-172">Win32 OpenSSH</span></span>](https://github.com/PowerShell/Win32-OpenSSH/releases)
 
-[<span data-ttu-id="a4572-173">설치</span><span class="sxs-lookup"><span data-stu-id="a4572-173">installation</span></span>](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+[<span data-ttu-id="6ae69-173">설치</span><span class="sxs-lookup"><span data-stu-id="6ae69-173">installation</span></span>](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
-[<span data-ttu-id="a4572-174">Ubuntu SSH</span><span class="sxs-lookup"><span data-stu-id="a4572-174">Ubuntu SSH</span></span>](https://help.ubuntu.com/lts/serverguide/openssh-server.html)
+[<span data-ttu-id="6ae69-174">Ubuntu SSH</span><span class="sxs-lookup"><span data-stu-id="6ae69-174">Ubuntu SSH</span></span>](https://help.ubuntu.com/lts/serverguide/openssh-server.html)
