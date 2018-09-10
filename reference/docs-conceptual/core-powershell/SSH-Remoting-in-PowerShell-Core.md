@@ -1,37 +1,39 @@
 ---
 title: SSH를 통한 PowerShell 원격
 description: SSH를 사용하여 PowerShell Core에서 원격 작업
-ms.date: 08/06/2018
-ms.openlocfilehash: 27a8fc5623796a270a2ea67aa550c9a0998e766b
-ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.date: 08/14/2018
+ms.openlocfilehash: 1de034d667aa9a377e5460e7eb474402c690cb42
+ms.sourcegitcommit: 56b9be8503a5a1342c0b85b36f5ba6f57c281b63
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39587502"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "43133140"
 ---
 # <a name="powershell-remoting-over-ssh"></a>SSH를 통한 PowerShell 원격
 
 ## <a name="overview"></a>개요
 
-PowerShell 원격 기능은 일반적으로 연결 협상 및 데이터 전송에 WinRM을 사용합니다. SSH는 이제 Linux 및 Windows 플랫폼에 모두 사용할 수 있고 진정한 다중 플랫폼 PowerShell 원격 기능을 허용하므로 이 원격 기능 구현에 선택되었습니다. 그러나 WinRM은 이 구현이 아직 지원하지 않는 PowerShell 원격 세션에 대한 강력한 호스팅 모델도 제공합니다. 그리고 이는 PowerShell 원격 엔드포인트 구성 및 JEA(Just Enough Administration)가 이 구현에서 아직 지원되지 않음을 의미합니다.
+PowerShell 원격 기능은 일반적으로 연결 협상 및 데이터 전송에 WinRM을 사용합니다. 이제 SSH를 Linux 및 Windows 플랫폼에서 사용할 수 있으며 진정한 다중 플랫폼 PowerShell 원격 기능이 지원됩니다.
 
-PowerShell SSH 원격 기능을 사용하면 Windows 및 Linux 컴퓨터 간에 기본적인 PowerShell 세션 원격 작업을 수행할 수 있습니다. 이러한 작업은 SSH 하위 시스템인 대상 컴퓨터에 PowerShell 호스팅 프로세스를 만드는 방식으로 수행됩니다. 결국 이는 엔드포인트 구성 및 JEA를 지원하기 위해 WinRM이 작동하는 방식과 유사한, 보다 일반적인 호스팅 모델로 변경됩니다.
+WinRM은 PowerShell 원격 세션을 위한 강력한 호스팅 모델을 제공합니다. 현재, 이 구현에서 SSH 기반 원격 기능은 원격 엔드포인트 구성 및 JEA(Just Enough Administration)를 지원하지 않습니다.
 
-`New-PSSession`, `Enter-PSSession` 및 `Invoke-Command` cmdlet에는 이제 이 새로운 원격 연결을 용이하게 하는 새로운 매개 변수가 설정됩니다.
+SSH 원격 기능을 사용하면 Windows 및 Linux 컴퓨터 간에 기본적인 PowerShell 세션 원격 작업을 수행할 수 있습니다. SSH 원격 기능은 대상 컴퓨터에 SSH 하위 시스템으로 PowerShell 호스트 프로세스를 만듭니다.
+앞으로는 엔드포인트 구성 및 JEA를 지원하기 위해 WinRM과 유사한 일반 호스팅 모델을 구현할 예정입니다.
+
+`New-PSSession`, `Enter-PSSession` 및 `Invoke-Command` cmdlet에는 이제 이 새로운 원격 연결을 지원하기 위한 새로운 매개 변수가 설정됩니다.
 
 ```
 [-HostName <string>]  [-UserName <string>]  [-KeyFilePath <string>]
 ```
 
-이 새로운 매개 변수 집합은 변경될 가능성이 높지만 현재는 명령줄에서 상호 작용하거나 명령 및 스크립트를 호출할 수 있는 SSH PSSession을 만드는 데 사용할 수 있습니다. HostName 매개 변수를 사용하여 대상 컴퓨터를 지정하고 UserName을 사용하여 사용자 이름을 제공합니다. PowerShell 명령줄에서 대화형으로 cmdlet을 실행할 때는 암호를 묻는 메시지가 나타납니다. 하지만 SSH 키 인증을 사용하고 KeyFilePath 매개 변수를 사용하여 개인 키 파일 경로를 지정하는 옵션도 있습니다.
+원격 세션을 만들려면 `HostName` 매개 변수를 사용하여 대상 컴퓨터를 지정하고 `UserName`을 사용하여 사용자 이름을 제공합니다. cmdlet을 대화형으로 실행하면 암호를 묻는 메시지가 나타납니다. `KeyFilePath` 매개 변수와 함께 개인 키 파일을 사용하여 SSH 키 인증을 사용할 수도 있습니다.
 
 ## <a name="general-setup-information"></a>일반적인 설치 정보
 
-SSH는 모든 컴퓨터에 설치해야 합니다. 컴퓨터에서 들어오고 나가는 원격 작업을 실험할 수 있도록 클라이언트(`ssh.exe`) 및 서버(`sshd.exe`)를 설치해야 합니다. Windows의 경우 [GitHub의 Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)를 설치해야 합니다.
-Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치해야 합니다. 또한 GitHub에서 SSH 원격 기능이 있는 최신 PowerShell 빌드 또는 패키지를 설치해야 합니다.
-SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하는 데 사용되며, SSH 서버에 이를 구성해야 합니다. 또한 암호 인증을 활성화하고, 필요에 따라 키 기반 인증도 활성화해야 합니다.
+SSH는 모든 컴퓨터에 설치해야 합니다. 컴퓨터에서 들어오고 나가는 원격 작업을 수행할 수 있도록 SSH 클라이언트(`ssh.exe`) 및 서버(`sshd.exe`)를 설치합니다. Windows의 경우 [GitHub의 Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)를 설치합니다.
+Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니다. 또한 SSH 원격 기능을 가져오려면 GitHub에서 PowerShell Core를 설치해야 합니다. SSH 서버는 원격 컴퓨터에 PowerShell 프로세스를 호스트하기 위해 SSH 하위 시스템을 만들도록 구성되어야 합니다. 또한 암호 또는 키 기반 인증도 구성해야 합니다.
 
-## <a name="setup-on-windows-machine"></a>Windows 컴퓨터에 설치
+## <a name="set-up-on-windows-machine"></a>Windows 컴퓨터에 설치
 
 1. 최신 버전의 [PowerShell Core for Windows] 설치
 
@@ -55,27 +57,22 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
      ```
 
      ```
-     Subsystem    powershell c:/program files/powershell/6.0.0/pwsh.exe -sshs -NoLogo -NoProfile
+     Subsystem    powershell c:/program files/powershell/6.0.4/pwsh.exe -sshs -NoLogo -NoProfile
      ```
 
      > [!NOTE]
-     > 하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다.
-     > [자세한 내용은 GitHub에서 이 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.
+     > 하위 시스템 실행 파일 경로의 작업에서 공백을 방지하는 Windows용 OpenSSH에 버그가 있습니다. 자세한 내용은 [이 GitHub 문제](https://github.com/PowerShell/Win32-OpenSSH/issues/784)를 참조하세요.
 
-     한 가지 해결 방법은 공백을 포함하지 않는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.
+     한 가지 해결 방법은 공백이 없는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.
 
      ```powershell
-     mklink /D c:\pwsh "C:\Program Files\PowerShell\6.0.0"
+     mklink /D c:\pwsh "C:\Program Files\PowerShell\6.0.4"
      ```
 
      그런 다음, 하위 시스템에 입력합니다.
 
      ```
      Subsystem    powershell c:\pwsh\pwsh.exe -sshs -NoLogo -NoProfile
-     ```
-
-     ```
-     Subsystem    powershell c:/program files/powershell/6.0.0/pwsh.exe -sshs -NoLogo -NoProfile
      ```
 
    - 필요에 따라 키 인증을 활성화합니다.
@@ -90,12 +87,9 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
    Restart-Service sshd
    ```
 
-5. Path Env 변수에 OpenSSH가 설치된 경로를 추가합니다.
+5. Path 환경 변수에 OpenSSH가 설치된 경로를 추가합니다. 정의합니다(예: `C:\Program Files\OpenSSH\`). 이 항목을 입력하면 ssh.exe를 찾을 수 있습니다.
 
-   - 이는 `C:\Program Files\OpenSSH\` 줄에 있어야 합니다.
-   - 그래야 시스템에서 ssh.exe를 찾을 수 있습니다.
-
-## <a name="setup-on-linux-ubuntu-1404-machine"></a>Linux(Ubuntu 14.04) 컴퓨터에 설치
+## <a name="set-up-on-linux-ubuntu-1404-machine"></a>Linux(Ubuntu 14.04) 컴퓨터에 설치
 
 1. GitHub에서 최신 [Linux용 PowerShell Core] 빌드를 설치합니다.
 2. 필요에 따라 [Ubuntu SSH]를 설치합니다.
@@ -131,7 +125,7 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
    sudo service sshd restart
    ```
 
-## <a name="setup-on-macos-machine"></a>MacOS 컴퓨터에 설치
+## <a name="set-up-on-macos-machine"></a>MacOS 컴퓨터에 설치
 
 1. 최신 [MacOS용 PowerShell Core] 빌드를 설치합니다.
 
@@ -176,7 +170,7 @@ SSH 하위 시스템은 원격 컴퓨터에 PowerShell 프로세스를 설정하
 
 ## <a name="powershell-remoting-example"></a>PowerShell 원격 기능 예제
 
-원격 기능을 테스트하는 가장 쉬운 방법은 단일 컴퓨터에서 사용해 보는 것입니다. 여기에서는 Linux 상자의 동일한 컴퓨터에 다시 원격 세션을 만들겠습니다. 암호 프롬프트뿐만 아니라 명령 프롬프트에서도 PowerShell cmdlet을 사용하므로 SSH에서 호스트 컴퓨터를 확인할지 묻는 메시지를 볼 수 있습니다. 또한 Windows 컴퓨터에서도 동일한 작업을 수행하여 원격 기능이 작동하는지 확인한 후 호스트 이름을 변경하여 컴퓨터 간에 원격 기능이 작동하는지 확인할 수 있습니다.
+원격 기능을 테스트하는 가장 쉬운 방법은 단일 컴퓨터에서 사용해 보는 것입니다. 이 예제에서는 동일한 Linux 컴퓨터에 원격 세션을 다시 만듭니다. SSH에서 호스트 컴퓨터를 확인하도록 요구하고 암호를 묻는 메시지를 표시하도록 대화형으로 PowerShell cmdlet을 사용합니다. Windows 컴퓨터에서도 동일한 작업을 수행하여 원격 기능이 작동하는지 확인할 수 있습니다. 그런 다음, 호스트 이름을 변경하여 시스템 간을 원격으로 이동합니다.
 
 ```powershell
 #
@@ -197,9 +191,9 @@ $session
 ```
 
 ```output
- Id Name            ComputerName    ComputerType    State         ConfigurationName     Availability
- -- ----            ------------    ------------    -----         -----------------     ------------
-  1 SSH1            UbuntuVM1       RemoteMachine   Opened        DefaultShell             Available
+ Id Name   ComputerName    ComputerType    State    ConfigurationName     Availability
+ -- ----   ------------    ------------    -----    -----------------     ------------
+  1 SSH1   UbuntuVM1       RemoteMachine   Opened   DefaultShell             Available
 ```
 
 ```powershell
