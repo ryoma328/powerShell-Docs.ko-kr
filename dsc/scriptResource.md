@@ -1,31 +1,21 @@
 ---
-ms.date: 06/12/2017
+ms.date: 08/24/2018
 keywords: dsc,powershell,configuration,setup
 title: DSC 스크립트 리소스
-ms.openlocfilehash: 1163d454972d8ee519d1c55b77bb85979faf3536
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: ef84239820a44aab2a028f7f0fe17653a851b72e
+ms.sourcegitcommit: 59727f71dc204785a1bcdedc02716d8340a77aeb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189451"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43133896"
 ---
-# <a name="dsc-script-resource"></a><span data-ttu-id="3d328-103">DSC 스크립트 리소스</span><span class="sxs-lookup"><span data-stu-id="3d328-103">DSC Script Resource</span></span>
+# <a name="dsc-script-resource"></a><span data-ttu-id="93b27-103">DSC 스크립트 리소스</span><span class="sxs-lookup"><span data-stu-id="93b27-103">DSC Script Resource</span></span>
 
+> <span data-ttu-id="93b27-104">적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.x</span><span class="sxs-lookup"><span data-stu-id="93b27-104">Applies To: Windows PowerShell 4.0, Windows PowerShell 5.x</span></span>
 
-> <span data-ttu-id="3d328-104">적용 대상: Windows PowerShell 4.0, Windows PowerShell 5.0</span><span class="sxs-lookup"><span data-stu-id="3d328-104">Applies To: Windows PowerShell 4.0, Windows PowerShell 5.0</span></span>
+<span data-ttu-id="93b27-105">Windows PowerShell DSC(필요한 상태 구성)의 **스크립트** 리소스에서는 대상 노드에서 Windows PowerShell 스크립트 블록을 실행하는 메커니즘을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-105">The **Script** resource in Windows PowerShell Desired State Configuration (DSC) provides a mechanism to run Windows PowerShell script blocks on target nodes.</span></span> <span data-ttu-id="93b27-106">**스크립트** 리소스는 사용자가 정의하는 스크립트 블록이 포함되는 `GetScript`, `SetScript` 및 `TestScript` 속성을 사용하여 해당 DSC 상태 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-106">The **Script** resource uses `GetScript`, `SetScript`, and `TestScript` properties that contain script blocks you define to perform the corresponding DSC state operations.</span></span>
 
-<span data-ttu-id="3d328-105">Windows PowerShell DSC(필요한 상태 구성)의 **스크립트** 리소스에서는 대상 노드에서 Windows PowerShell 스크립트 블록을 실행하는 메커니즘을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-105">The **Script** resource in Windows PowerShell Desired State Configuration (DSC) provides a mechanism to run Windows PowerShell script blocks on target nodes.</span></span> <span data-ttu-id="3d328-106">`Script` 리소스에 `GetScript`, `SetScript`, 및 `TestScript` 속성이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-106">The `Script` resource has `GetScript`, `SetScript`, and `TestScript` properties.</span></span> <span data-ttu-id="3d328-107">이러한 속성은 각 대상 노드에서 실행될 스크립트 블록에 설정되어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-107">These properties should be set to script blocks that will run on each target node.</span></span>
-
-<span data-ttu-id="3d328-108">`GetScript` 스크립트 블록은 현재 노드의 상태를 나타내는 해시 테이블을 반환해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-108">The `GetScript` script block should return a hashtable representing the state of the current node.</span></span> <span data-ttu-id="3d328-109">해시 테이블에는 `Result` 키 하나만 포함해야 하며 값은 `String` 형식이어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-109">The hashtable must only contain one key `Result` and the value must be of type `String`.</span></span> <span data-ttu-id="3d328-110">아무것도 반환할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-110">It is not required to return anything.</span></span> <span data-ttu-id="3d328-111">DSC는 스크립트 블록의 출력을 사용해 아무런 작업도 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-111">DSC doesn't do anything with the output of this script block.</span></span>
-
-<span data-ttu-id="3d328-112">`TestScript` 스크립트 블록이 현재 노드를 수정해야 하는지 결정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-112">The `TestScript` script block should determine if the current node needs to be modified.</span></span> <span data-ttu-id="3d328-113">노드 최신 상태이면 `$true`를 반환해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-113">It should return `$true` if the node is up-to-date.</span></span> <span data-ttu-id="3d328-114">노드의 구성이 최신 상태가 아니면 `$false`를 반환하고 `SetScript` 스크립트 블록으로 업데이트해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-114">It should return `$false` if the node's configuration is out-of-date and should be updated by the `SetScript` script block.</span></span> <span data-ttu-id="3d328-115">`TestScript` 스크립트 블록이 DSC에 의해 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-115">The `TestScript` script block is called by DSC.</span></span>
-
-<span data-ttu-id="3d328-116">`SetScript` 스크립트 블록에서 노드를 수정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-116">The `SetScript` script block should modify the node.</span></span> <span data-ttu-id="3d328-117">`TestScript` 블록이 `$false`를 차단하는 경우 DSC에 의해 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-117">It is called by DSC if the `TestScript` block return `$false`.</span></span>
-
-<span data-ttu-id="3d328-118">`GetScript`, `TestScript` 또는 `SetScript` 스크립트 블록에서 구성 스크립트의 변수를 사용해야 하는 경우 `$using:` 범위를 사용하세요(아래 예제 참조).</span><span class="sxs-lookup"><span data-stu-id="3d328-118">If you need to use variables from your configuration script in the `GetScript`, `TestScript`, or `SetScript` script blocks, use the `$using:` scope (see below for an example).</span></span>
-
-
-## <a name="syntax"></a><span data-ttu-id="3d328-119">구문</span><span class="sxs-lookup"><span data-stu-id="3d328-119">Syntax</span></span>
+## <a name="syntax"></a><span data-ttu-id="93b27-107">구문</span><span class="sxs-lookup"><span data-stu-id="93b27-107">Syntax</span></span>
 
 ```
 Script [string] #ResourceName
@@ -38,37 +28,68 @@ Script [string] #ResourceName
 }
 ```
 
-## <a name="properties"></a><span data-ttu-id="3d328-120">속성</span><span class="sxs-lookup"><span data-stu-id="3d328-120">Properties</span></span>
+> [!NOTE]
+> <span data-ttu-id="93b27-108">`GetScript`, `TestScript` 및 `SetScript` 블록은 문자열로 저장됩니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-108">The `GetScript`, `TestScript`, and `SetScript` blocks are stored as strings.</span></span>
 
-|  <span data-ttu-id="3d328-121">속성</span><span class="sxs-lookup"><span data-stu-id="3d328-121">Property</span></span>  |  <span data-ttu-id="3d328-122">설명</span><span class="sxs-lookup"><span data-stu-id="3d328-122">Description</span></span>   |
-|---|---|
-| <span data-ttu-id="3d328-123">GetScript</span><span class="sxs-lookup"><span data-stu-id="3d328-123">GetScript</span></span>| <span data-ttu-id="3d328-124">[Get-DscConfiguration](https://technet.microsoft.com/library/dn407379.aspx) cmdlet을 호출할 때 실행되는 Windows PowerShell 스크립트 블록을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-124">Provides a block of Windows PowerShell script that runs when you invoke the [Get-DscConfiguration](https://technet.microsoft.com/library/dn407379.aspx) cmdlet.</span></span> <span data-ttu-id="3d328-125">이 블록은 해시 테이블을 반환해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-125">This block must return a hashtable.</span></span> <span data-ttu-id="3d328-126">해시 테이블에는 **결과** 키 하나만 포함해야 하며 값은 **문자열**형식이어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-126">The hashtable must only contain one key **Result** and the value must be of type **String**.</span></span>|
-| <span data-ttu-id="3d328-127">SetScript</span><span class="sxs-lookup"><span data-stu-id="3d328-127">SetScript</span></span>| <span data-ttu-id="3d328-128">Windows PowerShell 스크립트 블록을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-128">Provides a block of Windows PowerShell script.</span></span> <span data-ttu-id="3d328-129">[Start-DscConfiguration](https://technet.microsoft.com/library/dn521623.aspx) cmdlet을 호출하면 **TestScript** 블록이 가장 먼저 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-129">When you invoke the [Start-DscConfiguration](https://technet.microsoft.com/library/dn521623.aspx) cmdlet, the **TestScript** block runs first.</span></span> <span data-ttu-id="3d328-130">**TestScript** 블록에서 **$false**를 반환한다면, **SetScript** 블록이 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-130">If the **TestScript** block returns **$false**, the **SetScript** block will run.</span></span> <span data-ttu-id="3d328-131">**TestScript** 블록에서 **$true**를 반환한다면, **SetScript** 블록이 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-131">If the **TestScript** block returns **$true**, the **SetScript** block will not run.</span></span>|
-| <span data-ttu-id="3d328-132">TestScript</span><span class="sxs-lookup"><span data-stu-id="3d328-132">TestScript</span></span>| <span data-ttu-id="3d328-133">Windows PowerShell 스크립트 블록을 제공합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-133">Provides a block of Windows PowerShell script.</span></span> <span data-ttu-id="3d328-134">[Start-DscConfiguration](https://technet.microsoft.com/library/dn521623.aspx) cmdlet을 호출하면 이 블록이 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-134">When you invoke the [Start-DscConfiguration](https://technet.microsoft.com/library/dn521623.aspx) cmdlet, this block runs.</span></span> <span data-ttu-id="3d328-135">**$false**를 반환한다면, SetScript 블록이 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-135">If it returns **$false**, the SetScript block will run.</span></span> <span data-ttu-id="3d328-136">**$true**를 반환한다면, SetScript 블록이 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-136">If it returns **$true**, the SetScript block will not run.</span></span> <span data-ttu-id="3d328-137">[Test-DscConfiguration](https://technet.microsoft.com/en-us/library/dn407382.aspx) cmdlet을 호출하면 **TestScript** 블록도 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-137">The **TestScript** block also runs when you invoke the [Test-DscConfiguration](https://technet.microsoft.com/en-us/library/dn407382.aspx) cmdlet.</span></span> <span data-ttu-id="3d328-138">그러나 이 경우에서는 TestScript 블록이 어떤 값을 반환하는지 관계없이 **SetScript** 블록이 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-138">However, in this case, the **SetScript** block will not run, no matter what value the TestScript block returns.</span></span> <span data-ttu-id="3d328-139">실제 구성이 현재 필요한 상태 구성과 일치하는 경우 **TestScript** 블록은 True를 반환해야 하고, 일치하지 않는 경우에는 False를 반환해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-139">The **TestScript** block must return True if the actual configuration matches the current desired state configuration, and False if it does not match.</span></span> <span data-ttu-id="3d328-140">(현재 필요한 상태 구성은 DSC를 사용하는 노드에서 시행된 마지막 구성입니다.)</span><span class="sxs-lookup"><span data-stu-id="3d328-140">(The current desired state configuration is the last configuration enacted on the node that is using DSC.)</span></span>|
-| <span data-ttu-id="3d328-141">자격 증명</span><span class="sxs-lookup"><span data-stu-id="3d328-141">Credential</span></span>| <span data-ttu-id="3d328-142">자격 증명이 필요한 경우 이 스크립트를 실행하는 데 사용할 자격 증명을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-142">Indicates the credentials to use for running this script, if credentials are required.</span></span>|
-| <span data-ttu-id="3d328-143">DependsOn</span><span class="sxs-lookup"><span data-stu-id="3d328-143">DependsOn</span></span>| <span data-ttu-id="3d328-144">이 리소스를 구성하려면 먼저 다른 리소스의 구성을 실행해야 함을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-144">Indicates that the configuration of another resource must run before this resource is configured.</span></span> <span data-ttu-id="3d328-145">예를 들어, 먼저 실행하려는 리소스 구성 스크립트 블록의 ID가 **ResourceName**이고 해당 형식이 **ResourceType**일 경우, 이 속성을 사용하기 위한 구문은 `DependsOn = "[ResourceType]ResourceName"`입니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-145">For example, if the ID of the resource configuration script block that you want to run first is **ResourceName** and its type is **ResourceType**, the syntax for using this property is `DependsOn = "[ResourceType]ResourceName"`.</span></span>
+## <a name="properties"></a><span data-ttu-id="93b27-109">속성</span><span class="sxs-lookup"><span data-stu-id="93b27-109">Properties</span></span>
 
-## <a name="example-1"></a><span data-ttu-id="3d328-146">예제 1</span><span class="sxs-lookup"><span data-stu-id="3d328-146">Example 1</span></span>
+|<span data-ttu-id="93b27-110">속성</span><span class="sxs-lookup"><span data-stu-id="93b27-110">Property</span></span>|<span data-ttu-id="93b27-111">설명</span><span class="sxs-lookup"><span data-stu-id="93b27-111">Description</span></span>|
+|--------|-----------|
+|<span data-ttu-id="93b27-112">GetScript</span><span class="sxs-lookup"><span data-stu-id="93b27-112">GetScript</span></span>|<span data-ttu-id="93b27-113">노드의 현재 상태를 반환하는 스크립트 블록입니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-113">A script block that returns the current state of the Node.</span></span>|
+|<span data-ttu-id="93b27-114">SetScript</span><span class="sxs-lookup"><span data-stu-id="93b27-114">SetScript</span></span>|<span data-ttu-id="93b27-115">노드가 원하는 상태가 아닐 때 DSC가 준수 적용을 위해 사용하는 스크립트 블록입니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-115">A script block that DSC uses to enforce compliance when the Node is not in the desired state.</span></span>|
+|<span data-ttu-id="93b27-116">TestScript</span><span class="sxs-lookup"><span data-stu-id="93b27-116">TestScript</span></span>|<span data-ttu-id="93b27-117">노드가 원하는 상태인지를 확인하는 스크립트 블록입니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-117">A script block that determines if the Node is in the desired state.</span></span>|
+|<span data-ttu-id="93b27-118">자격 증명</span><span class="sxs-lookup"><span data-stu-id="93b27-118">Credential</span></span>| <span data-ttu-id="93b27-119">자격 증명이 필요한 경우 이 스크립트를 실행하는 데 사용할 자격 증명을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-119">Indicates the credentials to use for running this script, if credentials are required.</span></span>|
+|<span data-ttu-id="93b27-120">DependsOn</span><span class="sxs-lookup"><span data-stu-id="93b27-120">DependsOn</span></span>| <span data-ttu-id="93b27-121">이 리소스를 구성하려면 먼저 다른 리소스의 구성을 실행해야 함을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-121">Indicates that the configuration of another resource must run before this resource is configured.</span></span> <span data-ttu-id="93b27-122">예를 들어, 먼저 실행하려는 리소스 구성 스크립트 블록의 ID가 **ResourceName**이고 해당 형식이 **ResourceType**일 경우, 이 속성을 사용하기 위한 구문은 `DependsOn = "[ResourceType]ResourceName"`입니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-122">For example, if the ID of the resource configuration script block that you want to run first is **ResourceName** and its type is **ResourceType**, the syntax for using this property is `DependsOn = "[ResourceType]ResourceName"`.</span></span>
+
+### <a name="getscript"></a><span data-ttu-id="93b27-123">GetScript</span><span class="sxs-lookup"><span data-stu-id="93b27-123">GetScript</span></span>
+
+<span data-ttu-id="93b27-124">DSC에서는 `GetScript`의 출력을 사용하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-124">DSC does not use the output from `GetScript`.</span></span> <span data-ttu-id="93b27-125">[Get-DscConfiguration](/powershell/module/PSDesiredStateConfiguration/Get-DscConfiguration) cmdlet은 `GetScript`를 실행하여 노드의 현재 상태를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-125">The [Get-DscConfiguration](/powershell/module/PSDesiredStateConfiguration/Get-DscConfiguration) cmdlet executes the `GetScript` to retrieve a node's current state.</span></span> <span data-ttu-id="93b27-126">`GetScript`의 반환 값은 필요하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-126">A return value is not required from `GetScript`.</span></span> <span data-ttu-id="93b27-127">반환 값을 지정하는 경우 해당 값이 `String`인 **Result** 키가 포함된 `hashtable`이어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-127">If you specify a return value, it must be a `hashtable` containing a **Result** key whose value is a `String`.</span></span>
+
+### <a name="testscript"></a><span data-ttu-id="93b27-128">TestScript</span><span class="sxs-lookup"><span data-stu-id="93b27-128">TestScript</span></span>
+
+<span data-ttu-id="93b27-129">`TestScript`는 `SetScript`를 실행해야 하는지를 확인하기 위해 DSC에서 실행됩니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-129">The `TestScript` is executed by DSC to determine if the `SetScript` should be run.</span></span> <span data-ttu-id="93b27-130">`TestScript`가 `$false`를 반환하는 경우 DSC는 `SetScript`를 실행하여 노드를 원하는 상태로 전환합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-130">If the `TestScript` returns `$false`, DSC executes the `SetScript` to bring the node back to the desired state.</span></span> <span data-ttu-id="93b27-131">`boolean` 값을 반환해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-131">It must return a `boolean` value.</span></span> <span data-ttu-id="93b27-132">`$true`의 결과는 노드가 규정을 준수하며 `SetScript`를 실행하지 않아야 함을 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-132">A result of `$true` indicates that the node is compliant and `SetScript` should not executed.</span></span>
+
+<span data-ttu-id="93b27-133">[Test-DscConfiguration](/powershell/module/PSDesiredStateConfiguration/Test-DscConfiguration) cmdlet은 `TestScript`를 실행하여 **스크립트** 리소스에 대한 노드 준수 상태를 검색합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-133">The [Test-DscConfiguration](/powershell/module/PSDesiredStateConfiguration/Test-DscConfiguration) cmdlet, executes the `TestScript` to retrieve the nodes compliance with the  **Script** resources.</span></span> <span data-ttu-id="93b27-134">그러나 이 경우에는 `TestScript` 블록이 반환하는 결과에 관계없이 `SetScript`는 실행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-134">However, in this case, the `SetScript` does not run, no matter what the `TestScript` block returns.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="93b27-135">`TestScript`의 모든 출력은 해당 반환 값의 일부입니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-135">All output from your `TestScript` is part of its return value.</span></span> <span data-ttu-id="93b27-136">PowerShell은 표시되는 출력을 0이 아닌 것으로 해석합니다. 즉, `TestScript`는 노드 상태에 관계없이 `$true`를 반환합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-136">PowerShell interprets unsuppressed output as non-zero, which means that your `TestScript` will return `$true` regardless of your node's state.</span></span>
+> <span data-ttu-id="93b27-137">이로 인해 예상치 못한 결과, 가양성이 발생하고, 문제를 해결하기 어렵습니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-137">This results in unpredictable results, false positives, and causes difficulty during troubleshooting.</span></span>
+
+### <a name="setscript"></a><span data-ttu-id="93b27-138">SetScript</span><span class="sxs-lookup"><span data-stu-id="93b27-138">SetScript</span></span>
+
+<span data-ttu-id="93b27-139">`SetScript`는 노드를 수정하여 원하는 상태를 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-139">The `SetScript` modifies the node to enfore the desired state.</span></span> <span data-ttu-id="93b27-140">이 속성은 `TestScript` 스크립트 블록이 `$false`를 반환하는 경우 DSC에 의해 호출됩니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-140">It is called by DSC if the `TestScript` script block returns `$false`.</span></span> <span data-ttu-id="93b27-141">`SetScript`에는 반환 값이 없어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-141">The `SetScript` should have no return value.</span></span>
+
+## <a name="examples"></a><span data-ttu-id="93b27-142">예</span><span class="sxs-lookup"><span data-stu-id="93b27-142">Examples</span></span>
+
+### <a name="example-1-write-sample-text-using-a-script-resource"></a><span data-ttu-id="93b27-143">예제 1: 스크립트 리소스를 사용하여 샘플 텍스트 쓰기</span><span class="sxs-lookup"><span data-stu-id="93b27-143">Example 1: Write sample text using a Script resource</span></span>
+
+<span data-ttu-id="93b27-144">이 예제에서는 각 노드에서 `C:\TempFolder\TestFile.txt`의 존재 여부를 테스트합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-144">This example tests for the existence of `C:\TempFolder\TestFile.txt` on each node.</span></span> <span data-ttu-id="93b27-145">존재하지 않는 경우 `SetScript`를 사용하여 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-145">If it does not exist, it creates it using the `SetScript`.</span></span> <span data-ttu-id="93b27-146">`GetScript`는 파일의 내용을 반환하고, 해당 반환 값은 사용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-146">The `GetScript` returns the contents of the file, and its return value is not used.</span></span>
+
 ```powershell
 Configuration ScriptTest
 {
     Import-DscResource –ModuleName 'PSDesiredStateConfiguration'
 
-    Script ScriptExample
+    Node localhost
     {
-        SetScript =
+        Script ScriptExample
         {
-            $sw = New-Object System.IO.StreamWriter("C:\TempFolder\TestFile.txt")
-            $sw.WriteLine("Some sample string")
-            $sw.Close()
+            SetScript = {
+                $sw = New-Object System.IO.StreamWriter("C:\TempFolder\TestFile.txt")
+                $sw.WriteLine("Some sample string")
+                $sw.Close()
+            }
+            TestScript = { Test-Path "C:\TempFolder\TestFile.txt" }
+            GetScript = { @{ Result = (Get-Content C:\TempFolder\TestFile.txt) } }
         }
-        TestScript = { Test-Path "C:\TempFolder\TestFile.txt" }
-        GetScript = { @{ Result = (Get-Content C:\TempFolder\TestFile.txt) } }
     }
 }
 ```
 
-## <a name="example-2"></a><span data-ttu-id="3d328-147">예 2</span><span class="sxs-lookup"><span data-stu-id="3d328-147">Example 2</span></span>
+### <a name="example-2-compare-version-information-using-a-script-resource"></a><span data-ttu-id="93b27-147">예제 2: 스크립트 리소스를 사용하여 버전 정보 비교</span><span class="sxs-lookup"><span data-stu-id="93b27-147">Example 2: Compare version information using a Script resource</span></span>
+
+<span data-ttu-id="93b27-148">이 예제에서는 작성 컴퓨터의 텍스트 파일에서 *규격* 버전 정보를 검색한 후 `$version` 변수에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-148">This example retrieves the *compliant* version information from a text file on the authoring computer and stores it in the `$version` variable.</span></span> <span data-ttu-id="93b27-149">노드의 MOF 파일을 생성할 때 DSC는 각 스크립트 블록의 `$using:version` 변수를 `$version` 변수의 값으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-149">When generating the node's MOF file, DSC replaces the `$using:version` variables in each script block with the value of the `$version` variable.</span></span> <span data-ttu-id="93b27-150">실행 동안 *규격* 버전은 각 노드의 텍스트 파일에 저장되고, 후속 실행에서 비교 및 업데이트됩니다.</span><span class="sxs-lookup"><span data-stu-id="93b27-150">During execution, the *compliant* version is stored in a text file on each Node and compared and updated on subsequent executions.</span></span>
+
 ```powershell
 $version = Get-Content 'version.txt'
 
@@ -76,27 +97,30 @@ Configuration ScriptTest
 {
     Import-DscResource –ModuleName 'PSDesiredStateConfiguration'
 
-    Script UpdateConfigurationVersion
+    Node localhost
     {
-        GetScript = {
-            $currentVersion = Get-Content (Join-Path -Path $env:SYSTEMDRIVE -ChildPath 'version.txt')
-            return @{ 'Result' = "$currentVersion" }
-        }
-        TestScript = {
-            $state = $GetScript
-            if( $state['Result'] -eq $using:version )
-            {
-                Write-Verbose -Message ('{0} -eq {1}' -f $state['Result'],$using:version)
-                return $true
+        Script UpdateConfigurationVersion
+        {
+            GetScript = {
+                $currentVersion = Get-Content (Join-Path -Path $env:SYSTEMDRIVE -ChildPath 'version.txt')
+                return @{ 'Result' = "$currentVersion" }
             }
-            Write-Verbose -Message ('Version up-to-date: {0}' -f $using:version)
-            return $false
-        }
-        SetScript = {
-            $using:version | Set-Content -Path (Join-Path -Path $env:SYSTEMDRIVE -ChildPath 'version.txt')
+            TestScript = {
+                # Create and invoke a scriptblock using the $GetScript automatic variable, which contains a string representation of the GetScript.
+                $state = [scriptblock]::Create($GetScript).Invoke()
+
+                if( $state['Result'] -eq $using:version )
+                {
+                    Write-Verbose -Message ('{0} -eq {1}' -f $state['Result'],$using:version)
+                    return $true
+                }
+                Write-Verbose -Message ('Version up-to-date: {0}' -f $using:version)
+                return $false
+            }
+            SetScript = {
+                $using:version | Set-Content -Path (Join-Path -Path $env:SYSTEMDRIVE -ChildPath 'version.txt')
+            }
         }
     }
 }
 ```
-
-<span data-ttu-id="3d328-148">이 리소스는 텍스트 파일에 구성의 버전을 쓰는 중입니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-148">This resource is writing the configuration's version to a text file.</span></span> <span data-ttu-id="3d328-149">이 버전은 클라이언트 컴퓨터에서 사용할 수 있지만, 어느 노드에도 없으므로 PowerShell의 `using` 범위를 가진 `Script` 리소스의 각 스크립트 블록에 전달해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-149">This version is available on the client computer, but isn't on any of the nodes, so it has to be passed to each of the `Script` resource's script blocks with PowerShell's `using` scope.</span></span> <span data-ttu-id="3d328-150">노드의 MOF 파일을 생성할 때 `$version` 변수의 값을 클라이언트 컴퓨터의 텍스트 파일로부터 읽어옵니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-150">When generating the node's MOF file, the value of the `$version` variable is read from a text file on the client computer.</span></span> <span data-ttu-id="3d328-151">DSC는 각 스크립트 블록의 `$using:version` 변수를 `$version` 변수의 값으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="3d328-151">DSC replaces the `$using:version` variables in each script block with the value of the `$version` variable.</span></span>
