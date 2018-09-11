@@ -1,12 +1,12 @@
 ---
 ms.date: 06/12/2017
 keywords: wmf,powershell,setup
-ms.openlocfilehash: bed1186c10082bbdac7249503bf623678f13fccd
-ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
+ms.openlocfilehash: ff2c2bd7369893d72db001ecabf63991ded0bfd5
+ms.sourcegitcommit: ac20e0faaa37142e9c6e4507a21df2f4a3fdbece
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267942"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44339874"
 ---
 # <a name="unified-and-consistent-state-and-status-representation"></a>통합되고 일관된 상태 및 상태 표현
 
@@ -25,8 +25,8 @@ ms.locfileid: "39267942"
 
 | 시나리오                        | LCMState             | 상태     | 다시 부팅 요청 | ResourcesInDesiredState   | ResourcesNotInDesiredState |
 |---------------------------------|----------------------|------------|---------------|------------------------------|--------------------------------|
-| S**^**                          | 유휴 상태                 | Success    | $false        | S                            | $null                          |
-| F**^**                          | PendingConfiguration | 실패    | $false        | $null                        | F                              |
+| S<sub>i</sub>                   | 유휴 상태                 | Success    | $false        | S                            | $null                          |
+| F<sub>i</sub>                   | PendingConfiguration | 실패    | $false        | $null                        | F                              |
 | S,F                             | PendingConfiguration | 실패    | $false        | S                            | F                              |
 | F,S                             | PendingConfiguration | 실패    | $false        | S                            | F                              |
 | S<sub>1</sub>, F, S<sub>2</sub> | PendingConfiguration | 실패    | $false        | S<sub>1</sub>, S<sub>2</sub> | F                              |
