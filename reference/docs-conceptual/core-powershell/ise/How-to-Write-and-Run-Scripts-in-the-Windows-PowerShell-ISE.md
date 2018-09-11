@@ -1,25 +1,25 @@
 ---
-ms.date: 06/05/2017
+ms.date: 08/14/2018
 keywords: powershell,cmdlet
 title: Windows PowerShell ISE에서 스크립트를 작성 및 실행하는 방법
 ms.assetid: 62f916d9-b3a1-484a-bdfb-41f57112c22b
-ms.openlocfilehash: 4d7c5352ef1dac6f63a50433676068f83a920db5
-ms.sourcegitcommit: 01d6985ed190a222e9da1da41596f524f607a5bc
+ms.openlocfilehash: 943752df2ecd3fce715dda0ca7ade97186620560
+ms.sourcegitcommit: 56b9be8503a5a1342c0b85b36f5ba6f57c281b63
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34483120"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "43133087"
 ---
 # <a name="how-to-write-and-run-scripts-in-the-windows-powershell-ise"></a>Windows PowerShell ISE에서 스크립트를 작성 및 실행하는 방법
 
-이 항목에서는 스크립트 창에서 스크립트를 만들고, 편집, 실행 및 저장하는 방법을 설명합니다.
+이 문서에서는 스크립트 창에서 스크립트를 만들고, 편집, 실행 및 저장하는 방법을 설명합니다.
 
 ## <a name="how-to-create-and-run-scripts"></a>스크립트를 만들고 실행하는 방법
 
 스크립트 창에서 Windows PowerShell 파일을 열고 편집할 수 있습니다. Windows PowerShell에서 중요한 특정 파일 형식은 스크립트 파일(.ps1), 스크립트 데이터 파일(.psd1) 및 스크립트 모듈 파일(.psm1)입니다. 이러한 파일 형식은 스크립트 창 편집기에서 구문별로 색이 지정됩니다. 스크립트 창에서 열 수도 있는 다른 일반적인 파일 형식은 구성 파일(.ps1xml), XML 파일 및 텍스트 파일입니다.
 
 > [!NOTE]
-> Windows PowerShell 실행 정책은 스크립트를 실행하고 Windows PowerShell 프로필 및 구성 파일을 로드할 수 있는지 여부를 결정합니다. 기본 실행 정책인 Restricted는 모든 스크립트 실행과 프로필 로드를 차단합니다. 프로필 로드 및 사용을 허용하도록 실행 정책을 변경하려면 [Set-ExecutionPolicy[PSITPro5_Security]](https://technet.microsoft.com/library/5690a0e1-495b-4e63-8280-65ead7bf01ab) 및 [about_Signing [v4]](https://technet.microsoft.com/library/fcbdd3b9-0b9f-4734-b5c7-e0dcc304fa1d)을 참조하세요.
+> Windows PowerShell 실행 정책은 스크립트를 실행하고 Windows PowerShell 프로필 및 구성 파일을 로드할 수 있는지 여부를 결정합니다. 기본 실행 정책인 Restricted는 모든 스크립트 실행과 프로필 로드를 차단합니다. 프로필 로드 및 사용을 허용하도록 실행 정책을 변경하려면 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy) 및 [about_Signing](/powershell/module/microsoft.powershell.core/about/about_signing)을 참조하세요.
 
 ### <a name="to-create-a-new-script-file"></a>새 스크립트 파일을 만들려면
 
@@ -31,11 +31,7 @@ ms.locfileid: "34483120"
 
 ### <a name="to-close-a-script-tab"></a>스크립트 탭을 닫으려면
 
-닫으려는 스크립트의 스크립트 탭을 클릭하고 다음 중 하나를 수행합니다.
-
-1. 스크립트 탭에서 **닫기** 아이콘(X)을 클릭합니다.
-
-2. **파일** 메뉴에서 **닫기**를 클릭합니다.
+닫으려는 파일 탭의 **닫기** 아이콘(X)을 클릭하거나 **파일** 메뉴, **닫기**를 차례로 클릭합니다.
 
 파일이 마지막으로 저장된 후에 변경된 경우 변경 내용을 저장하거나 취소하라는 메시지가 표시됩니다.
 
@@ -50,36 +46,37 @@ ms.locfileid: "34483120"
 ### <a name="to-run-a-portion-of-a-script"></a>스크립트의 일부를 실행하려면
 
 1. 스크립트 창에서 스크립트의 일부를 선택합니다.
-
 2. **파일** 메뉴에서 **선택 영역 실행**을 클릭하거나 도구 모음에서 **선택 영역 실행**을 클릭합니다.
 
 ### <a name="to-stop-a-running-script"></a>실행 중인 스크립트를 중지하려면
 
-도구 모음에서 **작업 중지**를 클릭하거나, Ctrl+Break를 누르거나, **파일** 메뉴에서 **작업 중지**를 클릭합니다. 일부 텍스트가 현재 선택되지 않은 경우에는 **Ctrl+C**를 눌러도 됩니다. 텍스트가 선택된 경우 **Ctrl+C**는 선택한 텍스트의 복사 기능에 매핑됩니다.
+실행 중인 스크립트를 중지하는 몇 가지 방법이 있습니다.
+
+- 도구 모음에서 **작업 중지**를 클릭합니다.
+- Ctrl+Break를 누릅니다.
+- **파일** 메뉴를 선택하고 **작업 중지**를 클릭합니다.
+
+일부 텍스트가 현재 선택되지 않은 경우에는 **Ctrl+C**를 눌러도 됩니다. 텍스트가 선택된 경우 **Ctrl+C**는 선택한 텍스트의 복사 기능에 매핑됩니다.
 
 ## <a name="how-to-write-and-edit-text-in-the-script-pane"></a>스크립트 창에서 텍스트를 작성 및 편집하는 방법
 
-스크립트 창에서 텍스트를 편집하려면 다음 단계를 따르세요. 텍스트를 복사, 잘라내기, 붙여넣기, 찾기 및 바꿀 수 있습니다. 방금 수행한 마지막 작업을 실행 취소하거나 다시 실행할 수도 있습니다. 이러한 작업을 수행하기 위한 바로 가기 키는 모든 Windows 응용 프로그램에 사용되는 키와 동일합니다.
+스크립트 창에서 텍스트를 복사, 잘라내기, 붙여넣기, 찾기 및 바꿀 수 있습니다. 방금 수행한 마지막 작업을 실행 취소하거나 다시 실행할 수도 있습니다. 이러한 작업을 위한 바로 가기 키는 모든 Windows 응용 프로그램에 사용되는 바로 가기 키와 동일합니다.
 
 ### <a name="to-enter-text-in-the-script-pane"></a>스크립트 창에 텍스트를 입력하려면
 
 1. 스크립트 창에서 아무 곳이나 클릭하거나 **보기** 메뉴에서 **스크립트 창으로 이동**을 클릭하여 커서를 스크립트 창으로 이동합니다.
-
-2. 스크립트를 만듭니다. Windows PowerShell ISE에서는 구문 색 지정 및 탭 완성 기능을 통해 이러한 작업을 보다 편리하게 수행할 수 있습니다.
-
+2. 스크립트를 만듭니다. Windows PowerShell ISE에서는 구문 색 지정 및 탭 완성 기능을 통해 풍부한 편집 환경이 구현됩니다.
 3. 탭 완성 기능을 사용하여 보다 쉽게 입력하는 방법에 대한 자세한 내용은 [스크립트 창 및 콘솔 창에서 탭 완성 기능을 사용하는 방법](How-to-Use-Tab-Completion-in-the-Script-Pane-and-Console-Pane.md)을 참조하세요.
 
 ### <a name="to-find-text-in-the-script-pane"></a>스크립트 창에서 텍스트를 찾으려면
 
 1. 모든 위치에서 텍스트를 찾으려면 **Ctrl+F**를 누르거나, **편집** 메뉴에서 **스크립트에서 찾기**를 클릭합니다.
-
 2. 커서 뒤에서 텍스트를 찾으려면 **F3** 키를 누르거나, **편집** 메뉴에서 **스크립트에서 다음 찾기**를 클릭합니다.
-
 3. 커서 앞에서 텍스트를 찾으려면 **Shift+F3** 키를 누르거나, **편집** 메뉴에서 **스크립트에서 이전 찾기**를 클릭합니다.
 
 ### <a name="to-find-and-replace-text-in-the-script-pane"></a>스크립트 창에서 텍스트를 찾아 바꾸려면
 
-**Ctrl+H**를 누르거나, **편집** 메뉴에서 **스크립트에서 바꾸기**를 클릭합니다. 찾으려는 텍스트와 이 텍스트를 바꾸려는 텍스트를 둘 다 입력한 다음 **Enter** 키를 누릅니다.
+**Ctrl+H**를 누르거나, **편집** 메뉴에서 **스크립트에서 바꾸기**를 클릭합니다. 찾으려는 텍스트와 바꿀 텍스트를 입력하고 **Enter** 키를 누릅니다.
 
 ### <a name="to-go-to-a-particular-line-of-text-in-the-script-pane"></a>스크립트 창에서 특정 텍스트 줄로 이동하려면
 
@@ -96,7 +93,6 @@ ms.locfileid: "34483120"
 ### <a name="to-cut-text-in-the-script-pane"></a>스크립트 창에서 텍스트를 잘라내려면
 
 1. 스크립트 창에서 잘라낼 텍스트를 선택합니다.
-
 2. **Ctrl+X**를 누르거나, 도구 모음에서 **잘라내기** 아이콘을 클릭하거나, **편집** 메뉴에서 **잘라내기**를 클릭합니다.
 
 ### <a name="to-paste-text-into-the-script-pane"></a>스크립트 창에 텍스트를 붙여넣으려면
@@ -113,7 +109,7 @@ ms.locfileid: "34483120"
 
 ## <a name="how-to-save-a-script"></a>스크립트를 저장하는 방법
 
-스크립트를 저장하고 이름을 지정하려면 다음 단계를 따르세요. 변경된 이후 저장되지 않은 파일을 표시하기 위해 스크립트 이름 옆에 별표가 나타납니다. 파일을 저장하면 별표가 사라집니다.
+변경된 이후 저장되지 않은 파일을 표시하기 위해 스크립트 이름 옆에 별표가 나타납니다. 파일을 저장하면 별표가 사라집니다.
 
 ### <a name="to-save-a-script"></a>스크립트를 저장하려면
 
@@ -122,16 +118,13 @@ ms.locfileid: "34483120"
 ### <a name="to-save-and-name-a-script"></a>스크립트를 저장하고 이름을 지정하려면
 
 1. **파일** 메뉴에서 **다른 이름으로 저장**을 클릭합니다. **다른 이름으로 저장** 대화 상자가 나타납니다.
-
 2. **파일 이름** 상자에 파일의 이름을 입력합니다.
-
-3. **파일 형식** 상자에서 파일 형식을 선택합니다. 예를 들어 **파일 형식** 상자에서 'œPowerShell 스크립트(\*.ps1)'를 선택합니다.
-
+3. **파일 형식** 상자에서 파일 형식을 선택합니다. 예를 들어 **파일 형식** 상자에서 ‘PowerShell 스크립트(\*.ps1)’를 선택합니다.
 4. **저장**을 클릭합니다.
 
 ### <a name="to-save-a-script-in-ascii-encoding"></a>ASCII 인코딩 형식으로 스크립트를 저장하려면
 
-기본적으로 Windows PowerShell ISE에서는 새 스크립트 파일(.ps1), 스크립트 데이터 파일(.psd1) 및 스크립트 모듈 파일(.psm1)을 유니코드(BigEndianUnicode)로 저장합니다. 스크립트를 ASCII(ANSI) 등의 다른 인코딩으로 저장하려면 [$psISE.CurrentFile](https://technet.microsoft.com/library/bc3300e4-9c17-4f00-a621-c8867126e3b3#CurrentFile) 개체의 **Save** 또는 **SaveAs** 메서드를 사용합니다.
+기본적으로 Windows PowerShell ISE에서는 새 스크립트 파일(.ps1), 스크립트 데이터 파일(.psd1) 및 스크립트 모듈 파일(.psm1)을 유니코드(BigEndianUnicode)로 저장합니다. 스크립트를 ASCII(ANSI) 등의 다른 인코딩으로 저장하려면 [$psISE.CurrentFile](the-ise-object-model-hierarchy.md) 개체의 **Save** 또는 **SaveAs** 메서드를 사용합니다.
 
 다음 명령은 ASCII 인코딩을 사용하여 새 스크립트를 MyScript.ps1로 저장합니다.
 
@@ -153,7 +146,7 @@ $psISE.CurrentFile.encoding
 
 Windows PowerShell ISE는 ASCII, BigEndianUnicode, 유니코드, UTF32, UTF7, UTF8, 기본값 등의 인코딩 옵션을 지원합니다. 기본값 옵션의 값은 시스템에 따라 다릅니다.
 
-Windows PowerShell ISE에서 저장 또는 다른 이름으로 저장 명령을 사용하는 경우에도 다른 편집기에서 만든 스크립트의 인코딩은 Windows PowerShell ISE에서 변경되지 않습니다.
+Windows PowerShell ISE에서는 저장 또는 다른 이름으로 저장을 사용하는 경우 스크립트 파일의 인코딩이 변경되지 않습니다.
 
 ## <a name="see-also"></a>참고 항목
 
