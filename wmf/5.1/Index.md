@@ -3,12 +3,12 @@ ms.date: 08/12/2017
 ms.topic: conceptual
 keywords: wmf,powershell,setup
 title: WMF 5.1 릴리스 정보
-ms.openlocfilehash: 3512d2e80501a596e1fd6d7b33d4d75286cef1b9
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 3081d200f0c6aac6074719bb1c204900aabf96c2
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189791"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45522908"
 ---
 # <a name="windows-management-framework-wmf-51"></a>WMF(Windows Management Framework) 5.1 #
 
@@ -23,17 +23,17 @@ WMF 5.1은 Windows 7, Windows 8.1, Windows Server 2008 R2, 2012 및 2012 R2에 �
 - 끌어오기 서버에서 나오는 카탈로그 서명 모듈 적용 및 PowerShellGet cmdlet을 사용할 경우를 비롯한 보안 향상
 - 다양한 사용자 요청 및 문제에 대한 응답
 
-이 릴리스의 새로운 기능에 대해 알아보려면 [새로운 시나리오 및 기능](https://docs.microsoft.com/en-us/powershell/wmf/5.1/scenarios-features) 아래에 나열된 항목을 찾아보세요.
+이 릴리스의 새로운 기능에 대해 알아보려면 [새로운 시나리오 및 기능](https://docs.microsoft.com/powershell/wmf/5.1/scenarios-features) 아래에 나열된 항목을 찾아보세요.
 
-[설치 및 구성](https://docs.microsoft.com/en-us/powershell/wmf/5.1/install-configure) 항목에서는 요구 사항과 WMF에 대한 설치 지침을 제공합니다.
+[설치 및 구성](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) 항목에서는 요구 사항과 WMF에 대한 설치 지침을 제공합니다.
 
-[호환성](https://docs.microsoft.com/en-us/powershell/wmf/5.1/compatibility) 항목에는 어떤 Windows 릴리스에 어떤 WMF 버전을 설치할 수 있는지가 나열되어 있습니다.
+[호환성](https://docs.microsoft.com/powershell/wmf/5.1/compatibility) 항목에는 어떤 Windows 릴리스에 어떤 WMF 버전을 설치할 수 있는지가 나열되어 있습니다.
 
-[제품 호환성](https://docs.microsoft.com/en-us/powershell/wmf/5.1/productincompat)에는 현재 WMF 5.1 사용이 승인되지 않은 Microsoft 응용 프로그램이 나열되어 있습니다.
+[제품 호환성](https://docs.microsoft.com/powershell/wmf/5.1/productincompat)에는 현재 WMF 5.1 사용이 승인되지 않은 Microsoft 응용 프로그램이 나열되어 있습니다.
 
 WMF 구성 요소에 대한 자세한 내용은 다음 MSDN 설명서에서 확인할 수 있습니다.
 
-- [PowerShell 5.1](https://docs.microsoft.com/en-us/powershell/)
-- [WMI](https://msdn.microsoft.com/en-us/library/jj152383(v=vs.85).aspx)
-- [WinRM](https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx)
-- [소프트웨어 인벤토리 로깅](https://technet.microsoft.com/en-us/library/dn383584(v=ws.11).aspx)
+- [PowerShell 5.1](https://docs.microsoft.com/powershell/)
+- [WMI](https://msdn.microsoft.com/library/jj152383(v=vs.85).aspx)
+- [WinRM](https://msdn.microsoft.com/library/aa384426(v=vs.85).aspx)
+- [소프트웨어 인벤토리 로깅](https://technet.microsoft.com/library/dn383584(v=ws.11).aspx)
