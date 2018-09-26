@@ -2,30 +2,30 @@
 ms.date: 06/12/2017
 keywords: jea,powershell,security
 title: JEA 세션 구성
-ms.openlocfilehash: 3e5a663be8e7aba09a2592c278224cd892c89a20
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: bdf3659357045203d90e8083613e51cce657da1a
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190097"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45522965"
 ---
 # <a name="jea-session-configurations"></a>JEA 세션 구성
 
 > 적용 대상: Windows PowerShell 5.0
 
-JEA 끝점은 특정한 방법으로 PowerShell 세션 구성 파일을 만들고 등록하여 시스템에 등록합니다.
-세션 구성은 JEA 끝점을 사용할 수 있는 *사용자* 및 해당 사용자가 액세스할 수 있는 역할을 결정합니다.
+JEA 엔드포인트는 특정한 방법으로 PowerShell 세션 구성 파일을 만들고 등록하여 시스템에 등록합니다.
+세션 구성은 JEA 엔드포인트를 사용할 수 있는 *사용자* 및 해당 사용자가 액세스할 수 있는 역할을 결정합니다.
 또한 JEA 세션에서 모든 역할의 사용자에게 적용되는 전역 설정을 정의합니다.
 
-이 항목에서는 PowerShell 세션 구성 파일을 만들고 JEA 끝점을 등록하는 방법을 설명합니다.
+이 항목에서는 PowerShell 세션 구성 파일을 만들고 JEA 엔드포인트를 등록하는 방법을 설명합니다.
 
 ## <a name="create-a-session-configuration-file"></a>세션 구성 파일 만들기
 
-JEA 끝점을 등록하려면 해당 끝점이 구성되는 방법을 지정해야 합니다.
-여기서 고려해야 할 옵션은 많지만, 그중 가장 중요한 옵션은 JEA 끝점에 대한 액세스 권한을 가져야 하는 사용자, 해당 사용자에게 할당할 역할, JEA를 사용할 ID 및 JEA 끝점의 이름입니다.
+JEA 엔드포인트를 등록하려면 해당 엔드포인트가 구성되는 방법을 지정해야 합니다.
+여기서 고려해야 할 옵션은 많지만, 그중 가장 중요한 옵션은 JEA 엔드포인트에 대한 액세스 권한을 가져야 하는 사용자, 해당 사용자에게 할당할 역할, JEA를 사용할 ID 및 JEA 엔드포인트의 이름입니다.
 이러한 내용은 모두 PowerShell 세션 구성 파일(확장명 .pssc로 끝나는 PowerShell 데이터 파일)에 정의됩니다.
 
-JEA 끝점에 대한 기본 세션 구성 파일을 만들려면 다음 명령을 실행합니다.
+JEA 엔드포인트에 대한 기본 세션 구성 파일을 만들려면 다음 명령을 실행합니다.
 
 ```powershell
 New-PSSessionConfigurationFile -SessionType RestrictedRemoteServer -Path .\MyJEAEndpoint.pssc
@@ -60,7 +60,7 @@ JEA 세션에 대해 구성할 다른 여러 가지 필드도 있습니다.
 
 #### <a name="local-virtual-account"></a>로컬 가상 계정
 
-이 JEA 끝점에서 지원하는 역할이 모두 로컬 컴퓨터를 관리하는 데 사용되고 명령을 실행하는 데 로컬 관리자 계정으로 충분하다면 로컬 가상 계정을 사용하도록 JEA를 구성해야 합니다.
+이 JEA 엔드포인트에서 지원하는 역할이 모두 로컬 컴퓨터를 관리하는 데 사용되고 명령을 실행하는 데 로컬 관리자 계정으로 충분하다면 로컬 가상 계정을 사용하도록 JEA를 구성해야 합니다.
 가상 계정은 특정 사용자에게 고유하고 해당 PowerShell 세션 기간 동안만 지속하는 임시 계정입니다.
 구성원 서버 또는 워크스테이션에서 가상 계정은 로컬 컴퓨터의 **Administrators** 그룹에 속하고 대부분의 시스템 리소스에 액세스할 수 있습니다.
 Active Directory 도메인 컨트롤러에서 가상 계정은 도메인의 **Domain Admins** 그룹에 속합니다.
@@ -126,7 +126,7 @@ TranscriptDirectory = 'C:\ProgramData\JEAConfiguration\Transcripts'
 
 ### <a name="user-drive"></a>사용자 드라이브
 
-연결하는 사용자가 명령을 실행하기 위해 JEA 끝점으로/에서 파일을 복사해야 할 경우 세션 구성 파일에서 사용자 드라이브를 사용하도록 설정할 수 있습니다.
+연결하는 사용자가 명령을 실행하기 위해 JEA 엔드포인트로/에서 파일을 복사해야 할 경우 세션 구성 파일에서 사용자 드라이브를 사용하도록 설정할 수 있습니다.
 사용자 드라이브는 각 연결하는 사용자에 대해 고유한 폴더에 매핑되는 [PSDrive](https://msdn.microsoft.com/powershell/scripting/getting-started/cookbooks/managing-windows-powershell-drives)입니다.
 이 폴더는 전체 파일 시스템에 대한 액세스 권한을 제공하거나 FileSystem 공급자를 노출하지 않고 각 연결하는 사용자가 시스템으로/에서 파일을 복사할 수 있는 공간 역할을 합니다.
 사용자 드라이브 콘텐츠는 세션 전체에서 유지되어 네트워크 연결이 중단될 수 있는 상황을 수용합니다.
@@ -152,7 +152,7 @@ UserDriveMaximumSize = 524288000
 ### <a name="role-definitions"></a>역할 정의
 
 세션 구성 파일의 역할 정의는 *역할*에 대한 *사용자*의 매핑을 정의합니다.
-JEA 끝점이 등록되면 이 필드에 포함된 모든 사용자 또는 그룹에 자동으로 해당 JEA 끝점에 대한 사용 권한이 부여됩니다.
+JEA 엔드포인트가 등록되면 이 필드에 포함된 모든 사용자 또는 그룹에 자동으로 해당 JEA 엔드포인트에 대한 사용 권한이 부여됩니다.
 각 사용자 또는 그룹은 해시 테이블의 키로 한 번만 포함될 수 있지만, 역할은 여러 개가 할당될 수 있습니다.
 역할 기능의 이름은 .psrc 확장명이 없는 역할 기능 파일의 이름이어야 합니다.
 
@@ -191,7 +191,7 @@ JEA는 이러한 경로 각각에서 "RoleCapabilities" 하위 폴더가 포함�
 
 ### <a name="conditional-access-rules"></a>조건부 액세스 규칙
 
-RoleDefinitions 필드에 포함된 모든 사용자 및 그룹에는 자동으로 JEA 끝점에 대한 액세스 권한이 부여됩니다.
+RoleDefinitions 필드에 포함된 모든 사용자 및 그룹에는 자동으로 JEA 엔드포인트에 대한 액세스 권한이 부여됩니다.
 조건부 액세스 규칙을 사용하여 이 액세스 권한을 구체화하고 사용자가 사용자에게 할당된 역할에 영향을 주지 않는 추가 보안 그룹에 속해야 하도록 할 수 있습니다.
 이 기능은 "Just In Time" 권한 있는 액세스 권한 관리 솔루션, 스마트 카드 인증 또는 다른 다단계 인증 솔루션을 JEA와 통합하려는 경우 유용할 수 있습니다.
 
@@ -221,7 +221,7 @@ RequiredGroups = @{ And = 'elevated-jea', @{ Or = '2FA-logon', 'smartcard-logon'
 
 ## <a name="testing-a-session-configuration-file"></a>세션 구성 파일 테스트
 
-[Test-PSSessionConfigurationFile](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/test-pssessionconfigurationfile) cmdlet을 사용하여 세션 구성 파일을 테스트할 수 있습니다.
+[Test-PSSessionConfigurationFile](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/test-pssessionconfigurationfile) cmdlet을 사용하여 세션 구성 파일을 테스트할 수 있습니다.
 구문이 올바른지 확인하기 위해 텍스트 편집기를 사용하여 수동으로 pssc 파일을 편집한 경우 세션 구성 파일을 테스트하는 것이 좋습니다.
 세션 구성 파일이 이 테스트를 통과하지 못하면 시스템에 등록될 수 없습니다.
 

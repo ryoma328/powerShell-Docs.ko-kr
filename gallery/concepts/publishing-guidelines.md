@@ -4,12 +4,12 @@ contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 description: 게시자용 지침
 title: PowerShell 갤러리 게시 지침 및 모범 사례
-ms.openlocfilehash: 3aca76f8904c7eb64e5c96ae4f0f26014e0d2609
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 11207a312f916506f855c0e6e292752f72fc04c1
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190335"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45523034"
 ---
 # <a name="powershellgallery-publishing-guidelines-and-best-practices"></a>PowerShell 갤러리 게시 지침 및 모범 사례
 
@@ -172,12 +172,12 @@ PowerShell에서는 두 가지 기본적인 방식을 통한 코드 서명 유�
 - 모듈 카탈로그 서명
 
 PowerShell 파일에 서명하면 실행하는 코드가 신뢰할 수 있는 출처에서 제작되었으며 수정되지 않았음을 효율적으로 확인할 수 있습니다.
-PowerShell 스크립트 파일에 서명하는 방법에 대한 자세한 내용은 [서명 정보](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/about/about_signing) 항목에 나와 있습니다.
+PowerShell 스크립트 파일에 서명하는 방법에 대한 자세한 내용은 [서명 정보](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_signing) 항목에 나와 있습니다.
 요약하자면, 스크립트를 로드할 때 PowerShell에서 유효성을 검사하는 모든 .PS1 파일에 서명을 추가할 수 있습니다.
-[실행 정책](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/about/about_execution_policies) cmdlet을 사용하면 서명된 스크립트를 사용하도록 PowerShell을 제한할 수 있습니다.
+[실행 정책](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_execution_policies) cmdlet을 사용하면 서명된 스크립트를 사용하도록 PowerShell을 제한할 수 있습니다.
 
 카탈로그 서명 모듈은 PowerShell 버전 5.1에 추가된 기능입니다.
-모듈에 서명하는 방법은 [카탈로그 cmdlet](https://msdn.microsoft.com/en-us/powershell/wmf/5.1/catalog-cmdlets) 항목에 나와 있습니다.
+모듈에 서명하는 방법은 [카탈로그 cmdlet](https://msdn.microsoft.com/powershell/wmf/5.1/catalog-cmdlets) 항목에 나와 있습니다.
 요약하자면, 모듈의 모든 파일에 대한 해시 값이 포함된 카탈로그 파일을 만들어 해당 파일에 서명하는 방식으로 카탈로그 서명을 수행합니다.
 그러면 PowerShellGet publish-module, install-module, save-module 및 update-module cmdlet이 서명을 점검하여 유효한지를 확인한 다음 각 항목의 해시 값이 카탈로그에 포함된 값과 일치하는지를 확인합니다.
 이전 버전의 모듈이 시스템에 설치되어 있으면 install-module은 새 버전의 서명 기관이 이전에 설치한 모듈의 기관과 일치하는지 확인합니다.

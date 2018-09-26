@@ -2,12 +2,12 @@
 title: Windows에서 PowerShell Core 설치
 description: Windows에서 PowerShell Core를 설치하는 방법에 대한 정보
 ms.date: 08/06/2018
-ms.openlocfilehash: 84c158b97519194888cf031c57a2a4634120c456
-ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.openlocfilehash: 595f12efd060406264a1a4efb9d54035da06ffe3
+ms.sourcegitcommit: b235c58b34d23317076540631f5cf83f1f309c0d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39587121"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45557181"
 ---
 # <a name="installing-powershell-core-on-windows"></a>Windows에서 PowerShell Core 설치
 
@@ -56,7 +56,7 @@ Windows IoT는 이미 Windows PowerShell과 함께 제공되며, Windows PowerSh
    # change the destination to however you had partitioned it with sufficient
    # space for the zip and the unzipped contents
    # the path should be local to the device
-   Copy-Item .\PowerShell-6.0.2-win-arm32.zip -Destination u:\users\administrator\Downloads -ToSession $s
+   Copy-Item .\PowerShell-6.1.0-win-arm32.zip -Destination u:\users\administrator\Downloads -ToSession $s
    ```
 
 3. 장치에 연결하고 보관 확장
@@ -64,24 +64,24 @@ Windows IoT는 이미 Windows PowerShell과 함께 제공되며, Windows PowerSh
    ```powershell
    Enter-PSSession $s
    cd u:\users\administrator\downloads
-   Expand-Archive .\PowerShell-6.0.2-win-arm32.zip
+   Expand-Archive .\PowerShell-6.1.0-win-arm32.zip
    ```
 
 4. PowerShell Core 6에 대한 원격 설정
 
    ```powershell
-   cd .\PowerShell-6.0.2-win-arm32
+   cd .\PowerShell-6.1.0-win-arm32
    # Be sure to use the -PowerShellHome parameter otherwise it'll try to create a new
    # endpoint with Windows PowerShell 5.1
    .\Install-PowerShellRemoting.ps1 -PowerShellHome .
    # You'll get an error message and will be disconnected from the device because it has to restart WinRM
    ```
 
-5. 장치에서 PowerShell Core 6 끝점에 연결
+5. 장치에서 PowerShell Core 6 엔드포인트에 연결
 
    ```powershell
    # Be sure to use the -Configuration parameter.  If you omit it, you will connect to Windows PowerShell 5.1
-   Enter-PSSession -ComputerName <deviceIp> -Credential Administrator -Configuration powershell.6.0.2
+   Enter-PSSession -ComputerName <deviceIp> -Credential Administrator -Configuration powershell.6.1.0
    ```
 
 ## <a name="deploying-on-nano-server"></a>Nano 서버에 배포
@@ -99,11 +99,11 @@ Nano 서버는 “헤드리스” OS입니다. 두 가지 방법으로 Core 이�
 1. 자주 사용하는 zip 유틸리티로 패키지를 탑재된 Nano 서버 이미지 내의 디렉터리에 압축을 풉니다.
 2. 이미지를 탑재 해제하고 부팅합니다.
 3. Windows PowerShell의 받은 편지함 인스턴스에 연결합니다.
-4. 지침에 따라 [“다른 인스턴스 기법”](#executed-by-another-instance-of-powershell-on-behalf-of-the-instance-that-it-will-register)을 사용하여 원격 끝점을 만듭니다.
+4. 지침에 따라 [“다른 인스턴스 기법”](#executed-by-another-instance-of-powershell-on-behalf-of-the-instance-that-it-will-register)을 사용하여 원격 엔드포인트를 만듭니다.
 
 ### <a name="online-deployment-of-powershell-core"></a>PowerShell Core의 온라인 배포
 
-다음 단계는 PowerShell Core를 실행 중인 Nano 서버 인스턴스에 배포하고 원격 끝점을 구성하는 과정을 안내합니다.
+다음 단계는 PowerShell Core를 실행 중인 Nano 서버 인스턴스에 배포하고 원격 엔드포인트를 구성하는 과정을 안내합니다.
 
 - Windows PowerShell의 받은 편지함 인스턴스에 연결
 
@@ -130,9 +130,9 @@ Nano 서버는 “헤드리스” OS입니다. 두 가지 방법으로 Core 이�
   Expand-Archive -Path C:\powershell-<version>-win-x64.zip -DestinationPath "C:\PowerShellCore_<version>"
   ```
 
-- WSMan 기반 원격 작업이 필요한 경우 지침에 따라 [“다른 인스턴스 기법”](../core-powershell/WSMan-Remoting-in-PowerShell-Core.md#executed-by-another-instance-of-powershell-on-behalf-of-the-instance-that-it-will-register)을 사용하여 원격 끝점을 만듭니다.
+- WSMan 기반 원격 작업이 필요한 경우 지침에 따라 [“다른 인스턴스 기법”](../core-powershell/WSMan-Remoting-in-PowerShell-Core.md#executed-by-another-instance-of-powershell-on-behalf-of-the-instance-that-it-will-register)을 사용하여 원격 엔드포인트를 만듭니다.
 
-## <a name="instructions-to-create-a-remoting-endpoint"></a>원격 끝점 만들기 지침
+## <a name="instructions-to-create-a-remoting-endpoint"></a>원격 엔드포인트 만들기 지침
 
 PowerShell Core는 WSMan 및 SSH보다 PowerShell Remoting Protocol(PSRP)을 지원합니다.
 자세한 내용은 다음을 참조하세요.

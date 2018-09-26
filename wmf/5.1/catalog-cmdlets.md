@@ -3,16 +3,16 @@ ms.date: 06/12/2017
 ms.topic: conceptual
 keywords: wmf,powershell,setup
 title: 카탈로그 cmdlet
-ms.openlocfilehash: 7eaca09667af0eb5d719f23e987bb112e8514978
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: ec5fc866fe27a894b23b93d3ea46ad9c0cba288e
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189070"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45522891"
 ---
 # <a name="catalog-cmdlets"></a>카탈로그 Cmdlet
 
-Windows 카탈로그 파일을 생성하고 유효성을 검사하는 두 개의 새로운 cmdlet을 [Microsoft.Powershell.Secuity](https://technet.microsoft.com/en-us/library/hh847877.aspx) 모듈에 추가했습니다.
+Windows 카탈로그 파일을 생성하고 유효성을 검사하는 두 개의 새로운 cmdlet을 [Microsoft.Powershell.Secuity](https://technet.microsoft.com/library/hh847877.aspx) 모듈에 추가했습니다.
 
 ## <a name="new-filecatalog"></a>New-FileCatalog
 --------------------------------
@@ -49,5 +49,5 @@ Test-FileCatalog [-CatalogFilePath] <string> [[-Path] <string[]>] [-Detailed] [-
 ![](../images/TestFileCatalog.jpg)
 
 이 cmdlet은 카탈로그 파일에서 찾은 모든 파일의 해시 및 상대 경로를 디스크에 저장된 내용과 비교합니다. 파일 해시 및 경로 간의 불일치를 발견하면 `ValidationFailed` 상태를 반환합니다.
-사용자는 `Detailed` 스위치를 사용하여 이 모든 정보를 검색할 수 있습니다. 카탈로그의 서명 상태는 `Signature` 필드로 표시되며, 이는 카탈로그 파일에 대해 [Get-AuthenticodeSignature](https://technet.microsoft.com/en-us/library/hh849805.aspx) cmdlet을 호출하는 것과 동일합니다.
+사용자는 `Detailed` 스위치를 사용하여 이 모든 정보를 검색할 수 있습니다. 카탈로그의 서명 상태는 `Signature` 필드로 표시되며, 이는 카탈로그 파일에 대해 [Get-AuthenticodeSignature](https://technet.microsoft.com/library/hh849805.aspx) cmdlet을 호출하는 것과 동일합니다.
 사용자는 `FilesToSkip` 매개 변수를 사용하여 유효성 검사 시 파일을 건너뛸 수도 있습니다.

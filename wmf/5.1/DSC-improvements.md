@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 ms.topic: conceptual
 keywords: wmf,powershell,setup
 title: WMF 5.1의 향상된 DSC
-ms.openlocfilehash: 32bdde6d43d17cc76c454fe10b00097753a9eebe
-ms.sourcegitcommit: 2d9cf1ccb9a653db7726a408ebcb65530dcb1522
+ms.openlocfilehash: 92f82d62550e105a187fd7c0c58b49367c646a7e
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/19/2018
-ms.locfileid: "34309545"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45523045"
 ---
 # <a name="improvements-in-desired-state-configuration-dsc-in-wmf-51"></a>WMF 5.1에서 DSC(필요한 상태 구성)의 개선 사항
 
@@ -154,7 +154,7 @@ Set-DscLocalConfigurationManager -Path .\RegistrationMetaConfig -Verbose
 
 ## <a name="using-psdscrunascredential-with-dsc-composite-resources"></a>DSC 복합 리소스와 함께 PsDscRunAsCredential 사용
 
-[*PsDscRunAsCredential*](https://msdn.microsoft.com/cs-cz/powershell/dsc/runasuser)을 DSC [복합](https://msdn.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite) 리소스와 함께 사용할 수 있도록 지원을 추가했습니다.
+[*PsDscRunAsCredential*](https://msdn.microsoft.com/cs-cz/powershell/dsc/runasuser)을 DSC [복합](https://msdn.microsoft.com/powershell/dsc/authoringresourcecomposite) 리소스와 함께 사용할 수 있도록 지원을 추가했습니다.
 
 이제 구성 내에서 복합 리소스를 사용할 때 PsDscRunAsCredential 값을 지정할 수 있습니다.
 이 값을 지정할 경우 모든 리소스가 복합 리소스 내에서 RunAs 사용자로 실행됩니다.
@@ -162,7 +162,7 @@ Set-DscLocalConfigurationManager -Path .\RegistrationMetaConfig -Verbose
 RunAs 자격 증명은 복합 리소스 계층 구조의 모든 수준에 전파됩니다.
 복합 리소스 내의 리소스가 PsDscRunAsCredential의 고유한 값을 지정하는 경우 구성 컴파일 중 병합 오류가 발생합니다.
 
-이 예제에서는 PSDesiredStateConfiguration 모듈에 포함된 [WindowsFeatureSet](https://msdn.microsoft.com/en-us/powershell/wmf/dsc_newresources) 복합 리소스와 함께 사용하는 방법입니다.
+이 예제에서는 PSDesiredStateConfiguration 모듈에 포함된 [WindowsFeatureSet](https://msdn.microsoft.com/powershell/wmf/dsc_newresources) 복합 리소스와 함께 사용하는 방법입니다.
 
 ```powershell
 Configuration InstallWindowsFeature

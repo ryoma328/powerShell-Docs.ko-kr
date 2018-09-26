@@ -3,19 +3,19 @@ ms.date: 06/12/2017
 contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 title: 항목 만들기 및 게시
-ms.openlocfilehash: 7c2a2be6986bf65c168d7c3960366fac4ee31301
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: c5027c5fb357bb187611880ba75610a8f33074e0
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189536"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45522976"
 ---
 # <a name="creating-and-publishing-an-item"></a>항목 만들기 및 게시
 
 PowerShell 갤러리에서는 안정적인 PoweRShell 모듈, 스크립트 및 DSC 리소스를 게시하여 광범위한 PowerShell 사용자 커뮤니티와 공유할 수 있습니다.
 
 이 문서에서는 스크립트나 모듈을 준비하고 PowerShell 갤러리에 게시하는 방법과 중요한 단계에 대해 설명합니다.
-[게시 지침](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery-PublishingGuidelines)을 검토하여 게시하는 항목을 보다 많은 PowerShell 갤러리 사용자들이 활용할 수 있도록 하는 방법을 파악하는 것이 좋습니다.
+[게시 지침](https://msdn.microsoft.com/powershell/gallery/psgallery/psgallery-PublishingGuidelines)을 검토하여 게시하는 항목을 보다 많은 PowerShell 갤러리 사용자들이 활용할 수 있도록 하는 방법을 파악하는 것이 좋습니다.
 
 PowerShell 갤러리에 항목을 게시하기 위한 최소 요구 사항은 다음과 같습니다.
 
@@ -30,7 +30,7 @@ PowerShell 갤러리에서는 PowerShell 모듈 및 PowerShell 스크립트를 �
 
 ## <a name="powershell-gallery-account-and-api-key"></a>PowerShell 갤러리 계정 및 API 키
 
-PowerShell 갤러리 계정을 설정하는 방법은 [PowerShell 갤러리 계정 만들기](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery_creating_an_account)를 참조하세요.
+PowerShell 갤러리 계정을 설정하는 방법은 [PowerShell 갤러리 계정 만들기](https://msdn.microsoft.com/powershell/gallery/psgallery/psgallery_creating_an_account)를 참조하세요.
 
 계정을 만들면 항목을 게시하는 데 필요한 API 키를 받을 수 있습니다.
 계정으로 로그인하고 나면 PowerShell 갤러리 페이지 위쪽에 "등록"이 아닌 사용자 이름이 표시됩니다.
@@ -44,9 +44,9 @@ PowerShell 갤러리 계정을 설정하는 방법은 [PowerShell 갤러리 계�
 
 PowerShell 갤러리에서는 스크립트 또는 모듈 매니페스트에 포함된 메타데이터 필드에서 가져온 정보를 갤러리 사용자에게 제공합니다.
 따라서 PowerShell 갤러리에 게시할 항목을 만들거나 수정할 때는 항목 매니페스트에서 제공되는 정보에 대한 몇 가지 요구 사항을 충족해야 합니다.
-[게시 지침](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/psgallery-PublishingGuidelines)의 항목 메타데이터 섹션을 검토하여 항목 사용자에게 가장 적절한 정보를 제공하는 방법을 파악하는 것이 좋습니다.
+[게시 지침](https://msdn.microsoft.com/powershell/gallery/psgallery/psgallery-PublishingGuidelines)의 항목 메타데이터 섹션을 검토하여 항목 사용자에게 가장 적절한 정보를 제공하는 방법을 파악하는 것이 좋습니다.
 
-[New-ModuleManifest](https://msdn.microsoft.com/en-us/powershell/gallery/psget/module/ModuleManifest-Reference) 및 [New-ScriptFileInfo](https://msdn.microsoft.com/en-us/powershell/gallery/psget/script/psget_new-scriptfileinfo) cmdlet이 매니페스트 템플릿을 자동으로 생성하며, 모든 매니페스트 요소는 자리 표시자로 지정됩니다.
+[New-ModuleManifest](https://msdn.microsoft.com/powershell/gallery/psget/module/ModuleManifest-Reference) 및 [New-ScriptFileInfo](https://msdn.microsoft.com/powershell/gallery/psget/script/psget_new-scriptfileinfo) cmdlet이 매니페스트 템플릿을 자동으로 생성하며, 모든 매니페스트 요소는 자리 표시자로 지정됩니다.
 
 이 두 매니페스트에는 게시에 중요한 두 섹션, 즉 PrivateData의 PSData 영역과 기본 키 데이터가 있습니다. PowerShell 모듈 매니페스트의 기본 키 데이터는 PrivateData 섹션을 제외한 모든 데이터입니다.
 기본 키 집합은 사용 중인 PowerShell 버전과 연결되며, 정의되지 않은 키는 지원되지 않습니다.
@@ -86,14 +86,14 @@ PowerShell 갤러리에서 항목을 게시하거나 업데이트할 때마다 P
 그런 후에 갤러리 운영 팀이 확인된 오류 해결을 위해 항목 소유자에게 연락을 합니다.
 
 항목의 매니페스트 정보를 PowerShell 갤러리 인프라에서 읽을 수 없는 경우에는 항목을 게시할 수 없습니다.
-[Test-ModuleManifest](https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/test-modulemanifest)는 설치 시 모듈을 사용할 수 없게 만드는 일반적인 문제를 찾아냅니다. 모든 모듈을 PowerShell 갤러리에 게시하기 전에 이 cmdlet을 실행해야 합니다.
+[Test-ModuleManifest](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/test-modulemanifest)는 설치 시 모듈을 사용할 수 없게 만드는 일반적인 문제를 찾아냅니다. 모든 모듈을 PowerShell 갤러리에 게시하기 전에 이 cmdlet을 실행해야 합니다.
 
-마찬가지로 [Test-ScriptFileInfo](https://msdn.microsoft.com/en-us/powershell/gallery/psget/script/psget_test-scriptfileinfo)는 스크립트의 메타데이터 유효성을 검사합니다. 모듈과 별도로 게시하는 모든 스크립트를 PowerShell 갤러리에 게시하기 전에 이 cmdlet을 실행해야 합니다.
+마찬가지로 [Test-ScriptFileInfo](https://msdn.microsoft.com/powershell/gallery/psget/script/psget_test-scriptfileinfo)는 스크립트의 메타데이터 유효성을 검사합니다. 모듈과 별도로 게시하는 모든 스크립트를 PowerShell 갤러리에 게시하기 전에 이 cmdlet을 실행해야 합니다.
 
 
 ## <a name="publishing-items"></a>항목 게시
 
-PowerShell 갤러리에 항목을 게시하려면 [Publish-Script](https://msdn.microsoft.com/en-us/powershell/gallery/psget/script/psget_publish-script) 또는 [Publish-Module](https://msdn.microsoft.com/en-us/powershell/gallery/psget/module/psget_publish-module)을 사용해야 합니다.
+PowerShell 갤러리에 항목을 게시하려면 [Publish-Script](https://msdn.microsoft.com/powershell/gallery/psget/script/psget_publish-script) 또는 [Publish-Module](https://msdn.microsoft.com/powershell/gallery/psget/module/psget_publish-module)을 사용해야 합니다.
 이 두 명령에는 다음 항목이 필요합니다.
 
 - 게시할 항목의 경로. 모듈의 경우 모듈 이름이 지정된 폴더를 사용합니다. 같은 모듈의 여러 버전이 포함된 폴더를 지정하는 경우에는 RequiredVersion을 지정해야 합니다.

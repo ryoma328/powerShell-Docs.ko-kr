@@ -4,12 +4,12 @@ keywords: powershell,cmdlet
 ms.date: 12/12/2016
 title: Add-PswaAuthorizationRule
 schema: 2.0.0
-ms.openlocfilehash: bcf897730881551ec16ce970de6a1330961b67e6
-ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
+ms.openlocfilehash: fe2b71dcfa870ba3f92484ae3fd3c45b3107a1bc
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39268268"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45523082"
 ---
 # <a name="add-pswaauthorizationrule"></a>Add-PswaAuthorizationRule
 
@@ -47,7 +47,7 @@ Add-PswaAuthorizationRule [-UserName] <String[]> [-ComputerName] <String> [-Conf
 
 **Add-PswaAuthorizationRule** cmdlet은 새로운 권한 부여 규칙을 Windows PowerShell(r) 웹 액세스 권한 부여 규칙 집합에 추가합니다.
 
-이 규칙에 대한 사용자, 컴퓨터 및 Windows PowerShell 끝점을 지정해야 합니다. 개별 사용자 및 컴퓨터 이름을 지정하거나 그룹을 지정하여 사용자 및 컴퓨터를 모두 지정할 수 있습니다.
+이 규칙에 대한 사용자, 컴퓨터 및 Windows PowerShell 엔드포인트를 지정해야 합니다. 개별 사용자 및 컴퓨터 이름을 지정하거나 그룹을 지정하여 사용자 및 컴퓨터를 모두 지정할 수 있습니다.
 
 Active Directory 도메인에 가입된 컴퓨터의 경우 이 cmdlet은 컴퓨터의 SID(보안 식별자)를 사용하여 규칙을 만듭니다. 따라서 로그인 페이지의 **컴퓨터 이름** 필드에 약식 이름, FQDN(정규화된 도메인 이름 ) 또는 IP 주소를 사용할 수 있습니다.
 
@@ -240,7 +240,7 @@ Add-PswaAuthorizationRule -UserName PswaServer\ChrisLocal -ComputerName srv1.con
 
 ### <a name="example-6"></a>예제 6
 
-이 예제에서는 모든 사용자가 모든 컴퓨터의 모든 끝점에 액세스할 수 있도록 합니다. 여기서는 기본적으로 권한 부여 규칙을 끕니다.
+이 예제에서는 모든 사용자가 모든 컴퓨터의 모든 엔드포인트에 액세스할 수 있도록 합니다. 여기서는 기본적으로 권한 부여 규칙을 끕니다.
 
 > [!NOTE]
 > `*` 와일드카드 문자는 보안이 중요한 배포에서는 사용하지 않는 것이 좋으며 테스트 환경에서나 보안을 완화할 수 있는 배포에서만 사용해야 합니다.
@@ -251,13 +251,13 @@ Add-PswaAuthorizationRule -UserName * -ComputerName * -ConfigurationName *
 
 ## <a name="see-also"></a>참고 항목
 
-[Get-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592891(v=wps.630).aspx)
+[Get-PswaAuthorizationRule](https://technet.microsoft.com/library/jj592891(v=wps.630).aspx)
 
-[Remove-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592893(v=wps.630).aspx)
+[Remove-PswaAuthorizationRule](https://technet.microsoft.com/library/jj592893(v=wps.630).aspx)
 
-[Test-PswaAuthorizationRule](https://technet.microsoft.com/en-us/library/jj592892(v=wps.630).aspx)
+[Test-PswaAuthorizationRule](https://technet.microsoft.com/library/jj592892(v=wps.630).aspx)
 
-[Install-PswaWebApplication](https://technet.microsoft.com/en-us/library/jj592894(v=wps.630).aspx)
+[Install-PswaWebApplication](https://technet.microsoft.com/library/jj592894(v=wps.630).aspx)
 
 [Add-Member](http://go.microsoft.com/fwlink/p/?LinkId=113280)
 

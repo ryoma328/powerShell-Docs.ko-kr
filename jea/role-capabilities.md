@@ -2,18 +2,18 @@
 ms.date: 06/12/2017
 keywords: jea,powershell,security
 title: JEA 역할 기능
-ms.openlocfilehash: 0531baa284e66a42a162329ea20ecfdca6d0b526
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: bd0a995adc60e50049ff99d6b23e7c2aeb745a18
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190539"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45522945"
 ---
 # <a name="jea-role-capabilities"></a>JEA 역할 기능
 
 > 적용 대상: Windows PowerShell 5.0
 
-JEA 끝점을 만들 때 사용자가 JEA 세션에서 수행할 수 있는 *작업*을 설명하는 하나 이상의 "역할 기능"을 정의해야 합니다.
+JEA 엔드포인트를 만들 때 사용자가 JEA 세션에서 수행할 수 있는 *작업*을 설명하는 하나 이상의 "역할 기능"을 정의해야 합니다.
 역할 기능은 연결하는 사용자에게 제공되어야 하는 모든 cmdlet, 함수, 공급자 및 외부 프로그램을 나열하는 PowerShell 데이터 파일로서 확장명은 .psrc입니다.
 
 이 항목에서는 JEA 사용자에 대한 PowerShell 역할 기능 파일을 만드는 방법을 설명합니다.
@@ -34,7 +34,7 @@ JEA 끝점을 만들 때 사용자가 JEA 세션에서 수행할 수 있는 *작
 5. **테스트**: 사용자 및/또는 자동화 서비스로 허용되는 명령의 범위가 지정된 목록을 테스트하고 필요에 따라 조정합니다.
 
 JEA 세션의 명령은 일반적으로 관리자(또는 상승된) 권한으로 실행된다는 사실을 기억해야 합니다.
-사용할 수 있는 명령을 신중하게 선택해야 JEA 끝점이 연결하는 사용자가 권한을 상승시킬 수 없도록 할 수 있습니다.
+사용할 수 있는 명령을 신중하게 선택해야 JEA 엔드포인트가 연결하는 사용자가 권한을 상승시킬 수 없도록 할 수 있습니다.
 다음은 비제한 상태에서 허용되는 경우 악의적으로 사용될 수 있는 명령의 몇 가지 예입니다.
 이 목록은 전체 목록이 아니며 경고성 시작 지점으로만 사용되어야 합니다.
 
@@ -146,7 +146,7 @@ VisibleProviders = 'Registry'
 
 파일 시스템, 레지스트리, 인증서 저장소 또는 기타 중요 공급자에 액세스해야 하는 간단한 작업의 경우 사용자를 대신하여 공급자와 작동하는 사용자 지정 함수 작성을 고려할 수도 있습니다.
 JEA 세션에서 사용할 수 있는 함수, cmdlet 및 외부 프로그램은 JEA와 같은 제약 조건이 적용되지 않으며 기본적으로 모든 공급자에 액세스할 수 있습니다.
-또한 JEA 끝점으로/에서 파일을 복사해야 할 경우 [사용자 드라이브](session-configurations.md#user-drive) 사용을 고려하세요.
+또한 JEA 엔드포인트로/에서 파일을 복사해야 할 경우 [사용자 드라이브](session-configurations.md#user-drive) 사용을 고려하세요.
 
 ### <a name="creating-custom-functions"></a>사용자 지정 함수 만들기
 
@@ -181,9 +181,9 @@ FunctionDefinitions = @{
 
 Select-Object는 개체에 대한 임의 속성을 선택할 수 없게 하는, 모든 JEA 세션의 기본, 제한된 cmdlet입니다.
 함수에서 비제한 Select-Object를 사용하려면 FQMN을 지정하여 전체 구현을 명시적으로 요청해야 합니다.
-JEA 세션에서 제한된 모든 cmdlet은 함수에서 호출될 때 PowerShell의 [command precedence](https://msdn.microsoft.com/en-us/powershell/reference/3.0/microsoft.powershell.core/about/about_command_precedence)(명령 우선 순위)와 같은 동작을 나타냅니다.
+JEA 세션에서 제한된 모든 cmdlet은 함수에서 호출될 때 PowerShell의 [command precedence](https://msdn.microsoft.com/powershell/reference/3.0/microsoft.powershell.core/about/about_command_precedence)(명령 우선 순위)와 같은 동작을 나타냅니다.
 
-많은 사용자 지정 함수를 작성하는 경우 사용자 지정 함수를 [PowerShell Script Module](https://msdn.microsoft.com/en-us/library/dd878340(v=vs.85).aspx)(PowerShell 스크립트 모듈)에 배치하는 것이 더 쉬울 수 있습니다.
+많은 사용자 지정 함수를 작성하는 경우 사용자 지정 함수를 [PowerShell Script Module](https://msdn.microsoft.com/library/dd878340(v=vs.85).aspx)(PowerShell 스크립트 모듈)에 배치하는 것이 더 쉬울 수 있습니다.
 그런 다음 기본 제공 및 타사 모듈을 사용할 때처럼 VisibleFunctions 필드를 사용하여 JEA 세션에 해당 함수를 표시할 수 있습니다.
 
 ## <a name="place-role-capabilities-in-a-module"></a>모듈에 역할 기능 배치
@@ -207,7 +207,7 @@ New-Item -ItemType Directory $rcFolder
 Copy-Item -Path .\MyFirstJEARole.psrc -Destination $rcFolder
 ```
 
-PowerShell 모듈, 모듈 매니페스트 및 PSModulePath 환경 변수에 대한 자세한 내용은 [Understanding a PowerShell Module](https://msdn.microsoft.com/en-us/library/dd878324.aspx)(PowerShell 모듈 이해)을 참조하세요.
+PowerShell 모듈, 모듈 매니페스트 및 PSModulePath 환경 변수에 대한 자세한 내용은 [Understanding a PowerShell Module](https://msdn.microsoft.com/library/dd878324.aspx)(PowerShell 모듈 이해)을 참조하세요.
 
 ## <a name="updating-role-capabilities"></a>역할 기능 업데이트
 
