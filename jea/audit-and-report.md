@@ -2,21 +2,21 @@
 ms.date: 06/12/2017
 keywords: jea,powershell,security
 title: JEA에 대한 감사 및 보고
-ms.openlocfilehash: e68206cd6fe94c51507f42ae2c3e6702f6fd4e0f
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 2388c735840d8d3683aa8bc9869b9fb0371e5902
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34188855"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851223"
 ---
 # <a name="auditing-and-reporting-on-jea"></a>JEA에 대한 감사 및 보고
 
 > 적용 대상: Windows PowerShell 5.0
 
 JEA를 배포한 후에는 정기적으로 JEA 구성을 감사하려고 할 것입니다.
-감사를 통해 올바른 사용자에게 JEA 끝점에 대한 액세스 권한이 있는지와 할당된 해당 역할이 여전히 올바른지를 평가할 수 있습니다.
+감사를 통해 올바른 사용자에게 JEA 엔드포인트에 대한 액세스 권한이 있는지와 할당된 해당 역할이 여전히 올바른지를 평가할 수 있습니다.
 
-이 항목에서는 JEA 끝점을 감사할 수 있는 다양한 방법을 설명합니다.
+이 항목에서는 JEA 엔드포인트를 감사할 수 있는 다양한 방법을 설명합니다.
 
 ## <a name="find-registered-jea-sessions-on-a-machine"></a>컴퓨터에서 등록된 JEA 세션 찾기
 
@@ -34,10 +34,10 @@ RunAsUser     :
 Permission    : CONTOSO\JEA_DNS_ADMINS AccessAllowed, CONTOSO\JEA_DNS_OPERATORS AccessAllowed, CONTOSO\JEA_DNS_AUDITORS AccessAllowed
 ```
 
-끝점에 대한 유효 권한은 "Permission" 속성에 나열됩니다.
-이러한 사용자는 JEA 끝점에 연결할 수 있는 권한을 갖지만, 액세스할 수 있는 역할(및 확장에 의한 명령)은 끝점을 등록하는 데 사용된 [세션 구성 파일](session-configurations.md)의 "RoleDefinitions" 필드에 의해 결정됩니다.
+엔드포인트에 대한 유효 권한은 "Permission" 속성에 나열됩니다.
+이러한 사용자는 JEA 엔드포인트에 연결할 수 있는 권한을 갖지만, 액세스할 수 있는 역할(및 확장에 의한 명령)은 엔드포인트를 등록하는 데 사용된 [세션 구성 파일](session-configurations.md)의 "RoleDefinitions" 필드에 의해 결정됩니다.
 
-"RoleDefinitions" 속성의 데이터를 확장하여 등록된 JEA 끝점의 역할 매핑을 평가할 수 있습니다.
+"RoleDefinitions" 속성의 데이터를 확장하여 등록된 JEA 엔드포인트의 역할 매핑을 평가할 수 있습니다.
 
 ```powershell
 # Get the desired session configuration
@@ -74,7 +74,7 @@ function Find-LocalRoleCapability {
 
 ## <a name="check-effective-rights-for-a-specific-user"></a>특정 사용자에 대한 유효 권한 확인
 
-JEA 끝점을 설정한 후에는 JEA 세션에서 특정 사용자가 사용할 수 있는 명령을 확인하고자 할 수 있습니다.
+JEA 엔드포인트를 설정한 후에는 JEA 세션에서 특정 사용자가 사용할 수 있는 명령을 확인하고자 할 수 있습니다.
 사용자가 현재 그룹 구성원으로 JEA 세션을 시작하도록 되어 있는 경우 [Get-PSSessionCapability](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/Get-PSSessionCapability)를 사용하여 해당 사용자에게 적용되는 모든 명령을 열거할 수 있습니다.
 `Get-PSSessionCapability`의 출력은 JEA 세션에서 `Get-Command -CommandType All`을 실행하는 지정된 사용자의 출력과 같습니다.
 
@@ -149,5 +149,4 @@ Out-Default의 InputObject는 명령에서 반환되는 PowerShell 개체입니�
 
 ## <a name="see-also"></a>참고 항목
 
-- [JEA 세션에서 사용자 작업 감사](audit-and-report.md)
 - [보안에 관한 *PowerShell ♥ the Blue Team*(PowerShell ♥ Blue Team) 블로그 게시물](https://blogs.msdn.microsoft.com/powershell/2015/06/09/powershell-the-blue-team/)
