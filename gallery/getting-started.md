@@ -3,16 +3,20 @@ ms.date: 06/12/2017
 contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 title: PowerShell 갤러리 시작
-ms.openlocfilehash: 83974698152e75efac66ea725a9c220486676d6f
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 39998df1a2bf9363dd008dc96a802157c8d691d7
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190165"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45523059"
 ---
 # <a name="get-started-with-the-powershell-gallery"></a>PowerShell 갤러리 시작
 
-PowerShell 갤러리에서 시스템으로 항목을 다운로드하려면 [PowerShellGet](/powershell/module/powershellget) 모듈이 필요합니다. 다음 중 하나에서 PowerShellGet 모듈을 찾을 수 있습니다. PowerShell 갤러리에서 항목을 다운로드하기 위해 로그인할 필요는 없습니다.
+PowerShell 갤러리에서 항목을 설치하는 올바른 방법은 [PowerShellGet](/powershell/module/powershellget) 모듈에서 cmdlet을 사용하는 것입니다. PowerShell 갤러리에서 항목을 다운로드하기 위해 로그인할 필요는 없습니다.
+
+> [!NOTE]
+> 패키지는 PowerShell 갤러리에서 직접 다운로드할 수 있지만 권장되는 방법이 아닙니다. 자세한 내용은 [수동 패키지 다운로드](https://msdn.microsoft.com/en-us/powershell/gallery/psgallery/how-to/working-with-items/manual-download.md)를 참조하세요.  
+
 
 ## <a name="discovering-items-from-the-powershell-gallery"></a>PowerShell 갤러리에서 항목 검색
 
@@ -20,7 +24,7 @@ PowerShell 갤러리에서 시스템으로 항목을 다운로드하려면 [Powe
 
 다음 매개 변수를 사용하여 갤러리의 결과를 필터링할 수 있습니다.
 
-- 이름
+- Name
 - AllVersions
 - MinimumVersion
 - RequiredVersion
@@ -40,7 +44,8 @@ DSC 리소스는 항상 모듈의 일부로 제공되기 때문에 여전히 [In
 
 좋은 의도에서 게시되지 않은 것 같은 항목을 발견할 경우 해당 항목의 페이지에서 **신고하기**를 클릭합니다.
 
-[Find-Module][] 또는 [Find-Script][]를 실행하는 경우 반환된 PSGetModuleInfo 개체에서 이 데이터를 볼 수 있습니다. 예를 들어 `Find-Module -Name PSReadLine -Repository PSGallery |Get-Member`를 실행하면 갤러리의 PSReadLine 모듈에 대한 데이터가 반환됩니다.
+[Find-Module][] 또는 [Find-Script][]를 실행하는 경우 반환된 PSGetModuleInfo 개체에서 이 데이터를 볼 수 있습니다. 예를 들어 `Find-Module -Name PSReadLine -Repository PSGallery |Get-Member`를 실행하면
+갤러리에서 PSReadLine 모듈의 데이터가 반환됩니다.
 
 ## <a name="downloading-items-from-the-powershell-gallery"></a>PowerShell 갤러리에서 항목 다운로드
 

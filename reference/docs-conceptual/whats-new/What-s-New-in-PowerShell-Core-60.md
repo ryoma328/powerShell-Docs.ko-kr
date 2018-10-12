@@ -2,12 +2,12 @@
 title: PowerShell Core 6.0의 새로운 기능
 description: PowerShell Core 6.0에서 릴리스된 새로운 기능 및 변경 내용
 ms.date: 08/06/2018
-ms.openlocfilehash: f0cddad223528cd0f2b4f392faeb6e08e1050c51
-ms.sourcegitcommit: 01ac77cd0b00e4e5e964504563a9212e8002e5e0
+ms.openlocfilehash: 83c104d838db9d86fe1d485e92245a9c8f2d2057
+ms.sourcegitcommit: 59e568ac9fa8ba28e2c96932b7c84d4a855fed2f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39587247"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46289245"
 ---
 # <a name="whats-new-in-powershell-core-60"></a>PowerShell Core 6.0의 새로운 기능
 
@@ -80,7 +80,7 @@ Windows에서 일반적으로 지원되지 않는 파일 이름 문자를 지원
   - 기록 저장 경로는 `~/.local/share/powershell/PSReadline/ConsoleHost_history.txt`에 있습니다.
   - 사용자 모듈 경로는 `~/.local/share/powershell/Modules`에 있습니다.
 - Unix에서 콜론 문자가 포함된 파일 및 폴더 이름을 지원합니다. (#4959)
-- 스크립트 이름이나 콤마가 포함된 전체 경로를 지원합니다. (#4136) (@TimCurwick에게 감사드립니다!)
+- 스크립트 이름이나 콤마가 포함된 전체 경로를 지원합니다. (#4136) ([@TimCurwick](https://github.com/TimCurwick)에게 감사드립니다!)
 - 탐색 cmdlet의 와일드 카드를 확장하지 않기 위해 `-LiteralPath`를 사용할 때 검색합니다. (#5038)
 - *nix `ls -R` 및 Windows `DIR /S` 네이티브 명령 등을 실행하도록 `Get-ChildItem`이 업데이트되었습니다.
   `Get-ChildItem`은 재귀 검색 중에 발견된 심볼릭 링크를 반환하고 대상과 연결되는 디렉터리를 검색하지 않습니다. (#3780)
@@ -118,7 +118,7 @@ PowerShell Core의 이진 이름이 `powershell(.exe)`에서 `pwsh(.exe)`로 변
   그러나 이 변경 사항은 `pwsh.exe -Command Get-Command`와 같은 명령을 실행하려고 할 때 `-c` 또는 `-Command`을 명시적으로 지정해야 합니다. (#4019)
 - PowerShell Core는 대화형 셸을 나타내기 위해 `-i`(또는 `-Interactive`) 스위치를 허용합니다. (# 3558) 이렇게 하면 Unix 플랫폼에서 PowerShell을 기본 셸로 사용할 수 있습니다.
 - `pwsh.exe`에서 매개 변수 `-importsystemmodules` 및 `-psconsoleFile`을 제거했습니다. (#4995)
-- `pwsh -version`과 기본 제공 도움말 `pwsh.exe`이 다른 네이티브 도구와 일치하도록 변경되었습니다. (#4958 & #4931) (@iSazonov에게 감사드립니다.)
+- `pwsh -version`과 기본 제공 도움말 `pwsh.exe`이 다른 네이티브 도구와 일치하도록 변경되었습니다. (#4958 & #4931) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다!)
 - `-File` 및 `-Command`에 대한 잘못된 인수 오류 메시지 및 Unix 표준과 일치하는 종료 코드 (#4573)
 - Windows에 `-WindowStyle` 매개 변수가 추가되었습니다. (# 4573) 마찬가지로 Windows 이외의 플랫폼에서 패키지 기반 설치 업데이트가 적절한 업데이트입니다.
 
@@ -214,21 +214,21 @@ PowerShell 작업에 대한 자세한 내용은 [about_Jobs](https://msdn.micros
 
 ## <a name="semantic-versioning"></a>유의적 버전 사용
 
-- `SemVer 2.0`와 호환되도록 `SemanticVersion`을 만들었습니다. (#5037) (@iSazonov에게 감사드립니다!)
-- SemVer와 일치하도록 `New-ModuleManifest`의 기본값 `ModuleVersion`을 `0.0.1`로 변경했습니다. (#4842) (@LDSpits에게 감사드립니다.)
-- `semver`을 `System.Management.Automation.SemanticVersion`의 유형 가속기로 추가했습니다. (#4142) (@oising에게 감사드립니다!)
+- `SemVer 2.0`와 호환되도록 `SemanticVersion`을 만들었습니다. (#5037) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다!)
+- SemVer와 일치하도록 `New-ModuleManifest`의 기본값 `ModuleVersion`을 `0.0.1`로 변경했습니다. (#4842) ([@LDSpits](https://github.com/LDSpits)에게 감사드립니다.)
+- `semver`을 `System.Management.Automation.SemanticVersion`의 유형 가속기로 추가했습니다. (#4142) ([@oising](https://github.com/oising)에게 감사드립니다!)
 - `Major` 및 `Minor` 버전 값으로만 구성된 `SemanticVersion` 인스턴스와 `Version` 인스턴스 간의 비교가 가능합니다.
 
 ## <a name="language-updates"></a>언어 업데이트
 
-- 사용자가 유니코드 문자를 인수, 문자열 또는 변수 이름으로 사용할 수 있도록 유니코드 이스케이프 구문 분석을 구현합니다. (#3958) (@rkeithhill에게 감사드립니다!)
+- 사용자가 유니코드 문자를 인수, 문자열 또는 변수 이름으로 사용할 수 있도록 유니코드 이스케이프 구문 분석을 구현합니다. (#3958) ([@rkeithhill](https://github.com/rkeithhill)에게 감사드립니다!)
 - ESC: `` `e``를 위한 새로운 이스케이프 문자 추가됨
-- 열거형을 문자열로 변환하기 위한 지원 추가됨 (#4318) (@KirkMunro에게 감사드립니다.)
+- 열거형을 문자열로 변환하기 위한 지원 추가됨(#4318) ([@KirkMunro](https://github.com/KirkMunro)에게 감사드립니다.)
 - 단일 요소 배열을 일반 컬렉션에 캐스팅되는 현상 수정됨 (#3170)
-- 문자 범위 오버로드가 `..` 연산자에 추가되어 `'a'..'z'`는 'a'에서 'z'로 문자를 반환합니다. (#5026) (@IISResetMe에게 감사드립니다!)
+- 문자 범위 오버로드가 `..` 연산자에 추가되어 `'a'..'z'`는 'a'에서 'z'로 문자를 반환합니다. (#5026) ([@IISResetMe](https://github.com/IISResetMe)에게 감사드립니다!)
 - 읽기 전용 변수를 덮어 쓰지 않도록 변수 할당 수정됨
 - 스크립트 cmdlet를 도팅할 때 자동 변수의 로컬을 'DottedScopes'에 밀어넣기 (#4709)
-- 분할 연산자에서 'Singleline, Multiline' 옵션 사용 가능 (#4721) (@iSazonov에게 감사드립니다.)
+- 분할 연산자에서 ‘Singleline, Multiline’ 옵션 사용 가능(#4721) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다.)
 
 ## <a name="engine-updates"></a>엔진 업데이트
 
@@ -240,12 +240,12 @@ PowerShell 작업에 대한 자세한 내용은 [about_Jobs](https://msdn.micros
   - `Platform`: `[System.Environment]::OSVersion.Platform`에 의해 반환됩니다. Windows에서는 `Win32NT`, macOS에서는 `Unix`, Linux에서는 `Unix`로 설정됩니다.
 - `$PSVersionTable`에서 `BuildVersion` 속성이 제거되었습니다.
   이 속성은 Windows 빌드 버전과 강하게 연결되어 있습니다.
-  대신 `GitCommitId`를 사용하여 PowerShell Core의 정확한 빌드 버전을 검색하는 것이 좋습니다. (#3877) (@iSazonov에게 감사드립니다!)
+  대신 `GitCommitId`를 사용하여 PowerShell Core의 정확한 빌드 버전을 검색하는 것이 좋습니다. (#3877) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다!)
 - `$PSVersionTable`에서 `ClrVersion` 속성을 제거합니다.
   이 속성은 .NET Core와는 관련이 없으며 PowerShell에 적용할 수 없는 특정 레거시 용도로만 .NET Core에 유지되었습니다.
 - PowerShell이 주어진 OS(`$IsWindows`, `$IsMacOs` 및 `$IsLinux`)에서 실행 중인지 여부를 결정하는 세 가지 새로운 자동 변수가 추가되었습니다.
 - PowerShell Core 배너에 `GitCommitId`를 추가합니다.
-  이제 버전을 얻기 위해 PowerShell을 시작하자마자 `$PSVersionTable`을 실행할 필요가 없습니다! (#3916) (@iSazonov에게 감사드립니다!)
+  이제 버전을 얻기 위해 PowerShell을 시작하자마자 `$PSVersionTable`을 실행할 필요가 없습니다! (#3916) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다!)
 - `$PSHome`에 `powershell.config.json`이라는 JSON 구성 파일을 추가하여 시작 시간(예: `ExecutionPolicy`) 이전에 필요한 일부 설정을 저장합니다.
 - Windows EXE를 실행할 때 파이프라인을 차단하지 않음
 - COM 컬렉션의 열거를 사용했습니다. (#4553)
@@ -255,93 +255,93 @@ PowerShell 작업에 대한 자세한 내용은 [about_Jobs](https://msdn.micros
 ### <a name="new-cmdlets"></a>새로운 cmdlet
 
 - `Get-Uptime`을 `Microsoft.PowerShell.Utility`에 추가합니다.
-- `Remove-Alias` 명령을 추가합니다. (#5143) (@PowershellNinja에게 감사드립니다!)
-- `Remove-Service`를 관리 모듈에 추가합니다. (#4858) (@joandrsn에게 감사드립니다!)
+- `Remove-Alias` 명령을 추가합니다. (#5143) ([@PowershellNinja](https://github.com/PowershellNinja)에게 감사드립니다!)
+- `Remove-Service`를 관리 모듈에 추가합니다. (#4858) ([@joandrsn](https://github.com/joandrsn)에게 감사드립니다!)
 
 ### <a name="web-cmdlets"></a>웹 cmdlet
 
-- 웹 cmdlet에 대한 인증서 인증 지원을 추가합니다. (#4646) (@markekraus에게 감사드립니다.)
-- 웹 cmdlet에 콘텐츠 헤더 지원을 추가합니다. (#4494 & #4640) (@markekraus에게 감사드립니다.)
-- 웹 cmdlet에 다중 링크 헤더 지원을 추가합니다. (#5265) (@markekraus에게 감사드립니다!)
+- 웹 cmdlet에 대한 인증서 인증 지원을 추가합니다. (#4646) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
+- 웹 cmdlet에 콘텐츠 헤더 지원을 추가합니다. (#4494 & #4640) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
+- 웹 cmdlet에 다중 링크 헤더 지원을 추가합니다. (#5265) ([@markekraus](https://github.com/markekraus)에게 감사드립니다!)
 - 웹 cmdlet의 링크 헤더 페이지 매김 지원 (#3828)
   - `Invoke-WebRequest`의 경우, 응답에 링크 헤더가 포함될 때 URL 및 `rel` 특성을 나타내는 사전으로 RelationLink 속성을 만들고 개발자가 쉽게 사용할 수 있도록 URL이 절대적인지 확인합니다.
   - `Invoke-RestMethod`의 경우, 응답에 링크 헤더가 포함될 때 더 이상 존재하지 않거나 선택적 `-MaximumFollowRelLink` 매개 변수 값에 도달할 때까지 자동으로 `next` `rel` 링크를 따라가는 `-FollowRelLink` 스위치가 노출됩니다.
-- 웹 cmdlet에 `-CustomMethod` 매개 변수를 추가하여 비표준 메서드 동사를 허용합니다. (#3142) (@Lee303에게 감사드립니다!)
-- 웹 cmdlet에 `SslProtocol` 지원을 추가합니다. (#5329) (@markekraus에게 감사드립니다!)
-- 웹 cmdlet에 Multipart 지원을 추가합니다. (#4782) (@markekraus에게 감사드립니다!)
-- 웹 cmdlet에 `-NoProxy`를 추가하여 시스템 수준의 프록시 설정을 무시합니다. (#3447) (@TheFlyingCorpse에게 감사드립니다!)
-- 웹 cmdlet의 사용자 에이전트가 이제 OS 플랫폼을 보고합니다. (#4937) (@LDSpits에게 감사드립니다.)
+- 웹 cmdlet에 `-CustomMethod` 매개 변수를 추가하여 비표준 메서드 동사를 허용합니다. (#3142) ([@Lee303](https://github.com/Lee303)에게 감사드립니다!)
+- 웹 cmdlet에 `SslProtocol` 지원을 추가합니다. (#5329) ([@markekraus](https://github.com/markekraus)에게 감사드립니다!)
+- 웹 cmdlet에 Multipart 지원을 추가합니다. (#4782) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
+- 웹 cmdlet에 `-NoProxy`를 추가하여 시스템 수준의 프록시 설정을 무시합니다. (#3447) ([@TheFlyingCorpse](https://github.com/TheFlyingCorpse)에게 감사드립니다!)
+- 웹 cmdlet의 사용자 에이전트가 이제 OS 플랫폼을 보고합니다. (#4937) ([@LDSpits](https://github.com/LDSpits)에게 감사드립니다.)
 - 웹 cmdlet에 `-SkipHeaderValidation` 스위치를 추가하여 헤더 값의 유효성을 검사하지 않고 헤더 추가를 지원합니다. (#4085)
 - 필요한 경우 웹 cmdlet이 서버의 HTTPS 인증서의 유효성을 검사하지 않도록 설정합니다.
-- 웹 cmdlet에 인증 매개 변수를 추가합니다. (#5052) (@markekraus에게 감사드립니다.)
+- 웹 cmdlet에 인증 매개 변수를 추가합니다. (#5052) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
   - 기본, OAuth 및 전달자의 세 가지 옵션을 제공하는 `-Authentication`을 추가합니다.
   - `-Token`을 추가하여 OAuth 및 전달자 옵션에 대한 전달자 토큰을 가져옵니다.
   - HTTPS 이외의 전송 체계에 제공된 인증을 생략하려면 `-AllowUnencryptedAuthentication`을 추가합니다.
-- 응답 헤더 캡처를 사용하려면 `-ResponseHeadersVariable`을 `Invoke-RestMethod`에 추가합니다. (#4888) (@markekraus에게 감사드립니다.)
+- 응답 헤더 캡처를 사용하려면 `-ResponseHeadersVariable`을 `Invoke-RestMethod`에 추가합니다. (#4888) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
 - 응답 상태 코드가 성공적이지 않은 경우 예외에 HTTP 응답을 포함하도록 웹 cmdlet을 수정합니다. (#3201)
-- 웹 cmdlet `UserAgent`를 `WindowsPowerShell`에서 `PowerShell`로 변경합니다. (#4914) (@markekraus에게 감사드립니다.)
+- 웹 cmdlet `UserAgent`를 `WindowsPowerShell`에서 `PowerShell`로 변경합니다. (#4914) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
 - 명시적 `ContentType` 검색을 `Invoke-RestMethod`에 추가합니다. (#4692)
-- 비표준 사용자 에이전트 헤더에서 작동하도록 웹 cmdlet `-SkipHeaderValidation`을 수정합니다. (#4479 & #4512) (@markekraus에게 감사드립니다.)
+- 비표준 사용자 에이전트 헤더에서 작동하도록 웹 cmdlet `-SkipHeaderValidation`을 수정합니다. (#4479 & #4512) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
 
 ### <a name="json-cmdlets"></a>JSON cmdlet
 
-- `-AsHashtable`을 `ConvertFrom-Json`에 추가하여 `Hashtable`을 대신 반환합니다. (#5043) (@bergmeister에게 감사드립니다!)
+- `-AsHashtable`을 `ConvertFrom-Json`에 추가하여 `Hashtable`을 대신 반환합니다. (#5043) ([@bergmeister](https://github.com/bergmeister)에게 감사드립니다!)
 - `ConvertTo-Json` 출력과 함께 더 보기 좋은 포맷터를 사용합니다. (#2787) (@kittholland에게 감사드립니다!)
 - `Jobject` 직렬화 지원을 `ConvertTo-Json`에 추가합니다. (#5141)
 - `ConvertFrom-Json`을 수정하여 완전한 JSON 문자열을 함께 구성하는 파이프라인에서 문자열 배열을 역직렬화합니다.
   이렇게 하면 줄 바꿈이 JSON 구문 분석을 중단시키는 일부 경우가 수정됩니다. (#3823)
 - `System.Array`에 대해 정의된 `AliasProperty "Count"`를 제거합니다.
-  이렇게 하면 일부 `ConvertFrom-Json` 출력에서 불필요한 `Count` 속성이 제거됩니다. (#3231) (@PetSerAl에게 감사드립니다!)
+  이렇게 하면 일부 `ConvertFrom-Json` 출력에서 불필요한 `Count` 속성이 제거됩니다. (#3231) ([@PetSerAl](https://github.com/PetSerAl)에게 감사드립니다!)
 
 ### <a name="csv-cmdlets"></a>CSV cmdlet
 
-- `Import-Csv` 및 `ConvertFrom-Csv`에 대한 `PSTypeName` 지원을 추가합니다. (#5389) (@markekraus에게 감사드립니다!)
-- `Import-Csv`를 `CR`, `LF` 및 `CRLF`를 줄 구분 기호로 지원하도록 합니다. (#5363) (@iSazonov에게 감사드립니다!)
-- `-NoTypeInformation`을 `Export-Csv` 및 `ConvertTo-Csv`의 기본값으로 만듭니다. (#5164) (@markekraus에게 감사드립니다!)
+- `Import-Csv` 및 `ConvertFrom-Csv`에 대한 `PSTypeName` 지원을 추가합니다. (#5389) ([@markekraus](https://github.com/markekraus)에게 감사드립니다!)
+- `Import-Csv`를 `CR`, `LF` 및 `CRLF`를 줄 구분 기호로 지원하도록 합니다. (#5363) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다!)
+- `-NoTypeInformation`을 `Export-Csv` 및 `ConvertTo-Csv`의 기본값으로 만듭니다. (#5164) ([@markekraus](https://github.com/markekraus)에게 감사드립니다.)
 
 ### <a name="service-cmdlets"></a>서비스 cmdlet
 
-- `Get-Service`에 의해 반환된 `ServiceController` 객체에 속성 `UserName`, `Description`, `DelayedAutoStart`, `BinaryPathName` 및 `StartupType`을 추가합니다. (#4907) (@joandrsn에게 감사드립니다.)
-- `Set-Service` 명령에서 자격 증명을 설정하는 기능을 추가합니다. (#4844) (@joandrsn에게 감사드립니다.)
+- `Get-Service`에 의해 반환된 `ServiceController` 객체에 속성 `UserName`, `Description`, `DelayedAutoStart`, `BinaryPathName` 및 `StartupType`을 추가합니다. (#4907) ([@joandrsn](https://github.com/joandrsn)에게 감사드립니다.)
+- `Set-Service` 명령에서 자격 증명을 설정하는 기능을 추가합니다. (#4844) ([@joandrsn](https://github.com/joandrsn)에게 감사드립니다.)
 
 ### <a name="other-cmdlets"></a>기타 cmdlet
 
 - 링크 루프를 확인하고 필요 시 symlinks를 통과하는 `-FollowSymlink`라는 `Get-ChildItem`에 매개 변수를 추가합니다. (#4020)
-- `Add-Type`을 업데이트하여 `CSharpVersion7`을 지원합니다. (#3933) (@iSazonov에게 감사드립니다!)
+- `Add-Type`을 업데이트하여 `CSharpVersion7`을 지원합니다. (#3933) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다.)
 - 더 나은 해결책을 찾을 때까지 지원되지 않는 API를 사용하기 때문에 `Microsoft.PowerShell.LocalAccounts` 모듈을 제거합니다. (#4302)
 - 더 나은 해결책을 찾을 때까지 지원되지 않는 API를 사용하기 때문에 `Microsoft.PowerShell.Diagnostics`에 있는 `*-Counter` cmdlet을 제거합니다. (#4303)
 - `Invoke-Item -Path <folder>`에 대한 지원을 추가합니다. (#4262)
-- `-Extension` 및 `-LeafBase` 스위치를 `Split-Path`에 추가하면 파일 이름 확장자와 파일 이름의 나머지 사이에 경로를 분할할 수 있습니다. (#2721) (@powercode에게 감사드립니다!)
+- `-Extension` 및 `-LeafBase` 스위치를 `Split-Path`에 추가하면 파일 이름 확장자와 파일 이름의 나머지 사이에 경로를 분할할 수 있습니다. (#2721) ([@powercode](https://github.com/powercode)에게 감사드립니다!)
 - 위쪽/아래쪽 N 정렬을 위해 매개 변수 `-Top` 및 `-Bottom`을 `Sort-Object`에 추가합니다.
-- `CodeProperty "Parent"`를 `System.Diagnostics.Process`에 추가하여 프로세스의 상위 프로세스를 노출합니다. (#2850) (@powercode에게 감사드립니다!)
+- `CodeProperty "Parent"`를 `System.Diagnostics.Process`에 추가하여 프로세스의 상위 프로세스를 노출합니다. (#2850) ([@powercode](https://github.com/powercode)에게 감사드립니다!)
 - `Get-Process`의 메모리 열에 KB 대신 MB를 사용합니다.
-- `Out-String`을 위해 `-NoNewLine` 스위치를 추가합니다. (#5056) (@raghav710에게 감사드립니다.)
+- `Out-String`을 위해 `-NoNewLine` 스위치를 추가합니다. (#5056) ([@raghav710](https://github.com/raghav710)에게 감사드립니다.)
 - `Move-Item` cmdlet은 `-Include`, `-Exclude` 및 `-Filter` 매개 변수를 지원합니다. (#3878)
 - `Remove-Item`의 레지스트리 경로에 사용되도록 `*`를 허용합니다. (#4866)
 - `-Title`을 `Get-Credential`에 추가하고 플랫폼 간 프롬프트 경험을 통합합니다.
 - `-TimeOut` 매개 변수를 `Test-Connection`에 추가합니다. (#2492)
 - `Get-AuthenticodeSignature` cmdlet은 이제 파일 서명 타임스탬프를 가져올 수 있습니다. (#4061)
 - `Get-Help`에서 지원되지 않는 `-ShowWindow` 스위치를 제거합니다. (#4903)
-- 반환된 배열 요소에 구분 기호를 포함하지 않도록 `Get-Content -Delimiter`를 수정합니다. (#3706) (@mklement0에게 감사드립니다.)
-- `Meta`, `Charset`, 및 `Transitional` 매개 변수를 `ConvertTo-HTML`에 추가합니다. (#4184) (@ergo3114에게 감사드립니다.)
+- 반환된 배열 요소에 구분 기호를 포함하지 않도록 `Get-Content -Delimiter`를 수정합니다. (#3706) ([@mklement0](https://github.com/mklement0)에게 감사드립니다.)
+- `Meta`, `Charset` 및 `Transitional` 매개 변수를 `ConvertTo-HTML`에 추가합니다. (#4184) ([@ergo3114](https://github.com/ergo3114)에게 감사드립니다.)
 - `WindowsUBR` 및 `WindowsVersion` 속성을 `Get-ComputerInfo` 결과에 추가합니다.
 - `-Group` 매개 변수를 `Get-Verb`에 추가합니다.
-- `ShouldProcess` 지원을 `New-FileCatalog` 및 `Test-FileCatalog`에 추가합니다(`-WhatIf` 및 `-Confirm` 수정). (#3074) (@iSazonov에게 감사드립니다!)
-- `-WhatIf` 스위치를 `Start-Process` cmdlet에 추가합니다. (#4735) (@sarithsutha에게 감사드립니다.)
+- `ShouldProcess` 지원을 `New-FileCatalog` 및 `Test-FileCatalog`에 추가합니다(`-WhatIf` 및 `-Confirm` 수정). (#3074) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다!)
+- `-WhatIf` 스위치를 `Start-Process` cmdlet에 추가합니다. (#4735) ([@sarithsutha](https://github.com/sarithsutha)에게 감사드립니다.)
 - `ValidateNotNullOrEmpty` 너무 많은 기존 매개 변수를 추가합니다.
 
 ## <a name="tab-completion"></a>탭 완성
 
-- 런타임 변수 값을 기반으로 탭 완성의 형식 유추를 향상시켰습니다. (#2744) (@powercode에게 감사드립니다!) 이렇게 하면 다음과 같은 상황에서 탭 완성이 가능합니다.
+- 런타임 변수 값을 기반으로 탭 완성의 형식 유추를 향상시켰습니다. (#2744) ([@powercode](https://github.com/powercode)에게 감사드립니다!) 이렇게 하면 다음과 같은 상황에서 탭 완성이 가능합니다.
 
   ```powershell
   $p = Get-Process
   $p | Foreach-Object Prio<tab>
   ```
 
-- `Select-Object`의 `-Property`에 대해 해시 테이블 탭 완성을 추가합니다. (#3625) (@powercode에게 감사드립니다.)
-- `-ExcludeProperty`와 `Select-Object`의 `-ExpandProperty`에 인수 자동 완성을 사용합니다. (#3443) (@iSazonov에게 감사드립니다!)
-- `native.exe --<tab>`를 네이티브 완성자로 호출하도록 탭 완성의 버그를 수정했습니다. (#3633) (@powercode에게 감사드립니다!)
+- `Select-Object`의 `-Property`에 대해 해시 테이블 탭 완성을 추가합니다. (#3625) ([@powercode](https://github.com/powercode)에게 감사드립니다.)
+- `-ExcludeProperty`와 `Select-Object`의 `-ExpandProperty`에 인수 자동 완성을 사용합니다. (#3443) ([@iSazonov](https://github.com/iSazonov)에게 감사드립니다!)
+- `native.exe --<tab>`를 네이티브 완성자로 호출하도록 탭 완성의 버그를 수정했습니다. (#3633) ([@powercode](https://github.com/powercode)에게 감사드립니다!)
 
 ## <a name="breaking-changes"></a>주요 변경 내용
 
@@ -373,14 +373,14 @@ PowerShell Core 6.0은 많은 주요 내용이 변경되었습니다.
   - OS 플랫폼(`$PSVersionTable.OSDescription`)
   - PowerShell의 정확한 버전(`$PSVersionTable.GitCommitId`)
 
-이 원격 분석을 옵트아웃(opt out)하려는 경우 `$PSHome\DELETE_ME_TO_DISABLE_CONSOLEHOST_TELEMETRY`을 삭제하거나 `true`, `1` 또는 `yes` 값 중 하나로 `POWERSHELL_TELEMETRY_OPTOUT` 환경 변수를 만듭니다.
-이 파일을 삭제하거나 변수를 만들면 PowerShell의 첫 실행 전이라도 모든 원격 분석이 바이패스됩니다.
+이 원격 분석을 옵트아웃(opt out)하려는 경우 `true`, `1` 또는 `yes` 값 중 하나로 간단히 `POWERSHELL_TELEMETRY_OPTOUT` 환경 변수를 만듭니다.
+변수를 만들면 PowerShell의 첫 실행 전이라도 모든 원격 분석이 바이패스됩니다.
 또한 이 원격 분석 데이터와 [커뮤니티 대시보드][community-dashboard]의 원격 분석에서 얻은 정보를 공개할 예정입니다.
 [블로그 게시물][telemetry-blog]에서 이 데이터를 사용하는 방법에 대해 자세히 알 수 있습니다.
 
 [github]: https://github.com/PowerShell/PowerShell
 [.NET Core 2.0]: https://docs.microsoft.com/dotnet/core/
-[.NET Standard]: https://docs.microsoft.com/en-us/dotnet/standard/net-standard
+[.NET Standard]: https://docs.microsoft.com/dotnet/standard/net-standard
 [os_log]: https://developer.apple.com/documentation/os/logging
 [Syslog]: https://en.wikipedia.org/wiki/Syslog
 [ssh-remoting]: ../core-powershell/SSH-Remoting-in-PowerShell-Core.md

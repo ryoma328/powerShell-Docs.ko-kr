@@ -2,16 +2,16 @@
 ms.date: 08/09/2018
 keywords: 설치, windows, linux, macOS, ARM, raspbian
 title: PowerShell 설치
-ms.openlocfilehash: 24c40723e8f0218b3192d3d844762f774adf9c29
-ms.sourcegitcommit: 7d135f5fcb0eacab9862cfa64c4e42448b258f34
+ms.openlocfilehash: b89f11c36459bd0b03693d89ae3ff6f1327ea755
+ms.sourcegitcommit: b235c58b34d23317076540631f5cf83f1f309c0d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40027639"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45557093"
 ---
 # <a name="installing-various-versions-of-powershell"></a>다양한 버전의 PowerShell 설치
 
-몇 년 동안에 여러 버전의 PowerShell 있었습니다. 처음에는 Windows PowerShell이 ​​.NET Framework를 기반으로 빌드되었고, Windows 시스템에서만 작동했습니다. 현재 릴리스에서 PowerShell Core는 .NET Core 2.0을 런타임으로 사용합니다. PowerShell Core는 Windows, macOS 및 Linux 플랫폼을 지원합니다.
+몇 년 동안에 여러 버전의 PowerShell 있었습니다. 처음에는 Windows PowerShell이 ​​.NET Framework를 기반으로 빌드되었고, Windows 시스템에서만 작동했습니다. 현재 릴리스에서 PowerShell Core는 .NET Core 2.x를 런타임으로 사용합니다. PowerShell Core는 Windows, macOS 및 Linux 플랫폼을 지원합니다.
 
 ## <a name="windows-powershell"></a>Windows PowerShell
 

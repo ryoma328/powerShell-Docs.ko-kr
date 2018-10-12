@@ -2,12 +2,12 @@
 title: SSH를 통한 PowerShell 원격
 description: SSH를 사용하여 PowerShell Core에서 원격 작업
 ms.date: 08/14/2018
-ms.openlocfilehash: 1de034d667aa9a377e5460e7eb474402c690cb42
-ms.sourcegitcommit: 56b9be8503a5a1342c0b85b36f5ba6f57c281b63
+ms.openlocfilehash: 451a55a588381cc9bec265895b2bfad6b6f6e73c
+ms.sourcegitcommit: a652b12a0b87cdd0c8eb76381ae015467dd7b8cd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "43133140"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46134283"
 ---
 # <a name="powershell-remoting-over-ssh"></a>SSH를 통한 PowerShell 원격
 
@@ -167,6 +167,14 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
    sudo launchctl stop com.openssh.sshd
    sudo launchctl start com.openssh.sshd
    ```
+
+## <a name="authentication"></a>인증
+
+SSH를 통한 PowerShell 원격 기능은 SSH 클라이언트 및 SSH 서비스 간에 인증 교환을 필요로 하며 어떤 인증 체계도 구현하지 않습니다.
+즉, 다단계 인증을 비롯한 모든 구성된 인증 체계는 SSH에서 처리하며 PowerShell과는 독립적입니다.
+예를 들어 보안 강화를 위해 일회용 암호뿐만 아니라 공개 키 인증이 필요하도록 SSH 서비스를 구성할 수 있습니다.
+다단계 인증의 구성은 이 설명서의 범위를 벗어납니다.
+PowerShell 원격 기능에서 다단계 인증을 사용하기 전에 올바르게 다단계 인증을 구성하고 PowerShell 외부에서 작동하는지 유효성 검사를 하는 방법은 SSH에 대한 설명서를 참조하세요.
 
 ## <a name="powershell-remoting-example"></a>PowerShell 원격 기능 예제
 

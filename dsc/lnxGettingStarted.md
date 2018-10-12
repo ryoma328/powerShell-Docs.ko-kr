@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: Linux용 DSC(필요한 상태 구성) 시작
-ms.openlocfilehash: d5a4a17fbcffbbbd6df3dd902dbd104769b7d17e
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: d436fc3b451efb8a12dfdc44909824934b5fcbe4
+ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893599"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45523033"
 ---
 # <a name="get-started-with-desired-state-configuration-dsc-for-linux"></a>Linux용 DSC(필요한 상태 구성) 시작
 
@@ -75,7 +75,7 @@ Windows PowerShell 구성 키워드는 Windows 컴퓨터와 마찬가지로 Linu
 
 1. nx 모듈을 가져옵니다. nx Windows PowerShell 모듈은 Linux용 DSC를 위한 기본 제공 리소스에 대한 스키마를 포함하며, 로컬 컴퓨터에 설치되어 구성에 가져와야 합니다.
 
-   - nx 모듈을 설치하려면 nx 모듈 디렉터리를 `$env:USERPROFILE\Documents\WindowsPowerShell\Modules\` 또는 `$PSHOME\Modules`에 복사합니다. nx 모듈은 Linux용 DSC 설치 패키지(MSI)에 포함되어 있습니다. 구성에서 nx 모듈을 가져오려면 `Import-DSCResource` 명령을 사용합니다.
+   - nx 모듈을 설치하려면 nx 모듈 디렉터리를 `$env:USERPROFILE\Documents\WindowsPowerShell\Modules\` 또는 `$PSHOME\Modules`에 복사합니다. nx 모듈은 Linux용 DSC 설치 패키지에 포함되어 있습니다. 구성에서 nx 모듈을 가져오려면 `Import-DSCResource` 명령을 사용합니다.
 
    ```powershell
    Configuration ExampleConfiguration{
