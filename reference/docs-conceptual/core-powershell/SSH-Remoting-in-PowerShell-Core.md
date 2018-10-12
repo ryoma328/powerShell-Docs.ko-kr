@@ -2,12 +2,12 @@
 title: SSH를 통한 PowerShell 원격
 description: SSH를 사용하여 PowerShell Core에서 원격 작업
 ms.date: 08/14/2018
-ms.openlocfilehash: 451a55a588381cc9bec265895b2bfad6b6f6e73c
-ms.sourcegitcommit: a652b12a0b87cdd0c8eb76381ae015467dd7b8cd
+ms.openlocfilehash: 84c3896fe28847beb03e930f933bb4a9dfad397f
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46134283"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851240"
 ---
 # <a name="powershell-remoting-over-ssh"></a>SSH를 통한 PowerShell 원격
 
@@ -35,7 +35,7 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
 
 ## <a name="set-up-on-windows-machine"></a>Windows 컴퓨터에 설치
 
-1. 최신 버전의 [PowerShell Core for Windows] 설치
+1. 최신 버전의 [PowerShell Core for Windows](../setup/installing-powershell-core-on-windows.md#msi) 설치
 
    - `New-PSSession`의 매개 변수 집합을 확인하면 SSH 원격 기능이 지원되는지 알 수 있습니다.
 
@@ -47,7 +47,7 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
    New-PSSession [-HostName] <string[]> [-Name <string[]>] [-UserName <string>] [-KeyFilePath <string>] [-SSHTransport] [<CommonParameters>]
    ```
 
-2. [설치] 지침에 따라 GitHub에서 최신 [Win32 OpenSSH] 빌드를 설치합니다.
+2. [설치](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH) 지침에 따라 GitHub에서 최신 [Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases) 빌드를 설치합니다.
 3. Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.
 
    - 암호 인증이 활성화되었는지 확인합니다.
@@ -91,8 +91,8 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
 
 ## <a name="set-up-on-linux-ubuntu-1404-machine"></a>Linux(Ubuntu 14.04) 컴퓨터에 설치
 
-1. GitHub에서 최신 [Linux용 PowerShell Core] 빌드를 설치합니다.
-2. 필요에 따라 [Ubuntu SSH]를 설치합니다.
+1. GitHub에서 최신 [Linux용 PowerShell Core](../setup/installing-powershell-core-on-linux.md#ubuntu-1404) 빌드를 설치합니다.
+2. 필요에 따라 [Ubuntu SSH](https://help.ubuntu.com/lts/serverguide/openssh-server.html)를 설치합니다.
 
    ```bash
    sudo apt install openssh-client
@@ -127,7 +127,7 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
 
 ## <a name="set-up-on-macos-machine"></a>MacOS 컴퓨터에 설치
 
-1. 최신 [MacOS용 PowerShell Core] 빌드를 설치합니다.
+1. 최신 [MacOS용 PowerShell Core](../setup/installing-powershell-core-on-macos.md) 빌드를 설치합니다.
 
    - 다음 단계를 수행하여 SSH 원격 기능이 활성화되어 있는지 확인합니다.
      - `System Preferences`를 엽니다.
@@ -316,7 +316,5 @@ sudo 명령은 Linux 컴퓨터에 대한 원격 세션에서 작동하지 않습
 [MacOS용 PowerShell Core](../setup/installing-powershell-core-on-macos.md)
 
 [Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases)
-
-[설치](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 [Ubuntu SSH](https://help.ubuntu.com/lts/serverguide/openssh-server.html)
