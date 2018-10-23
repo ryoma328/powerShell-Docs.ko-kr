@@ -3,12 +3,12 @@ ms.date: 08/27/2018
 keywords: powershell,cmdlet
 title: 자세한 도움말 정보 보기
 ms.assetid: 6fb4daf7-8607-4a3e-b692-f77631adc1b9
-ms.openlocfilehash: 88f0357b935a7c75df07d667e3f2f2d0e493f89d
-ms.sourcegitcommit: 59727f71dc204785a1bcdedc02716d8340a77aeb
+ms.openlocfilehash: d2578604ec7c01c0b2734bd180e1babaca58b153
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43134037"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851275"
 ---
 # <a name="getting-detailed-help-information"></a>자세한 도움말 정보 보기
 
@@ -149,7 +149,7 @@ cmdlet 도움말을 표시하도록 디자인된 매개 변수는 스크립트 �
 온라인 도움말을 보려면 `Get-Help` cmdlet의 **Online** 매개 변수를 사용합니다. 공급자 도움말 및 개념(정보) 도움말을 포함하여 Powershell에 함께 제공되는 모든 도움말 문서는 온라인 [PowerShell](/powershell/scripting/powershell-scripting) 설명서에서 볼 수 있습니다.
 
 > [!NOTE]
-> 개념(about_*) 또는 공급자 도움말 문서에서는 **Online** 매개 변수를 사용할 수 없습니다.
+> 개념(about_\*) 또는 공급자 도움말 문서에서는 **Online** 매개 변수를 사용할 수 없습니다.
 > 온라인 도움말은 선택 항목이기 때문에 일부 cmdlet, 함수 또는 스크립트에는 작동하지 않습니다.
 
 예를 들어 `Get-ChildItem` cmdlet에 대한 온라인 버전의 도움말 문서를 보려면 다음과 같이 입력합니다.
