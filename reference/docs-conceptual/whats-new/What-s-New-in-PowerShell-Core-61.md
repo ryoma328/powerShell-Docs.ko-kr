@@ -2,12 +2,12 @@
 title: PowerShell Core 6.1의 새로운 기능
 description: PowerShell Core 6.1에서 릴리스된 새로운 기능 및 변경 내용
 ms.date: 09/13/2018
-ms.openlocfilehash: 5e2fe3c819ed638b2c14d7d40e08b7c32953147f
-ms.sourcegitcommit: 59e568ac9fa8ba28e2c96932b7c84d4a855fed2f
+ms.openlocfilehash: 4e39780a0ff446993005bba6284741f3b4b02549
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46289228"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851310"
 ---
 # <a name="whats-new-in-powershell-core-61"></a>PowerShell Core 6.1의 새로운 기능
 
@@ -197,11 +197,11 @@ Markdown은 HTML로 렌더링할 수 있는 기본 서식의 읽을 수 있는 �
 
 ## <a name="remoting-improvements"></a>원격 기능 향상
 
-### <a name="powershell-direct-tries-to-use-powershell-core-first"></a>PowerShell Direct에서 먼저 PowerShell Core 사용을 시도
+### <a name="powershell-direct-for-containers-tries-to-use-powershell-core-first"></a>컨테이너용 PowerShell Direct에서 먼저 PowerShell Core 사용을 시도
 
-[PowerShell Direct](/virtualization/hyper-v-on-windows/user-guide/powershell-direct)는 사용자가 네트워크 연결 또는 기타 원격 관리 서비스 없이 Hyper-V VM에 연결할 수 있도록 허용하는 PowerShell 및 Hyper-V의 기능입니다.
+[PowerShell Direct](/virtualization/hyper-v-on-windows/user-guide/powershell-direct)는 사용자가 네트워크 연결 또는 기타 원격 관리 서비스 없이 Hyper-V VM 또는 컨테이너에 연결할 수 있도록 허용하는 PowerShell 및 Hyper-V의 기능입니다.
 
-과거에 PowerShell Direct는 받은 편지함 Windows PowerShell 인스턴스를 사용하여 VM에 연결되었습니다.
+과거에 PowerShell Direct는 받은 편지함 Windows PowerShell 인스턴스를 사용하여 컨테이너에 연결되었습니다.
 이제 PowerShell Direct는 먼저 `PATH` 환경 변수에서 사용 가능한 `pwsh.exe`를 사용하여 연결을 시도합니다.
 `pwsh.exe`를 사용할 수 없는 경우 PowerShell Direct는 `powershell.exe`를 다시 사용합니다.
 
@@ -310,45 +310,44 @@ PS /etc>
 ### <a name="new-methodsproperties-on-pscustomobject"></a>`PSCustomObject`의 새 메서드/속성
 
 [@iSazonov](https://github.com/iSazonov) 덕분에 새 메서드 및 속성을 `PSCustomObject`에 추가했습니다.
-`PSCustomObject`는 이제 많은 항목을 제공하는 `Count`/`Length` 속성을 포함합니다.
-
-이러한 예제는 모두 컬렉션의 `PSCustomObjects`의 수로 `2`를 반환합니다.
+`PSCustomObject`에는 이제 다른 개체처럼 `Count`/`Length` 속성이 포함됩니다.
 
 ```powershell
-@(
-[pscustomobject]@{foo = '1'},
-[pscustomobject]@{bar = '2' }).Length
+$PSCustomObject = [pscustomobject]@{foo = 1}
+
+$PSCustomObject.Length
+```
+
+```Output
+1
 ```
 
 ```powershell
-@(
-[pscustomobject]@{foo = '1'},
-[pscustomobject]@{bar = '2' }).Count
+$PSCustomObject.Count
+```
+
+```Output
+1
 ```
 
 이 작업에는 `PSCustomObject` 항목에서 작동하고 필터링할 수 있도록 허용하는 `ForEach` 및 `Where` 메서드도 포함됩니다.
 
 ```powershell
-@(
->> [pscustomobject]@{foo = 1},
->> [pscustomobject]@{foo = 2 }).ForEach({$_.foo+1})
+$PSCustomObject.ForEach({$_.foo + 1})
 ```
 
 ```Output
 2
-3
 ```
 
 ```powershell
-@(
->> [pscustomobject]@{foo = 1},
->> [pscustomobject]@{foo = 2 }).Where({$_.foo -gt 1})
+$PSCustomObject.Where({$_.foo -gt 0})
 ```
 
 ```Output
 foo
 ---
-  2
+  1
 ```
 
 ### `Where-Object -Not`
@@ -507,7 +506,7 @@ PowerShell Core는 시작할 때 기본 원격 분석 데이터를 Microsoft로 
 
 암호화되지 않은 트래픽 사용을 방지하려면 Unix 플랫폼의 PowerShell 원격 기능은 이제 NTLM/Negotiate 또는 HTTPS를 사용해야 합니다.
 
-이러한 변경 사항에 대한 자세한 내용은 [PR #6799](https://github.com/PowerShell/PowerShell/pull/6799)를 확인하세요.
+이러한 변경 사항에 대한 자세한 내용은 [문제 #6779](https://github.com/PowerShell/PowerShell/issues/6779)를 확인하세요.
 
 ### <a name="removed-visualbasic-as-a-supported-language-in-add-type"></a>Add-Type에서 지원되는 언어로 `VisualBasic` 제거
 
