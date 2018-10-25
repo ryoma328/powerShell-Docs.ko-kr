@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: 스크립트 창 및 콘솔 창에서 탭 완성 기능을 사용하는 방법
 ms.assetid: 3b752c3c-0bd0-4eca-a2d3-2d5a37fd9d84
-ms.openlocfilehash: e1f8146b6113a82fd3d857c98550ec2e459715a4
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
+ms.openlocfilehash: 24a3f00987ff5ca4bf82d1a3206857ec3c4b3f09
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30954928"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851138"
 ---
 # <a name="how-to-use-tab-completion-in-the-script-pane-and-console-pane"></a>스크립트 창 및 콘솔 창에서 탭 완성 기능을 사용하는 방법
 
@@ -23,7 +23,7 @@ ms.locfileid: "30954928"
 
 ## <a name="to-automatically-complete-a-cmdlet-parameter-entry"></a>cmdlet 매개 변수 입력을 자동으로 완성하려면
 
-명령 창이나 스크립트 창에서 cmdlet 뒤에 대시를 입력한 다음 Tab 키를 누릅니다.
+명령 창이나 스크립트 창에서 cmdlet 뒤에 대시를 입력한 다음, Tab 키를 누릅니다.
 
 예를 들어 `Get-Process -`를 입력한 다음 Tab 키를 눌러 여러 번 해당 cmdlet에 대한 각 매개 변수를 차례로 표시합니다.
 

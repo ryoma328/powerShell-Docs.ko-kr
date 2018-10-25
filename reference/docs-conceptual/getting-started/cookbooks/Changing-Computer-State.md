@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: 컴퓨터 상태 변경
 ms.assetid: 8093268b-27f8-4a49-8871-142c5cc33f01
-ms.openlocfilehash: 4b5b4adb349dd8036117c364ed2ebb1ffaf8c88f
-ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
+ms.openlocfilehash: f2fadcedaeddfa6f8b9dd4d70738ee062b907d61
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267888"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851086"
 ---
 # <a name="changing-computer-state"></a>컴퓨터 상태 변경
 
@@ -52,14 +52,20 @@ shutdown.exe -l
 
 Windows PowerShell에서 직접 종료 및 다시 시작 작업을 수행할 수도 있습니다.
 
-컴퓨터를 종료하려면 stop-computer 명령을 사용합니다.
+컴퓨터를 종료하려면 Stop-Computer 명령을 사용합니다.
 
 ```powershell
-stop-computer
+Stop-Computer
 ```
 
-운영 체제를 다시 시작하려면 restart-computer 명령을 사용합니다.
+운영 체제를 다시 시작하려면 Restart-Computer 명령을 사용합니다.
 
 ```powershell
-restart-computer
+Restart-Computer
+```
+
+컴퓨터를 강제로 즉시 다시 시작하려면 -Force 매개 변수를 사용합니다.
+
+```powershell
+Restart-Computer -Force
 ```

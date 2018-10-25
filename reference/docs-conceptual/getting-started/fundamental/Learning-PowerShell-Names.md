@@ -3,12 +3,12 @@ ms.date: 08/24/2018
 keywords: powershell,cmdlet
 title: PowerShell 이름 학습
 ms.assetid: b4d0fd22-8298-4ee6-82ae-9b6f2907c986
-ms.openlocfilehash: 44c66488a20c38d8528c92d753f6b32dda5a2dcb
-ms.sourcegitcommit: c170a1608d20d3c925d79c35fa208f650d014146
+ms.openlocfilehash: a4f7e12c2b30e8ae6d1cf5a125d613d2d7558c34
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43353269"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851258"
 ---
 # <a name="learning-powershell-names"></a>PowerShell 이름 학습
 
@@ -92,7 +92,8 @@ Get-Command -Name Clear-Host
 
 ### <a name="the-help-parameter-"></a>도움말 매개 변수(?)
 
-cmdlet에서 `-Help` 또는 `-?` 매개 변수를 지정하면 PowerShell에서 해당 cmdlet에 대한 도움말이 표시됩니다. cmdlet은 실행되지 않습니다.
+cmdlet에서 `-?` 매개 변수를 지정하면 PowerShell에서 해당 cmdlet에 대한 도움말이 표시됩니다.
+cmdlet은 실행되지 않습니다.
 
 ### <a name="common-parameters"></a>공통 매개 변수
 

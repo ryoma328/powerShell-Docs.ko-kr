@@ -4,12 +4,12 @@ contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 description: 게시자용 지침
 title: PowerShell 갤러리 게시 지침 및 모범 사례
-ms.openlocfilehash: 11207a312f916506f855c0e6e292752f72fc04c1
-ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
+ms.openlocfilehash: 2ddeae9fdb33a58f97bfeb66079541bb7c5791b1
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45523034"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851172"
 ---
 # <a name="powershellgallery-publishing-guidelines-and-best-practices"></a>PowerShell 갤러리 게시 지침 및 모범 사례
 
@@ -39,6 +39,7 @@ PowerShell 갤러리에 있는 항목을 게시하는 방법은 [항목 만들�
 - 버전 관리용 [SemVer](http://semver.org/) 지침 준수
 - 일반 PowerShell 갤러리 태그에 설명되어 있는 일반 태그 사용
 - 로컬 리포지토리를 사용하여 게시 테스트
+- PowerShellGet을 사용하여 게시
 
 아래 섹션에서는 이러한 각 모범 사례에 대해 간략하게 설명합니다.
 
@@ -215,6 +216,12 @@ PowerShell 갤러리에 대한 게시의 종단 간 프로세스를 테스트하
 게시 테스트에 대한 한 가지 추가 사항: PowerShell 갤러리에 게시하는 모든 항목은 게시하려는 항목에 종속된 항목이 없음을 확인할 운영 팀의 도움 없이는 삭제할 수 없습니다.
 이러한 이유로 Microsoft에서는 PowerShell 갤러리를 테스트 대상으로 지원하지 않으며 이렇게 하는 게시자에게 연락합니다.
 
+## <a name="use-powershellget-to-publish"></a>PowerShellGet을 사용하여 게시
+
+게시자는 PowerShell 갤러리로 작업할 때 Publish-Module 및 Publish-Script cmdlet을 사용하는 것이 좋습니다. PowerShell 갤러리에 게시할 때 중요한 설치 세부 정보를 저장하지 않아도 되도록 PowerShellGet이 고안되었습니다. 경우에 따라 게시자는 PowerShellGet을 건너뛰고, Publish-Module 대신 NuGet 클라이언트 또는 PackageManagement cmdlet을 사용하도록 선택했습니다. 여러 세부 사항이 쉽게 누락되면서 다양한 지원 요청을 초래합니다.
+
+Publish-Module 또는 Publish-Script를 사용할 수 없는 이유가 있는 경우 저희에게 알려주세요. PowerShellGet GitHub 리포지토리에서 문제를 정리하고 NuGet 또는 PackageManagement 중에서 선택하는 데 도움이 되는 세부 정보를 제공하세요. 
+
 ## <a name="recommended-workflow"></a>권장 워크플로
 
 PowerShell 갤러리에 게시하는 항목을 가장 효율적으로 활용할 수 있는 방식은 다음과 같습니다.
@@ -229,3 +236,4 @@ PowerShell 갤러리에 게시하는 항목을 가장 효율적으로 활용할 
 - 항목에 코드로 서명할지를 결정합니다.
 - 프로젝트가 프로덕션 환경에서 사용할 수 있는 상태가 되면 1.0.0 버전을 PowerShell 갤러리에 게시합니다.
 - 계속 피드백을 수집하고 사용자 입력 내용을 바탕으로 코드를 반복 실행합니다.
+

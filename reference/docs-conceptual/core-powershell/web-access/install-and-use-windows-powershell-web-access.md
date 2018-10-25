@@ -2,12 +2,12 @@
 ms.date: 08/23/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 웹 액세스 설치 및 사용
-ms.openlocfilehash: 8fa965ff30cd9e0b688bcc46d01d843a0f1c2e0b
-ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
+ms.openlocfilehash: d718d9b286a8a2189f44f10983cdc0061e41d4b9
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39268418"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48851327"
 ---
 # <a name="install-and-use-windows-powershell-web-access"></a>Install and Use Windows PowerShell Web Access(Windows PowerShell 웹 액세스 설치 및 사용)
 
@@ -109,8 +109,7 @@ Windows PowerShell cmdlet을 사용하거나 서버 관리자 내에서 열린 �
 
 ### <a name="configure-the-gateway"></a>게이트웨이 구성
 
-**Install-PswaWebApplication** cmdlet을 사용하면 Windows PowerShell 웹 액세스를 가장 빨리 구성할 수 있습니다. 
-          `UseTestCertificate` 매개 변수를 `Install-PswaWebApplication` cmdlet에 추가하여 자체 서명된 테스트용 SSL 인증서를 설치할 수 있지만 안전하지 않으므로, 안전한 프로덕션 환경을 위해서는 항상 CA(인증 기관)에서 서명된 올바른 SSL 인증서를 사용해야 합니다. 관리자는 IIS 관리자 콘솔을 사용하여 자신이 선택한 서명된 인증서로 테스트 인증서를 바꿀 수 있습니다.
+**Install-PswaWebApplication** cmdlet을 사용하면 Windows PowerShell 웹 액세스를 가장 빨리 구성할 수 있습니다. `UseTestCertificate` 매개 변수를 `Install-PswaWebApplication` cmdlet에 추가하여 자체 서명된 테스트용 SSL 인증서를 설치할 수 있지만 안전하지 않으므로, 안전한 프로덕션 환경을 위해서는 항상 CA(인증 기관)에서 서명된 올바른 SSL 인증서를 사용해야 합니다. 관리자는 IIS 관리자 콘솔을 사용하여 자신이 선택한 서명된 인증서로 테스트 인증서를 바꿀 수 있습니다.
 
 `Install-PswaWebApplication` cmdlet을 실행하거나 IIS 관리자에서 GUI 기반의 구성 단계를 수행하여 Windows PowerShell 웹 액세스 웹 응용 프로그램 구성을 완료할 수 있습니다.
 기본적으로 이 cmdlet은 IIS 관리자에 표시된 바와 같이 **기본 웹 사이트** 컨테이너에 웹 응용 프로그램인 **pswa**(및 해당 응용 프로그램 풀인 **pswa_pool**)를 설치합니다. 필요에 따라 웹 응용 프로그램의 기본 사이트 컨테이너를 변경하는 명령을 이 cmdlet에 추가할 수 있습니다. IIS 관리자는 웹 응용 프로그램에서 사용 가능한 구성 옵션(예: SSL(Secure Sockets Layer) 인증서의 포트 번호 변경)을 제공합니다.
@@ -157,8 +156,7 @@ Windows PowerShell cmdlet을 사용하거나 서버 관리자 내에서 열린 �
 
    `Install-PswaWebApplication`
 
-   이 cmdlet을 실행하면 다음과 같은 게이트웨이 설정이 구성됩니다. 필요에 따라 IIS 관리자 콘솔에서 이러한 설정을 수동으로 변경할 수 있습니다. 
-             `WebsiteName` cmdlet의 `WebApplicationName` 및 `Install-PswaWebApplication` 매개 변수에 대한 값을 지정할 수도 있습니다.
+   이 cmdlet을 실행하면 다음과 같은 게이트웨이 설정이 구성됩니다. 필요에 따라 IIS 관리자 콘솔에서 이러한 설정을 수동으로 변경할 수 있습니다. `WebsiteName` cmdlet의 `WebApplicationName` 및 `Install-PswaWebApplication` 매개 변수에 대한 값을 지정할 수도 있습니다.
 
    - Path: /pswa
    - ApplicationPool: pswa_pool
@@ -329,7 +327,7 @@ Windows PowerShell 웹 액세스가 설치되면 IIS 관리자에서 게이트�
 
    다른 웹 사이트에서 443을 이미 사용하고 있거나 이 포트 번호를 변경해야 할 다른 보안상의 이유가 있는 경우, 기본 포트 번호를 변경합니다. 선택한 포트를 게이트웨이 서버에서 실행 중인 다른 웹 사이트에서 사용하고 있을 경우 **웹 사이트 추가** 대화 상자에서 **확인**을 클릭하면 경고가 표시됩니다. Windows PowerShell 웹 액세스를 실행하려면 미사용 포트를 사용해야 합니다.
 
-1. 조직에 필요한 경우에는 선택적으로 **www.contoso.com** 같이 조직과 사용자가 쉽게 알아볼 수 있는 호스트 이름을 지정합니다. **확인**을 클릭합니다.
+1. 조직에 필요한 경우에는 선택적으로 **`www.contoso.com`** 과 같이 조직과 사용자가 쉽게 알아볼 수 있는 호스트 이름을 지정합니다. **확인**을 클릭합니다.
 
 1. 보다 안전한 프로덕션 환경을 위해 반드시 CA에서 서명된 유효한 인증서를 제공하는 것이 좋습니다. 사용자는 HTTPS 웹 사이트를 통해서만 Windows PowerShell 웹 액세스에 연결할 수 있으므로, SSL 인증서를 제공해야 합니다. 인증서를 얻는 방법에 대한 자세한 내용은 이 항목의 [IIS 관리자로 SSL 인증서를 구성하려면](#to-configure-an-ssl-certificate-in-iis-Manager)을 참조하세요.
 
@@ -408,7 +406,7 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
    - 네트워크 위치에서 기존의 유효한 인증서를 가져오려면 **가져오기**를 클릭합니다.
    - CA에서 [VeriSign](http://www.verisign.com/), [Thawte](https://www.thawte.com/) 또는 [GeoTrust](https://www.geotrust.com/) 등의 인증서를 요청하려면 **인증서 요청 만들기**를 클릭합니다. 인증서의 일반 이름은 요청의 호스트 헤더와 일치해야 합니다.
 
-     예를 들어 클라이언트 브라우저에서 http://www.contoso.com/을 요청하면 일반 이름도 http://www.contoso.com/이어야 합니다. 이 방법이 Windows PowerShell 웹 액세스 게이트웨이에 인증서를 제공하는 가장 안전한 방법입니다.
+     예를 들어 클라이언트 브라우저에서 `http://www.contoso.com/`을 요청하면 일반 이름도 `http://www.contoso.com/`이어야 합니다. 이 방법이 Windows PowerShell 웹 액세스 게이트웨이에 인증서를 제공하는 가장 안전한 방법입니다.
 
    - 곧바로 사용할 수 있는 인증서를 만든 다음 나중에 필요할 때 CA에서 서명을 받아 사용하려면 **자체 서명된 인증서 만들기**를 클릭합니다. **Windows PowerShell 웹 액세스**와 같이 자체 서명된 인증서에 알기 쉬운 이름을 지정합니다. 이 방법은 안전하지 않으므로 개인 테스트 환경용으로만 사용하는 것이 좋습니다.
 

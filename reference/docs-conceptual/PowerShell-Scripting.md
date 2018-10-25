@@ -2,16 +2,16 @@
 ms.date: 08/27/2018
 keywords: powershell,cmdlet
 title: PowerShell 스크립팅
-ms.openlocfilehash: 754805148dc815a12c5c77e4894fb598c6927f7e
-ms.sourcegitcommit: 59727f71dc204785a1bcdedc02716d8340a77aeb
+ms.openlocfilehash: 8a152ab338d42f861b7ff38de44d68db14262abb
+ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43133996"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48851189"
 ---
 # <a name="powershell"></a>PowerShell
 
-PowerShell은 .NET Framework에서 구축된 작업 기반 명령줄 셸 및 스크립팅 언어입니다.
+PowerShell은 .NET에서 구축된 작업 기반 명령줄 셸 및 스크립팅 언어입니다.
 PowerShell을 통해 시스템 관리자 및 고급 사용자는 운영 체제(Linux, macOS 및 Windows) 및 프로세스를 관리하는 작업을 신속하게 자동화할 수 있습니다.
 
 PowerShell 명령을 사용하면 명령줄에서 컴퓨터를 관리할 수 있습니다. PowerShell 공급자는 파일 시스템에 액세스하는 것처럼 쉽게, 레지스트리 및 인증서 저장소와 같은 데이터 저장소에 액세스하도록 지원합니다. PowerShell에는 서식 있는 식 파서와 완전히 개발된 스크립트 언어가 있습니다.
