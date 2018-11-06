@@ -3,16 +3,16 @@ ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 description: 대상 노드에 있는 로컬 그룹을 관리하는 메커니즘을 제공합니다.
 title: DSC GroupSet 리소스
-ms.openlocfilehash: 487a76ca7703b2c57b940b4c5bd176eada6c8019
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: 6fa8e9637da896848e859dc60a42add12e973b34
+ms.sourcegitcommit: e76665315fd928bf85210778f1fea2be15264fea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37892429"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50226120"
 ---
 # <a name="dsc-groupset-resource"></a>DSC GroupSet 리소스
 
-> 적용 대상: Windows Windows PowerShell 5.0
+> 적용 대상: Windows PowerShell 5.0
 
 Windows PowerShell DSC(필요한 상태 구성)의 **GroupSet** 리소스에서는 대상 노드에 있는 로컬 그룹을 관리하는 메커니즘을 제공합니다. 이 리소스는 `GroupName` 매개 변수에 지정된 각 그룹에 대해 [그룹 리소스](groupResource.md)를 호출하는 [복합 리소스](authoringResourceComposite.md)입니다.
 

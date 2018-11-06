@@ -3,12 +3,12 @@ ms.date: 08/23/2018
 keywords: powershell,cmdlet
 title: PowerShell 파이프라인 이해
 ms.assetid: 6be50926-7943-4ef7-9499-4490d72a63fb
-ms.openlocfilehash: 3ee03f001668fb24ff9be1ea6ecb3817e319d0ee
-ms.sourcegitcommit: 59727f71dc204785a1bcdedc02716d8340a77aeb
+ms.openlocfilehash: fc7c7f57bdce458185a0f5bdb8bc1fbbd81d0d61
+ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43134164"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50002858"
 ---
 # <a name="understanding-pipelines"></a>파이프라인 이해
 
@@ -61,7 +61,7 @@ d-----        8/23/2018   5:07 PM                catroot2
 
 페이징을 사용하면 전체 페이지를 표시할 준비가 되면 처리가 `Out-Host` cmdlet으로 전송되므로 역시 CPU 사용률을 줄이는 데 효과가 있습니다. 파이프라인의 앞에 나오는 cmdlet은 출력의 다음 페이지를 사용할 수 있게 될 때까지 실행을 일시 중지합니다.
 
-Windows 작업 관리자에서 PowerShell이 사용하는 CPU와 메모리를 모니터링하면 차이점을 확인할 수 있습니다. 명령 `Get-ChildItem C:\\Windows -Recurse`를 실행합니다. CPU 및 메모리 사용량을 `Get-ChildItem C:\\Windows -Recurse | Out-Host -Paging` 명령과 비교합니다.
+Windows 작업 관리자에서 PowerShell이 사용하는 CPU와 메모리를 모니터링하면 차이점을 확인할 수 있습니다. 명령 `Get-ChildItem C:\Windows -Recurse`를 실행합니다. CPU 및 메모리 사용량을 `Get-ChildItem C:\Windows -Recurse | Out-Host -Paging` 명령과 비교합니다.
 
 ## <a name="objects-in-the-pipeline"></a>파이프라인의 개체
 

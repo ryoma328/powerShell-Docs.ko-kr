@@ -3,25 +3,25 @@ ms.date: 06/12/2017
 contributor: manikb
 keywords: gallery,powershell,cmdlet,psget
 title: PowerShellGet 설치
-ms.openlocfilehash: c385f7fbf6b688a11face9c3ebf4e6475a7b4c33
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: 5c51cb1c7ea2538cc5f8503ce6c5d80edda70e15
+ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893963"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50002226"
 ---
 # <a name="installing-powershellget"></a>PowerShellGet 설치
 
 ## <a name="powershellget-is-an-in-box-module-in-the-following-releases"></a>PowerShellGet은 다음 릴리스에서 제공되는 모듈입니다.
 
-- [Windows 10](https://www.microsoft.com/en-us/windows) 이상
+- [Windows 10](https://www.microsoft.com/windows) 이상
 - [Windows Server 2016](/windows-server/windows-server) 이상
-- [WMF(Windows Management Framework) 5.0](https://www.microsoft.com/en-us/download/details.aspx?id=50395) 이상
+- [WMF(Windows Management Framework) 5.0](https://www.microsoft.com/download/details.aspx?id=50395) 이상
 - [PowerShell 6](https://github.com/PowerShell/PowerShell/releases)
 
 ## <a name="get-powershellget-module-for-powershell-versions-30-and-40"></a>PowerShell 버전 3.0 및 4.0용 PowerShellGet 모듈 가져오기
 
-- [PackageManagement MSI](https://www.microsoft.com/en-us/download/details.aspx?id=51451)
+- [PackageManagement MSI](https://www.microsoft.com/download/details.aspx?id=51451)
 
 ## <a name="get-the-latest-version-from-powershell-gallery"></a>PowerShell 갤러리에서 최신 버전 가져오기
 
@@ -48,7 +48,7 @@ ms.locfileid: "37893963"
   Exit
   ```
 
-### <a name="for-systems-running-powershell-3-or-powershell-4-that-have-installed-the-packagemanagement-msihttpswwwmicrosoftcomen-usdownloaddetailsaspxid51451"></a>PowerShell 3 또는 PowerShell 4를 실행하며 [PackageManagement MSI](https://www.microsoft.com/en-us/download/details.aspx?id=51451)를 설치한 시스템
+### <a name="for-systems-running-powershell-3-or-powershell-4-that-have-installed-the-packagemanagement-msihttpswwwmicrosoftcomdownloaddetailsaspxid51451"></a>PowerShell 3 또는 PowerShell 4를 실행하며 [PackageManagement MSI](https://www.microsoft.com/download/details.aspx?id=51451)를 설치한 시스템
 
 - 관리자 권한 PowerShell 세션에서 아래의 PowerShellGet cmdlet을 사용하여 로컬 디렉터리에 모듈을 저장합니다.
 
