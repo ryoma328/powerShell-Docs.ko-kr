@@ -3,12 +3,12 @@ ms.date: 09/05/2018
 contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 title: PowerShell 갤러리 계정 설정
-ms.openlocfilehash: dd7b8b3a99b5b7fbfec5d7f82b81dd6d5cfb906c
-ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
+ms.openlocfilehash: ebe784ec5aae5ff3a4d444d12a168ef38aaef65f
+ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45523153"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50002789"
 ---
 # <a name="powershell-gallery-account-settings"></a>PowerShell 갤러리 계정 설정
 
@@ -34,7 +34,7 @@ PowerShell 갤러리에서 제공하는 계정 설정은 다음과 같습니다.
 PowerShell 갤러리에서 제공하는 알림 옵션은 다음과 같습니다.
 
 - 사용자가 PowerShell 갤러리를 통해 연락할 수 있음
-- 내 계정을 사용하여 PowerShell 갤러리에 항목을 푸시할 때 알림
+- 내 계정을 사용하여 PowerShell 갤러리에 패키지를 푸시할 때 알림
 
 ![이메일 주소 변경](../../Images/PSGallery_AccountEmailOptions.png)
 

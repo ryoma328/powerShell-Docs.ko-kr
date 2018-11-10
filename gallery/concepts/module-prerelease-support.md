@@ -3,21 +3,21 @@ ms.date: 09/26/2017
 contributor: keithb
 keywords: gallery,powershell,cmdlet,psget
 title: 시험판 모듈 버전
-ms.openlocfilehash: 9c3ddb623fbcb7f4b3453dd70cdc56a8dc2e9f6a
-ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
+ms.openlocfilehash: f58b5adfeba7ed06d231c76accbd52508c7d67d6
+ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39268622"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50002772"
 ---
 # <a name="prerelease-module-versions"></a>시험판 모듈 버전
 
-버전 1.6.0부터 PowerShellGet 및 PowerShell 갤러리에서 시험판으로 1.0.0보다 큰 버전에 대한 태그 지정을 지원합니다. 이 기능이 출시되기 전에는 시험판 항목이 0으로 시작하는 버전으로 제한되었습니다. 이러한 기능의 목표는 PowerShell 버전 3 이상 또는 기존 PowerShellGet 버전 및 이전 버전과의 호환성을 손상하지 않으면서 [SemVer v1.0.0](http://semver.org/spec/v1.0.0.html) 버전 관리 규칙을 더 효율적으로 지원하기 위한 것입니다. 이 항목에서는 모듈의 특정 기능에 중점을 둡니다. 스크립트에 해당하는 기능은 [시험판 스크립트 버전](script-prerelease-support.md) 항목에 있습니다. 게시자는 먼저 이러한 기능을 사용하여 모듈 또는 스크립트를 2.5.0-alpha 버전으로 식별하고, 나중에 해당 시험판 버전을 대체하는 2.5.0 프로덕션 준비 버전을 출시할 수 있습니다.
+버전 1.6.0부터 PowerShellGet 및 PowerShell 갤러리에서 시험판으로 1.0.0보다 큰 버전에 대한 태그 지정을 지원합니다. 이 기능이 출시되기 전에는 시험판 패키지가 0으로 시작하는 버전으로 제한되었습니다. 이러한 기능의 목표는 PowerShell 버전 3 이상 또는 기존 PowerShellGet 버전 및 이전 버전과의 호환성을 손상하지 않으면서 [SemVer v1.0.0](http://semver.org/spec/v1.0.0.html) 버전 관리 규칙을 더 효율적으로 지원하기 위한 것입니다. 이 항목에서는 모듈의 특정 기능에 중점을 둡니다. 스크립트에 해당하는 기능은 [시험판 스크립트 버전](script-prerelease-support.md) 항목에 있습니다. 게시자는 먼저 이러한 기능을 사용하여 모듈 또는 스크립트를 2.5.0-alpha 버전으로 식별하고, 나중에 해당 시험판 버전을 대체하는 2.5.0 프로덕션 준비 버전을 출시할 수 있습니다.
 
 상위 수준의 시험판 모듈 기능은 다음과 같습니다.
 
-- 모듈 매니페스트의 PSData 섹션에 Prerelease 문자열을 추가하면 해당 모듈이 시험판 버전으로 식별됩니다. 모듈이 PowerShell 갤러리에 게시되면 매니페스트에서 이 데이터를 추출하여 시험판 항목을 식별하는 데 사용합니다.
-- 시험판 버전을 가져오려면 PowerShellGet 명령 `Find-Module`, `Install-Module`, `Update-Module` 및 `Save-Module`에 `-AllowPrerelease` 플래그를 추가해야 합니다. 플래그를 지정하지 않으면 시험판 항목이 표시되지 않습니다.
+- 모듈 매니페스트의 PSData 섹션에 Prerelease 문자열을 추가하면 해당 모듈이 시험판 버전으로 식별됩니다. 모듈이 PowerShell 갤러리에 게시되면 매니페스트에서 이 데이터를 추출하여 시험판 패키지를 식별하는 데 사용합니다.
+- 시험판 패키지를 가져오려면 PowerShellGet 명령 `Find-Module`, `Install-Module`, `Update-Module` 및 `Save-Module`에 `-AllowPrerelease` 플래그를 추가해야 합니다. 플래그를 지정하지 않으면 시험판 패키지가 표시되지 않습니다.
 - `Find-Module`, `Get-InstalledModule` 및 PowerShell 갤러리에 표시되는 모듈 버전은 2.5.0-alpha와 같이 Prerelease 문자열이 추가된 단일 문자열로 표시됩니다.
 
 기능에 대한 자세한 내용은 아래에 나와 있습니다.
@@ -51,7 +51,7 @@ Prerelease 문자열의 세부 요구 사항은 다음과 같습니다.
 
 - ModuleVersion이 Major.Minor.Build에 해당하는 3개 세그먼트로 구성된 경우에만 Prerelease 문자열을 지정할 수 있습니다. 이는 SemVer v1.0.0과 일치합니다.
 - 하이픈은 Build 숫자와 Prerelease 문자열 사이의 구분 기호입니다. Prerelease 문자열에서 하이픈은 첫 번째 문자로만 포함될 수 있습니다.
-- Prerelease 문자열에는 ASCII 영숫자[0-9, A-Z, a-z, -]만 포함될 수 있습니다. Prerelease 문자열은 alpha 문자로 시작하는 것이 좋습니다. 이렇게 하면 항목 목록을 검색할 때 시험판 버전임을 쉽게 식별할 수 있기 때문입니다.
+- Prerelease 문자열에는 ASCII 영숫자[0-9, A-Z, a-z, -]만 포함될 수 있습니다. Prerelease 문자열은 alpha 문자로 시작하는 것이 좋습니다. 이렇게 하면 패키지 목록을 검색할 때 시험판 버전임을 쉽게 식별할 수 있기 때문입니다.
 - 현재 SemVer v1.0.0 시험판 문자열만 지원됩니다. Prerelease 문자열에는 마침표 또는 +[.+]가 **포함되지 않아야** 하지만, SemVer 2.0에서는 허용됩니다.
 - 지원되는 Prerelease 문자열의 예: -alpha, -alpha1, -BETA, -update20171020
 
@@ -61,9 +61,9 @@ Prerelease 문자열의 세부 요구 사항은 다음과 같습니다.
 
 PowerShell 갤러리에 게시할 때 게시되는 모듈의 버전은 기본적으로 PowerShell 갤러리에 있는 이전에 게시한 버전보다 더 높은 버전이어야 합니다.
 
-## <a name="finding-and-acquiring-prerelease-items-using-powershellget-commands"></a>PowerShellGet 명령으로 시험판 항목 찾기 및 가져오기
+## <a name="finding-and-acquiring-prerelease-packages-using-powershellget-commands"></a>PowerShellGet 명령으로 시험판 패키지 찾기 및 가져오기
 
-Find-Module, Install-Module, Update-Module 및 Save-Module PowerShellGet 명령을 사용하여 시험판 항목을 처리하려면 -AllowPrerelease 플래그를 추가해야 합니다. -AllowPrerelease 플래그를 지정하면 시험판 항목이 있는 경우 해당 항목이 포함됩니다. -AllowPrerelease 플래그를 지정하지 않으면 시험판 항목이 표시되지 않습니다.
+Find-Module, Install-Module, Update-Module 및 Save-Module PowerShellGet 명령을 사용하여 시험판 패키지를 처리하려면 -AllowPrerelease 플래그를 추가해야 합니다. -AllowPrerelease 플래그를 지정하면 시험판 패키지가 있는 경우 해당 패키지가 포함됩니다. -AllowPrerelease 플래그를 지정하지 않으면 시험판 패키지가 표시되지 않습니다.
 
 PowerShellGet 모듈 명령에서 이 플래그에 대한 유일한 예외로 Get-InstalledModule 및 Uninstall-Module을 사용하는 일부 경우가 있습니다.
 

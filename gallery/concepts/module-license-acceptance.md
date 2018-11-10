@@ -3,18 +3,18 @@ ms.date: 06/09/2017
 schema: 2.0.0
 keywords: PowerShell
 title: 라이선스 동의가 필요한 모듈
-ms.openlocfilehash: 93f92f6e83bcf18a40c3d89eb39a154e16ca5063
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: 369e32d5278a2e1bf1d3f2ae67f670c524b9f878
+ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37893113"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50002670"
 ---
 # <a name="modules-requiring-license-acceptance"></a>라이선스 동의가 필요한 모듈
 
 ## <a name="synopsis"></a>요약
 
-일부 모듈 게시자의 법률 부서에서는 고객이 PowerShell 갤러리에서 모듈을 설치하기 전에 명시적으로 라이선스에 동의하도록 요구합니다. 직접적이든 다른 항목에 대한 종속성으로서든, 사용자가 PowerShellGet을 사용하여 모듈을 설치, 업데이트 또는 저장하고 해당 모듈에서 사용자가 라이선스에 동의할 것을 요구하는 경우 사용자는 라이선스에 동의함을 나타내야 합니다. 그러하지 않으면 작업에 실패합니다.
+일부 모듈 게시자의 법률 부서에서는 고객이 PowerShell 갤러리에서 모듈을 설치하기 전에 명시적으로 라이선스에 동의하도록 요구합니다. 사용자가 직접 또는 다른 패키지에 대한 종속성을 통해 PowerShellGet을 사용하여 모듈을 설치, 업데이트 또는 저장할 때 해당 모듈에서 사용자가 라이선스에 동의할 것을 요구하는 경우 사용자는 라이선스에 동의해야 합니다. 동의하지 않으면 작업에 실패합니다.
 
 ## <a name="publish-requirements-for-modules"></a>모듈에 요구 사항 게시
 
@@ -43,7 +43,7 @@ ms.locfileid: "37893113"
 
 - 설치/저장/업데이트 작업 중 종속 모듈(모듈에 종속되는 작업)에 라이선스 동의가 필요한 경우 라이선스 동의 동작(위)이 필요합니다.
 - 시스템에 설치되면서 모듈 버전이 로컬 카탈로그에 이미 나열되어 있는 경우 라이선스 확인을 무시합니다.
-- 설치/저장/업데이트 작업 중 종속 모듈에 라이선스가 필요한데 라이선스 동의가 발생하지 않는 경우 작업에 실패하고 항목 설치/저장/업데이트 실패에 대한 일반적인 프로세스를 따릅니다.
+- 설치/저장/업데이트 작업 중 종속 모듈에 라이선스가 필요한데 사용자가 라이선스에 동의하지 않은 경우, 작업에 실패하고 패키지 설치/저장/업데이트 실패에 대한 일반적인 프로세스가 진행됩니다.
 
 ## <a name="impact-on--force"></a>-Force에 대한 영향
 
@@ -219,6 +219,6 @@ Update-Module -Name ModuleRequireLicenseAcceptance -AcceptLicense
 
 [스크립트에 대한 라이선스 동의 필요](./script-license-acceptance.md)
 
-[PowerShellGallery에서 라이선스 동의 지원 필요](../how-to/working-with-items/items-that-require-license-acceptance.md)
+[PowerShellGallery에서 라이선스 동의 지원 필요](../how-to/working-with-packages/packages-that-require-license-acceptance.md)
 
-[Azure Automation에 배포에 대한 라이선스 동의 필요](../how-to/working-with-items/deploy-to-azure-automation.md)
+[Azure Automation에 배포에 대한 라이선스 동의 필요](../how-to/working-with-packages/deploy-to-azure-automation.md)

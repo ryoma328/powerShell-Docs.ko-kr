@@ -2,12 +2,12 @@
 title: PowerShell 개발에 Visual Studio 코드 사용
 description: PowerShell 개발에 Visual Studio 코드 사용
 ms.date: 08/06/2018
-ms.openlocfilehash: 8fbaba826624199d06fe4fdc785998e0135d7fe7
-ms.sourcegitcommit: 59727f71dc204785a1bcdedc02716d8340a77aeb
+ms.openlocfilehash: 9c06ce72c39d08e75fcb7e5cf9d5f92ae5dd8ed9
+ms.sourcegitcommit: e76665315fd928bf85210778f1fea2be15264fea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43134103"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50225797"
 ---
 # <a name="using-visual-studio-code-for-powershell-development"></a>PowerShell 개발에 Visual Studio 코드 사용
 
@@ -124,12 +124,11 @@ Visual Studio Code 버전 1.9부터 PowerShell 스크립트가 포함된 폴더�
 - 디버거에서 대화형 세션 시작
 - PowerShell 호스트 프로세스에 디버거 연결
 
-  디버그 구성 파일을 만들려면 다음 단계를 수행합니다.
+디버그 구성 파일을 만들려면 다음 단계를 수행합니다.
 
   1. **Ctrl+Shift+D**(Mac에서는 **Cmd+Shift+D**)를 눌러 **디버그** 보기를 엽니다.
   2. 도구 모음에서 **구성** 기어 아이콘을 누릅니다.
-  3. Visual Studio Code에서 **환경 선택**에 대한 메시지가 표시됩니다.
-  **PowerShell**을 선택합니다.
+  3. Visual Studio Code에서 **환경 선택**에 대한 메시지가 표시됩니다. **PowerShell**을 선택합니다.
 
   그러면 Visual Studio Code에서 작업 영역 폴더의 루트에 ".vscode\launch.json"이라는 파일과 디렉터리를 만듭니다.
   여기에 디버그 구성이 저장됩니다. 파일이 Git 리포지토리에 있을 경우 일반적으로 launch.json 파일을 커밋하는 것이 좋습니다.
@@ -171,9 +170,7 @@ Visual Studio Code 버전 1.9부터 PowerShell 스크립트가 포함된 폴더�
 
   디버그 구성이 설정되면 **디버그** 보기의 도구 모음에 있는 디버그 구성 드롭다운에서 항목을 선택하여 디버그 세션 중에 사용할 구성을 선택할 수 있습니다.
 
-  Visual Studio Code에 대한 PowerShell 확장 사용을 시작하는 데 도움이 되는 몇 가지 블로그가 있습니다.
-
-Visual Studio Code:
+Visual Studio Code에 대한 PowerShell 확장 사용을 시작하는 데 도움이 되는 몇 가지 블로그가 있습니다.
 
 - [PowerShell 확장][ps-extension]
 - [Visual Studio Code에서 PowerShell 스크립트 작성 및 디버깅][debug]

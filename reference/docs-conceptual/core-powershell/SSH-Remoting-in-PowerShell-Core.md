@@ -2,12 +2,12 @@
 title: SSH를 통한 PowerShell 원격
 description: SSH를 사용하여 PowerShell Core에서 원격 작업
 ms.date: 08/14/2018
-ms.openlocfilehash: 84c3896fe28847beb03e930f933bb4a9dfad397f
-ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
+ms.openlocfilehash: 842e67e96661bca8be54aab33cbc11aa23dbd1c0
+ms.sourcegitcommit: 47becf2823ece251a7264db2387bb503cf3abaa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48851240"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49451068"
 ---
 # <a name="powershell-remoting-over-ssh"></a>SSH를 통한 PowerShell 원격
 
@@ -15,7 +15,7 @@ ms.locfileid: "48851240"
 
 PowerShell 원격 기능은 일반적으로 연결 협상 및 데이터 전송에 WinRM을 사용합니다. 이제 SSH를 Linux 및 Windows 플랫폼에서 사용할 수 있으며 진정한 다중 플랫폼 PowerShell 원격 기능이 지원됩니다.
 
-WinRM은 PowerShell 원격 세션을 위한 강력한 호스팅 모델을 제공합니다. 현재, 이 구현에서 SSH 기반 원격 기능은 원격 엔드포인트 구성 및 JEA(Just Enough Administration)를 지원하지 않습니다.
+WinRM은 PowerShell 원격 세션을 위한 강력한 호스팅 모델을 제공합니다. SSH 기반 원격 기능은 원격 엔드포인트 구성 및 JEA(Just Enough Administration)를 지원하지 않습니다.
 
 SSH 원격 기능을 사용하면 Windows 및 Linux 컴퓨터 간에 기본적인 PowerShell 세션 원격 작업을 수행할 수 있습니다. SSH 원격 기능은 대상 컴퓨터에 SSH 하위 시스템으로 PowerShell 호스트 프로세스를 만듭니다.
 앞으로는 엔드포인트 구성 및 JEA를 지원하기 위해 WinRM과 유사한 일반 호스팅 모델을 구현할 예정입니다.
@@ -48,7 +48,7 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
    ```
 
 2. [설치](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH) 지침에 따라 GitHub에서 최신 [Win32 OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/releases) 빌드를 설치합니다.
-3. Win32 OpenSSH를 설치한 위치에서 sshd_config 파일을 편집합니다.
+3. `%ProgramData%\ssh`에 있는 sshd_config 파일을 편집합니다.
 
    - 암호 인증이 활성화되었는지 확인합니다.
 
@@ -57,7 +57,7 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
      ```
 
      ```
-     Subsystem    powershell c:/program files/powershell/6.0.4/pwsh.exe -sshs -NoLogo -NoProfile
+     Subsystem    powershell c:/program files/powershell/6/pwsh.exe -sshs -NoLogo -NoProfile
      ```
 
      > [!NOTE]
@@ -66,7 +66,7 @@ Linux의 경우 플랫폼에 적합한 SSH(sshd 서버 포함)를 설치합니�
      한 가지 해결 방법은 공백이 없는 Powershell 설치 디렉터리에 symlink를 만드는 것입니다.
 
      ```powershell
-     mklink /D c:\pwsh "C:\Program Files\PowerShell\6.0.4"
+     mklink /D c:\pwsh "C:\Program Files\PowerShell\6"
      ```
 
      그런 다음, 하위 시스템에 입력합니다.

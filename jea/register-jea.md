@@ -2,19 +2,19 @@
 ms.date: 06/12/2017
 keywords: jea,powershell,security
 title: JEA 구성 등록
-ms.openlocfilehash: 2c4a8f64c966903a6eb8fcabe4cd25ae7f98b2c4
-ms.sourcegitcommit: e46b868f56f359909ff7c8230b1d1770935cce0e
+ms.openlocfilehash: 160aa95283da57a10aad5fdd4043adb1354a5db5
+ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45522857"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50002909"
 ---
 # <a name="registering-jea-configurations"></a>JEA 구성 등록
 
 > 적용 대상: Windows PowerShell 5.0
 
 [역할 기능](role-capabilities.md) 및 [세션 구성 파일](session-configurations.md)을 만든 후 JEA를 사용하기 위한 마지막 단계는 JEA 엔드포인트를 등록하는 것입니다.
-이 프로세스에서는 시스템에 세션 구성 정보를 적용하고 사용자 및 자동화 엔진에서 엔드포인트를 사용할 수 있도록 설정합니다.
+시스템에 JEA 엔드포인트를 등록하면 사용자 및 자동화 엔진에서 엔드포인트를 사용할 수 있게 됩니다.
 
 ## <a name="single-machine-configuration"></a>단일 컴퓨터 구성
 
@@ -53,7 +53,7 @@ Register-PSSessionConfiguration -Path .\MyJEAConfig.pssc -Name 'JEAMaintenance' 
 > 비즈니스 운영이 중단되지 않게 하려면 명령을 실행하기 전에 모든 프로덕션 컴퓨터를 오프라인 상태로 전환하는 것이 좋습니다.
 
 등록에 성공하면 [JEA를 사용](using-jea.md)할 준비가 된 것입니다.
-세션 구성 파일을 등록한 후 사용하지 않은 경우 언제든지 삭제할 수 있습니다.
+엔드포인트를 등록한 후에는 세션 구성 파일이 사용되지 않으므로 언제든지 삭제할 수 있습니다.
 
 ## <a name="multi-machine-configuration-with-dsc"></a>DSC를 사용한 다중 컴퓨터 구성
 

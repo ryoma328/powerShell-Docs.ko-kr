@@ -1,13 +1,13 @@
 ---
 title: macOS에서 PowerShell Core 설치
 description: macOS에서 PowerShell Core를 설치하는 방법에 대한 정보
-ms.date: 08/06/2018
-ms.openlocfilehash: 042c933dfa83f3ab52e315036e4f817145116d00
-ms.sourcegitcommit: aa41249f153bbc6e11667ade60c878980c15abc6
+ms.date: 11/02/2018
+ms.openlocfilehash: 162e841bf71d708e9db84ea1bb2dbef13924783b
+ms.sourcegitcommit: f4247d3f91d06ec392c4cd66921ce7d0456a2bd9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45611490"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "50998506"
 ---
 # <a name="installing-powershell-core-on-macos"></a>macOS에서 PowerShell Core 설치
 
@@ -15,10 +15,14 @@ PowerShell Core는 macOS 10.12 이상을 지원합니다.
 모든 패키지는 GitHub [릴리스][] 페이지에 제공됩니다.
 패키지가 설치되면 터미널에서 `pwsh`를 실행합니다.
 
-## <a name="installation-of-latest-stable-release-via-homebrew-on-macos-1012-or-higher"></a>macOS 10.12 이상에서 Homebrew를 통해 안정적인 최신 릴리스 설치
+## <a name="about-brew"></a>Brew 정보
 
 [Homebrew][brew]는 macOS용 기본 패키지 관리자입니다.
 `brew` 명령이 없을 경우 [해당 지침][brew]에 따라 Homebrew를 설치해야 합니다.
+
+## <a name="installation-of-latest-stable-release-via-homebrew-on-macos-1012-or-higher"></a>macOS 10.12 이상에서 Homebrew를 통해 안정적인 최신 릴리스 설치
+
+Brew에 대한 자세한 내용은 [Brew정보](#about-brew)를 참조하세요.
 
 이제 PowerShell을 설치할 수 있습니다.
 
@@ -40,15 +44,13 @@ brew cask upgrade powershell
 ```
 
 > [!NOTE]
-> 위의 명령은 PowerShell(pwsh) 호스트 내에서 호출할 수 있지만, 업그레이드를 완료하기 위해 PowerShell 셸을 종료하고 다시 시작해야 합니다.
-> $PSVersionTable에 표시된 값을 새로 고칩니다.
+> 위의 명령은 PowerShell(pwsh) 호스트 내에서 호출할 수 있지만 이때 PowerShell 셸을 종료하고 다시 시작하여 업그레이드를 완료하고 $PSVersionTable에 표시된 값을 새로 고쳐야 합니다.
 
 [brew]: http://brew.sh/
 
 ## <a name="installation-of-latest-preview-release-via-homebrew-on-macos-1012-or-higher"></a>macOS 10.12 이상에서 Homebrew를 통해 최신 미리 보기 릴리스 설치
 
-[Homebrew][brew]는 macOS용 기본 패키지 관리자입니다.
-`brew` 명령이 없을 경우 [해당 지침][brew]에 따라 Homebrew를 설치해야 합니다.
+Brew에 대한 자세한 내용은 [Brew정보](#about-brew)를 참조하세요.
 
 Homebrew를 설치했으면 PowerShell을 쉽게 설치할 수 있습니다.
 먼저, Cask 패키지의 다른 버전을 설치할 수 있는 [Cask-버전][cask-versions]을 설치합니다.
@@ -91,6 +93,8 @@ PKG 패키지 `powershell-6.1.0-osx-x64.pkg`를
 sudo installer -pkg powershell-6.1.0-osx-x64.pkg -target /
 ```
 
+[OpenSSL](#install-openssl)을 설치합니다. 이것은 PowerShell 원격 기능과 CIM 작업에 필요합니다.
+
 ## <a name="binary-archives"></a>이진 아카이브
 
 고급 배포 시나리오를 사용하도록 설정하려면 macOS 플랫폼에 대해 PowerShell 이진 `tar.gz` 보관이 제공됩니다.
@@ -112,6 +116,41 @@ sudo chmod +x /usr/local/microsoft/powershell/6.1.0/pwsh
 
 # Create the symbolic link that points to pwsh
 sudo ln -s /usr/local/microsoft/powershell/6.1.0/pwsh /usr/local/bin/pwsh
+```
+
+[OpenSSL](#install-openssl)을 설치합니다. 이것은 PowerShell 원격 기능과 CIM 작업에 필요합니다.
+
+## <a name="installing-dependencies"></a>종속성 설치
+
+### <a name="install-xcode-command-line-tools"></a>XCode 명령줄 도구를 설치합니다.
+
+```shell
+xcode-select -install
+```
+
+### <a name="install-openssl"></a>OpenSSL 설치
+
+OpenSSL은 PowerShell 원격 기능 및 CIM 작업에 필요합니다.  MacPorts 또는 Brew를 통해 설치할 수 있습니다.
+
+#### <a name="install-openssl-via-brew"></a>Brew를 통해 OpenSSL 설치
+
+Brew에 대한 자세한 내용은 [Brew정보](#about-brew)를 참조하세요.
+
+`brew install openssl`을 실행하여 OpenSSL을 설치합니다.
+
+#### <a name="install-openssl-via-macports"></a>MacPorts를 통해 OpenSSL 설치
+
+1. [XCode 명령줄 도구](#install-xcode-command-line-tools)를 설치합니다.
+1. MacPorts를 설치합니다.
+   도움이 필요하면 [설치 지침](https://guide.macports.org/chunked/installing.macports.html)을 참조하세요.
+1. `sudo port selfupdate`를 실행하여 MacPorts 업데이트합니다.
+1. `sudo port upgrade outdated`를 실행하여 MacPorts 패키지를 업그레이드합니다.
+1. `sudo port instal openssl`을 실행하여 OpenSSL을 설치합니다.
+1. PowerShell에서 사용할 수 있도록 라이브러리를 링크합니다.
+
+```shell
+sudo mkdir -p /usr/local/opt/openssl
+sudo ln -s /opt/local/lib /usr/local/opt/openssl/lib
 ```
 
 ## <a name="uninstalling-powershell-core"></a>PowerShell Core 제거
@@ -149,7 +188,7 @@ sudo rm -rf /usr/local/bin/pwsh /usr/local/microsoft/powershell
 PowerShell은 macOS의 [XDG 기본 디렉터리 사양][xdg-bds]을 따릅니다.
 
 macOS는 BSD에서 파생된 것이므로 `/opt` 대신 `/usr/local`이 접두사로 사용됩니다.
-따라서 `$PSHOME`은 `/usr/local/microsoft/powershell/6.1.0/`이며 symlink는 `/usr/local/bin/pwsh`에 있습니다.
+따라서 `$PSHOME`은 `/usr/local/microsoft/powershell/6.1.0/`이며 기호화된 링크는 `/usr/local/bin/pwsh`에 있습니다.
 
 ## <a name="additional-resources"></a>추가 리소스
 

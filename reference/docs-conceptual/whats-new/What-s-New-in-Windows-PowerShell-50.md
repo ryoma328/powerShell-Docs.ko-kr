@@ -2,12 +2,12 @@
 ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 5.0의 새로운 기능
-ms.openlocfilehash: f5a27c0541e21b379f88b318cbe09a0344c1b372
-ms.sourcegitcommit: 01d6985ed190a222e9da1da41596f524f607a5bc
+ms.openlocfilehash: 7a2ef581f2cd867b35533597d4942fd5bfc94570
+ms.sourcegitcommit: e76665315fd928bf85210778f1fea2be15264fea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34483188"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50225814"
 ---
 # <a name="whats-new-in-windows-powershell-50"></a>Windows PowerShell 5.0의 새로운 기능
 Windows PowerShell 5.0에는 용도를 확장하고, 사용 편의성을 높이며, Windows 기반 환경을 더욱 쉽고 종합적으로 제어하고 관리하는 데 사용할 수 있는 중요한 새 기능이 포함되어 있습니다.
@@ -293,7 +293,7 @@ Windows Server 2012 R2, Windows 8.1 Enterprise 또는 Windows 8.1 Pro에서 Wind
 
 ### <a name="new-features-in-windows-powershell-web-services-management-odata-iis-extension"></a>Windows PowerShell 웹 서비스의 새로운 기능(관리 OData IIS 확장)
 
-- Windows PowerShell 5.0부터 새 [Microsoft.PowerShell.OdataUtils](http://technet.microsoft.com/library/dn818507(v=wps.640).aspx) 모듈에 있는 Export-ODataEndpointProxy cmdlet을 실행하여 지정된 OData 끝점이 노출하는 기능에 따라 Windows PowerShell cmdlet 집합을 생성할 수 있습니다.
+- Windows PowerShell 5.0부터 새 [Microsoft.PowerShell.OdataUtils](http://technet.microsoft.com/library/dn818507(v=wps.640).aspx) 모듈에 있는 Export-ODataEndpointProxy cmdlet을 실행하여 지정된 OData 엔드포인트가 노출하는 기능에 따라 Windows PowerShell cmdlet 집합을 생성할 수 있습니다.
 
 ### <a name="notable-bug-fixes-in-windows-powershell-50"></a>Windows PowerShell 5.0의 중요한 버그 수정
 
@@ -375,13 +375,13 @@ Windows PowerShell 4.0에는 다음과 같은 새로운 기능이 있습니다.
 
 - **ErrorAction** 일반 매개 변수는 워크플로에 국한되는 새 유효한 값 **Suspend**가 있습니다.
 
-- 이제 활성 세션, 진행 중인 작업 및 보류 중인 작업이 없는 경우 워크플로 끝점이 자동으로 닫힙니다. 자동 종료 조건이 충족될 경우 이 기능은 워크플로 서버 역할을 하는 컴퓨터의 리소스를 절약합니다.
+- 이제 활성 세션, 진행 중인 작업 및 보류 중인 작업이 없는 경우 워크플로 엔드포인트가 자동으로 닫힙니다. 자동 종료 조건이 충족될 경우 이 기능은 워크플로 서버 역할을 하는 컴퓨터의 리소스를 절약합니다.
 
 ### <a name="new-features-in-windows-powershell-web-services"></a>Windows PowerShell 웹 서비스의 새로운 기능
 
 - cmdlet을 실행하는 중에 Windows PowerShell 웹 서비스(PSWS, 관리 OData IIS 확장이라고도 함)에서 오류가 발생할 경우 자세한 오류 메시지가 호출자에게 반환됩니다. 또한 오류 코드는 [Micosoft Azure REST API 오류 코드 지침](http://msdn.microsoft.com/library/windowsazure/dd179357.aspx)을 따릅니다.
 
-- 이제 끝점에서 API 버전을 정의하고 특정 API 버전을 강제로 사용할 수 있습니다. 클라이언트와 서버의 버전이 일치하지 않을 경우 항상 클라이언트와 서버 모두에 오류가 표시됩니다.
+- 이제 엔드포인트에서 API 버전을 정의하고 특정 API 버전을 강제로 사용할 수 있습니다. 클라이언트와 서버의 버전이 일치하지 않을 경우 항상 클라이언트와 서버 모두에 오류가 표시됩니다.
 
 - 스키마에서 누락된 필드에 대한 값을 자동으로 생성하여 디스패치 스키마 관리를 간소화했습니다. 디스패치 스키마가 없는 경우에도 유용한 시작점으로 생성됩니다.
 
@@ -511,7 +511,7 @@ Windows PowerShell 3.0의 경우 Windows PowerShell ISE(통합 스크립팅 환�
 Windows PowerShell은 Common Language Runtime 4.0을 기반으로 합니다. Cmdlet, 스크립트 및 워크플로 작성자는 Windows PowerShell의 새로운 Microsoft .NET Framework 4 클래스를 응용 프로그램 호환성 및 배포, 관리되는 확장 프레임워크, 병렬 계산, 네트워킹, Windows Communication Foundation, Windows Workflow Foundation 등과 같은 기능과 함께 사용할 수 있습니다.
 
 ### <a name="support-for-windows-preinstallation-environment"></a>Windows 사전 설치 환경 지원
-Windows PowerShell 3.0은 Windows 8용 Windows PE(Windows 사전 설치 환경) 4.0의 선택적 구성 요소입니다. Windows PE는 운영 체제가 없는 컴퓨터를 시작하고 Windows 설치를 준비하는 최소 운영 체제입니다. Windows PE를 사용하면 하드 드라이브의 파티션을 추가하여 포맷하고, 디스크 이미지를 컴퓨터에 복사하고, 네트워크 공유에서 Windows 설치 프로그램을 시작할 수 있습니다. Windows PE에서 Windows PowerShell 3.0을 사용하여 배포, 진단 및 복구 시나리오를 관리할 수 있습니다.
+Windows PowerShell 3.0은 Windows 8용 Windows PE(Windows 사전 설치 환경) 4.0의 선택적 구성 요소입니다. Windows PE는 운영 체제가 없는 컴퓨터를 시작하고 Windows 설치를 준비하는 최소 운영 체제입니다. Windows PE를 사용하면 하드 드라이브의 파티션을 추가하여 포맷하고, 디스크 이미지를 컴퓨터에 복사하고, 네트워크 공유에서 Windows 설치 프로그램을 시작할 수 있습니다. Windows PE에서 Windows PowerShell 3.0을 사용하여 배포, 진단 및 복구 시나리오를 관리할 수 있습니다.
 
 ### <a name="disconnected-sessions"></a>연결이 끊긴 세션
 Windows PowerShell 3.0 이상에서는 New-PSSession cmdlet을 사용하여 만든 지속성 사용자 관리 세션("PSSessions")이 원격 컴퓨터에 저장됩니다. 따라서 만들어진 세션에 더 이상 종속되지 않습니다.
@@ -582,7 +582,7 @@ Windows PowerShell 3.0 이상에서는 파일을 사용하여 사용자 지정 �
 
 세션 구성 파일을 만들려면 [New-PSSessionConfigurationFile](https://technet.microsoft.com/library/5f3e3633-6e90-479c-aea9-ba45a1954866) cmdlet을 사용합니다. 세션 구성 파일을 세션 구성에 적용하려면 [Register-PSSessionConfiguration](https://technet.microsoft.com/library/e9152ae2-bd6d-4056-9bc7-dc1893aa29ea) 또는 [Set-PSSessionConfiguration](https://technet.microsoft.com/library/b21fbad3-1759-4260-b206-dcb8431cd6ea) cmdlet을 사용합니다.
 
-자세한 내용은 [about_Session_Configuration_Files](https://technet.microsoft.com/library/c7217447-1ebf-477b-a8ef-4dbe9a1473b8) 및 [New-PSSessionConfigurationFile](https://technet.microsoft.com/library/5f3e3633-6e90-479c-aea9-ba45a1954866)을 참조하세요.
+자세한 내용은 [about_Session_Configuration_Files](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_session_configuration_files?view=powershell-5.0) 및 [New-PSSessionConfigurationFile](https://technet.microsoft.com/library/5f3e3633-6e90-479c-aea9-ba45a1954866)을 참조하세요.
 
 ### <a name="scheduled-jobs-and-task-scheduler-integration"></a>예약된 작업 및 작업 스케줄러 통합
 이제 Windows PowerShell 백그라운드 작업을 예약하고 Windows PowerShell 및 작업 스케줄러에서 해당 작업을 관리할 수 있습니다.
@@ -656,7 +656,7 @@ Windows PowerShell 콘솔의 탭 완성 기능은 이제 cmdlet의 이름, 매�
 
 **$PSModuleAutoLoadingPreference** 기본 설정 변수를 사용하여 모듈 자동 가져오기를 사용하거나 사용하지 않도록 설정하고 구성할 수 있습니다.
 
-자세한 내용은 [about_Modules [v4]](https://technet.microsoft.com/library/94f57429-a539-4aee-bb0d-205cd7e801f9), [about_Preference_Variables [v4]](https://technet.microsoft.com/library/31344314-be29-4286-b039-afa5460cbe8b), [Get-Command](https://technet.microsoft.com/library/59c6d302-6e8c-48b7-a6f6-f0172df936ad) 및 [Import-Module](https://technet.microsoft.com/library/af616c24-e122-4098-930e-1e3ea2080ade) cmdlet에 대한 도움말 항목을 참조하세요.
+자세한 내용은 [about_Modules](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_modules?view=powershell-5.0), [about_Preference_Variables [v4]](https://technet.microsoft.com/library/31344314-be29-4286-b039-afa5460cbe8b), [Get-Command](https://technet.microsoft.com/library/59c6d302-6e8c-48b7-a6f6-f0172df936ad) 및 [Import-Module](https://technet.microsoft.com/library/af616c24-e122-4098-930e-1e3ea2080ade) cmdlet에 대한 도움말 항목을 참조하세요.
 
 ### <a name="module-experience-improvements"></a>모듈 환경 향상
 Windows PowerShell 3.0에서는 다음과 같은 새로운 기능을 비롯하여 모듈에 대한 고급 기능을 지원합니다.

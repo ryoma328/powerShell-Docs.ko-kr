@@ -2,12 +2,12 @@
 ms.date: 05/17/2018
 keywords: powershell,core
 title: PowerShell 6.0의 알려진 문제
-ms.openlocfilehash: e3e718be903ff2223064d5790d3d0fe554ef04cd
-ms.sourcegitcommit: c3f1a83b59484651119630f3089aa51b6e7d4c3c
+ms.openlocfilehash: ce40a1925e564fbd2c661e70ec36d3842d915dfe
+ms.sourcegitcommit: 47becf2823ece251a7264db2387bb503cf3abaa9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39268005"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49450999"
 ---
 # <a name="known-issues-for-powershell-60"></a>PowerShell 6.0의 알려진 문제
 
@@ -86,13 +86,13 @@ PowerShell Core는 모든 플랫폼(Windows, macOS 및 Linux)에서 SSH를 통�
 
 ### <a name="just-enough-administration-jea-support"></a>JEA(Just-Enough-Administration) 지원
 
-제한된 관리(JEA) 원격 끝점을 만드는 기능은 Linux/macOS의 PowerShell에서 현재 사용할 수 없습니다. 이 기능은 현재 6.0의 범위에 없으며, 상당한 디자인 작업이 필요하므로 6.0 이후에 고려될 예정입니다.
+제한된 관리(JEA) 원격 엔드포인트를 만드는 기능은 Linux/macOS의 PowerShell에서 현재 사용할 수 없습니다. 이 기능은 현재 6.0의 범위에 없으며, 상당한 디자인 작업이 필요하므로 6.0 이후에 고려될 예정입니다.
 
 ### <a name="sudo-exec-and-powershell"></a>`sudo`, `exec` 및 PowerShell
 
-PowerShell은 대부분의 명령(예: Python 또는 Ruby)을 메모리에서 실행하므로 PowerShell 기본 제공 기능에서 바로 sudo를 사용할 수 없습니다. 물론, sudo에서 `powershell`을 실행할 수는 있습니다. sudo를 사용하여 PowerShell 내에서 PowerShell cmdlet을 실행해야 하는 경우(예: `sudo `Set-Date` 8/18/2016`), `sudo powershell `Set-Date` 8/18/2016`를 수행합니다. 마찬가지로, PowerShell 기본 제공 기능을 바로 실행할 수도 없습니다. 대신, `exec powershell item_to_exec`를 수행해야 합니다.
+PowerShell은 대부분의 명령(예: Python 또는 Ruby)을 메모리에서 실행하므로 PowerShell 기본 제공 기능에서 바로 sudo를 사용할 수 없습니다. 물론, sudo에서 `pwsh`을 실행할 수는 있습니다. sudo를 사용하여 PowerShell 내에서 PowerShell cmdlet을 실행해야 하는 경우(예: `sudo Set-Date 8/18/2016`), `sudo pwsh Set-Date 8/18/2016`을 수행합니다. 마찬가지로, PowerShell 기본 제공 기능을 바로 실행할 수도 없습니다. 대신, `exec pwsh item_to_exec`를 수행해야 합니다.
 
-이 문제는 현재 #3232의 일부로 추적되고 있습니다.
+이 문제는 현재 [#3232](https://github.com/PowerShell/PowerShell/issues/3232)의 일부로 추적되고 있습니다.
 
 ### <a name="missing-cmdlets"></a>cmdlet 누락
 

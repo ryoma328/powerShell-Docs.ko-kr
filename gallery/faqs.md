@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 title: PowerShell 갤러리 FAQ
-ms.openlocfilehash: e377e71cf5eeb1f8b73430cc0b97527eac970cff
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
+ms.openlocfilehash: 3fa52892ce50491c040251baae8b4ae4ee3dcba0
+ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34190437"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50002875"
 ---
 # <a name="frequently-asked-questions"></a>질문과 대답
 
@@ -29,30 +29,30 @@ PowerShell 스크립트는 다시 사용 및 공유할 수 있도록 .ps1 파일
 
 ## <a name="how-can-i-publish-to-the-powershell-gallery"></a>PowerShell 갤러리에 게시하려면 어떻게 하나요?
 
-갤러리에 항목을 게시하려면 먼저 PowerShell 갤러리에 계정을 등록해야 합니다. 항목을 게시하려면 등록 시 제공되는 NuGetApiKey가 필요하기 때문입니다. 등록하려면 개인, 회사 또는 학교 계정을 사용하여 PowerShell 갤러리에 로그인합니다. 일회성 등록 프로세스는 최초 로그인 시 필요합니다. 그 후에는 프로필 페이지에서 NuGetApiKey를 사용할 수 있습니다.
+갤러리에 패키지를 게시하려면 먼저 PowerShell 갤러리에 계정을 등록해야 합니다. 패키지를 게시하려면 등록 시 제공되는 NuGetApiKey가 필요하기 때문입니다. 등록하려면 개인, 회사 또는 학교 계정을 사용하여 PowerShell 갤러리에 로그인합니다. 일회성 등록 프로세스는 최초 로그인 시 필요합니다. 그 후에는 프로필 페이지에서 NuGetApiKey를 사용할 수 있습니다.
 
-갤러리에 등록했으면 [Publish-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 또는 [Publish-Script](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) cmdlet을 사용하여 갤러리에 항목을 게시합니다. 이러한 cmdlet을 실행하는 방법에 대한 자세한 내용은 게시 탭이나 [Publish-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 및 [Publish-Script](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 설명서를 참조하세요.
+갤러리에 등록했으면 [Publish-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 또는 [Publish-Script](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) cmdlet을 사용하여 갤러리에 패키지를 게시합니다. 이러한 cmdlet을 실행하는 방법에 대한 자세한 내용은 게시 탭이나 [Publish-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 및 [Publish-Script](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 설명서를 참조하세요.
 
-**항목을 설치하거나 저장하기 위해 갤러리에 등록 또는 로그인할 필요는 없습니다.**
+**패키지를 설치하거나 저장하기 위해 갤러리에 등록 또는 로그인할 필요는 없습니다.**
 
-## <a name="i-received-failed-to-process-request-the-specified-api-key-is-invalid-or-does-not-have-permission-to-access-the-specified-package-the-remote-server-returned-an-error-403-forbidden-error-when-i-tried-to-publish-an-item-to-the-powershell-gallery-what-does-that-mean"></a>PowerShell 갤러리에 항목을 게시하려고 했을 때 "요청을 처리하지 못했습니다. '지정된 API 키가 잘못되었거나 지정된 패키지에 액세스할 수 있는 권한이 없습니다.' 원격 서버에서 (403) 사용할 수 없음 오류를 반환했습니다."라는 오류가 발생했습니다. 어떤 의미입니까?
+## <a name="i-received-failed-to-process-request-the-specified-api-key-is-invalid-or-does-not-have-permission-to-access-the-specified-package-the-remote-server-returned-an-error-403-forbidden-error-when-i-tried-to-publish-a-package-to-the-powershell-gallery-what-does-that-mean"></a>PowerShell 갤러리에 항목을 게시하려고 했을 때 "요청을 처리하지 못했습니다. '지정된 API 키가 잘못되었거나 지정된 패키지에 액세스할 수 있는 권한이 없습니다.' 원격 서버에서 (403) 사용할 수 없음 오류를 반환했습니다."라는 오류가 발생했습니다. 어떤 의미입니까?
 
 이 오류는 다음과 같은 이유로 발생할 수 있습니다.
 
 - **지정된 API 키가 잘못되었습니다.**
      계정에서 유효한 API 키를 지정했는지 확인합니다. API 키를 가져오려면 프로필 페이지를 봅니다.
-- **지정된 항목 이름이 사용자 소유가 아닙니다.**
-     API 키가 올바른지 확인했으면 사용하려는 이름과 동일한 이름의 항목이 있는 것일 수 있습니다. 소유자가 항목을 목록에서 제거했을 수 있으며, 이 경우 검색 결과에 표시되지 않습니다. 동일한 이름의 항목이 이미 있는지 확인하려면 브라우저를 열고 항목의 세부 정보 페이지(`https://www.powershellgallery.com/packages/<itemName>`)로 이동합니다. 예를 들어 `https://www.powershellgallery.com/packages/pester`로 직접 이동하면 목록에 있는지 여부에 관계없이 Pester 모듈의 세부 정보 페이지가 표시됩니다. 충돌하는 이름의 항목이 이미 있고 목록에 표시되지 않는 경우 다음을 수행할 수 있습니다.
-    - 항목에 대해 다른 이름을 선택합니다.
-    - 기존 항목의 소유자에게 문의합니다.
+- **지정된 패키지 이름이 사용자 소유가 아닙니다.**
+     API 키가 올바른지 확인했으면 사용하려는 이름과 동일한 이름의 패키지가 있는 것일 수 있습니다. 소유자가 패키지를 목록에서 제거했을 수 있으며, 이 경우 검색 결과에 표시되지 않습니다. 동일한 이름의 패키지가 이미 있는지 확인하려면 브라우저를 열고 패키지의 세부 정보 페이지(`https://www.powershellgallery.com/packages/<packageName>`)로 이동합니다. 예를 들어 `https://www.powershellgallery.com/packages/pester`로 직접 이동하면 목록에 있는지 여부에 관계없이 Pester 모듈의 세부 정보 페이지가 표시됩니다. 충돌하는 이름의 패키지가 이미 있고 목록에 표시되지 않는 경우 다음을 수행할 수 있습니다.
+    - 패키지에 대해 다른 이름을 선택합니다.
+    - 기존 패키지의 소유자에게 문의합니다.
 
 ## <a name="why-cant-i-sign-in-with-my-personal-account-but-i-could-sign-in-yesterday"></a>어제는 로그인할 수 있었는데 내 개인 계정으로 로그인할 수 없는 이유는 무엇인가요?
 
 갤러리 계정은 기본 메일 별칭의 변경을 허용하지 않습니다. 자세한 내용은 [Microsoft 메일 별칭](https://windows.microsoft.com/windows/outlook/add-alias-account)을 참조하세요.
 
-## <a name="why-dont-i-see-all-the-gallery-items-when-i-select-all-the-category-checkboxes-on-the-items-tab"></a>항목 탭에서 범주 확인란을 모두 선택해도 모든 갤러리 항목이 표시되지 않는 이유는 무엇인가요?
+## <a name="why-dont-i-see-all-the-gallery-packages-when-i-select-all-the-category-checkboxes-on-the-packages-tab"></a>패키지 탭에서 범주 확인란을 모두 선택해도 모든 갤러리 패키지가 표시되지 않는 이유는 무엇인가요?
 
-범주 확인란 선택은 "이 범주에 있는 모든 항목을 표시"하는 것입니다. 선택한 범주에 있는 항목만 표시됩니다. 마찬가지로, 모든 범주 확인란 선택은 "모든 범주에 있는 모든 항목을 표시"하는 것입니다. 하지만 갤러리에 있는 일부 항목은 나열된 범주에 속하지 않으므로 결과에 표시되지 않습니다. 갤러리에 있는 모든 항목을 보려면 모든 범주의 선택을 취소하거나 항목 탭을 다시 선택합니다.
+범주 확인란 선택은 "이 범주에 있는 모든 패키지를 표시"하는 것입니다. 선택한 범주에 있는 패키지만 표시됩니다. 마찬가지로, 모든 범주 확인란 선택은 "모든 범주에 있는 모든 패키지를 표시"하는 것입니다. 하지만 갤러리에 있는 일부 패키지는 나열된 범주에 속하지 않으므로 결과에 표시되지 않습니다. 갤러리에 있는 모든 패키지를 보려면 모든 범주의 선택을 취소하거나 패키지 탭을 다시 선택합니다.
 
 ## <a name="what-are-the-requirements-to-publish-a-module-to-the-powershell-gallery"></a>PowerShell 갤러리에 모듈을 게시하기 위한 요구 사항은 무엇인가요?
 
@@ -82,7 +82,7 @@ PowerShell 스크립트는 다시 사용 및 공유할 수 있도록 .ps1 파일
 
 ## <a name="how-do-i-search"></a>검색하려면 어떻게 하나요?
 
-텍스트 상자에 찾으려는 내용을 입력합니다. 예를 들어 Azure SQL과 관련된 모듈을 찾으려는 경우 "azure sql"을 입력하면 됩니다. 검색 엔진은 제목, 설명 및 메타데이터를 비롯하여 게시된 모든 항목에서 해당 키워드를 검색합니다. 그런 다음 가중치가 적용된 품질 점수를 기준으로 가장 가까운 일치 항목을 표시합니다. 다음 필드에 대한 검색 쿼리에 필드:"값" 구문을 사용하여 특정 필드를 기준으로 검색할 수도 있습니다.
+텍스트 상자에 찾으려는 내용을 입력합니다. 예를 들어 Azure SQL과 관련된 모듈을 찾으려는 경우 "azure sql"을 입력하면 됩니다. 검색 엔진은 제목, 설명 및 메타데이터를 비롯하여 게시된 모든 패키지에서 해당 키워드를 검색합니다. 그런 다음 가중치가 적용된 품질 점수를 기준으로 가장 가까운 일치 항목을 표시합니다. 다음 필드에 대한 검색 쿼리에 필드:"값" 구문을 사용하여 특정 필드를 기준으로 검색할 수도 있습니다.
 
 - 태그
 - 함수
@@ -112,7 +112,7 @@ PowerShell 모듈이란 용어는 실제 기능을 구현하는 파일도 가리
 
 PackageManagement는 모든 패키지 관리자 작업에 사용되는 공용 인터페이스입니다. PowerShell 모듈, MSI, Ruby 보석, NuGet 패키지 또는 Perl 모듈 중 어떤 것을 처리하든 간에 PackageManagement 명령(Find-Package 및 Install-Package)을 사용하여 찾아서 설치할 수 있어야 합니다. PackageManagement는 PackageManagement에 연결하는 각 패키지 관리자에 대한 패키지 공급자를 포함하여 이 작업을 수행합니다. 공급자가 실제 작업을 모두 수행합니다. 리포지토리에서 콘텐츠를 가져와 로컬에 설치합니다. 패키지 공급자가 지정된 패키지 유형에 대한 기존 패키지 관리자 도구를 단순히 래핑하는 경우도 많습니다.
 
-PowerShellGet은 PowerShell 항목에 대한 패키지 관리자입니다. PackageManagement를 통해 PowerShellGet 기능을 노출하는 PSModule 패키지 공급자가 있습니다. 이 때문에 [Install-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 또는 Install-Package -Provider PSModule을 실행하여 PowerShell 갤러리에서 모듈을 설치할 수 있습니다. [Update-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 및 [Publish-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409)을 비롯한 특정 PowerShellGet 기능은 PackageManagement 명령을 통해 액세스할 수 있습니다.
+PowerShellGet은 PowerShell 패키지에 대한 패키지 관리자입니다. PackageManagement를 통해 PowerShellGet 기능을 노출하는 PSModule 패키지 공급자가 있습니다. 이 때문에 [Install-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 또는 Install-Package -Provider PSModule을 실행하여 PowerShell 갤러리에서 모듈을 설치할 수 있습니다. [Update-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409) 및 [Publish-Module](https://go.microsoft.com/fwlink/?LinkID=760387&clcid=0x409)을 비롯한 특정 PowerShellGet 기능은 PackageManagement 명령을 통해 액세스할 수 있습니다.
 
 요약하자면, PowerShellGet은 전적으로 PowerShell 콘텐츠에 대한 프리미엄 패키지 관리 환경 사용에 중점을 둡니다. PackageManagement는 하나의 일반적인 도구 집합을 통해 모든 패키지 관리 환경을 노출하는 데 중점을 둡니다. 이 응답이 만족스럽지 않은 경우 이 문서의 맨 아래에 있는 **PackageManagement는 실제로 PowerShellGet과 어떤 관계가 있나요?** 섹션에 자세한 답변이 나와 있습니다.
 
@@ -158,14 +158,14 @@ PackageManagement 패키지 공급자 계층에서 PSModule 패키지 공급자�
 
 **PowerShellGet**을 사용하려면 .NET Framework 4.5 이상도 있어야 합니다. .NET Framework 4.5 이상은 [여기](https://msdn.microsoft.com/library/5a4x27ek.aspx)에서 설치할 수 있습니다.
 
-## <a name="is-it-possible-to-reserve-names-for-items-that-will-be-published-in-future"></a>나중에 게시할 항목의 이름을 예약할 수 있나요?
+## <a name="is-it-possible-to-reserve-names-for-packages-that-will-be-published-in-future"></a>나중에 게시할 패키지의 이름을 예약할 수 있나요?
 
-항목 이름을 무단 사용할 수는 없습니다. 기존 항목이 해당 항목에 더 맞는 이름을 사용한 경우 [항목의 소유자에게 문의](./how-to/working-with-items/contacting-item-owners.md)하세요. 몇 주 내에 응답을 받지 못한 경우 지원 담당자에게 문의하면 PowerShell 갤러리 팀에서 살펴보겠습니다.
+패키지 이름을 무단 사용할 수는 없습니다. 기존 패키지가 해당 패키지에 더 맞는 이름을 사용한 경우 [패키지의 소유자에게 문의](./how-to/working-with-packages/contacting-package-owners.md)하세요. 몇 주 내에 응답을 받지 못한 경우 지원 담당자에게 문의하면 PowerShell 갤러리 팀에서 살펴보겠습니다.
 
-## <a name="how-do-i-claim-ownership-for-items-"></a>항목의 소유권을 클레임하려면 어떻게 하나요?
+## <a name="how-do-i-claim-ownership-for-packages"></a>패키지의 소유권을 클레임하려면 어떻게 하나요?
 
-자세한 내용은 [PowerShellGallery.com에서 항목 소유자 관리](./how-to/publishing-items/managing-item-owners.md)를 참조하세요.
+자세한 내용은 [PowerShellGallery.com에서 패키지 소유자 관리](./how-to/publishing-packages/managing-package-owners.md)를 참조하세요.
 
-## <a name="how-do-i-deal-with-an-item-owner-who-is-violating-my-item-license"></a>내 항목 라이선스를 위반하는 항목 소유자를 처리하려면 어떻게 하나요?
+## <a name="how-do-i-deal-with-a-package-owner-who-is-violating-my-package-license"></a>내 패키지 라이선스를 위반하는 패키지 소유자에 대응하려면 어떻게 하나요?
 
-PowerShell 커뮤니티에서 협력하여 항목 소유자와 다른 항목의 소유자 간에 발생할 수 있는 분쟁을 해결하는 것이 좋습니다.  PowerShellGallery.com 관리자가 중재하기 전에 작성된 [분쟁 해결 프로세스](./how-to/getting-support/dispute-resolution.md)를 따라야 합니다.
+PowerShell 커뮤니티에서 협력하여 패키지 소유자와 다른 패키지의 소유자 간에 발생할 수 있는 분쟁을 해결하는 것이 좋습니다.  PowerShellGallery.com 관리자가 중재하기 전에 작성된 [분쟁 해결 프로세스](./how-to/getting-support/dispute-resolution.md)를 따라야 합니다.

@@ -3,12 +3,12 @@ ms.date: 06/12/2017
 ms.topic: conceptual
 keywords: wmf,powershell,setup
 title: WMF 5.1의 알려진 문제
-ms.openlocfilehash: 74e5a6763a8a780000bf876f34caa9646a2a416a
-ms.sourcegitcommit: 8b076ebde7ef971d7465bab834a3c2a32471ef6f
+ms.openlocfilehash: e59ea1b9a5282eb5727a37ce605c71724a219827
+ms.sourcegitcommit: e76665315fd928bf85210778f1fea2be15264fea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37892140"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50225848"
 ---
 # <a name="known-issues-in-wmf-51"></a>WMF 5.1의 알려진 문제
 
@@ -46,7 +46,7 @@ WMF를 설치할 때, 바로 가기에서 관리자 권한으로 PowerShell을 �
 
 ## <a name="jea-virtual-accounts"></a>JEA 가상 계정
 
-WMF 5.0에서 가상 계정을 사용하도록 구성된 JEA 끝점 및 세션 구성은 WMF 5.1로 업그레이드한 후 가상 계정을 사용하도록 구성되지 않습니다.
+WMF 5.0에서 가상 계정을 사용하도록 구성된 JEA 엔드포인트 및 세션 구성은 WMF 5.1로 업그레이드한 후 가상 계정을 사용하도록 구성되지 않습니다.
 즉, JEA 세션에서 실행되는 명령은 임시 관리자 계정 대신 연결하는 사용자의 ID로 실행되어 잠재적으로 사용자가 상승된 권한이 필요한 명령을 실행하지 못하게 합니다.
 가상 계정을 복원하려면 가상 계정을 사용하는 모든 세션 구성을 등록 취소한 후 다시 등록해야 합니다.
 
