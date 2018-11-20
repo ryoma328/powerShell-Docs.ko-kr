@@ -2,12 +2,12 @@
 ms.date: 04/11/2018
 keywords: dsc,powershell,configuration,setup
 title: DSC 끌어오기 서비스
-ms.openlocfilehash: 057da50843e79ae31eef4fea1fa58e882a9d1ace
-ms.sourcegitcommit: 54534635eedacf531d8d6344019dc16a50b8b441
-ms.translationtype: HT
+ms.openlocfilehash: 2ef48b88cc9e14da452e0d19e5a0f43fc8a95ab2
+ms.sourcegitcommit: 91786b03704fbd2d185f674df0bc67faddfb6288
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34189995"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51619163"
 ---
 # <a name="desired-state-configuration-pull-service"></a>원하는 상태 구성 끌어오기 서비스
 
@@ -88,71 +88,71 @@ SQL Server를 사용하도록 끌어오기 서버를 구성하려면 **SqlProvid
 1. 등록 키로 사용할 GUID를 선택합니다. PowerShell을 사용하여 생성하려면 PS 프롬프트에 '``` [guid]::newGuid()```' 또는 '```New-Guid```'를 입력하고 Enter 키를 누릅니다. 이 키는 클라이언트 노드에서 등록할 때 인증할 공유 키로 사용됩니다. 자세한 내용은 아래 등록 키 섹션을 참조하세요.
 1. PowerShell ISE에서 다음의 구성 스크립트(**xPSDesiredStateConfiguration** 모듈의 예제 폴더에 Sample_xDscWebServiceRegistration.ps1로 포함됨)를 시작합니다(F5). 이 스크립트는 끌어오기 서버를 설정합니다.
 
-```powershell
-configuration Sample_xDscWebServiceRegistration
-{
-    param
-    (
-        [string[]]$NodeName = 'localhost',
-
-        [ValidateNotNullOrEmpty()]
-        [string] $certificateThumbPrint,
-
-        [Parameter(HelpMessage='This should be a string with enough entropy (randomness) to protect the registration of clients to the pull server.  We will use new GUID by default.')]
-        [ValidateNotNullOrEmpty()]
-        [string] $RegistrationKey   # A guid that clients use to initiate conversation with pull server
-    )
-
-    Import-DSCResource -ModuleName xPSDesiredStateConfiguration
-
-    Node $NodeName
+    ```powershell
+    configuration Sample_xDscWebServiceRegistration
     {
-        WindowsFeature DSCServiceFeature
-        {
-            Ensure = "Present"
-            Name   = "DSC-Service"
-        }
+        param
+        (
+            [string[]]$NodeName = 'localhost',
 
-        xDscWebService PSDSCPullServer
-        {
-            Ensure                  = "Present"
-            EndpointName            = "PSDSCPullServer"
-            Port                    = 8080
-            PhysicalPath            = "$env:SystemDrive\inetpub\PSDSCPullServer"
-            CertificateThumbPrint   = $certificateThumbPrint
-            ModulePath              = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Modules"
-            ConfigurationPath       = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Configuration"
-            State                   = "Started"
-            DependsOn               = "[WindowsFeature]DSCServiceFeature"
-            RegistrationKeyPath     = "$env:PROGRAMFILES\WindowsPowerShell\DscService"
-            AcceptSelfSignedCertificates = $true
-            Enable32BitAppOnWin64   = $false
-        }
+            [ValidateNotNullOrEmpty()]
+            [string] $certificateThumbPrint,
 
-        File RegistrationKeyFile
+            [Parameter(HelpMessage='This should be a string with enough entropy (randomness) to protect the registration of clients to the pull server.  We will use new GUID by default.')]
+            [ValidateNotNullOrEmpty()]
+            [string] $RegistrationKey   # A guid that clients use to initiate conversation with pull server
+        )
+
+        Import-DSCResource -ModuleName xPSDesiredStateConfiguration
+
+        Node $NodeName
         {
-            Ensure          = 'Present'
-            Type            = 'File'
-            DestinationPath = "$env:ProgramFiles\WindowsPowerShell\DscService\RegistrationKeys.txt"
-            Contents        = $RegistrationKey
+            WindowsFeature DSCServiceFeature
+            {
+                Ensure = "Present"
+                Name   = "DSC-Service"
+            }
+
+            xDscWebService PSDSCPullServer
+            {
+                Ensure                  = "Present"
+                EndpointName            = "PSDSCPullServer"
+                Port                    = 8080
+                PhysicalPath            = "$env:SystemDrive\inetpub\PSDSCPullServer"
+                CertificateThumbPrint   = $certificateThumbPrint
+                ModulePath              = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Modules"
+                ConfigurationPath       = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Configuration"
+                State                   = "Started"
+                DependsOn               = "[WindowsFeature]DSCServiceFeature"
+                RegistrationKeyPath     = "$env:PROGRAMFILES\WindowsPowerShell\DscService"
+                AcceptSelfSignedCertificates = $true
+                Enable32BitAppOnWin64   = $false
+            }
+
+            File RegistrationKeyFile
+            {
+                Ensure          = 'Present'
+                Type            = 'File'
+                DestinationPath = "$env:ProgramFiles\WindowsPowerShell\DscService\RegistrationKeys.txt"
+                Contents        = $RegistrationKey
+            }
         }
     }
-}
-```
+    ```
 
 1. 구성을 실행합니다. 이때 SSL 인증서의 지문을 **certificateThumbPrint** 매개 변수로 전달하고 GUID 등록 키를 **RegistrationKey** 매개 변수로 전달합니다.
 
-```powershell
-# To find the Thumbprint for an installed SSL certificate for use with the pull server list all certificates in your local store
-# and then copy the thumbprint for the appropriate certificate by reviewing the certificate subjects
-dir Cert:\LocalMachine\my
+    ```powershell
+    # To find the Thumbprint for an installed SSL certificate for use with the pull server list all certificates in your local store
+    # and then copy the thumbprint for the appropriate certificate by reviewing the certificate subjects
+    dir Cert:\LocalMachine\my
 
-# Then include this thumbprint when running the configuration
-Sample_xDSCPullServer -certificateThumbprint 'A7000024B753FA6FFF88E966FD6E19301FAE9CCC' -RegistrationKey '140a952b-b9d6-406b-b416-e0f759c9c0e4' -OutputPath c:\Configs\PullServer
+    # Then include this thumbprint when running the configuration
+    Sample_xDscWebServiceRegistration -certificateThumbprint 'A7000024B753FA6FFF88E966FD6E19301FAE9CCC' -RegistrationKey '140a952b-b9d6-406b-b416-e0f759c9c0e4' -OutputPath c:\Configs\PullServer
 
-# Run the compiled configuration to make the target node a DSC Pull Server
-Start-DscConfiguration -Path c:\Configs\PullServer -Wait -Verbose
-```
+    # Run the compiled configuration to make the target node a DSC Pull Server
+    Start-DscConfiguration -Path c:\Configs\PullServer -Wait -Verbose
+    ```
 
 #### <a name="registration-key"></a>등록 키
 
