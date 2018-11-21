@@ -2,12 +2,12 @@
 ms.date: 06/12/2017
 keywords: dsc,powershell,configuration,setup
 title: 구성 데이터 사용
-ms.openlocfilehash: 9b0b213e2d71bfdb473fd98f8080de5c874c70e2
-ms.sourcegitcommit: 68093cc12a7a22c53d11ce7d33c18622921a0dd1
-ms.translationtype: HT
+ms.openlocfilehash: f2d25b9ced805fb4c91378ebfe840104eb6ce52a
+ms.sourcegitcommit: 91786b03704fbd2d185f674df0bc67faddfb6288
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36940381"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51619180"
 ---
 # <a name="using-configuration-data-in-dsc"></a>DSC에서 구성 데이터 사용
 
@@ -185,12 +185,13 @@ MyDscConfiguration -ConfigurationData .\MyData.psd1
 
 ## <a name="using-configurationdata-variables-in-a-configuration"></a>구성에 ConfigurationData 변수 사용
 
-DSC에서는 구성 스크립트에 사용할 수 있는 세 가지 특수 변수 **$AllNodes**, **$Node**, **$ConfigurationData**를 제공합니다.
+DSC 구성 스크립트에서 사용할 수 있는 다음과 같은 특별 한 변수를 제공 합니다.
 
 - **$AllNodes**는 **ConfigurationData**에 정의된 노드의 컬렉션 전체를 참조합니다. **AllNodes** 컬렉션은 **.Where()** 및 **.ForEach()** 를 사용하여 필터링할 수 있습니다.
+- **ConfigurationData**는 구성을 컴파일할 때 매개 변수로 전달된 해시 테이블 전체를 참조합니다.
+- **MyTypeName** 포함 된 [구성](configurations.md) 이름에서이 변수를 사용 합니다. 구성에서 예를 들어 `MyDscConfiguration`서 `$MyTypeName` 의 값이 포함 됩니다 `MyDscConfiguration`합니다.
 - **Node**는 **AllNodes** 컬렉션이 **.Where()** 또는 **.ForEach()** 로 필터링된 후에 특정 항목을 참조합니다.
   - [about_arrays](/powershell/reference/3.0/Microsoft.PowerShell.Core/About/about_Arrays.md)의 이 메서드에 대해 자세히 알아볼 수 있습니다.
-- **ConfigurationData**는 구성을 컴파일할 때 매개 변수로 전달된 해시 테이블 전체를 참조합니다.
 
 ## <a name="using-non-node-data"></a>비노드 데이터 사용
 
