@@ -2,12 +2,12 @@
 title: Windows에서 PowerShell Core 설치
 description: Windows에서 PowerShell Core를 설치하는 방법에 대한 정보
 ms.date: 08/06/2018
-ms.openlocfilehash: 2b21908c38796117308f2ac1219db00ff9086408
-ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
-ms.translationtype: HT
+ms.openlocfilehash: ba159a69df7e117e90e21dd26228b61146260475
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48850982"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320894"
 ---
 # <a name="installing-powershell-core-on-windows"></a>Windows에서 PowerShell Core 설치
 
@@ -99,7 +99,7 @@ Nano 서버는 “헤드리스” OS입니다. 두 가지 방법으로 Core 이�
 1. 자주 사용하는 zip 유틸리티로 패키지를 탑재된 Nano 서버 이미지 내의 디렉터리에 압축을 풉니다.
 2. 이미지를 탑재 해제하고 부팅합니다.
 3. Windows PowerShell의 받은 편지함 인스턴스에 연결합니다.
-4. 지침에 따라 [“다른 인스턴스 기법”](#executed-by-another-instance-of-powershell-on-behalf-of-the-instance-that-it-will-register)을 사용하여 원격 엔드포인트를 만듭니다.
+4. 지침에 따라 [“다른 인스턴스 기법”](../core-powershell/wsman-remoting-in-powershell-core.md#executed-by-another-instance-of-powershell-on-behalf-of-the-instance-that-it-will-register)을 사용하여 원격 엔드포인트를 만듭니다.
 
 ### <a name="online-deployment-of-powershell-core"></a>PowerShell Core의 온라인 배포
 

@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: PowerShell 50 ISE의 새로운 기능
 ms.assetid: 38648d47-7c27-4b37-a40e-ad29948519c2
-ms.openlocfilehash: 35b825cfa6ea720d0af3537c5d1b16c5ececb701
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: f05e3f3f95c8ceec6e843b8a1c79e6f092e1b87b
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30953585"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320587"
 ---
 # <a name="what39s-new-in-the-windows-powershell-ise"></a>Windows PowerShell ISE의 새로운 기능
 이 항목에서는 Windows PowerShell  ISE(통합 스크립팅 환경) 버전에서 도입된 새로운 기능과 업데이트된 기능에 대해 설명합니다.
@@ -63,7 +63,7 @@ Windows PowerShell 3.0 이상에서 코드 조각을 사용하려면 **편집** 
 ### <a name="add-on-tools"></a>추가 기능 도구
 **PowerShell 3.0에 추가됨**
 
-이제 Windows PowerShell ISE에서 개체 모델을 사용하여 추가된 WPF(Windows Presentation Foundation) 컨트롤인 추가 기능 도구를 지원합니다. 추가 기능 도구는 콘솔의 세로 창이나 가로 창으로 표시할 수 있습니다. 하나의 창에 있는 여러 가지 추가 기능 도구는 탭 컨트롤로 표시됩니다. 타사에서 만든 추가 기능 도구를 추가하거나 제거할 수도 있습니다. 추가 기능 도구를 가져오거나 제거하는 방법에 대한 자세한 내용은 [Windows PowerShell ISE 작업](http://technet.microsoft.com/library/cc732148.aspx)을 참조하세요.
+이제 Windows PowerShell ISE에서 개체 모델을 사용하여 추가된 WPF(Windows Presentation Foundation) 컨트롤인 추가 기능 도구를 지원합니다. 추가 기능 도구는 콘솔의 세로 창이나 가로 창으로 표시할 수 있습니다. 하나의 창에 있는 여러 가지 추가 기능 도구는 탭 컨트롤로 표시됩니다. 타사에서 만든 추가 기능 도구를 추가하거나 제거할 수도 있습니다. 추가 기능 도구를 가져오거나 제거하는 방법에 대한 자세한 내용은 [Windows PowerShell ISE 작업](https://technet.microsoft.com/library/cc732148.aspx)을 참조하세요.
 
 **이와 같은 변경을 통해 더해지는 가치**
 
@@ -224,5 +224,5 @@ Show-Command는 새로운 Windows PowerShell ISE 3.0 기능입니다.
 Windows PowerShell에서 Windows PowerShell ISE를 사용하는 방법에 대한 자세한 내용은 다음 링크를 참조하세요.
 
 - [Windows PowerShell 통합 스크립팅 환경 탐색](../getting-started/fundamental/exploring-the-windows-powershell-ise.md)
-- [TechNet Wiki의 ISE](http://social.technet.microsoft.com/wiki/search/searchresults.aspx?q=ISE)
-- [스크립트 센터](http://technet.microsoft.com/scriptcenter/default)
+- [TechNet Wiki의 ISE](https://social.technet.microsoft.com/wiki/search/searchresults.aspx?q=ISE)
+- [스크립트 센터](https://technet.microsoft.com/scriptcenter/default)

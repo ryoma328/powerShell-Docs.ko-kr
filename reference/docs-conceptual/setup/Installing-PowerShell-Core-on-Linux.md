@@ -2,12 +2,12 @@
 title: Linux에서 PowerShell Core 설치
 description: 다양한 Linux 배포판에서 PowerShell Core를 설치하는 방법에 대한 정보
 ms.date: 08/06/2018
-ms.openlocfilehash: a20384c768113ed2313591cfa8c29eeadd94f80f
-ms.sourcegitcommit: e76665315fd928bf85210778f1fea2be15264fea
-ms.translationtype: HT
+ms.openlocfilehash: afb11f053517af592fe42754d543f9f4a9966c5b
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50226001"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52321114"
 ---
 # <a name="installing-powershell-core-on-linux"></a>Linux에서 PowerShell Core 설치
 
@@ -27,7 +27,7 @@ ms.locfileid: "50226001"
 [deb9]: #debian-9
 [cos]: #centos-7
 [rhel7]: #red-hat-enterprise-linux-rhel-7
-[opensuse]: #opensuse-423
+[opensuse]: #opensuse
 [fedora]: #fedora
 [arch]: #arch-linux
 [snap]: #snap-package

@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell ISE(통합 스크립팅 환경)
 ms.assetid: f156b92d-0203-46d2-89c7-b4989d32e3d2
-ms.openlocfilehash: d116ec107c2d07e9fd55ee974008b3636b4ab049
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: a5fcc8c813349d0b85cc3af29047424fe787d168
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30952072"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320519"
 ---
 # <a name="windows-powershell-integrated-scripting-environment-ise"></a>Windows PowerShell ISE(통합 스크립팅 환경)
 
@@ -62,7 +62,7 @@ ISE는 PowerShell v2.0에서 도입되었습니다.
 
 ## <a name="requirements-for-running-the-windows-powershell-ise"></a>Windows PowerShell ISE 실행을 위한 요구 사항
 
-ISE는 Windows PowerShell v2.0 이상을 실행할 수 있는 모든 Windows 컴퓨터에서 사용할 수 있습니다. 각 버전의 Windows 및 Windows Server에는 특정 버전의 Windows PowerShell 및 ISE가 포함되어 있지만 WMF(Windows Management Framework)를 설치하여 사용 가능한 최신 버전으로 업그레이드할 수 있습니다. 자세한 내용은 [WMF](/powershell/wmf/readme) 설명서를 참조하세요.
+ISE는 Windows PowerShell v2.0 이상을 실행할 수 있는 모든 Windows 컴퓨터에서 사용할 수 있습니다. 각 버전의 Windows 및 Windows Server에는 특정 버전의 Windows PowerShell 및 ISE가 포함되어 있지만 WMF(Windows Management Framework)를 설치하여 사용 가능한 최신 버전으로 업그레이드할 수 있습니다. 자세한 내용은 [WMF](/powershell/wmf) 설명서를 참조하세요.
 
 > [!NOTE]
 > Windows PowerShell ISE에는 그래픽 사용자 인터페이스가 필요하므로 Windows Server의 Server Core 옵션에서 실행할 수 없습니다.

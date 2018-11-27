@@ -3,17 +3,17 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 시작
 ms.assetid: 59b649a2-c90c-4cf4-bf95-a740c59148e7
-ms.openlocfilehash: b56ddc2f577225646729b99f3a2abcb8cc60d307
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: 9184e8b0e508610e7f4775f1032f3a69c93bb8c1
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30953126"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320536"
 ---
 # <a name="starting-windows-powershell"></a>Windows PowerShell 시작
 PowerShell은 여러 호스트에 포함되는 스크립팅 엔진 dll입니다.  시작하는 가장 일반적인 호스트는 대화형 명령줄PowerShell.exe 및 대화형 스크립팅 환경 PowerShell_ISE.exe입니다.
 
-Windows Server® 2012 R2, Windows® 8.1, Windows Server 2012 및 Windows 8에서 Windows PowerShell®을 시작하려면 [일반 관리 작업 및 탐색](http://technet.microsoft.com/library/hh831491.aspx)을 참조하세요.
+Windows Server® 2012 R2, Windows® 8.1, Windows Server 2012 및 Windows 8에서 Windows PowerShell®을 시작하려면 [일반 관리 작업 및 탐색](https://technet.microsoft.com/library/hh831491.aspx)을 참조하세요.
 
 ## <a name="how-to-start-windows-powershell-on-earlier-versions-of-windows"></a>이전 버전의 Windows에서 Windows PowerShell을 시작하는 방법
 
@@ -106,7 +106,7 @@ Windows PowerShell 32비트 버전을 시작하려면 다음 절차 중 하나�
 #### <a name="in-windows-81"></a>Windows® 8.1에서
 
 - **시작** 화면에서 **Windows PowerShell(x86)** 을 입력합니다. **Windows PowerShell x86** 타일을 클릭합니다.
-- Windows 8.1용 [원격 서버 관리 도구](http://go.microsoft.com/fwlink/?LinkID=304145)를 실행하는 경우 **서버 관리자 도구** 메뉴에서 Windows PowerShell x86을 열 수도 있습니다.
+- Windows 8.1용 [원격 서버 관리 도구](https://go.microsoft.com/fwlink/?LinkID=304145)를 실행하는 경우 **서버 관리자 도구** 메뉴에서 Windows PowerShell x86을 열 수도 있습니다.
   **Windows PowerShell(x86)** 을 선택합니다.
 - 바탕 화면에서 커서를 오른쪽 위 모서리로 이동하고 **검색**을 클릭한 다음 **PowerShell x86**을 입력하고 **Windows PowerShell(x86)** 을 클릭합니다.
 - 명령줄을 통해 다음을 입력합니다.`%SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
@@ -114,6 +114,6 @@ Windows PowerShell 32비트 버전을 시작하려면 다음 절차 중 하나�
 #### <a name="in-windows-8"></a>Windows® 8에서
 
 - **시작** 화면에서 커서를 오른쪽 위 모서리로 이동하고 **설정**, **타일**을 차례로 클릭한 다음 **관리 도구 표시** 슬라이더를 예로 이동합니다. **PowerShell**을 입력하고 **Windows PowerShell(x86)** 을 클릭합니다.
-- Windows 8용 [원격 서버 관리 도구](http://www.microsoft.com/download/details.aspx?id=28972)를 실행하는 경우 **서버 관리자 도구** 메뉴에서 Windows PowerShell x86을 열 수도 있습니다. **Windows PowerShell(x86)** 을 선택합니다.
+- Windows 8용 [원격 서버 관리 도구](https://www.microsoft.com/download/details.aspx?id=28972)를 실행하는 경우 **서버 관리자 도구** 메뉴에서 Windows PowerShell x86을 열 수도 있습니다. **Windows PowerShell(x86)** 을 선택합니다.
 - **시작** 화면이나 바탕 화면에서 **PowerShell(x86)** 을 입력하고 **Windows PowerShell(x86)** 을 클릭합니다.
 - 명령줄을 통해 다음을 입력합니다.`%SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`

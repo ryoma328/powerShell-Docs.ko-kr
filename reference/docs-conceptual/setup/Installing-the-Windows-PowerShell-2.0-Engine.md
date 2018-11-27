@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 2.0 엔진 설치
 ms.assetid: 82928f2b-f96a-4ae6-a0d0-6e7b181da308
-ms.openlocfilehash: 0b3282a1a67886509e749af0f499c47fe7a99411
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: fb5ed1a5508ddca6925e9281a53caf5e6701870f
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30952344"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320502"
 ---
 # <a name="installing-the-windows-powershell-20-engine"></a>Windows PowerShell 2.0 엔진 설치
 이 항목에서는 Windows PowerShell 2.0 엔진을 설치하는 방법을 설명합니다.
@@ -70,7 +70,7 @@ Windows PowerShell 2.0 엔진과 Microsoft .NET Framework 3.5 기능을 추가�
 Windows PowerShell 2.0 엔진을 시작하는 방법에 대한 자세한 내용은 [Windows PowerShell 2.0 엔진 시작](Starting-the-Windows-PowerShell-2.0-Engine.md)을 참조하세요.
 
 ## <a name="on-earlier-systems"></a>이전 시스템
-Windows 7, Windows Server 2008 R2 및 Windows Server 2012에 Windows PowerShell 4.0을 설치하는 [Windows Management Framework 4.0](http://go.microsoft.com/fwlink/?LinkID=293881) 패키지에는 Windows PowerShell 2.0 엔진이 포함되어 있습니다. 추가 설치, 설정 또는 구성 없이 Windows PowerShell 2.0 엔진을 사용할 수 있고 사용할 준비가 됩니다.
+Windows 7, Windows Server 2008 R2 및 Windows Server 2012에 Windows PowerShell 4.0을 설치하는 [Windows Management Framework 4.0](https://go.microsoft.com/fwlink/?LinkID=293881) 패키지에는 Windows PowerShell 2.0 엔진이 포함되어 있습니다. 추가 설치, 설정 또는 구성 없이 Windows PowerShell 2.0 엔진을 사용할 수 있고 사용할 준비가 됩니다.
 
 Windows 7, Windows Server 2008 R2 및 Windows Server 2008에 Windows PowerShell 3.0을 설치하는 Windows Management Framework 3.0 패키지에는 Windows PowerShell 2.0 엔진이 포함되어 있습니다. 추가 설치, 설정 또는 구성 없이 Windows PowerShell 2.0 엔진을 사용할 수 있고 사용할 준비가 됩니다.
 

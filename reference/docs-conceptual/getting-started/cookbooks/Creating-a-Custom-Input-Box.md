@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: 사용자 지정 입력란 만들기
 ms.assetid: 0b12e56c-299f-40ee-afbf-d30d23ed2565
-ms.openlocfilehash: 681a75a28a8fb03eb4442d5e20b32b25a337d540
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: 2d04ad6df65cdb4ff13d136dea47bbba6a01f3a2
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30954758"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320400"
 ---
 # <a name="creating-a-custom-input-box"></a>사용자 지정 입력란 만들기
 
@@ -120,7 +120,7 @@ $label.Text = 'Please enter the information in the space below:'
 $form.Controls.Add($label)
 ```
 
-사용자가 레이블 텍스트에 설명된 정보를 입력할 수 있는 컨트롤(이 경우 텍스트 상자)을 추가합니다. 세부적인 제어를 위해 텍스트 상자 이외에 다른 여러 컨트롤을 추가할 수 있습니다. 자세한 내용은 MSDN에서 [System.Windows.Forms 네임스페이스](http://msdn.microsoft.com/library/k50ex0x9(v=vs.110).aspx)를 참조하세요.
+사용자가 레이블 텍스트에 설명된 정보를 입력할 수 있는 컨트롤(이 경우 텍스트 상자)을 추가합니다. 세부적인 제어를 위해 텍스트 상자 이외에 다른 여러 컨트롤을 추가할 수 있습니다. 자세한 내용은 MSDN에서 [System.Windows.Forms 네임스페이스](https://msdn.microsoft.com/library/k50ex0x9(v=vs.110).aspx)를 참조하세요.
 
 ```powershell
 $textBox = New-Object System.Windows.Forms.TextBox
@@ -152,13 +152,13 @@ $result = $form.ShowDialog()
 ```powershell
 if ($result -eq [System.Windows.Forms.DialogResult]::OK)
 {
-    $x = $textBox.Text
-    $x
+    $x = $textBox.Text
+    $x
 }
 ```
 
 ## <a name="see-also"></a>참고 항목
 
-- [스크립팅 작성자: 이러한 PowerShell GUI 예제가 작동하지 않는 이유는 무엇인가요?](http://go.microsoft.com/fwlink/?LinkId=506644)
+- [스크립팅 작성자: 이러한 PowerShell GUI 예제가 작동하지 않는 이유는 무엇인가요?](https://go.microsoft.com/fwlink/?LinkId=506644)
 - [GitHub: Dave Wyatt's WinFormsExampleUpdates](https://github.com/dlwyatt/WinFormsExampleUpdates)(GitHub: Dave Wyatt의 WinFormsExampleUpdates)
-- [Windows PowerShell Tip of the Week: 사용자 지정 입력란 만들기](http://technet.microsoft.com/library/ff730941.aspx)
+- [Windows PowerShell Tip of the Week: 사용자 지정 입력란 만들기](https://technet.microsoft.com/library/ff730941.aspx)

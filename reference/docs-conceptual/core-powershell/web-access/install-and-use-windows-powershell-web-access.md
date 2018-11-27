@@ -2,12 +2,12 @@
 ms.date: 08/23/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 웹 액세스 설치 및 사용
-ms.openlocfilehash: d718d9b286a8a2189f44f10983cdc0061e41d4b9
-ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
-ms.translationtype: HT
+ms.openlocfilehash: a129dfeb61531a1f4d333af3e872d16defa1d12f
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48851327"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320689"
 ---
 # <a name="install-and-use-windows-powershell-web-access"></a>Install and Use Windows PowerShell Web Access(Windows PowerShell 웹 액세스 설치 및 사용)
 
@@ -25,7 +25,7 @@ Windows Server 2012에 처음 도입된 Windows PowerShell 웹 액세스는 Wind
 
 Windows PowerShell 웹 액세스 설치 및 구성은 다음의 세 단계로 구성됩니다.
 
-1. [Windows PowerShell 웹 액세스 설치](#install-windows-powershell-web-access)
+1. [Windows PowerShell 웹 액세스 설치](#install-windows-powershell-web-access-using-powershell-cmdlets)
 1. [게이트웨이 구성](#configure-the-gateway)
 1. [제한적인 권한 부여 규칙 구성](#configure-a-restrictive-authorization-rule)
 
@@ -58,8 +58,8 @@ Windows PowerShell 웹 액세스에서는 다음과 같은 인터넷 브라우�
 
 ### <a name="minimally-tested-mobile-devices-or-browsers"></a>최소한의 테스트를 거친 모바일 장치 또는 브라우저
 
-- Windows Phone 7 및 7.5
-- Google Android WebKit 3.1 Browser Android 2.2.1(커널 2.6)
+- Windows Phone 7 및 7.5
+- Google Android WebKit 3.1 Browser Android 2.2.1(커널 2.6)
 - iPhone 운영 체제 5.0.1용 Apple Safari
 - iPad 2 운영 체제 5.0.1용 Apple Safari
 
@@ -75,7 +75,7 @@ Windows PowerShell 웹 액세스 웹 기반 콘솔을 사용하려면 브라우�
 
 Windows PowerShell cmdlet을 사용하거나 서버 관리자 내에서 열린 역할 및 기능 추가 마법사를 사용하여 Windows Server 2012 R2 또는 Windows Server 2012를 실행하는 서버에서 Windows PowerShell 웹 액세스 게이트웨이를 설치할 수 있습니다. 빠른 설치 및 구성을 위해 이 섹션에 설명된 대로 Windows PowerShell cmdlet을 사용합니다.
 
-1. [Windows PowerShell 웹 액세스 설치](#install-Windows-powershell-web-access)
+1. [Windows PowerShell 웹 액세스 설치](#install-windows-powershell-web-access-using-powershell-cmdlets)
 1. [게이트웨이 구성](#configure-the-gateway)
 1. [제한적인 권한 부여 규칙 구성](#configure-a-restrictive-authorization-rule)
 
@@ -189,7 +189,7 @@ Windows PowerShell cmdlet을 사용하거나 서버 관리자 내에서 열린 �
 
 ### <a name="configure-a-restrictive-authorization-rule"></a>제한적인 권한 부여 규칙 구성
 
-Windows PowerShell Web Access가 설치되고 게이트웨이가 구성되고 나면 사용자는 로그인 페이지를 브라우저에서 열 수 있지만 Windows PowerShell 웹 액세스 관리자가 사용자에게 액세스를 명시적으로 허용할 때까지는 로그인할 수 없습니다. Windows PowerShell 웹 액세스의 액세스 제어는 다음 표에 설명된 여러 Windows PowerShell cmdlet을 통해 관리할 수 있습니다. 권한 부여 규칙을 추가하거나 관리하는 작업에 해당하는 GUI는 없습니다. Windows PowerShell 웹 액세스 cmdlet에 대한 자세한 내용은 참조 항목 [Windows PowerShell 웹 액세스 Cmdlet](cmdlets/web-access-cmdlets.md)을 참조하세요.
+Windows PowerShell Web Access가 설치되고 게이트웨이가 구성되고 나면 사용자는 로그인 페이지를 브라우저에서 열 수 있지만 Windows PowerShell 웹 액세스 관리자가 사용자에게 액세스를 명시적으로 허용할 때까지는 로그인할 수 없습니다. Windows PowerShell 웹 액세스의 액세스 제어는 다음 표에 설명된 여러 Windows PowerShell cmdlet을 통해 관리할 수 있습니다. 권한 부여 규칙을 추가하거나 관리하는 작업에 해당하는 GUI는 없습니다. Windows PowerShell 웹 액세스 cmdlet에 대한 자세한 내용은 참조 항목 [Windows PowerShell 웹 액세스 Cmdlet](/powershell/module/powershellwebaccess/?view=winserver2012r2-ps)을 참조하세요.
 
 Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자세한 내용은 [Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능](authorization-rules-and-security-features-of-windows-powershell-web-access.md)을 참조하세요.
 
@@ -360,7 +360,7 @@ Windows PowerShell 웹 액세스가 설치되면 IIS 관리자에서 게이트�
 
 ### <a name="configuring-a-restrictive-authorization-rule"></a>제한적인 권한 부여 규칙 구성
 
-Windows PowerShell Web Access가 설치되고 게이트웨이가 구성되고 나면 사용자는 로그인 페이지를 브라우저에서 열 수 있지만 Windows PowerShell 웹 액세스 관리자가 사용자에게 액세스를 명시적으로 허용할 때까지는 로그인할 수 없습니다. Windows PowerShell 웹 액세스의 액세스 제어는 다음 표에 설명된 여러 Windows PowerShell cmdlet을 통해 관리할 수 있습니다. 권한 부여 규칙을 추가하거나 관리하는 작업에 해당하는 GUI는 없습니다. Windows PowerShell 웹 액세스 cmdlet에 대한 자세한 내용은 참조 항목 [Windows PowerShell 웹 액세스 Cmdlet](cmdlets/web-access-cmdlets.md)을 참조하세요.
+Windows PowerShell Web Access가 설치되고 게이트웨이가 구성되고 나면 사용자는 로그인 페이지를 브라우저에서 열 수 있지만 Windows PowerShell 웹 액세스 관리자가 사용자에게 액세스를 명시적으로 허용할 때까지는 로그인할 수 없습니다. Windows PowerShell 웹 액세스의 액세스 제어는 다음 표에 설명된 여러 Windows PowerShell cmdlet을 통해 관리할 수 있습니다. 권한 부여 규칙을 추가하거나 관리하는 작업에 해당하는 GUI는 없습니다. Windows PowerShell 웹 액세스 cmdlet에 대한 자세한 내용은 참조 항목 [Windows PowerShell 웹 액세스 Cmdlet](/powershell/module/powershellwebaccess/?view=winserver2012r2-ps)을 참조하세요.
 
 Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자세한 내용은 [Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능](authorization-rules-and-security-features-of-windows-powershell-web-access.md)을 참조하세요.
 
@@ -404,7 +404,7 @@ Windows PowerShell 웹 액세스 권한 부여 규칙 및 보안에 대한 자�
 1. **작업** 창에서 다음 중 하나를 수행합니다. IIS에서 서버 인증서를 구성하는 방법에 대한 자세한 내용은 [IIS 7에서 서버 인증서 구성](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732230(v=ws.10))을 참조하세요.
 
    - 네트워크 위치에서 기존의 유효한 인증서를 가져오려면 **가져오기**를 클릭합니다.
-   - CA에서 [VeriSign](http://www.verisign.com/), [Thawte](https://www.thawte.com/) 또는 [GeoTrust](https://www.geotrust.com/) 등의 인증서를 요청하려면 **인증서 요청 만들기**를 클릭합니다. 인증서의 일반 이름은 요청의 호스트 헤더와 일치해야 합니다.
+   - CA에서 [VeriSign](https://www.verisign.com/), [Thawte](https://www.thawte.com/) 또는 [GeoTrust](https://www.geotrust.com/) 등의 인증서를 요청하려면 **인증서 요청 만들기**를 클릭합니다. 인증서의 일반 이름은 요청의 호스트 헤더와 일치해야 합니다.
 
      예를 들어 클라이언트 브라우저에서 `http://www.contoso.com/`을 요청하면 일반 이름도 `http://www.contoso.com/`이어야 합니다. 이 방법이 Windows PowerShell 웹 액세스 게이트웨이에 인증서를 제공하는 가장 안전한 방법입니다.
 

@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Out Cmdlet을 사용하여 데이터 리디렉션
 ms.assetid: 2a4acd33-041d-43a5-a3e9-9608a4c52b0c
-ms.openlocfilehash: 3ca7984e831a995e80cbd8a4d83ae9225c2a4f4c
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: f08879f436ce751b176af020aba21e90f09aa61f
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30952123"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52321012"
 ---
 # <a name="redirecting-data-with-out--cmdlets"></a>Out-* Cmdlet을 사용하여 데이터 리디렉션
 
@@ -97,7 +97,7 @@ default=multi(0)disk(0)rdisk(0)partition(1)\WINDOWS
 
 **Out-Null** cmdlet은 수신한 입력을 즉시 삭제하도록 설계되었습니다. 이 cmdlet은 명령 실행의 부작용으로 수신되는 불필요한 데이터를 삭제하는 데 유용합니다. 다음 명령을 입력하면 명령에서 아무 것도 반환되지 않습니다.
 
-```powreshell
+```powershell
 Get-Command | Out-Null
 ```
 

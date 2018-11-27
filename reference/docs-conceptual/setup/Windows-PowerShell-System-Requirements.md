@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 시스템 요구 사항
 ms.assetid: 6d1d3c75-3be4-4fc9-8805-ca9b2c454d42
-ms.openlocfilehash: 5e1fdb9cb4f10fd71c2d2daf693cb359fddcc5bc
-ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
-ms.translationtype: HT
+ms.openlocfilehash: 8850cf26b0313dfb8898ccb66b4767d695860d4c
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50002721"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320740"
 ---
 # <a name="windows-powershell-system-requirements"></a>Windows PowerShell 시스템 요구 사항
 이 항목에서는 Windows PowerShell 3.0, Windows PowerShell 4.0, Windows PowerShell 5.0 및 Windows PowerShell 5.1과 특수 기능(예: Windows PowerShell ISE(통합 스크립팅 환경), CIM 명령 및 워크플로)에 대한 시스템 요구 사항을 보여 줍니다.
@@ -87,9 +87,9 @@ Windows PowerShell 4.0을 사용하려면 Microsoft .NET Framework 4.5 전체 �
 
 Windows PowerShell 3.0을 사용하려면 Microsoft .NET Framework 4 전체 설치가 필요합니다. Windows 8 및 Windows Server 2012에는 이 요구 사항을 충족하는 Microsoft .NET Framework 4.5가 기본적으로 포함되어 있습니다.
 
-Microsoft .NET Framework 4.5(dotNetFx45_Full_setup.exe)를 설치하려면 Microsoft 다운로드 센터에서 [Microsoft .NET Framework 4.5](http://go.microsoft.com/fwlink/?LinkID=242919)를 참조하세요.
+Microsoft .NET Framework 4.5(dotNetFx45_Full_setup.exe)를 설치하려면 Microsoft 다운로드 센터에서 [Microsoft .NET Framework 4.5](https://go.microsoft.com/fwlink/?LinkID=242919)를 참조하세요.
 
-Microsoft .NET Framework 4 전체 설치(dotNetFx40_Full_setup.exe)를 설치하려면 Microsoft 다운로드 센터에서 [Microsoft .NET Framework 4(웹 설치 관리자)](http://go.microsoft.com/fwlink/?LinkID=212931)를 참조하세요.
+Microsoft .NET Framework 4 전체 설치(dotNetFx40_Full_setup.exe)를 설치하려면 Microsoft 다운로드 센터에서 [Microsoft .NET Framework 4(웹 설치 관리자)](https://go.microsoft.com/fwlink/?LinkID=212931)를 참조하세요.
 
 ## <a name="windows-management-framework-40"></a>Windows Management Framework 4.0
 Windows PowerShell 5.0을 사용하려면 Windows Server 2008 R2 SP1 및 Windows 7 SP1에 Windows Management Framework 4.0이 미리 설치되어 있어야 합니다.
@@ -138,7 +138,7 @@ Windows PowerShell 2.0 엔진을 추가 또는 설치하는 방법과 필수 버
 ## <a name="windows-preinstallation-environment"></a>Windows 사전 설치 환경
 Windows PowerShell 2.0, Windows PowerShell 3.0 및 Windows PowerShell 4.0은 Winows PE(Windows 사전 설치 환경)에서 실행됩니다. 그러나 다음 cmdlet은 지원되지 않습니다.
 
-- [BITS(Background Intelligent Transfer Service) cmdlet](http://go.microsoft.com/fwlink/?LinkId=257514)
+- [BITS(Background Intelligent Transfer Service) cmdlet](https://go.microsoft.com/fwlink/?LinkId=257514)
 
 - [Get-EventLog](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Management/Get-EventLog)
 

@@ -3,16 +3,16 @@ ms.date: 08/24/2018
 keywords: powershell,cmdlet
 title: PowerShell 이름 학습
 ms.assetid: b4d0fd22-8298-4ee6-82ae-9b6f2907c986
-ms.openlocfilehash: a4f7e12c2b30e8ae6d1cf5a125d613d2d7558c34
-ms.sourcegitcommit: 6749f67c32e05999e10deb9d45f90f45ac21a599
-ms.translationtype: HT
+ms.openlocfilehash: 6ed1f99513f00c174147876e1982c0d12869cacb
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48851258"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320485"
 ---
 # <a name="learning-powershell-names"></a>PowerShell 이름 학습
 
-명령 및 매개 변수의 이름을 학습하려면 대부분의 명령줄 인터페이스에서 상당한 시간이 소요됩니다. 이러한 문제는 몇 가지 패턴에 따라 발생합니다. 정기적으로 사용해야 하는 명령 및 매개 변수를 학습하는 유일한 방법이 바로 암기입니다.
+명령 및 매개 변수의 이름을 학습하려면 대부분의 명령줄 인터페이스에서 상당한 시간이 소요됩니다. 이러한 문제는 몇 가지 패턴에 따라 발생합니다. 쉽게 기억할 수 있는 명령 및 매개 변수는 정기적으로 사용 해야 하는 유일한 방법은입니다.
 
 새 명령 또는 매개 변수를 사용할 때 항상 이미 알고 있는 항목을 사용할 수는 없습니다. 새 이름을 찾아 학습해야 합니다. 일반적으로 명령줄 인터페이스는 소수의 도구로 시작해서 점점 증가하게 됩니다. 표준 구조가 없는 이유도 쉽게 이해됩니다.
 각 명령이 별도 도구이므로 명령 이름에는 이러한 방식이 논리적일 수 있습니다. PowerShell에는 명령 이름을 처리하는 더 좋은 방법이 있습니다.

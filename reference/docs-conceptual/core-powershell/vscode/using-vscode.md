@@ -2,12 +2,12 @@
 title: PowerShell 개발에 Visual Studio 코드 사용
 description: PowerShell 개발에 Visual Studio 코드 사용
 ms.date: 08/06/2018
-ms.openlocfilehash: 9c06ce72c39d08e75fcb7e5cf9d5f92ae5dd8ed9
-ms.sourcegitcommit: e76665315fd928bf85210778f1fea2be15264fea
-ms.translationtype: HT
+ms.openlocfilehash: 6433a875c233283f94d70c7acd7d394c73029b6d
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50225797"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320451"
 ---
 # <a name="using-visual-studio-code-for-powershell-development"></a>PowerShell 개발에 Visual Studio 코드 사용
 
@@ -35,7 +35,7 @@ Windows, macOS 및 Linux의 현대식 워크로드의 경우 다음을 참조하
 
   > [!IMPORTANT]
   > macOS에서 PowerShell 확장이 제대로 작동하려면 OpenSSL을 설치해야 합니다.
-  > 이를 위한 가장 쉬운 방법은 [Homebrew](http://brew.sh/)를 설치한 후 `brew install openssl`을 실행하는 것입니다.
+  > 이를 위한 가장 쉬운 방법은 [Homebrew](https://brew.sh/)를 설치한 후 `brew install openssl`을 실행하는 것입니다.
   > 이제 VS Code는 PowerShell 확장을 로드할 수 있습니다.
 
 - **Windows**: [Windows에서 VS Code 실행](https://code.visualstudio.com/docs/setup/windows) 페이지의 설치 지침을 따릅니다.

@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: ISEFile 개체
 ms.assetid: 1c6d91f3-c556-42a2-a017-79b6b7b4b7db
-ms.openlocfilehash: 276e8f04a827e18999b5b3ecb08f47de4f4b23b1
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: 24549720b8bc35435882533b0eb138de432ede65
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30951395"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320876"
 ---
 # <a name="the-isefile-object"></a>ISEFile 개체
 
@@ -22,7 +22,7 @@ Windows PowerShell ISE 2.0 이상에서 지원됩니다.
 
 파일을 디스크에 저장합니다.
 
-**\[saveEncoding\]** - 선택적 [System.Text.Encoding](http://msdn.microsoft.com/library/system.text.encoding.aspx). 저장된 파일에 사용할 선택적 문자 인코딩 매개 변수입니다. 기본값은 **UTF8**입니다.
+**\[saveEncoding\]** - 선택적 [System.Text.Encoding](https://msdn.microsoft.com/library/system.text.encoding.aspx). 저장된 파일에 사용할 선택적 문자 인코딩 매개 변수입니다. 기본값은 **UTF8**입니다.
 
 ### <a name="exceptions"></a>예외
 
@@ -48,7 +48,7 @@ Windows PowerShell ISE 2.0 이상에서 지원됩니다.
 
 **filename** - 파일을 저장하는 데 사용할 이름입니다.
 
-**\[saveEncoding\]** - 선택적 [System.Text.Encoding](http://msdn.microsoft.com/library/system.text.encoding.aspx). 저장된 파일에 사용할 선택적 문자 인코딩 매개 변수입니다. 기본값은 **UTF8**입니다.
+**\[saveEncoding\]** - 선택적 [System.Text.Encoding](https://msdn.microsoft.com/library/system.text.encoding.aspx). 저장된 파일에 사용할 선택적 문자 인코딩 매개 변수입니다. 기본값은 **UTF8**입니다.
 
 ### <a name="exceptions"></a>예외
 

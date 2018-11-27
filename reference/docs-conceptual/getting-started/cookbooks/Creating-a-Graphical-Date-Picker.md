@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: 그래픽 날짜 선택 만들기
 ms.assetid: c1cb722c-41e9-4baa-be83-59b4653222e9
-ms.openlocfilehash: 3727c90c314a6fc1b3a338ec60e44259f153d954
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: 6dd43a3b1f4c67633ad1755de3db88eb8c6772c8
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30954843"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320332"
 ---
 # <a name="creating-a-graphical-date-picker"></a>그래픽 날짜 선택 만들기
 
@@ -137,6 +137,6 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
 
 ## <a name="see-also"></a>참고 항목
 
-- [스크립팅 작성자: 이러한 PowerShell GUI 예제가 작동하지 않는 이유는 무엇인가요?](http://go.microsoft.com/fwlink/?LinkId=506644)
+- [스크립팅 작성자: 이러한 PowerShell GUI 예제가 작동하지 않는 이유는 무엇인가요?](https://go.microsoft.com/fwlink/?LinkId=506644)
 - [GitHub: Dave Wyatt's WinFormsExampleUpdates](https://github.com/dlwyatt/WinFormsExampleUpdates)(GitHub: Dave Wyatt의 WinFormsExampleUpdates)
-- [Windows PowerShell Tip of the Week: 그래픽 날짜 선택 만들기](http://technet.microsoft.com/library/ff730942.aspx)
+- [Windows PowerShell Tip of the Week: 그래픽 날짜 선택 만들기](https://technet.microsoft.com/library/ff730942.aspx)

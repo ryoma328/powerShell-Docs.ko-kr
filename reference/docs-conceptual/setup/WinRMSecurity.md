@@ -2,12 +2,12 @@
 ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: WinRMSecurity
-ms.openlocfilehash: 43e77067e301cdf1b792cb0d24b72ee0abb3349a
-ms.sourcegitcommit: 01d6985ed190a222e9da1da41596f524f607a5bc
-ms.translationtype: HT
+ms.openlocfilehash: 59717e4806857e6760de523335bbee6028da8e84
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34482950"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320553"
 ---
 # <a name="powershell-remoting-security-considerations"></a>PowerShell Remoting 보안 고려 사항
 
@@ -15,7 +15,7 @@ PowerShell Remoting을 사용해 Windows 시스템을 관리하는 것이 좋습
 
 ## <a name="what-is-powershell-remoting"></a>PowerShell Remoting이란?
 
-PowerShell 원격은 [Web Services for Managment (WS-Managment)](http://www.dmtf.org/sites/default/files/standards/documents/DSP0226_1.2.0.pdf)(WS-Managment(Web Services for Managment))의 Microsoft 구현인 [Windows Remote Management (WinRM)](https://msdn.microsoft.com/library/windows/desktop/aa384426.aspx)(WinRM(Windows 원격 관리))를 사용하여 사용자가 원격 컴퓨터에서 PowerShell 명령을 실행할 수 있도록 합니다. PowerShell Remoting 사용에 관한 자세한 내용은 [원격 명령 실행](https://technet.microsoft.com/library/dd819505.aspx)에서 확인할 수 있습니다.
+PowerShell 원격은 [Web Services for Managment (WS-Managment)](https://www.dmtf.org/sites/default/files/standards/documents/DSP0226_1.2.0.pdf)(WS-Managment(Web Services for Managment))의 Microsoft 구현인 [Windows Remote Management (WinRM)](https://msdn.microsoft.com/library/windows/desktop/aa384426.aspx)(WinRM(Windows 원격 관리))를 사용하여 사용자가 원격 컴퓨터에서 PowerShell 명령을 실행할 수 있도록 합니다. PowerShell Remoting 사용에 관한 자세한 내용은 [원격 명령 실행](https://technet.microsoft.com/library/dd819505.aspx)에서 확인할 수 있습니다.
 
 PowerShell 원격은 원격 컴퓨터에서의 실행을 위해 cmdlet의 **ComputerName** 매개 변수를 사용하는 것과 다릅니다. 후자의 경우 RPC(원격 프로시저 호출)를 기본 프로토콜로 사용합니다.
 

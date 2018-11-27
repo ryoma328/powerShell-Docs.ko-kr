@@ -2,12 +2,12 @@
 ms.date: 08/23/2017
 keywords: powershell,cmdlet
 title: 웹 기반 Windows PowerShell 콘솔 사용
-ms.openlocfilehash: 5d29a6f97fddf4b329fcc7097cf7d40d47d22cca
-ms.sourcegitcommit: 01d6985ed190a222e9da1da41596f524f607a5bc
-ms.translationtype: HT
+ms.openlocfilehash: 2bb9c6ef486ef32012a15f9890997cf2fa6a3a0b
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34483154"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320655"
 ---
 # <a name="use-the-web-based-windows-powershell-console"></a>Use the Web-based Windows PowerShell Console
 
@@ -142,7 +142,7 @@ Windows PowerShell 웹 액세스에 로그인하고 나면 웹 기반 Windows Po
 
 기능 키 | 작업
 -- | --
-Ctrl+C | Windows PowerShell 웹 액세스에서 **Ctrl+C**는 브라우저에서 내용을 복사하는 데 사용됩니다. 이 콘솔에서는 **취소** 단추를 사용할 수 있으며, **Ctrl+Q**를 사용해 명령을 취소할 수도 있습니다.
+Ctrl+C | Windows PowerShell 웹 액세스에서 **Ctrl+C**는 브라우저에서 내용을 복사하는 데 사용됩니다. 이 콘솔에서는 **취소** 단추를 사용할 수 있으며, **Ctrl+Q** 를 사용해 명령을 취소할 수도 있습니다.
 Alt-space, e, l | 화면 버퍼를 통해 스크롤
 Alt+Space, e, f | 화면 버퍼에서 텍스트 검색
 Alt+Space, e, k | 화면 버퍼에서 복사할 텍스트 선택
@@ -169,7 +169,7 @@ Alt+F7 | 명령 기록 목록 지우기
 
     Windows PowerShell 웹 액세스를 사용하여 새로운 세션을 만들거나 새로운 세션에서 작업하려고 할 때 더블 홉(즉, 첫 번째 연결로 두 번째 컴퓨터에 연결) 제한 문제가 발생할 수 있습니다. Windows PowerShell 웹 액세스에서는 원격 runspace를 사용하는데, 현재 **PowerShell.exe**는 원격 runspace에서 두 번째 컴퓨터에 대한 원격 연결을 지원하지 않습니다. **Enter-PSSession** cmdlet을 사용하여 기존 연결을 통해 두 번째 원격 컴퓨터에 연결하려고 하면 “네트워크 리소스를 가져올 수 없습니다.”와 같은 다양한 오류 메시지가 표시됩니다.
 
-    이러한 더블 홉 오류를 방지하려면 관리자가 조직의 네트워크 환경에 CredSSP 인증을 구성해야 합니다. CredSSP 인증 구성에 대한 자세한 내용은 Microsoft 웹 사이트의 [두 번째 홉 원격 제어를 위한 CredSSP](http://blogs.msdn.com/b/powershell/archive/2008/06/05/credssp-for-second-hop-remoting-part-i-domain-account.aspx)를 참조하세요. 두 번째 원격 컴퓨터를 관리하려는 경우 명시적 자격 증명을 제공할 수도 있지만, 암시적 자격 증명으로는 두 번째 홉이 허용되지 않을 수 있습니다.
+    이러한 더블 홉 오류를 방지하려면 관리자가 조직의 네트워크 환경에 CredSSP 인증을 구성해야 합니다. CredSSP 인증 구성에 대한 자세한 내용은 Microsoft 웹 사이트의 [두 번째 홉 원격 제어를 위한 CredSSP](https://blogs.msdn.com/b/powershell/archive/2008/06/05/credssp-for-second-hop-remoting-part-i-domain-account.aspx)를 참조하세요. 두 번째 원격 컴퓨터를 관리하려는 경우 명시적 자격 증명을 제공할 수도 있지만, 암시적 자격 증명으로는 두 번째 홉이 허용되지 않을 수 있습니다.
 
 - 원격
 
@@ -224,12 +224,12 @@ Alt+F7 | 명령 기록 목록 지우기
 
         이와 비슷한 방법으로 콘솔 높이를 변경할 수 있습니다.
 
-        콘솔 표시를 사용자 지정할 수 있는 추가적인 예가 [Windows PowerShell 팀 블로그](http://blogs.msdn.com/b/powershell/)에 나와 있습니다.
+        콘솔 표시를 사용자 지정할 수 있는 추가적인 예가 [Windows PowerShell 팀 블로그](https://blogs.msdn.com/b/powershell/)에 나와 있습니다.
 
 ## <a name="see-also"></a>참고 항목
 
 - [Windows PowerShell Cmdlet Reference](https://technet.microsoft.com/library/ee407531(ws.10).aspx)(Windows PowerShell Cmdlet 참조)
 - [Microsoft TechNet의 Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
-- [TechNet 스크립트 센터 리포지토리](http://gallery.technet.microsoft.com/scriptcenter)
+- [TechNet 스크립트 센터 리포지토리](https://gallery.technet.microsoft.com/scriptcenter)
 - [스크립트 센터 - 스크립팅 이용자 여러분!](https://technet.microsoft.com/scriptcenter)
-- [Windows PowerShell Team Blog](http://blogs.msdn.com/b/powershell/)(Windows PowerShell 팀 블로그)
+- [Windows PowerShell Team Blog](https://blogs.msdn.com/b/powershell/)(Windows PowerShell 팀 블로그)
