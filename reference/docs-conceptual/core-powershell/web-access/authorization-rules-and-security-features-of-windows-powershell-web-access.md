@@ -2,12 +2,12 @@
 ms.date: 06/27/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능
-ms.openlocfilehash: e9bed3900263a51b1b8236a3c3430154a5d11886
-ms.sourcegitcommit: 31a221d982305c7f999b1afeb15e3629e9620de8
-ms.translationtype: HT
+ms.openlocfilehash: 95c61d3a0431cda9dee738d1c9f5ec843c1209f3
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43133162"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52321083"
 ---
 # <a name="authorization-rules-and-security-features-of-windows-powershell-web-access"></a>Windows PowerShell 웹 액세스의 권한 부여 규칙 및 보안 기능
 
@@ -20,19 +20,19 @@ Windows Server 2012 R2 및 Windows Server 2012의 Windows PowerShell 웹 액세�
 ## <a name="configuring-authorization-rules-and-site-security"></a>권한 부여 규칙 및 사이트 보안 구성
 
 Windows PowerShell Web Access가 설치되고 게이트웨이가 구성되고 나면 사용자는 로그인 페이지를 브라우저에서 열 수 있지만 Windows PowerShell 웹 액세스 관리자가 사용자에게 액세스를 명시적으로 허용할 때까지는 로그인할 수 없습니다. ‘Windows PowerShell 웹 액세스’ 액세스 제어는 다음 표에 설명된 여러 Windows PowerShell cmdlet을 통해 관리할 수 있습니다. 권한 부여 규칙을 추가하거나 관리하는 작업에 해당하는 GUI는 없습니다.
-[Windows PowerShell Web Access Cmdlets](cmdlets/web-access-cmdlets.md)(Windows PowerShell 웹 액세스 Cmdlet)를 참조하세요.
+[Windows PowerShell Web Access Cmdlets](/powershell/module/powershellwebaccess/?view=winserver2012r2-ps)(Windows PowerShell 웹 액세스 Cmdlet)를 참조하세요.
 
 관리자는 Windows PowerShell 웹 액세스에 대한 `{0-n}` 인증 규칙을 정의할 수 있습니다. 기본 보안은 허용적이지 않고 제한적이며, 0 인증 규칙은 사용자가 어디에도 액세스할 수 없음을 의미합니다.
 
-Windows Server 2012 R2의 [Add-PswaAuthorizationRule](cmdlets/add-pswaauthorizationrule.md) 및 [Test-PswaAuthorizationRule](cmdlets/test-pswaauthorizationrule.md)에는 원격 컴퓨터 또는 활성 Windows PowerShell 웹 액세스 세션에서 Windows PowerShell 웹 액세스 권한 부여 규칙을 추가 및 테스트할 수 있게 해주는 Credential 매개 변수가 포함되어 있습니다. Credential 매개 변수가 있는 다른 Windows PowerShell cmdlet과 마찬가지로는 PSCredential 개체를 매개 변수 값으로 지정할 수 있습니다. 원격 컴퓨터에 전달하려는 자격 증명이 포함된 PSCredential 개체를 만들려면 [Get-Credential](/powershell/module/microsoft.powershell.security/Get-Credential) cmdlet을 실행합니다.
+Windows Server 2012 R2의 [Add-PswaAuthorizationRule](/powershell/module/powershellwebaccess/add-pswaauthorizationrule?view=winserver2012r2-ps) 및 [Test-PswaAuthorizationRule](/powershell/module/powershellwebaccess/test-pswaauthorizationrule?view=winserver2012r2-ps)에는 원격 컴퓨터 또는 활성 Windows PowerShell 웹 액세스 세션에서 Windows PowerShell 웹 액세스 권한 부여 규칙을 추가 및 테스트할 수 있게 해주는 Credential 매개 변수가 포함되어 있습니다. Credential 매개 변수가 있는 다른 Windows PowerShell cmdlet과 마찬가지로는 PSCredential 개체를 매개 변수 값으로 지정할 수 있습니다. 원격 컴퓨터에 전달하려는 자격 증명이 포함된 PSCredential 개체를 만들려면 [Get-Credential](/powershell/module/microsoft.powershell.security/Get-Credential) cmdlet을 실행합니다.
 
-Windows PowerShell 웹 액세스 인증 규칙은 허용 목록 규칙입니다. 각 규칙은 사용자, 대상 컴퓨터 및 지정된 대상 컴퓨터의 특정 Windows PowerShell [세션 구성](/powershell/reference/5.1/microsoft.powershell.core/about/about_session_configurations)(엔드포인트 또는 _runspace_라고도 함) 사이에 허용된 연결을 정의한 것입니다.
-**runspace**에 대한 설명은 [Beginning Use of PowerShell Runspaces](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/26/beginning-use-of-powershell-runspaces-part-1/)(PowerShell Runspace 사용 시작)를 참조하세요.
+Windows PowerShell 웹 액세스 인증 규칙은 허용 목록 규칙입니다. 각 규칙은 사용자, 대상 컴퓨터 및 지정된 대상 컴퓨터의 특정 Windows PowerShell [세션 구성](/powershell/module/microsoft.powershell.core/about/about_session_configurations?view=powershell-5.1)(엔드포인트 또는 _runspace_라고도 함) 사이에 허용된 연결을 정의한 것입니다.
+**runspace**에 대한 설명은 [PowerShell Runspace 사용 시작](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/26/beginning-use-of-powershell-runspaces-part-1/) 를 참조하세요
 
 > [!IMPORTANT]
 > 사용자는 참인 규칙이 하나만 있어야 액세스 권한을 얻을 수 있습니다. 웹 기반 콘솔에서 모든 언어에 액세스할 수 있는 권한이든, Windows PowerShell 원격 관리 cmdlet에만 액세스할 수 있는 권한이든, 사용자에게 한 컴퓨터에 대한 액세스 권한이 주어지면 사용자는 첫 번째 대상 컴퓨터에 연결된 다른 컴퓨터에도 로그온(또는 홉)할 수 있습니다. Windows PowerShell 웹 액세스를 가장 안전하게 구성하는 방법은 사용자가 일반적으로 원격 작업을 수행할 수 있는 제한된 세션 구성만 액세스할 수 있도록 구성하는 것입니다.
 
-[Windows PowerShell Web Access Cmdlets](cmdlets/web-access-cmdlets.md)(Windows PowerShell 웹 액세스 Cmdlet)에 참조된 cmdlet을 사용하면 Windows PowerShell 웹 액세스 게이트웨이의 사용자에게 권한을 부여하는 데 사용되는 일련의 액세스 규칙을 만들 수 있습니다. 이러한 규칙은 대상 컴퓨터에 대한 ACL(액세스 제어 목록)과는 다른 것으로 웹 액세스에 대한 추가 보안 계층을 제공합니다. 보안에 대한 자세한 내용은 다음 섹션에서 설명됩니다.
+[Windows PowerShell Web Access Cmdlets](/powershell/module/powershellwebaccess/?view=winserver2012r2-ps)(Windows PowerShell 웹 액세스 Cmdlet)에 참조된 cmdlet을 사용하면 Windows PowerShell 웹 액세스 게이트웨이의 사용자에게 권한을 부여하는 데 사용되는 일련의 액세스 규칙을 만들 수 있습니다. 이러한 규칙은 대상 컴퓨터에 대한 ACL(액세스 제어 목록)과는 다른 것으로 웹 액세스에 대한 추가 보안 계층을 제공합니다. 보안에 대한 자세한 내용은 다음 섹션에서 설명됩니다.
 
 사용자가 위의 보안 계층을 하나도 통과하지 못하면 브라우저 창에 일반적인 '액세스 거부' 메시지가 표시됩니다. 자세한 보안 정보가 게이트웨이 서버에서 기록되지만 최종 사용자에게는 통과한 보안 계층 개수 또는 로그인이나 인증에 실패한 계층에 대한 정보가 표시되지 않습니다.
 
@@ -229,4 +229,4 @@ Windows Server 2012 R2에서 실행되는 Windows PowerShell 웹 액세스에서
 
 [about_Session_Configurations](https://technet.microsoft.com/library/dd819508.aspx)
 
-[Windows PowerShell Web Access Cmdlets](cmdlets/web-access-cmdlets.md)(Windows PowerShell 웹 액세스 Cmdlet)
+[Windows PowerShell Web Access Cmdlets](/powershell/module/powershellwebaccess/?view=winserver2012r2-ps)(Windows PowerShell 웹 액세스 Cmdlet)

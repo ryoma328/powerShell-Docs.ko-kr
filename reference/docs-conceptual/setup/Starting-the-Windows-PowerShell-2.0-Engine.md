@@ -3,12 +3,12 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell 2.0 엔진 시작
 ms.assetid: edafc2fa-7576-49c2-bbba-9336f4bcfc28
-ms.openlocfilehash: 618745ff4865dd046acf46487e87c3ca0e324f95
-ms.sourcegitcommit: 01d6985ed190a222e9da1da41596f524f607a5bc
-ms.translationtype: HT
+ms.openlocfilehash: b600c1f5ea122df9bd53132ccc8edbbc6fa1e9f6
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34482967"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320791"
 ---
 # <a name="starting-the-windows-powershell-20-engine"></a>Windows PowerShell 2.0 엔진 시작
 
@@ -22,7 +22,7 @@ Windows PowerShell 2.0 엔진을 필요로 하는 대부분의 프로그램은 �
 
 Windows PowerShell 2.0 엔진을 시작하기 전에 Windows PowerShell 2.0 엔진과 Microsoft .NET Framework 3.5 서비스 팩 1을 사용하도록 설정합니다. 자세한 내용은 [Windows PowerShell 설치](Installing-Windows-PowerShell.md)를 참조하세요.
 
-[Windows Management Framework 4.0](http://go.microsoft.com/fwlink/?LinkID=293881) 또는 Windows Management Framework 3.0이 설치된 시스템에는 필요한 구성 요소가 모두 있습니다. 추가 구성은 필요하지 않습니다. [Windows Management Framework 4.0](http://go.microsoft.com/fwlink/?LinkID=293881) 또는 Windows Management Framework 3.0 설치에 대한 자세한 내용은 [Windows PowerShell 설치](Installing-Windows-PowerShell.md)를 참조하세요.
+Windows Management Framework 4.0 또는 Windows Management Framework 3.0이 설치된 시스템에는 필요한 구성 요소가 모두 있습니다. 추가 구성은 필요하지 않습니다. [Windows Management Framework 4.0](https://go.microsoft.com/fwlink/?LinkID=293881) 또는 Windows Management Framework 3.0 설치에 대한 자세한 내용은 [Windows PowerShell 설치](Installing-Windows-PowerShell.md)를 참조하세요.
 
 ## <a name="how-to-start-the-windows-powershell-20-engine"></a>Windows PowerShell 2.0 엔진을 시작하는 방법
 
@@ -34,7 +34,7 @@ PowerShell.exe -Version 2
 
 ## <a name="how-to-start-a-remote-session-with-the-windows-powershell-20-engine"></a>Windows PowerShell 2.0 엔진과 원격 세션을 시작하는 방법
 
-원격 세션으로 Windows PowerShell 2.0 엔진을 실행하려면 Windows PowerShell 2.0 엔진을 로드하는 원격 컴퓨터에서 세션 구성("끝점"이라고도 함)을 만듭니다. 세션 구성은 원격 컴퓨터에 저장되며, Windows PowerShell 2.0 엔진을 사용하는 모든 권한 있는 사용자가 이용할 수 있습니다.
+원격 세션으로 Windows PowerShell 2.0 엔진을 실행하려면 Windows PowerShell 2.0 엔진을 로드하는 원격 컴퓨터에서 세션 구성("엔드포인트"이라고도 함)을 만듭니다. 세션 구성은 원격 컴퓨터에 저장되며, Windows PowerShell 2.0 엔진을 사용하는 모든 권한 있는 사용자가 이용할 수 있습니다.
 
 이는 일반적으로 시스템 관리자가 수행하는 고급 작업입니다.
 

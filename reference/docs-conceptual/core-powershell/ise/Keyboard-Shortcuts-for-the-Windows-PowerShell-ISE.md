@@ -3,16 +3,16 @@ ms.date: 06/05/2017
 keywords: powershell,cmdlet
 title: Windows PowerShell ISE 바로 가기 키
 ms.assetid: 8328b946-0f02-4ef4-ac28-2743a1b4043b
-ms.openlocfilehash: e17fee4cf0cc8ac7aa0bb36acde3b452919312d0
-ms.sourcegitcommit: cf195b090b3223fa4917206dfec7f0b603873cdf
-ms.translationtype: HT
+ms.openlocfilehash: 1abae849ce599b586357fd2a8db46c608932bd4e
+ms.sourcegitcommit: 221b7daab7f597f8b2e4864cf9b5d9dda9b9879b
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2018
-ms.locfileid: "30953823"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52320808"
 ---
 # <a name="keyboard-shortcuts-for-the-windows-powershell-ise"></a>Windows PowerShell ISE 바로 가기 키
 
-다음 바로 가기 키를 사용하여 Windows PowerShell® ISE(통합 스크립팅 환경)에서 작업을 수행할 수 있습니다. Windows PowerShell ISE는 Windows Server 및 Windows 클라이언트 운영 체제의 일부로 사용할 수 있지만, [Windows Management Framework 4.0 다운로드 패키지](http://go.microsoft.com/fwlink/?LinkID=293881)의 일부로 이전 Windows 운영 체제에 설치되어 있을 수도 있습니다.
+다음 바로 가기 키를 사용하여 Windows PowerShell® ISE(통합 스크립팅 환경)에서 작업을 수행할 수 있습니다. Windows PowerShell ISE는 Windows Server 및 Windows 클라이언트 운영 체제의 일부로 사용할 수 있지만, [Windows Management Framework 4.0 다운로드 패키지](https://go.microsoft.com/fwlink/?LinkID=293881)의 일부로 이전 Windows 운영 체제에 설치되어 있을 수도 있습니다.
 
 ## <a name="keyboard-shortcuts-for-editing-text"></a>텍스트 편집 바로 가기 키
 
@@ -120,4 +120,4 @@ Windows PowerShell 탭을 사용할 때 다음과 같은 바로 가기 키를 �
 
 ## <a name="see-also"></a>참고 항목
 
-- [PowerShell Magazine: Windows PowerShell ISE 바로 가기 키의 전체 목록](http://www.powershellmagazine.com/2013/01/29/the-complete-list-of-powershell-ise-3-0-keyboard-shortcuts/)
+- [PowerShell Magazine: Windows PowerShell ISE 바로 가기 키의 전체 목록](https://www.powershellmagazine.com/2013/01/29/the-complete-list-of-powershell-ise-3-0-keyboard-shortcuts/)
