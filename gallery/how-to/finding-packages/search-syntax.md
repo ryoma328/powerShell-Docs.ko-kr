@@ -3,22 +3,23 @@ ms.date: 06/12/2017
 contributor: JKeithB
 keywords: gallery,powershell,cmdlet,psgallery
 title: 갤러리 검색 구문
-ms.openlocfilehash: 9aadb6771c85845cc3fa05cb56f0194b060d1c1b
-ms.sourcegitcommit: 98b7cfd8ad5718efa8e320526ca76c3cc4141d78
-ms.translationtype: HT
+ms.openlocfilehash: aabcaa1f1b5b641ab5033c9ba2e358477c84a23b
+ms.sourcegitcommit: e24525046dd37166b9d83eeecdc534726316f429
+ms.translationtype: MTE95
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50003776"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742859"
 ---
 # <a name="gallery-search-syntax"></a>갤러리 검색 구문
 
-PowerShell 갤러리는 단어, 구 및 키워드 식을 사용하여 검색 결과 범위를 좁힐 수 있는 텍스트 검색 상자를 제공합니다.
+사용 하 여 PowerShell 갤러리를 검색할 수 있습니다 합니다 [PowerShell 갤러리의 웹 사이트](https://www.powershellgallery.com/)합니다.
+PowerShell 갤러리 웹 사이트는 검색 결과 좁힐 단어, 구 및 키워드 식을 사용할 수 있는 텍스트 검색 상자를 제공 합니다.
 
 ## <a name="search-by-keywords"></a>키워드로 검색
 
     dsc azure sql
 
-검색은 3가지 키워드를 모두 포함하는 관련 문서를 찾으려고 하며 일치하는 문서를 반환합니다.
+검색은 모든 3 가지 키워드를 포함 하는 관련 문서를 찾아 일치 하는 문서를 반환 하려고 시도 합니다.
 
 ## <a name="search-using-phrases-and-keywords"></a>구문 및 키워드를 사용하여 검색
 
@@ -37,10 +38,9 @@ PowerShell 갤러리는 단어, 구 및 키워드 식을 사용하여 검색 결
 
 ## <a name="examples"></a>예
 
-    ID:"PSReadline"
-    id:"AzureRM.Profile"
-
-ID 필드에 각각 "PSReadline" 또는 "AzureRM.Profile"이 포함된 패키지를 찾습니다.
+    ID:PSReadline
+    
+"PSReadline"를 포함 하는 ID를 사용 하 여 패키지를 찾습니다.
 
     Id:"AzureRM.Profile"
 
@@ -50,40 +50,35 @@ ID 필드에 "AzureRM.Profile"이 포함된 패키지를 찾는 다른 방법입
 
     Id:"azure"
 
-'AzureRM.Profile' 및 'Azure.Storage'와 같은 결과가 표시됩니다.
+AzureRM.Profile를 포함 하는 결과 제공 하는이 ' 및 'Azure.Storage'.
 
-또한 단일 필드에서 여러 키워드를 검색할 수 있습니다. 또는 필드를 섞어서 일치시킵니다.
+또한 단일 필드에서 여러 키워드를 검색할 수 있습니다. 
 
     id:azure tags:intellisense
-    id:azure id:storage
 
-구를 검색할 수도 있습니다.
+및 큰따옴표를 사용 하 여 구 검색을 수행할 수 있습니다.
 
     id:"azure.storage"
 
-
 DSC 태그가 있는 패키지를 모두 검색합니다.
 
-    Tags:"DSC"
+    Tags:DSC
 
 지정된 함수가 있는 패키지를 모두 검색합니다.
 
-    Functions:"Update-AzureRM"
+    Functions:Get-TreeSize
 
 지정된 cmdlet이 있는 패키지를 모두 검색합니다.
 
-    Cmdlets:"Get-AzureRmEnvironment"
+    Cmdlets:Get-AzureRmEnvironment
 
 지정된 DSC 리소스 이름이 있는 패키지를 모두 검색합니다.
 
-    DscResources:"xArchive"
+    DscResources:xArchive
 
 지정된 PowerShellVersion이 있는 패키지를 모두 검색합니다.
 
-    PowerShellVersion:"5.0"
-    PowerShellVersion:"3.0"
-    PowerShellVersion:"2.0"
-
+    PowerShellVersion:2.0
 
 마지막으로, 지원되지 않는 필드(예: 'commands')를 사용하는 경우 필드가 무시되고 모든 필드가 검색됩니다. 따라서 다음 쿼리의 경우
 
