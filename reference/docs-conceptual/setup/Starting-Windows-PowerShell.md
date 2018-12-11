@@ -11,7 +11,7 @@ ms.lasthandoff: 11/27/2018
 ms.locfileid: "52320536"
 ---
 # <a name="starting-windows-powershell"></a>Windows PowerShell 시작
-PowerShell은 여러 호스트에 포함되는 스크립팅 엔진 dll입니다.  시작하는 가장 일반적인 호스트는 대화형 명령줄PowerShell.exe 및 대화형 스크립팅 환경 PowerShell_ISE.exe입니다.
+PowerShell은 여러 호스트에 내장된 스크립팅 엔진 dll입니다.  시작할 가장 일반적인 호스트는 대화형 명령줄PowerShell.exe 와 대화형 스크립팅 환경 PowerShell_ISE.exe입니다.
 
 Windows Server® 2012 R2, Windows® 8.1, Windows Server 2012 및 Windows 8에서 Windows PowerShell®을 시작하려면 [일반 관리 작업 및 탐색](https://technet.microsoft.com/library/hh831491.aspx)을 참조하세요.
 
