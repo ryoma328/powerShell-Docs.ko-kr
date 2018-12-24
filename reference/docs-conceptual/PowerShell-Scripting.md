@@ -14,7 +14,7 @@ ms.locfileid: "49451033"
 PowerShell은 .NET에서 구축된 작업 기반 명령줄 셸 및 스크립팅 언어입니다.
 PowerShell을 통해 시스템 관리자 및 고급 사용자는 운영 체제(Linux, macOS 및 Windows) 및 프로세스를 관리하는 작업을 신속하게 자동화할 수 있습니다.
 
-PowerShell 명령을 사용하면 명령줄에서 컴퓨터를 관리할 수 있습니다. PowerShell 공급자는 파일 시스템에 액세스하는 것처럼 쉽게, 레지스트리 및 인증서 저장소와 같은 데이터 저장소에 액세스하도록 지원합니다. PowerShell은 풍부한 식(式)파서(parser)와 완전히 개발된 스크립트 언어를 포함합니다..
+PowerShell 명령을 사용하면 명령줄에서 컴퓨터를 관리할 수 있습니다. PowerShell 공급자는 파일 시스템에 액세스하는 것처럼 쉽게, 레지스트리 및 인증서 저장소와 같은 데이터 저장소에 액세스하도록 지원합니다. PowerShell은 충분한 식을 포함하는 파서와 완전히 개발된 스크립트 언어를 포함합니다.
 
 ## <a name="powershell-is-open-source"></a>PowerShell이 오픈 소스로 제공됨
 
